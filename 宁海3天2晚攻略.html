@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宁海3天2晚攻略 | 徐霞客游记开篇地 · 中秋高铁之旅</title>
+<style>
+:root {
+  --sea: #2d8f7e;
+  --sea-deep: #1a6856;
+  --sea-light: #5cb8a6;
+  --stone: #c8a878;
+  --stone-deep: #a0825a;
+  --sky: #eaf6f3;
+  --warm: #f5f0e6;
+  --ink: #1f3a36;
+  --gray: #6b8079;
+  --line: #d4e4df;
+  --white: #ffffff;
+  --accent: #e88a3d;
+  --shadow: 0 4px 20px rgba(26,104,86,0.12);
+  --radius: 14px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: "PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+  background: var(--sky);
+  color: var(--ink);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--sea-deep); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== Back bar ===== */
+.back-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 20px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--gray);
+}
+.back-bar a { font-weight: 600; font-size: 15px; }
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, #1a6856 0%, #2d8f7e 35%, #5cb8a6 100%);
+  color: #fff;
+  padding: 70px 20px 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: var(--sky);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+.hero h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+.hero .subtitle { font-size: 1.15rem; opacity: 0.9; margin-bottom: 16px; }
+.hero .tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.hero .tag {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  backdrop-filter: blur(4px);
+}
+.hero .trip-meta {
+  margin-top: 22px;
+  display: flex; justify-content: center; gap: 28px;
+  flex-wrap: wrap;
+  font-size: 14px; opacity: 0.92;
+}
+.hero .trip-meta span { display: flex; align-items: center; gap: 5px; }
+
+/* ===== Container ===== */
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+/* ===== Section ===== */
+.section { margin: 50px 0; }
+.section-title {
+  font-size: 1.7rem; font-weight: 700;
+  color: var(--sea-deep);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::before {
+  content: ''; width: 5px; height: 26px;
+  background: var(--sea); border-radius: 3px;
+}
+.section-desc { color: var(--gray); font-size: 14px; margin-bottom: 24px; margin-left: 15px; }
+
+/* ===== Map ===== */
+.map-box {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  overflow-x: auto;
+}
+.map-box svg { display: block; margin: 0 auto; max-width: 100%; }
+
+/* ===== Tabs ===== */
+.tabs {
+  display: flex; gap: 0; margin-bottom: 0;
+  border-bottom: 3px solid var(--line);
+}
+.tab-btn {
+  padding: 12px 28px;
+  background: none; border: none;
+  font-size: 1rem; font-weight: 600;
+  color: var(--gray);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: all 0.25s;
+}
+.tab-btn:hover { color: var(--sea); }
+.tab-btn.active {
+  color: var(--sea-deep);
+  border-bottom-color: var(--sea);
+}
+.tab-content { display: none; padding-top: 28px; }
+.tab-content.active { display: block; animation: fadeIn 0.4s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== Timeline ===== */
+.timeline { position: relative; padding-left: 36px; }
+.timeline::before {
+  content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+  width: 2px; background: var(--line);
+}
+.tl-item { position: relative; margin-bottom: 28px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -30px; top: 6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--sea); border: 3px solid #fff;
+  box-shadow: 0 0 0 2px var(--sea-light);
+}
+.tl-time {
+  font-size: 13px; font-weight: 700; color: var(--sea-deep);
+  margin-bottom: 4px;
+}
+.tl-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.tl-desc { font-size: 14px; color: var(--gray); }
+.tl-tag {
+  display: inline-block; font-size: 12px;
+  padding: 2px 10px; border-radius: 12px;
+  margin-top: 4px;
+}
+.tl-tag.morning { background: #fff3e0; color: #e65100; }
+.tl-tag.day { background: #e8f5e9; color: #2e7d32; }
+.tl-tag.evening { background: #e3f2fd; color: #1565c0; }
+.tl-tag.note { background: #fce4ec; color: #c62828; }
+
+/* ===== Cards ===== */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
+.card {
+  background: #fff; border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,104,86,0.18); }
+.card-header {
+  padding: 16px 18px 12px;
+  background: linear-gradient(135deg, var(--sea-light)22, var(--sea)11);
+  border-bottom: 1px solid var(--line);
+}
+.card-header.stone-header {
+  background: linear-gradient(135deg, var(--stone)33, var(--stone-deep)11);
+}
+.card-header.accent-header {
+  background: linear-gradient(135deg, var(--accent)22, var(--accent)08);
+}
+.card-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.card-price { font-size: 14px; color: var(--accent); font-weight: 700; }
+.card-price.free { color: var(--sea); }
+.card-body { padding: 14px 18px; }
+.card-desc { font-size: 13.5px; color: var(--gray); margin-bottom: 10px; }
+.card-tag {
+  display: inline-block; font-size: 12px;
+  padding: 2px 10px; border-radius: 10px;
+  background: var(--sky); color: var(--sea-deep);
+  margin-right: 6px; margin-bottom: 4px;
+}
+.card-detail {
+  display: inline-block; font-size: 13px; font-weight: 600;
+  color: var(--sea-deep);
+  border: 1px solid var(--sea-light);
+  padding: 3px 14px; border-radius: 16px;
+  margin-top: 6px; transition: all 0.2s; cursor: pointer;
+}
+.card-detail:hover { background: var(--sea); color: #fff; text-decoration: none; }
+
+/* ===== Transport Table ===== */
+.transport-table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow);
+  font-size: 14px;
+}
+.transport-table th {
+  background: var(--sea-deep); color: #fff;
+  padding: 12px 14px; text-align: left; font-weight: 600;
+}
+.transport-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.transport-table tr:last-child td { border-bottom: none; }
+.transport-table tr:nth-child(even) { background: var(--sky); }
+.transport-table .badge {
+  display: inline-block; padding: 2px 10px; border-radius: 10px;
+  font-size: 12px; font-weight: 600;
+}
+.badge.green { background: #c8e6c9; color: #2e7d32; }
+.badge.orange { background: #ffe0b2; color: #e65100; }
+.badge.red { background: #ffcdd2; color: #c62828; }
+
+/* ===== Budget Table ===== */
+.budget-table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow);
+  font-size: 14px;
+}
+.budget-table th {
+  background: var(--sea-deep); color: #fff;
+  padding: 12px 14px; text-align: left; font-weight: 600;
+}
+.budget-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.budget-table tr:last-child td { border-bottom: none; }
+.budget-table tfoot td {
+  font-weight: 800; font-size: 1.05rem;
+  color: var(--sea-deep); background: var(--sky);
+  border-top: 2px solid var(--sea-light);
+}
+
+/* ===== Tips ===== */
+.tips { list-style: none; }
+.tips li {
+  background: #fff; border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 16px 18px 16px 50px;
+  margin-bottom: 14px;
+  position: relative; font-size: 14px;
+  color: var(--ink);
+}
+.tips li::before {
+  content: attr(data-num);
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--sea); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.tips li strong { color: var(--sea-deep); }
+
+/* ===== Highlight banner ===== */
+.highlight {
+  background: linear-gradient(135deg, var(--sea) 0%, var(--sea-light) 100%);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  color: #fff;
+  margin: 40px 0;
+}
+.highlight h3 { font-size: 1.3rem; margin-bottom: 12px; }
+.highlight ul { list-style: none; }
+.highlight ul li {
+  padding: 6px 0 6px 26px;
+  position: relative; font-size: 14px; opacity: 0.95;
+}
+.highlight ul li::before {
+  content: '◆'; position: absolute; left: 0; font-size: 12px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero .trip-meta { gap: 16px; }
+  .tab-btn { padding: 10px 16px; font-size: 0.9rem; }
+  .cards { grid-template-columns: 1fr; }
+  .transport-table { font-size: 12px; }
+  .transport-table th, .transport-table td { padding: 8px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Back bar -->
+<div class="back-bar">
+  <span>←</span>
+  <a href="旅游攻略.html">返回旅游攻略总览</a>
+</div>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <h1>宁海 · 3天2晚</h1>
+  <div class="subtitle">徐霞客游记开篇地 · 前童古镇 · 长街蛏子</div>
+  <div class="tags">
+    <span class="tag">🗓 9月25日-27日 中秋假期</span>
+    <span class="tag">🚄 上海高铁直达 2.5h</span>
+    <span class="tag">🏔 温泉+古镇+海岛</span>
+    <span class="tag">🦐 长街蛏子当季最肥</span>
+  </div>
+  <div class="trip-meta">
+    <span>📍 上海 → 宁海站</span>
+    <span>📅 3天2晚</span>
+    <span>💰 人均 ¥1,305-1,755</span>
+    <span>🧑‍🤝‍🧑 2人出行</span>
+  </div>
+</div>
+
+<!-- ===== Map ===== -->
+<div class="container">
+  <div class="section">
+    <div class="section-title">手绘路线地图</div>
+    <div class="section-desc">上海出发 → 宁海站 → 前童古镇 → 宁海温泉 → 伍山石窟 → 许家山石头村 → 强蛟群岛</div>
+    <div class="map-box">
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" style="font-family:'PingFang SC',sans-serif;">
+  <!-- Background waves -->
+  <defs>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eaf6f3"/>
+      <stop offset="100%" stop-color="#d4ece5"/>
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a3d4c8"/>
+      <stop offset="100%" stop-color="#5cb8a6"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="900" height="460" fill="url(#seaGrad)" rx="12"/>
+  
+  <!-- Decorative mountains -->
+  <path d="M 0 200 Q 80 160 160 195 Q 240 165 320 200 Q 400 170 480 200" fill="none" stroke="#5cb8a6" stroke-width="2" opacity="0.3"/>
+  <path d="M 420 260 Q 520 210 620 255 Q 720 215 820 260 Q 880 230 900 255" fill="none" stroke="#5cb8a6" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Sea area (right side) -->
+  <path d="M 720 280 Q 780 270 820 300 Q 860 320 870 360 L 900 400 L 900 380 L 850 340 Q 800 310 720 280 Z" fill="#5cb8a622" stroke="#5cb8a6" stroke-width="1.5" opacity="0.5"/>
+  <text x="840" y="340" font-size="11" fill="#2d8f7e" opacity="0.6">宁海湾</text>
+  
+  <!-- Dashed route -->
+  <path d="M 100 360 L 260 330 L 380 250 L 500 300 L 600 180 L 700 270 L 800 320" 
+        fill="none" stroke="#2d8f7e" stroke-width="2.5" stroke-dasharray="8 5" opacity="0.6"/>
+  
+  <!-- Shanghai -->
+  <g filter="url(#softShadow)">
+    <circle cx="100" cy="360" r="12" fill="#1a6856"/>
+    <text x="100" y="392" font-size="14" font-weight="700" fill="#1a6856" text-anchor="middle">上海</text>
+    <text x="100" y="406" font-size="10" fill="#6b8079" text-anchor="middle">出发地 · 高铁2.5h</text>
+  </g>
+  
+  <!-- Ninghai Station -->
+  <g filter="url(#softShadow)">
+    <circle cx="260" cy="330" r="10" fill="#2d8f7e"/>
+    <text x="260" y="316" font-size="13" font-weight="700" fill="#2d8f7e" text-anchor="middle">宁海站</text>
+    <text x="260" y="352" font-size="10" fill="#6b8079" text-anchor="middle">高铁站 · 到达</text>
+  </g>
+  
+  <!-- Qiantong Ancient Town -->
+  <g filter="url(#softShadow)">
+    <rect x="360" y="238" width="22" height="22" rx="4" fill="#c8a878" stroke="#a0825a" stroke-width="1.5"/>
+    <text x="371" y="224" font-size="13" font-weight="700" fill="#a0825a" text-anchor="middle">前童古镇</text>
+    <text x="371" y="272" font-size="10" fill="#6b8079" text-anchor="middle">免费 · 700年明代古村</text>
+    <!-- Stone houses decoration -->
+    <rect x="363" y="241" width="6" height="6" fill="#a0825a" opacity="0.5"/>
+    <rect x="373" y="241" width="6" height="6" fill="#a0825a" opacity="0.5"/>
+    <rect x="363" y="251" width="6" height="6" fill="#a0825a" opacity="0.5"/>
+  </g>
+  
+  <!-- Ninghai Hot Spring -->
+  <g filter="url(#softShadow)">
+    <path d="M 488 172 Q 500 155 512 172 Q 505 185 500 175 Q 495 185 488 172 Z" fill="#2d8f7e"/>
+    <text x="500" y="160" font-size="13" font-weight="700" fill="#1a6856" text-anchor="middle">宁海温泉</text>
+    <text x="500" y="194" font-size="10" fill="#6b8079" text-anchor="middle">¥198 · 浙江第一温泉</text>
+    <!-- Steam -->
+    <path d="M 496 148 Q 498 140 496 134" stroke="#5cb8a6" stroke-width="2" fill="none" opacity="0.4"/>
+    <path d="M 504 148 Q 506 142 504 136" stroke="#5cb8a6" stroke-width="2" fill="none" opacity="0.4"/>
+  </g>
+  
+  <!-- Wushan Grottoes -->
+  <g filter="url(#softShadow)">
+    <path d="M 580 168 L 620 168 L 615 185 L 585 185 Z" fill="#a0825a" stroke="#7a5e3e" stroke-width="1.5"/>
+    <path d="M 590 175 L 595 178 L 600 172 L 605 178 L 610 172" fill="none" stroke="#7a5e3e" stroke-width="1.5"/>
+    <text x="600" y="156" font-size="13" font-weight="700" fill="#7a5e3e" text-anchor="middle">伍山石窟</text>
+    <text x="600" y="200" font-size="10" fill="#6b8079" text-anchor="middle">¥50 · 海边采石遗迹</text>
+  </g>
+  
+  <!-- Xujiashan Stone Village -->
+  <g filter="url(#softShadow)">
+    <path d="M 690 260 L 712 248 L 712 278 L 690 278 Z" fill="#c8a878" stroke="#a0825a" stroke-width="1.5"/>
+    <rect x="694" y="264" width="4" height="6" fill="#7a5e3e"/>
+    <rect x="702" y="262" width="4" height="6" fill="#7a5e3e"/>
+    <text x="700" y="240" font-size="13" font-weight="700" fill="#a0825a" text-anchor="middle">许家山石头村</text>
+    <text x="700" y="294" font-size="10" fill="#6b8079" text-anchor="middle">免费 · 石屋石巷原生态</text>
+  </g>
+  
+  <!-- Qiangjiao Islands -->
+  <g filter="url(#softShadow)">
+    <ellipse cx="800" cy="320" rx="16" ry="10" fill="#2d8f7e" opacity="0.8"/>
+    <text x="800" y="308" font-size="13" font-weight="700" fill="#1a6856" text-anchor="middle">强蛟群岛</text>
+    <text x="800" y="340" font-size="10" fill="#6b8079" text-anchor="middle">船票¥50 · 宁海湾海岛</text>
+    <!-- Waves -->
+    <path d="M 778 328 Q 783 326 788 328 Q 793 330 798 328 Q 803 326 808 328 Q 813 330 818 328 Q 823 326 828 328" 
+          stroke="#5cb8a6" stroke-width="1.5" fill="none" opacity="0.4"/>
+  </g>
+  
+  <!-- Distance labels -->
+  <text x="170" y="345" font-size="9" fill="#6b8079">~2.5h</text>
+  <text x="310" y="305" font-size="9" fill="#6b8079">~30min</text>
+  <text x="425" y="270" font-size="9" fill="#6b8079">~40min</text>
+  <text x="545" y="200" font-size="9" fill="#6b8079">~45min</text>
+  <text x="650" y="225" font-size="9" fill="#6b8079">~30min</text>
+  <text x="745" y="285" font-size="9" fill="#6b8079">~40min</text>
+  
+  <!-- Compass -->
+  <g transform="translate(850, 50)">
+    <circle r="18" fill="none" stroke="#2d8f7e" stroke-width="1.5" opacity="0.4"/>
+    <text x="0" y="-10" font-size="10" fill="#2d8f7e" text-anchor="middle" opacity="0.6">N</text>
+    <path d="M 0 -8 L -4 4 L 0 0 L 4 4 Z" fill="#2d8f7e" opacity="0.5"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-size="16" font-weight="700" fill="#1a6856" text-anchor="middle" opacity="0.5">宁海3天2晚 · 行程路线图</text>
+</svg>
+    </div>
+  </div>
+
+  <!-- ===== Highlight ===== -->
+  <div class="highlight">
+    <h3>宁海亮点 · 为什么选择宁海</h3>
+    <ul>
+      <li>前童古镇溪水穿村卵石古道，比乌镇西塘安静100倍，几乎无商业化</li>
+      <li>长街蛏子——陈晓卿评为"星球上最好吃的蛏子"，9月当季最肥</li>
+      <li>宁海温泉——浙江第一温泉，泡汤发呆秋日最享受</li>
+      <li>伍山石窟——海边古代采石遗迹，石窟与大海交映的奇观</li>
+      <li>徐霞客游记开篇地——1613年徐霞客出发的地方，文气十足</li>
+      <li>温泉+古镇+海岛三合一，浙江最冷门小城之一，人少景美</li>
+    </ul>
+  </div>
+
+  <!-- ===== Day Tabs ===== -->
+  <div class="section">
+    <div class="section-title">每日行程</div>
+    <div class="section-desc">Day1 古镇初探 → Day2 温泉石窟海岛 → Day3 石头村返程</div>
+    
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('day1')">Day 1 · 9月25日 周五</button>
+      <button class="tab-btn" onclick="switchTab('day2')">Day 2 · 9月26日 周六</button>
+      <button class="tab-btn" onclick="switchTab('day3')">Day 3 · 9月27日 周日</button>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="tab-content active" id="day1">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">18:05 · 周五傍晚</div>
+          <div class="tl-title">上海出发 → 宁海</div>
+          <div class="tl-desc">上海南站乘 <strong>G7525</strong>（18:05→20:41，¥195，有票）直达宁海站，约2.5h车程。推荐这趟，时间不赶且有票。</div>
+          <span class="tl-tag evening">🚄 傍晚有票车次</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">20:41 · 到达宁海站</div>
+          <div class="tl-title">宁海站出站 → 前童古镇</div>
+          <div class="tl-desc">打车/网约车约30分钟到达前童古镇，入住古镇内民宿。沿途可见浙东丘陵田园风光。</div>
+          <span class="tl-tag evening">🚗 约30min</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">21:30 · 夜游前童古镇</div>
+          <div class="tl-title">古镇夜色 · 溪水穿村</div>
+          <div class="tl-desc">前童古镇夜晚灯火稀疏，溪水潺潺穿村而过，卵石古道在月光下格外幽静。漫步感受700年明代古村的夜韵，无人打扰。</div>
+          <span class="tl-tag evening">🌙 免费夜游</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">22:30 · 休息</div>
+          <div class="tl-title">入住前童古镇民宿</div>
+          <div class="tl-desc">古镇内民宿多由老宅改建，古朴温馨。推荐临水房间，听溪水入眠。¥250-500/晚。</div>
+          <span class="tl-tag evening">🏠 古镇民宿</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="tab-content" id="day2">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">07:00 · 清晨</div>
+          <div class="tl-title">前童古镇晨游 · 最美时刻</div>
+          <div class="tl-desc"><strong>清晨7点是前童古镇最美的时刻</strong>，晨光洒在卵石道上，村民在溪边浣衣，炊烟袅袅。这时候几乎没有游客，可以拍到最原生态的画面。游览童氏宗祠、鹿山、水八卦等核心景点。</div>
+          <span class="tl-tag morning">⭐ 清晨7点最安静</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">09:00 · 早餐</div>
+          <div class="tl-title">前童三宝 · 豆腐/香干/空心腐</div>
+          <div class="tl-desc">在前童古镇品尝"前童三宝"——前童豆腐、前童香干、前童空心腐，三样加起来人均¥30。再配一碗宁海麦饼（¥15），地道的浙东早餐。</div>
+          <span class="tl-tag morning">🍜 人均¥45</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">10:00 · 上午</div>
+          <div class="tl-title">前往宁海温泉 · 泡汤发呆</div>
+          <div class="tl-desc">从前童古镇出发约40分钟车程到达宁海温泉（天明山温泉），浙江第一温泉。¥198/人，含室内外多个汤池。秋日泡户外温泉，山间空气清冽，非常享受。建议提前预约。</div>
+          <span class="tl-tag day">♨ ¥198 · 提前预约</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">13:00 · 午餐</div>
+          <div class="tl-title">温泉区午餐 → 长街蛏子</div>
+          <div class="tl-desc">泡完温泉午餐必点<strong>长街蛏子</strong>——陈晓卿评为"星球上最好吃的蛏子"，9月当季最肥美，鲜掉眉毛！人均¥80。再配宁海海鲜若干。</div>
+          <span class="tl-tag day">🦐 人均¥80</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:30 · 下午</div>
+          <div class="tl-title">伍山石窟 · 海边奇观</div>
+          <div class="tl-desc">前往伍山石窟（约45min车程），¥50/人。古代采石留下的石窟群，石窟与大海仅一山之隔，阳光照入石洞光影变幻，非常壮观。游览约2h。</div>
+          <span class="tl-tag day">🗿 ¥50</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:00 · 傍晚</div>
+          <div class="tl-title">强蛟群岛/横山岛 · 宁海湾日落</div>
+          <div class="tl-desc">前往强蛟群岛码头（约40min），乘船前往横山岛（船票约¥50），宁海湾海岛日落。岛上可漫步沙滩、看渔船归港。如时间紧也可在码头看日落。</div>
+          <span class="tl-tag evening">🌅 船票¥50</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">19:00 · 晚餐</div>
+          <div class="tl-title">宁海湾小海鲜大餐</div>
+          <div class="tl-desc">宁海湾小海鲜，渔船直供。蛏子、跳跳鱼、望潮、各种贝类，人均¥80-120。配宁海麦饼和艾草麻糍（¥10），完美的一天。</div>
+          <span class="tl-tag evening">🐟 人均¥100</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">21:00 · 休息</div>
+          <div class="tl-title">入住宁海县城酒店</div>
+          <div class="tl-desc">搬到宁海县城酒店住第二晚，方便明天返程。县城酒店¥250-500/晚，条件比古镇民宿好。</div>
+          <span class="tl-tag evening">🏨 县城酒店</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="tab-content" id="day3">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">08:00 · 早餐</div>
+          <div class="tl-title">宁海县城早餐 · 麦饼+米筛爬</div>
+          <div class="tl-desc">在县城老街吃早餐，宁海麦饼（¥15）和米筛爬（¥15）是地道小吃。麦饼有咸甜两种口味，米筛爬是面食疙瘩汤，暖胃又管饱。</div>
+          <span class="tl-tag morning">🍜 人均¥30</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">09:00 · 上午</div>
+          <div class="tl-title">许家山石头村 · 原生态石屋</div>
+          <div class="tl-desc">前往许家山石头村（免费，距县城约25min），全村石屋石巷石板路，是宁波市区现存最完整的石头村落。几乎没有商业化，原住民还在这里生活，走在石巷里仿佛穿越百年。游览约1.5h。</div>
+          <span class="tl-tag day">🏠 免费 · 原生态</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">11:00 · 上午</div>
+          <div class="tl-title">十里红妆博物馆 · 宁海非遗</div>
+          <div class="tl-desc">返回县城方向，参观十里红妆博物馆（免费），展示宁海传统婚嫁文化，红色家具嫁妆排成长龙非常壮观。宁海非遗集中展示，了解浙东民俗。游览约1h。</div>
+          <span class="tl-tag day">🏛 免费</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:30 · 午餐</div>
+          <div class="tl-title">宁海老街午餐 · 最后一顿宁海味</div>
+          <div class="tl-desc">在宁海老街（免费）逛逛，找个老店吃午饭。再吃一次长街蛏子和前童豆腐，买些艾草麻糍当伴手礼。人均¥60。</div>
+          <span class="tl-tag day">🍜 人均¥60</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:00 · 下午</div>
+          <div class="tl-title">宁海站 → 上海</div>
+          <div class="tl-desc">到宁海站乘高铁返程。<strong>建议提前在12306查票并提交候补</strong>，9/27周日返程票可能紧张。候补成功率较高，尽早提交。</div>
+          <span class="tl-tag note">⚠ 建议12306候补</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">约16:30 · 到达上海</div>
+          <div class="tl-title">回到上海 · 行程结束</div>
+          <div class="tl-desc">约2.5h到达上海，3天2晚宁海之旅圆满结束。带着蛏子的鲜味和古镇的宁静回到都市。</div>
+          <span class="tl-tag evening">🏠 到家</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Attractions ===== -->
+  <div class="section">
+    <div class="section-title">景点推荐</div>
+    <div class="section-desc">古镇、温泉、石窟、海岛、石头村——宁海5种地貌一站式打卡</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">前童古镇</div>
+          <div class="card-price free">免费</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">700年历史的明代古村，溪水穿村而过，卵石古道蜿蜒。比乌镇西塘安静100倍，几乎无商业化。清晨7点最美。</p>
+          <span class="card-tag">明代古村</span>
+          <span class="card-tag">溪水穿村</span>
+          <span class="card-tag">卵石古道</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/前童古镇" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">宁海温泉</div>
+          <div class="card-price">¥198/人</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">浙江第一温泉，天明山温泉水温适中，含多种矿物质。室内外多汤池，秋日户外泡汤看山景最佳。建议提前预约。</p>
+          <span class="card-tag">浙江第一</span>
+          <span class="card-tag">户外汤池</span>
+          <span class="card-tag">提前预约</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/宁海温泉" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">伍山石窟</div>
+          <div class="card-price">¥50/人</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">古代采石留下的石窟群，石窟紧邻大海，阳光照入光影变幻。罕见的"海边石窟"奇观，震撼又独特。游览约2h。</p>
+          <span class="card-tag">海边石窟</span>
+          <span class="card-tag">采石遗迹</span>
+          <span class="card-tag">光影奇观</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/伍山石窟" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">许家山石头村</div>
+          <div class="card-price free">免费</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">全村石屋石巷石板路，宁波最完整的石头村落。原住民仍在此生活，无商业化，走在石巷中如穿越百年。游览约1.5h。</p>
+          <span class="card-tag">石屋石巷</span>
+          <span class="card-tag">原生态</span>
+          <span class="card-tag">免费</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/许家山石头村" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">强蛟群岛 / 横山岛</div>
+          <div class="card-price">船票约¥50</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">宁海湾海岛群，横山岛可上岛漫步沙滩看渔船归港。傍晚日落绝美，适合发呆放空。也可在码头看日落不登岛。</p>
+          <span class="card-tag">海岛日落</span>
+          <span class="card-tag">沙滩漫步</span>
+          <span class="card-tag">渔港风情</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/强蛟群岛" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">十里红妆博物馆</div>
+          <div class="card-price free">免费</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">展示宁海传统婚嫁文化，红色嫁妆家具排成长龙，场面壮观。宁海非遗集中展示，了解浙东民俗文化。游览约1h。</p>
+          <span class="card-tag">非遗文化</span>
+          <span class="card-tag">婚嫁民俗</span>
+          <span class="card-tag">免费</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/十里红妆博物馆" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">宁海老街</div>
+          <div class="card-price free">免费</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">宁海县城老街，保留传统街巷风貌，小吃店、老手艺铺散落其间。适合早餐和午餐，感受宁海日常烟火气。</p>
+          <span class="card-tag">老街</span>
+          <span class="card-tag">小吃</span>
+          <span class="card-tag">免费</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/宁海" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Food ===== -->
+  <div class="section">
+    <div class="section-title">美食推荐</div>
+    <div class="section-desc">长街蛏子天下第一 · 前童三宝 · 宁海地道小吃</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-header accent-header">
+          <div class="card-title">长街蛏子</div>
+          <div class="card-price">人均¥80</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">陈晓卿评为"星球上最好吃的蛏子"，9月当季最肥美。长街镇出产的蛏子壳薄肉肥，鲜掉眉毛。清蒸、葱油、铁板皆可。</p>
+          <span class="card-tag">⭐ 天下第一</span>
+          <span class="card-tag">9月最肥</span>
+          <span class="card-tag">必吃</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/长街蛏子" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">前童豆腐</div>
+          <div class="card-price">¥30</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">前童三宝之一，用当地山泉水制作，口感细腻嫩滑。前童香干和前童空心腐合称"三宝"，在古镇内小店都能吃到。</p>
+          <span class="card-tag">前童三宝</span>
+          <span class="card-tag">山泉豆腐</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/前童三宝" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">宁海麦饼</div>
+          <div class="card-price">¥15</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">宁海传统小吃，有咸甜两种口味。咸的包梅干菜、虾皮，甜的包芝麻花生。老街和古镇都有，当早餐最地道。</p>
+          <span class="card-tag">传统小吃</span>
+          <span class="card-tag">咸甜两种</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/宁海麦饼" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">宁海湾小海鲜</div>
+          <div class="card-price">人均¥80-120</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">渔船直供，蛏子、跳跳鱼、望潮、各种贝类。宁海湾的海鲜比舟山便宜，比上海新鲜。强蛟群岛码头附近餐厅最佳。</p>
+          <span class="card-tag">渔船直供</span>
+          <span class="card-tag">跳跳鱼</span>
+          <span class="card-tag">望潮</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/宁海湾" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">艾草麻糍</div>
+          <div class="card-price">¥10</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">宁海传统糕点，艾草汁拌糯米捣制，软糯清香。甜而不腻，适合当零食或伴手礼。老街和古镇都有卖。</p>
+          <span class="card-tag">传统糕点</span>
+          <span class="card-tag">伴手礼</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/艾草麻糍" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">米筛爬</div>
+          <div class="card-price">¥15</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">宁海特色面食，面团在米筛上按压成疙瘩状，配汤煮食。形似猫耳，口感筋道，暖胃管饱，当早餐正好。</p>
+          <span class="card-tag">特色面食</span>
+          <span class="card-tag">暖胃早餐</span>
+          <a class="card-detail" href="https://baike.baidu.com/item/米筛爬" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Accommodation ===== -->
+  <div class="section">
+    <div class="section-title">住宿推荐</div>
+    <div class="section-desc">古镇民宿+县城酒店，两晚不同体验</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-header stone-header">
+          <div class="card-title">前童古镇民宿</div>
+          <div class="card-price">¥250-500/晚</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Day1入住。古镇内老宅改建民宿，古朴温馨。推荐临水房间，听溪水入眠。夜晚古镇幽静无人，体验感极佳。</p>
+          <span class="card-tag">老宅改建</span>
+          <span class="card-tag">临水溪声</span>
+          <span class="card-tag">Day1</span>
+          <a class="card-detail" href="https://www.ctrip.com/" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">宁海县城酒店</div>
+          <div class="card-price">¥250-500/晚</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Day2入住。县城酒店条件较好，交通便利，靠近宁海站方便Day3返程。连锁品牌酒店和经济型都有选择。</p>
+          <span class="card-tag">条件较好</span>
+          <span class="card-tag">近火车站</span>
+          <span class="card-tag">Day2</span>
+          <a class="card-detail" href="https://www.ctrip.com/" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Transport ===== -->
+  <div class="section">
+    <div class="section-title">交通信息</div>
+    <div class="section-desc">上海高铁直达宁海站，约2.5h。以下为9/21查询实时票务数据</div>
+    <table class="transport-table">
+      <thead>
+        <tr>
+          <th>方向</th>
+          <th>车次</th>
+          <th>出发站</th>
+          <th>时间</th>
+          <th>到达站</th>
+          <th>票价</th>
+          <th>票况</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>去程 9/25 周五</td>
+          <td><strong>G7527</strong></td>
+          <td>上海南</td>
+          <td>20:21 → 22:53</td>
+          <td>宁海</td>
+          <td>¥184</td>
+          <td><span class="badge green">有票（商务座17张）</span></td>
+        </tr>
+        <tr>
+          <td>去程 9/25 周五</td>
+          <td><strong>G7525</strong></td>
+          <td>上海南</td>
+          <td>18:05 → 20:41</td>
+          <td>宁海</td>
+          <td>¥195</td>
+          <td><span class="badge green">有票 ✅ 推荐</span></td>
+        </tr>
+        <tr>
+          <td>去程 9/25 周五</td>
+          <td>D3131</td>
+          <td>上海虹桥</td>
+          <td>07:41 → 10:21</td>
+          <td>宁海</td>
+          <td>¥165</td>
+          <td><span class="badge orange">候补</span></td>
+        </tr>
+        <tr>
+          <td>去程 9/25 周五</td>
+          <td>上午车次</td>
+          <td>—</td>
+          <td>多趟</td>
+          <td>宁海</td>
+          <td>¥165-195</td>
+          <td><span class="badge orange">上午基本候补</span></td>
+        </tr>
+        <tr>
+          <td>返程 9/27 周日</td>
+          <td>—</td>
+          <td>宁海</td>
+          <td>多趟</td>
+          <td>上海</td>
+          <td>¥184-195</td>
+          <td><span class="badge red">建议12306查票候补</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px; padding:14px 18px; background:#fff3e0; border-radius:12px; font-size:13px; color:#e65100; border-left:4px solid #e88a3d;">
+      <strong>💡 购票建议：</strong>去程推荐 <strong>G7525（18:05→20:41，¥195，有票）</strong>，时间合适且有票。如想早到可选择 D3131（候补）。上午车次基本候补，傍晚有票最稳。返程9/27周日建议尽早查票并提交候补，候补成功率较高。
+    </div>
+  </div>
+
+  <!-- ===== Budget ===== -->
+  <div class="section">
+    <div class="section-title">预算估算（2人）</div>
+    <div class="section-desc">高铁方案 · 3天2晚总费用</div>
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>项目</th>
+          <th>明细</th>
+          <th>金额</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🚄 高铁往返</td>
+          <td>上海⇄宁海，2人往返（¥195×2×2）</td>
+          <td>约 ¥760</td>
+        </tr>
+        <tr>
+          <td>🏠 住宿</td>
+          <td>2晚（前童民宿1晚 + 县城酒店1晚）</td>
+          <td>¥500-1,000</td>
+        </tr>
+        <tr>
+          <td>🍜 餐饮</td>
+          <td>3天6餐 + 小吃（人均¥100-150/天）</td>
+          <td>¥600-900</td>
+        </tr>
+        <tr>
+          <td>🎟 门票</td>
+          <td>温泉¥198×2 + 伍山石窟¥50×2 + 船票¥50×2</td>
+          <td>¥400-500</td>
+        </tr>
+        <tr>
+          <td>🚗 当地交通</td>
+          <td>打车/网约车（站→古镇→温泉→石窟→县城）</td>
+          <td>约 ¥150</td>
+        </tr>
+        <tr>
+          <td>🛍 其他</td>
+          <td>伴手礼、零食、意外开支</td>
+          <td>约 ¥200</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">💰 2人合计</td>
+          <td>¥2,610 - 3,510</td>
+        </tr>
+        <tr>
+          <td colspan="2">👤 人均</td>
+          <td>¥1,305 - 1,755</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- ===== Tips ===== -->
+  <div class="section">
+    <div class="section-title">实用Tips</div>
+    <ul class="tips">
+      <li data-num="1"><strong>前童古镇清晨7点最安静</strong>，晨光+溪水+炊烟是最佳拍照时刻，游客还没来，一定要早起。</li>
+      <li data-num="2"><strong>长街蛏子9月当季最肥</strong>，中秋假期正是最佳品尝期，到宁海不吃蛏子等于白来。</li>
+      <li data-num="3"><strong>宁海温泉建议提前预约</strong>，中秋假期泡温泉人多，提前1-2天电话或线上预约确保有位。</li>
+      <li data-num="4"><strong>宁海县城到前童古镇约30min车程</strong>，建议打车或网约车，公交班次少耗时长。</li>
+      <li data-num="5"><strong>返程票尽早候补</strong>，9/27周日返程高峰，建议今天就在12306提交候补，成功率较高。</li>
+      <li data-num="6"><strong>伍山石窟+强蛟群岛可合并下午游览</strong>，两地相距不远，安排在Day2下午半日搞定。</li>
+      <li data-num="7"><strong>许家山石头村无商业化</strong>，没有商店和餐厅，建议上午去、看完回县城吃午饭。</li>
+      <li data-num="8"><strong>宁海是徐霞客游记开篇地</strong>（1613年出发地），可提前了解这段历史，游览时更有文气。</li>
+    </ul>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <div style="text-align:center; padding:30px 20px; color:var(--gray); font-size:13px; border-top:1px solid var(--line); margin-top:40px;">
+    <p>宁海3天2晚攻略 · 2026中秋假期 · 上海高铁直达</p>
+    <p style="margin-top:6px; font-size:12px;">徐霞客游记开篇地 · 前童古镇 · 长街蛏子 · 宁海温泉 · 伍山石窟 · 许家山石头村</p>
+    <p style="margin-top:10px; font-size:11px; color:var(--sea);">更新于 2026-09-21 · 票务数据仅供参考，请以12306实时查询为准</p>
+  </div>
+
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-content').forEach(function(content) {
+    content.classList.remove('active');
+  });
+  event.currentTarget.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>

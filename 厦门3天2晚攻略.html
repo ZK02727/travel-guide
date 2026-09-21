@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>厦门 · 3天2晚 高铁往返 · 海岛文艺攻略</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#eef6fb;color:#2c3e50;line-height:1.8;overflow-x:hidden}
+:root{
+  --sea:#01579b;--sea-mid:#0288d1;--sea-light:#4fc3f7;--sea-pale:#b3e5fc;
+  --coral:#ff7043;--sand:#fbc02d;--sand-light:#f57f17;--sunset:#e64a19;
+  --bg:#eef6fb;--card:#fff;--text:#2c3e50;--text-light:#5d7a8c;
+  --border:#dbeaf2;--shadow:0 2px 16px rgba(1,87,155,.08);
+  --shadow-hover:0 6px 28px rgba(1,87,155,.16);
+}
+.hero{position:relative;min-height:420px;background:linear-gradient(135deg,#00355e 0%,#01579b 45%,#0288d1 75%,#26c6da 100%);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,100 350,20 600,50 C850,80 1050,30 1200,70 L1200,120 L0,120 Z' fill='%23eef6fa'/%3E%3C/svg%3E") no-repeat bottom/cover}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{color:#fff;font-size:2.4rem;letter-spacing:3px;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.hero .subtitle{color:rgba(255,255,255,.9);font-size:1.1rem;margin-bottom:6px}
+.hero .trip-meta{display:flex;gap:16px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.hero .trip-meta span{background:rgba(255,255,255,.18);backdrop-filter:blur(6px);padding:6px 18px;border-radius:20px;color:#fff;font-size:.85rem;border:1px solid rgba(255,255,255,.25)}
+.container{max-width:1100px;margin:0 auto;padding:30px 20px}
+.section-title{text-align:center;margin:50px 0 30px}
+.section-title h2{font-size:1.6rem;color:var(--sea);font-weight:700;letter-spacing:2px}
+.section-title .deco{width:50px;height:3px;background:linear-gradient(90deg,var(--sea-mid),var(--coral));margin:10px auto;border-radius:2px}
+.section-title p{color:var(--text-light);font-size:.9rem;margin-top:6px}
+.route-map-wrapper{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow:hidden}
+.route-map-wrapper h3{color:var(--sea);font-size:1.1rem;margin-bottom:16px;text-align:center}
+.svg-map{width:100%;height:auto;display:block}
+.day-tabs{display:flex;gap:0;margin:0 auto 24px;max-width:640px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.day-tab{flex:1;padding:14px 0;text-align:center;cursor:pointer;background:var(--card);transition:all .3s;font-weight:600;font-size:.95rem;color:var(--text-light);border-bottom:3px solid transparent;user-select:none}
+.day-tab.active{color:var(--sea);border-bottom-color:var(--sea-mid);background:var(--sea-pale)}
+.day-tab .day-num{display:block;font-size:.75rem;color:var(--text-light);margin-bottom:2px}
+.day-tab.active .day-num{color:var(--sea)}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--sea-mid),var(--sea-light),var(--sand));border-radius:2px}
+.timeline-item{position:relative;margin-bottom:24px;opacity:0;transform:translateX(-20px);transition:all .5s}
+.timeline-item.show{opacity:1;transform:translateX(0)}
+.timeline-dot{position:absolute;left:-33px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--card);border:3px solid var(--sea-mid);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--sea-mid);z-index:1}
+.timeline-item:nth-child(2) .timeline-dot{border-color:var(--coral);color:var(--coral)}
+.timeline-item:nth-child(3) .timeline-dot{border-color:var(--sand);color:var(--sand-light)}
+.timeline-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .3s}
+.timeline-card:hover{box-shadow:var(--shadow-hover)}
+.timeline-card .tc-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.timeline-card .tc-time{font-size:.8rem;color:var(--text-light);background:var(--bg);padding:4px 12px;border-radius:12px;white-space:nowrap}
+.timeline-card .tc-title{font-size:1.05rem;font-weight:600;color:var(--sea)}
+.timeline-card .tc-body{padding:16px 20px}
+.timeline-card .tc-body p{font-size:.9rem;color:var(--text);margin-bottom:8px}
+.timeline-card .tc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.timeline-card .tc-tag{font-size:.75rem;padding:2px 10px;border-radius:10px}
+.tag-free{background:#e8f5e9;color:#2e7d32}
+.tag-fee{background:#fff3e0;color:#e65100}
+.tag-food{background:#fce4ec;color:#c62828}
+.tag-stay{background:#e3f2fd;color:#1565c0}
+.tag-train{background:#ede7f6;color:#5e35b1}
+.tag-boat{background:#e0f2f1;color:#00695c}
+.tag-bike{background:#e8f5e9;color:#2e7d32}
+.tag-walk{background:#e0f2f1;color:#00695c}
+.tag-tip{background:#fff8e1;color:#f57f17}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.attraction-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:all .3s;cursor:pointer}
+.attraction-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.ac-image{height:140px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.ac-image .ac-emoji{filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+.ac-body{padding:16px 20px}
+.ac-body h4{font-size:1.05rem;color:var(--sea);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.ac-body .ac-meta{font-size:.78rem;color:var(--text-light);margin-bottom:8px}
+.ac-body .ac-desc{font-size:.88rem;color:var(--text);line-height:1.7}
+.ac-body .ac-footer{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-bottom:40px}
+.food-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-left:4px solid var(--coral)}
+.food-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.food-card h4{font-size:1.05rem;color:var(--sea);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.food-card .food-meta{font-size:.8rem;color:var(--text-light);margin-bottom:8px}
+.food-card .food-dishes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.food-card .dish-tag{background:#fff3e0;color:#bf360c;font-size:.75rem;padding:3px 10px;border-radius:8px}
+.stay-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.stay-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-top:4px solid var(--sea-mid)}
+.stay-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.stay-card h4{font-size:1.05rem;color:var(--sea-mid);margin-bottom:4px}
+.stay-card .stay-loc{font-size:.8rem;color:var(--text-light);margin-bottom:6px}
+.stay-card .stay-desc{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:8px}
+.stay-card .stay-rating{display:inline-block;background:var(--sand-light);color:#fff;font-size:.75rem;padding:2px 10px;border-radius:10px;font-weight:600}
+.stay-card .stay-price{font-size:1rem;color:var(--sunset);font-weight:700}
+.transport-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px}
+.transport-box h3{color:var(--sea);margin-bottom:16px;font-size:1.1rem}
+.transport-route{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}
+.transport-node{background:var(--sea-pale);color:var(--sea);padding:8px 20px;border-radius:10px;font-weight:600;font-size:.9rem}
+.transport-arrow{color:var(--sea-mid);font-size:1.3rem}
+.transport-detail{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px}
+.transport-item{background:var(--bg);border-radius:10px;padding:14px;text-align:center}
+.transport-item .ti-label{font-size:.78rem;color:var(--text-light);margin-bottom:4px}
+.transport-item .ti-value{font-size:1.05rem;color:var(--sea);font-weight:600}
+.train-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.88rem}
+.train-table th{background:var(--sea);color:#fff;padding:10px 12px;text-align:left;font-size:.82rem;font-weight:600}
+.train-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
+.train-table tr:hover{background:var(--sea-pale)}
+.train-table .rec{background:#fff8e1}
+.train-table .ticket-ok{color:#2e7d32;font-weight:700}
+.train-table .ticket-few{color:#e65100;font-weight:700}
+.budget-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow-x:auto}
+.budget-box h3{color:var(--sea);margin-bottom:16px;font-size:1.1rem}
+.budget-table{width:100%;border-collapse:collapse;min-width:480px}
+.budget-table th{background:var(--sea);color:#fff;padding:10px 14px;text-align:left;font-size:.85rem;font-weight:600}
+.budget-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.budget-table tr:hover{background:var(--sea-pale)}
+.budget-table .total-row{font-weight:700;background:var(--sand-light)!important;color:#fff}
+.budget-table .total-row td{font-size:1rem}
+.budget-table .total-row .amount{color:#fff;font-size:1.2rem}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px}
+.tip-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:18px;display:flex;gap:12px;transition:all .3s}
+.tip-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.tip-icon{font-size:1.8rem;flex-shrink:0}
+.tip-content h4{font-size:.95rem;color:var(--sea);margin-bottom:4px}
+.tip-content p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+.back-top{position:fixed;right:24px;bottom:24px;width:44px;height:44px;background:var(--sea);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1.2rem;box-shadow:var(--shadow-hover);opacity:0;visibility:hidden;transition:all .3s;z-index:99}
+.back-top.show{opacity:1;visibility:visible}
+.card-link{display:inline-block;margin-top:8px;font-size:.8rem;color:var(--sea-mid);text-decoration:none;transition:all .2s;border-bottom:1px solid transparent}
+.card-link:hover{color:var(--coral);border-bottom-color:var(--coral)}
+.tc-body a.link-inline{color:var(--sea-mid);text-decoration:none;font-weight:600}
+.tc-body a.link-inline:hover{color:var(--coral);text-decoration:underline}
+.back-to-home{display:inline-block;margin-bottom:20px;color:var(--sea-mid);text-decoration:none;font-size:.9rem;font-weight:600}
+.back-to-home:hover{color:var(--coral)}
+@media(max-width:640px){
+  .hero h1{font-size:1.6rem}
+  .hero .trip-meta span{font-size:.75rem;padding:5px 12px}
+  .container{padding:20px 14px}
+  .section-title h2{font-size:1.25rem}
+  .timeline{padding-left:32px}
+  .timeline::before{left:11px}
+  .timeline-dot{width:20px;height:20px;left:-29px;font-size:.6rem}
+}
+.footer{text-align:center;padding:30px 20px;background:var(--sea);color:rgba(255,255,255,.7);font-size:.85rem}
+.footer a{color:var(--sea-pale)}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>厦门 · 海上花园</h1>
+    <p class="subtitle">鼓浪屿 + 环岛路 + 中山路 + 曾厝垵 3天2晚 高铁往返</p>
+    <p class="subtitle">上海出发 · 海岛城市 · 文艺清新 · 海鲜美食</p>
+    <div class="trip-meta">
+      <span>9月25日 周五 — 9月27日 周日</span>
+      <span>高铁约 6-8h 直达厦门北</span>
+      <span>鼓浪屿·沙滩·万国建筑</span>
+      <span>人均预算 ¥2,150-2,900</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <a class="back-to-home" href="旅游攻略.html">← 返回旅游攻略总览</a>
+
+  <div class="route-map-wrapper">
+    <h3>线路总览 · 地图线索</h3>
+    <svg class="svg-map" viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b3e5fc" stop-opacity=".45"/>
+          <stop offset="100%" stop-color="#e1f5fe" stop-opacity=".55"/>
+        </linearGradient>
+        <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#01579b"/>
+          <stop offset="50%" stop-color="#0288d1"/>
+          <stop offset="100%" stop-color="#26c6da"/>
+        </linearGradient>
+        <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#01579b"/>
+          <stop offset="50%" stop-color="#4fc3f7"/>
+          <stop offset="100%" stop-color="#ff7043"/>
+        </linearGradient>
+        <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity=".15"/></filter>
+      </defs>
+      <rect width="1000" height="460" fill="url(#bgGrad)" rx="12"/>
+
+      <!-- Sea waves -->
+      <path d="M40 330 Q80 350 120 330 T200 330 Q240 352 280 332 T380 332 Q420 354 460 334" stroke="#4fc3f7" stroke-width="3" fill="none" opacity=".4" stroke-linecap="round"/>
+      <path d="M420 380 Q460 400 520 380 Q580 402 640 382 Q700 402 760 384" stroke="#4fc3f7" stroke-width="3" fill="none" opacity=".35" stroke-linecap="round"/>
+      <path d="M60 400 Q110 420 170 400 Q230 422 290 402" stroke="#b3e5fc" stroke-width="2.5" fill="none" opacity=".5" stroke-linecap="round"/>
+
+      <!-- Gulangyu island -->
+      <ellipse cx="320" cy="300" rx="72" ry="40" fill="#a5d6a7" opacity=".5" stroke="#66bb6a" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="320" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#2e7d32">鼓浪屿岛</text>
+
+      <!-- Xiamen island -->
+      <path d="M460 210 Q560 200 640 220 Q720 240 770 280 Q800 310 780 350 Q760 390 680 400 Q580 410 520 390 Q470 370 450 330 Q435 290 450 250 Z" fill="#fff" opacity=".75" stroke="#90caf9" stroke-width="2"/>
+      <text x="590" y="315" text-anchor="middle" font-size="12" font-weight="700" fill="#01579b">厦门岛</text>
+
+      <!-- High-speed rail line Shanghai -> Xiamen -->
+      <path d="M120 110 Q300 60 420 130 Q500 175 560 208 Q640 240 700 230" stroke="url(#routeGrad)" stroke-width="4" fill="none" filter="url(#shadow)" stroke-dasharray="2 0"/>
+      <text x="330" y="90" text-anchor="middle" font-size="10" fill="#01579b" opacity=".65">🚄 沪厦高铁 · 约5-8h</text>
+
+      <!-- Return line -->
+      <path d="M720 235 Q540 300 320 330 Q200 340 120 110" stroke="#ff7043" stroke-width="2.5" fill="none" opacity=".4" stroke-dasharray="8 6"/>
+      <text x="430" y="352" text-anchor="middle" font-size="10" fill="#e64a19" opacity=".65">Day3 下午 · 返程上海</text>
+
+      <!-- Shanghai -->
+      <g filter="url(#shadow)">
+        <circle cx="120" cy="110" r="18" fill="#fff" stroke="#01579b" stroke-width="3"/>
+        <circle cx="120" cy="110" r="6" fill="#01579b"/>
+        <text x="120" y="90" text-anchor="middle" font-size="14" font-weight="700" fill="#01579b">上海</text>
+        <text x="120" y="142" text-anchor="middle" font-size="10" fill="#5d7a8c">出发地</text>
+      </g>
+
+      <!-- Xiamen North Station -->
+      <g filter="url(#shadow)">
+        <circle cx="700" cy="232" r="15" fill="#fff" stroke="#0288d1" stroke-width="3"/>
+        <circle cx="700" cy="232" r="5" fill="#0288d1"/>
+        <text x="700" y="212" text-anchor="middle" font-size="12" font-weight="700" fill="#01579b">厦门北站</text>
+        <text x="700" y="262" text-anchor="middle" font-size="10" fill="#5d7a8c">落地枢纽</text>
+      </g>
+
+      <!-- Zhongshan Road -->
+      <g filter="url(#shadow)">
+        <circle cx="560" cy="268" r="13" fill="#fff" stroke="#ff7043" stroke-width="3"/>
+        <circle cx="560" cy="268" r="4.5" fill="#ff7043"/>
+        <text x="560" y="248" text-anchor="middle" font-size="11" font-weight="700" fill="#e64a19">中山路步行街</text>
+        <text x="560" y="298" text-anchor="middle" font-size="10" fill="#5d7a8c">夜市小吃</text>
+      </g>
+
+      <!-- Gulangyu -->
+      <g filter="url(#shadow)">
+        <circle cx="322" cy="330" r="13" fill="#fff" stroke="#66bb6a" stroke-width="3"/>
+        <circle cx="322" cy="330" r="4.5" fill="#66bb6a"/>
+        <text x="322" y="366" text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d32">鼓浪屿</text>
+        <text x="322" y="382" text-anchor="middle" font-size="10" fill="#5d7a8c">Day2 轮渡登岛</text>
+      </g>
+
+      <!-- Huandao Road -->
+      <g filter="url(#shadow)">
+        <circle cx="640" cy="345" r="13" fill="#fff" stroke="#4fc3f7" stroke-width="3"/>
+        <circle cx="640" cy="345" r="4.5" fill="#4fc3f7"/>
+        <text x="640" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="#01579b">环岛路</text>
+        <text x="640" y="375" text-anchor="middle" font-size="10" fill="#5d7a8c">骑行看海</text>
+      </g>
+
+      <!-- Zengcuoan -->
+      <g filter="url(#shadow)">
+        <circle cx="758" cy="365" r="13" fill="#fff" stroke="#fbc02d" stroke-width="3"/>
+        <circle cx="758" cy="365" r="4.5" fill="#fbc02d"/>
+        <text x="758" y="345" text-anchor="middle" font-size="11" font-weight="700" fill="#f57f17">曾厝垵</text>
+        <text x="758" y="398" text-anchor="middle" font-size="10" fill="#5d7a8c">文艺村·夜逛</text>
+      </g>
+
+      <!-- Local route connectors -->
+      <path d="M700 232 Q640 240 600 260 Q580 268 573 268" stroke="#90caf9" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+      <path d="M560 268 Q520 300 400 312 Q340 318 335 330" stroke="#90caf9" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+      <path d="M653 340 Q650 335 645 332 Q610 315 580 300" stroke="#90caf9" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+      <path d="M750 360 Q730 355 700 350 Q675 345 653 345" stroke="#90caf9" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+
+      <g transform="translate(948,60)">
+        <circle r="22" fill="#fff" opacity=".7" stroke="#01579b" stroke-width="1.5"/>
+        <text y="-5" text-anchor="middle" font-size="12" font-weight="700" fill="#01579b">N</text>
+        <path d="M0,-16 L4,0 L0,4 L-4,0 Z" fill="#e64a19"/>
+        <path d="M0,16 L4,0 L0,-4 L-4,0 Z" fill="#01579b"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="section-title">
+    <h2>每日行程</h2>
+    <div class="deco"></div>
+    <p>点击下方日期切换 · 3天2晚完整路线</p>
+  </div>
+
+  <div class="day-tabs" id="dayTabs">
+    <div class="day-tab active" data-day="1"><span class="day-num">9月25日</span>Day 1 · 抵达环岛</div>
+    <div class="day-tab" data-day="2"><span class="day-num">9月26日</span>Day 2 · 鼓浪屿</div>
+    <div class="day-tab" data-day="3"><span class="day-num">9月27日</span>Day 3 · 返程</div>
+  </div>
+
+  <div class="timeline" id="day1">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">上海出发 · 高铁南下</span><span class="tc-time">06:20 - 08:34</span></div>
+        <div class="tc-body">
+          <p>9/25去程车票充足，推荐<strong>G3091</strong>（虹桥06:20→13:47）或<strong>G1315</strong>（上海南08:34→14:49，最快仅6.3h）。建议提前40分钟到站取票进站，车上补觉或看海景，午饭在高铁上解决。</p>
+          <div class="tc-tags"><span class="tc-tag tag-train">高铁约6-8h</span><span class="tc-tag tag-fee">二等座 ¥486-576</span><span class="tc-tag tag-tip">多趟有票，尽早买</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">抵达厦门北 · 入住民宿</span><span class="tc-time">13:47 - 16:00</span></div>
+        <div class="tc-body">
+          <p>厦门北站乘地铁1号线进岛（约40分钟）。建议入住<strong><a class="link-inline" href="https://you.ctrip.com/sight/xiamen5/43261.html" target="_blank" rel="noopener noreferrer">中山路</a></strong>或<strong><a class="link-inline" href="https://you.ctrip.com/sight/xiamen5/84602.html" target="_blank" rel="noopener noreferrer">曾厝垵</a></strong>附近民宿，放下行李轻装出发。</p>
+          <div class="tc-tags"><span class="tc-tag tag-stay">中山路/曾厝垵民宿</span><span class="tc-tag tag-fee">¥300-800/晚</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">环岛路骑行 · 最美海岸线</span><span class="tc-time">16:00 - 18:30</span></div>
+        <div class="tc-body">
+          <p><strong><a class="link-inline" href="https://baike.baidu.com/item/厦门环岛路" target="_blank" rel="noopener noreferrer">环岛路</a></strong>全程免费，是厦门颜值担当：一边椰风海韵、一边椰林大道。下午4-6点是骑行黄金时段，太阳不晒、海风正好，骑到<strong>曾厝垵</strong>正好吃晚饭。途经<strong>白城沙滩</strong>可停下看日落。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-bike">骑行约2h</span><span class="tc-tag tag-tip">16:00-18:00最佳</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">曾厝垵 · 文艺村夜逛</span><span class="tc-time">18:30 - 21:00</span></div>
+        <div class="tc-body">
+          <p>入夜后的<strong><a class="link-inline" href="https://you.ctrip.com/sight/xiamen5/84602.html" target="_blank" rel="noopener noreferrer">曾厝垵</a></strong>才是最热闹的：五街十八巷里布满文艺小店、酒吧和海鲜小摊。点一碗<strong>沙茶面</strong>配<strong>海蛎煎</strong>，坐在沙滩边吹海风看灯。这里免费，越晚越有味道。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-food">沙茶面 ¥25/海蛎煎 ¥20</span><span class="tc-tag tag-tip">晚上去氛围最好</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline" id="day2" style="display:none">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">轮渡登岛 · 鼓浪屿</span><span class="tc-time">08:00 - 09:00</span></div>
+        <div class="tc-body">
+          <p>从<strong>邮轮中心厦鼓码头</strong>乘轮渡登<strong><a class="link-inline" href="https://baike.baidu.com/item/鼓浪屿" target="_blank" rel="noopener noreferrer">鼓浪屿</a></strong>（船票¥35，务必提前在微信小程序<strong>"厦门轮渡+"</strong>购票，中秋票紧张）。早班船人少，岛上气温也舒服。</p>
+          <div class="tc-tags"><span class="tc-tag tag-boat">轮渡船票 ¥35</span><span class="tc-tag tag-tip">提前3天购票</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">万国建筑漫步 · 钢琴之岛</span><span class="tc-time">09:00 - 12:00</span></div>
+        <div class="tc-body">
+          <p>登岛后沿龙头路慢慢逛：转角处的<strong>红砖别墅</strong>、<strong>教堂</strong>、<strong>各国领事馆旧址</strong>都值得停下来拍。鼓浪屿又叫"钢琴之岛"，岛上常有琴声。顺路登上<strong>日光岩</strong>（¥50）俯瞰全岛与厦门本岛，视野绝佳。</p>
+          <div class="tc-tags"><span class="tc-tag tag-walk">岛上步行为主</span><span class="tc-tag tag-fee">日光岩 ¥50</span><span class="tc-tag tag-tip">穿舒适的鞋</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">菽庄花园 · 海岛午餐</span><span class="tc-time">12:00 - 14:30</span></div>
+        <div class="tc-body">
+          <p><strong>菽庄花园</strong>（¥30）是岛上最美园林，"藏海"与"补山"造景精巧，坐在<strong>钢琴博物馆</strong>边看海非常惬意。午餐在岛上找家闽南小馆，<strong>沙茶面</strong>、<strong>土笋冻</strong>配碗<strong>花生汤</strong>，人均¥40搞定。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">菽庄花园 ¥30</span><span class="tc-tag tag-food">岛上小吃</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">离岛 · 南普陀寺 + 厦门大学</span><span class="tc-time">15:00 - 17:30</span></div>
+        <div class="tc-body">
+          <p>下午乘轮渡返回厦门岛，直奔<strong><a class="link-inline" href="https://baike.baidu.com/item/南普陀寺" target="_blank" rel="noopener noreferrer">南普陀寺</a></strong>（免费，五老峰下古刹，香火很旺）。寺旁就是<strong><a class="link-inline" href="https://baike.baidu.com/item/厦门大学" target="_blank" rel="noopener noreferrer">厦门大学</a></strong>（免费但需提前3天在"U厦大"公众号预约，中秋大概率要抢）。芙蓉湖畔拍一张，妥妥的"最美大学"。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">南普陀寺免费</span><span class="tc-tag tag-free">厦大免费需预约</span><span class="tc-tag tag-tip">厦大提前3天预约</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">沙坡尾 · 海鲜大排档</span><span class="tc-time">17:30 - 20:00</span></div>
+        <div class="tc-body">
+          <p><strong><a class="link-inline" href="https://baike.baidu.com/item/沙坡尾" target="_blank" rel="noopener noreferrer">沙坡尾</a></strong>是文艺青年的聚集地，旧船坞+涂鸦墙+独立咖啡馆。晚餐在此挑一家<strong>海鲜大排档</strong>（人均¥100-150），炒蟹、酱油水海鲜、姜母鸭配冰啤酒，记得<strong>先看菜单问清价格</strong>再下单。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">沙坡尾免费</span><span class="tc-tag tag-food">海鲜排档 人均¥100-150</span><span class="tc-tag tag-tip">认明码标价</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">6</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">中山路步行街 · 夜市夜景</span><span class="tc-time">20:00 - 21:30</span></div>
+        <div class="tc-body">
+          <p>饭后沿<strong><a class="link-inline" href="https://you.ctrip.com/sight/xiamen5/43261.html" target="_blank" rel="noopener noreferrer">中山路步行街</a></strong>散步消食：骑楼建筑+南洋风情灯光，闽南骑楼一字排开。来一碗<strong>花生汤</strong>收尾，甜而不腻，老字号"叶氏麻糍"也可以带一点当伴手礼。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-food">花生汤 ¥10</span><span class="tc-tag tag-tip">夜景最出片</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline" id="day3" style="display:none">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">胡里山炮台 · 清晨登台</span><span class="tc-time">08:00 - 09:30</span></div>
+        <div class="tc-body">
+          <p><strong><a class="link-inline" href="https://baike.baidu.com/item/胡里山炮台" target="_blank" rel="noopener noreferrer">胡里山炮台</a></strong>（¥25）就在环岛路旁，清晨游客少、海风爽。看看清末德制克虏伯大炮（世界现存最大的海岸炮），顺路在<strong>白浪沙滩</strong>踩踩水。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">门票 ¥25</span><span class="tc-tag tag-wip">清晨人少</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">中山路早市 · 最后一顿</span><span class="tc-time">09:30 - 11:30</span></div>
+        <div class="tc-body">
+          <p>回<strong>中山路</strong>附近吃碗地道的<strong>沙茶面</strong>配<strong>海蛎煎</strong>，把厦门的味道打包进记忆。想买伴手礼：黄胜记猪肉脯、馅饼、花茶，中山路就有老字号门店。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">沙茶面 ¥25</span><span class="tc-tag tag-food">海蛎煎 ¥20</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">前往厦门北站 · 高铁返程</span><span class="tc-time">11:30 - 12:30</span></div>
+        <div class="tc-body">
+          <p>地铁/打车前往<strong>厦门北站</strong>（建议提前1.5h到站，高铁站安检排队）。9/27返程票目前紧俏，建议<strong>12306多趟候补同时提交</strong>，或考虑杭州东中转。备选早班：选择15:00后的车次，还能多吃一顿。</p>
+          <div class="tc-tags"><span class="tc-tag tag-train">高铁约6-8h</span><span class="tc-tag tag-tip">返程多趟候补</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">回程路上 · 到家约深夜</span><span class="tc-time">12:30 - 22:00</span></div>
+        <div class="tc-body">
+          <p>车程5-8小时，注意车上补水休息，到家后好好补觉。中秋三天，把海风、沙滩、琴声和沙茶面统统带回上海。</p>
+          <div class="tc-tags"><span class="tc-tag tag-train">建议约15:00后班次</span><span class="tc-tag tag-tip">到家注意安全</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>必打卡景点</h2>
+    <div class="deco"></div>
+    <p>8个景点 · 门票+船票人均约 ¥215</p>
+  </div>
+  <div class="cards-grid">
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#c8e6c9,#e8f5e9)"><span class="ac-emoji">🏝️</span></div>
+      <div class="ac-body">
+        <h4>鼓浪屿</h4>
+        <div class="ac-meta">🏝️ 万国建筑 · 钢琴之岛 · 船票¥35</div>
+        <div class="ac-desc">世界文化遗产，岛上300多栋近代建筑。日光岩俯瞰全景、菽庄花园看海、琴岛漫步，是厦门最值得花一整天的地方。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">船票 ¥35</span><span class="tc-tag tag-fee">日光岩 ¥50</span><span class="tc-tag tag-fee">菽庄花园 ¥30</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/鼓浪屿" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#b3e5fc,#e1f5fe)"><span class="ac-emoji">🚴</span></div>
+      <div class="ac-body">
+        <h4>环岛路</h4>
+        <div class="ac-meta">🏖️ 厦门最美海岸线 · 免费</div>
+        <div class="ac-desc">全长43公里沿海大道，一边大海一边椰林。下午4-6点骑共享单车，从白浪沙滩一路到曾厝垵，吹海风看日落，超解压。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-bike">骑行1-2h</span><span class="tc-tag tag-tip">16:00-18:00最佳</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/厦门环岛路" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#ffecb3,#fff8e1)"><span class="ac-emoji">🌃</span></div>
+      <div class="ac-body">
+        <h4>中山路步行街</h4>
+        <div class="ac-meta">🏙️ 南洋骑楼老街 · 免费</div>
+        <div class="ac-desc">厦门的"南京路"，骑楼建筑+南洋风情+闽南小吃，晚上灯光最漂亮。花生汤、麻糍、沙茶面一条街吃到底。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-food">小吃集中地</span></div>
+        <a class="card-link" href="https://you.ctrip.com/sight/xiamen5/43261.html" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#f8bbd0,#fce4ec)"><span class="ac-emoji">🎨</span></div>
+      <div class="ac-body">
+        <h4>曾厝垵文创村</h4>
+        <div class="ac-meta">🛖 文艺渔村 · 免费</div>
+        <div class="ac-desc">曾经的渔村变身文创艺术村，涂鸦墙、手作店、小吃摊密布。晚上灯光亮起来最有味道，和酒吧歌谣、海风一起入夜。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-tip">晚上去最热闹</span></div>
+        <a class="card-link" href="https://you.ctrip.com/sight/xiamen5/84602.html" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#c5cae9,#e8eaf6)"><span class="ac-emoji">🛕</span></div>
+      <div class="ac-body">
+        <h4>南普陀寺</h4>
+        <div class="ac-meta">⛩️ 千年古刹 · 免费</div>
+        <div class="ac-desc">厦门香火最旺的佛教胜地，寺前五老峰、寺内大雄宝殿气势恢宏。就在厦门大学旁边，一上午把两个地方都逛了。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-wip">约1-1.5h</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/南普陀寺" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#c8e6c9,#a5d6a7)"><span class="ac-emoji">🎓</span></div>
+      <div class="ac-body">
+        <h4>厦门大学</h4>
+        <div class="ac-meta">🎓 中国最美大学之一 · 免费需预约</div>
+        <div class="ac-desc">中西合璧的百年学府，芙蓉湖、图书馆、白城海滩尽收眼底。免费开放但需提前预约，中秋大概率要抢，记得提前3天。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-tip">需"U厦大"预约</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/厦门大学" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#ffe0b2,#fff3e0)"><span class="ac-emoji">💣</span></div>
+      <div class="ac-body">
+        <h4>胡里山炮台</h4>
+        <div class="ac-meta">🏯 海防炮台 · ¥25</div>
+        <div class="ac-desc">清末海防要塞，保存有28万斤重的克虏伯大炮，是亚洲最大的海岸炮台。登台望海，感受百年海防风云。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">门票 ¥25</span><span class="tc-tag tag-wip">约1h</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/胡里山炮台" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#b3e5fc,#e1f5fe)"><span class="ac-emoji">🎨</span></div>
+      <div class="ac-body">
+        <h4>沙坡尾</h4>
+        <div class="ac-meta">🎨 文艺街区 · 免费</div>
+        <div class="ac-desc">旧时渔港改造成的文创街区，废旧船厂+涂鸦+咖啡馆+独立书店，是年轻人拍照和发呆的聚集地，傍晚来最出片。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-wip">咖啡+闲逛 1-2h</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/沙坡尾" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>地道美食</h2>
+    <div class="deco"></div>
+    <p>沙茶面 · 海蛎煎 · 土笋冻 · 花生汤 · 姜母鸭 · 海鲜大排档</p>
+  </div>
+  <div class="food-grid">
+    <div class="food-card">
+      <h4>🍜 沙茶面 <span style="font-size:.8rem;color:var(--text-light)">¥25/碗</span></h4>
+      <div class="food-meta">厦门的灵魂早餐 · 微辣花生汤底</div>
+      <p style="font-size:.88rem">沙茶酱+花生熬的汤底，配上鲜虾、鱿鱼、豆干、韭菜。中山路「老鹭沙茶面」、曾厝垵巷口小店都是人气爆款。</p>
+      <div class="food-dishes"><span class="dish-tag">推荐:虾仁+猪肝+豆干</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/沙茶面" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🦪 海蛎煎 <span style="font-size:.8rem;color:var(--text-light)">¥20</span></h4>
+      <div class="food-meta">闽南街头小吃 · 鲜甜弹牙</div>
+      <p style="font-size:.88rem">新鲜海蛎裹薯粉煎至金黄，配甜辣酱吃，外脆里嫩。厦门街边小摊、大排档都有，一口一个鲜。</p>
+      <div class="food-dishes"><span class="dish-tag">配甜辣酱</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/海蛎煎" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🪸 土笋冻 <span style="font-size:.8rem;color:var(--text-light)">¥15</span></h4>
+      <div class="food-meta">福建特色凉菜 · 敢不敢试</div>
+      <p style="font-size:.88rem">Q弹爽口的冻状小食，蘸蒜蓉酱油入口清凉，是闽南人爱不释口的冷盘，配啤酒绝了。</p>
+      <div class="food-dishes"><span class="dish-tag">口感Q弹</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/土笋冻" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🥜 花生汤 <span style="font-size:.8rem;color:var(--text-light)">¥10</span></h4>
+      <div class="food-meta">厦门甜品名片 · 绵密香甜</div>
+      <p style="font-size:.88rem">花生熬到软烂成泥，甜而不腻，早上配油条、晚上当甜点都合适。中山路"娟秀麻糍"旁的老店味道正。</p>
+      <div class="food-dishes"><span class="dish-tag">配油条最佳</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/花生汤" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🦆 姜母鸭 <span style="font-size:.8rem;color:var(--text-light)">¥60/半只</span></h4>
+      <div class="food-meta">暖身大补 · 秋冬必吃</div>
+      <p style="font-size:.88rem">老姜片煸香加鸭肉砂锅慢炖，姜香浓郁、肉质软糯，配米饭一碗顶饱。适合晚上沙坡尾、中山路夜市来半只。</p>
+      <div class="food-dishes"><span class="dish-tag">老姜提香</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/姜母鸭" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🦀 海鲜大排档 <span style="font-size:.8rem;color:var(--text-light)">人均¥100-150</span></h4>
+      <div class="food-meta">厦门人的夜生活 · 明码标价</div>
+      <p style="font-size:.88rem">酱油水海鲜、清蒸石斑、辣炒花蛤、白灼虾……沙坡尾一带排档最集中。点菜先看菜单、问清价格再下单。</p>
+      <div class="food-dishes"><span class="dish-tag">推荐沙坡尾/曾厝垵</span><span class="dish-tag">注意明码标价</span></div>
+      <a class="card-link" href="https://www.dianping.com/xiamen/ch10/g130" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>住宿推荐</h2>
+    <div class="deco"></div>
+    <p>中山路 / 曾厝垵 / 鼓浪屿 三种选择</p>
+  </div>
+  <div class="stay-grid">
+    <div class="stay-card">
+      <h4>中山路商圈民宿</h4>
+      <div class="stay-loc">📍 中山路步行街附近</div>
+      <p class="stay-desc">逛吃最方便：出门就是中山路夜市+八市海鲜市场，去鼓浪屿码头、沙坡尾都近。骑楼老宅改的民宿很有南洋味。</p>
+      <span class="stay-rating">⭐ 4.7</span>
+      <p style="margin-top:8px"><span class="stay-price">¥400-600/晚</span></p>
+      <a class="card-link" href="https://you.ctrip.com/hotellist/xiamen5/p1/s0/p0/a0/p1" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>曾厝垵文创民宿</h4>
+      <div class="stay-loc">📍 曾厝垵村内</div>
+      <p class="stay-desc">村内民宿最有厦门文艺气，出门就是沙滩和环岛路。晚上酒吧、小吃热闹到深夜，适合喜欢烟火气的旅友。</p>
+      <span class="stay-rating">⭐ 4.6</span>
+      <p style="margin-top:8px"><span class="stay-price">¥300-600/晚</span></p>
+      <a class="card-link" href="https://you.ctrip.com/hotellist/xiamen3/p1/shotel0/a0/c0/shotel0" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>环岛路海景民宿</h4>
+      <div class="stay-loc">📍 环岛路沿路</div>
+      <p class="stay-desc">落地窗直接看海、早上醒来就是沙滩。适合喜欢安静、想要"海景房"体验的二人行。离市区稍远，打车/公交都方便。</p>
+      <span class="stay-rating">⭐ 4.8</span>
+      <p style="margin-top:8px"><span class="stay-price">¥500-800/晚</span></p>
+      <a class="card-link" href="https://you.ctrip.com/hotellist/xiamen3/p1/shotel0/a0" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>交通信息</h2>
+    <div class="deco"></div>
+    <p>上海 ⇄ 厦门北 高铁直达 · 9/21实时查票</p>
+  </div>
+  <div class="transport-box">
+    <h3>去程 9月25日（周五）· 车票充足</h3>
+    <table class="train-table">
+      <thead><tr><th>车次</th><th>出发→到达</th><th>历时</th><th>二等座</th><th>余票</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr class="train-rec"><td>G3091</td><td>上海虹桥 06:20 → 厦门北 13:47</td><td>7h27m</td><td>¥499</td><td class="ticket-ok">有票</td><td>早班车，能赶上当天下午的行程</td></tr>
+        <tr class="train-rec"><td>D3131</td><td>上海虹桥 07:42 → 厦门北 15:22</td><td>7h40m</td><td>¥486</td><td class="ticket-ok">有票</td><td>推荐 · 价格最低且全程有票</td></tr>
+        <tr class="train-rec"><td>G1315</td><td>上海南 08:34 → 厦门北 14:49</td><td>6h15m</td><td>¥576</td><td class="ticket-ok">有票</td><td>最快直达 · 推荐</td></tr>
+        <tr><td>D2283</td><td>上海虹桥 11:20 → 厦门北 19:01</td><td>7h41m</td><td>¥460</td><td class="ticket-few">二等座4张</td><td>仅剩少量 · 要买抓紧</td></tr>
+        <tr><td>G1673</td><td>上海虹桥 11:50 → 厦门北 19:52</td><td>8h02m</td><td>¥488</td><td class="ticket-ok">有票</td><td>下午到，直接赶晚餐</td></tr>
+        <tr><td>D3291</td><td>上海虹桥 12:16 → 厦门北 20:05</td><td>7h49m</td><td>¥493</td><td class="ticket-ok">有票</td><td>晚到，适合赶早班</td></tr>
+        <tr><td>G1659</td><td>上海南 14:53 → 厦门北 22:15</td><td>7h22m</td><td>¥536</td><td class="ticket-ok">有票</td><td>最后一班，适合午出</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:var(--text-light);margin-top:10px">💡 推荐选 D3131（07:42虹桥）或 G1315（08:34上海南）：上午出发、下午3点前到，当天就能完成环岛路骑行+曾厝垵夜逛。9/21查询余票充足，建议尽早锁定。</p>
+
+    <h3 style="margin-top:24px">返程 9月27日（周日）· 建议候补</h3>
+    <table class="transport-table">
+      <thead><tr><th>建议</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>🚄 12306 多趟候补</td><td>同时提交2-3趟候补（如 15:00后 厦门北→上海虹桥 的 G/D 次），成功率更高</td></tr>
+        <tr><td>🔄 中转备选</td><td>厦门北 → 杭州东 → 上海，杭州东中转班次更多、票相对好买</td></tr>
+        <tr><td>⏰ 时间选择</td><td>建议选15:30后的班次，上午还能逛逛，晚上9-11点到上海</td></tr>
+        <tr><td>📅 今天（9/21）就查</td><td>候补越早提交越靠前，别等到出行前一周</td></tr>
+      </tbody>
+    </table>
+    <div class="transport-route" style="margin-top:20px">
+      <span class="transport-node">上海虹桥/上海南</span>
+      <span class="transport-arrow">🚄 →</span>
+      <span class="transport-node">厦门北站</span>
+      <span class="transport-arrow">🚇 地铁1号线 →</span>
+      <span class="transport-node">厦门市区</span>
+    </div>
+    <div class="transport-detail">
+      <div class="transport-item"><div class="ti-label">去程耗时</div><div class="ti-value">约6.3-8h</div></div>
+      <div class="transport-item"><div class="ti-label">去程票价</div><div class="ti-value">¥460-576</div></div>
+      <div class="transport-item"><div class="ti-label">市内交通</div><div class="ti-value">地铁1号线/公交/网约车</div></div>
+      <div class="transport-item"><div class="ti-label">轮渡</div><div class="ti-value">厦鼓码头 ¥35/人</div></div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>预算清单</h2>
+    <div class="deco"></div>
+    <p>2人 · 高铁往返方案 · 共 3天2晚</p>
+  </div>
+  <div class="budget-box">
+    <table class="budget-table">
+      <thead><tr><th>项目</th><th>明细</th><th>金额</th></tr></thead>
+      <tbody>
+        <tr><td>高铁往返（2人）</td><td>去程二等座 ¥460-576 ×2 + 返程预估约¥500×2</td><td>约¥2,000</td></tr>
+        <tr><td>住宿（2晚）</td><td>中山路/曾厝垵民宿 ¥300-800/晚 ×2晚</td><td>¥600-1,600</td></tr>
+        <tr><td>餐饮（3天）</td><td>小吃+正餐+海鲜排档 人均¥330-750</td><td>¥1,000-1,500</td></tr>
+        <tr><td>门票+船票</td><td>鼓浪屿船票¥35×2 + 日光岩¥50×2 + 菽庄¥30×2 + 胡里山¥25×2 + 厦大/南普陀/中山路/曾厝垵/沙坡尾免费</td><td>约¥400</td></tr>
+        <tr><td>市内交通</td><td>地铁+公交+打车</td><td>¥200</td></tr>
+        <tr><td>其他</td><td>咖啡、伴手礼、自行车租赁等</td><td>¥300</td></tr>
+        <tr class="total-row"><td>合计（2人）</td><td></td><td class="amount">¥4,300 - 5,800</td></tr>
+        <tr class="total-row"><td>人均</td><td></td><td class="amount">¥2,150 - 2,900</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:var(--text-light);margin-top:12px">预算按高铁方案计算。住宿取中间档可控制在 ¥4,800 左右。若返程候补到低价D字头，往返可再省约¥150。</p>
+  </div>
+
+  <div class="section-title">
+    <h2>实用Tips</h2>
+    <div class="deco"></div>
+    <p>出发前必看 · 中秋假期注意</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-icon">⛴️</div><div class="tip-content"><h4>鼓浪屿船票提前买</h4><p>微信小程序"厦门轮渡+"提前3天购票，中秋一票难求，选厦鼓码头人少出岛。上岛时间建议早上8-9点。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🚴</div><div class="tip-content"><h4>环岛路骑行最佳时段</h4><p>下午4-6点骑行最舒服：太阳不晒、海风正好、日落最美。共享单车随处可骑，1-2小时刚刚好。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🌙</div><div class="tip-content"><h4>曾厝垵晚上去</h4><p>白天小店大多关，晚上6点后才热闹。夜市+酒吧+海边灯光，越晚越有味道，别安排在白天。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🦞</div><div class="tip-content"><h4>海鲜排档注意明码标价</h4><p>吃海鲜先看菜单、问清"多少钱一斤/一份"，避免结算纠纷。沙坡尾、曾厝垵排档多，选明码标价的店。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🎓</div><div class="tip-content"><h4>厦大提前预约</h4><p>免费但需"U厦大"公众号提前3天预约，中秋大概率约满。约不上就改去南普陀寺+白城沙滩。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🚄</div><div class="tip-content"><h4>返程票尽早候补</h4><p>9/27返程紧俏，12306多趟候补同时提交；备选杭州东中转。今天（9/21）就操作，越早越稳。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">👟</div><div class="tip-content"><h4>穿舒服的鞋</h4><p>鼓浪屿步行一整天、环岛路骑行、中山路压马路，一天轻松2万步，运动鞋是标配。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🧴</div><div class="tip-content"><h4>防晒+防晒</h4><p>9月底厦门太阳仍毒，防晒霜、帽子、墨镜必备。海边风大，防晒喷防晒霜，也方便易补水。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">💰</div><div class="tip-content"><h4>支付全支持</h4><p>厦门支付宝/微信支付全覆盖，地铁可用乘车码。备少量现金即可，避免带大额现金。</p></div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>厦门 · 3天2晚 高铁旅游攻略 · 2026中秋假期</p>
+  <p style="margin-top:6px;opacity:.6">祝你在海上花园，邂逅琴声与日落 🏝️🎹🌅</p>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+document.querySelectorAll('.day-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const day=tab.dataset.day;
+    document.querySelectorAll('.timeline').forEach(tl=>tl.style.display='none');
+    const target=document.getElementById('day'+day);
+    target.style.display='block';
+    target.querySelectorAll('.timeline-item').forEach((item,i)=>{
+      item.classList.remove('show');
+      setTimeout(()=>item.classList.add('show'),i*80);
+    });
+  });
+});
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('backTop');
+  if(window.scrollY>400){btn.classList.add('show')}else{btn.classList.remove('show')}
+});
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('#day1 .timeline-item').forEach((item,i)=>{
+    setTimeout(()=>item.classList.add('show'),i*100);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>千岛湖 3天2晚 高铁游 · 线路攻略</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#eef6f9;color:#2c3e50;line-height:1.8;overflow-x:hidden}
+:root{
+  --lake:#006d77;--lake-light:#4cc9c0;--lake-pale:#d0f0ef;
+  --mountain:#2a6f4d;--mountain-light:#52b788;--mountain-pale:#e0f2e9;
+  --sand:#e9c46a;--sand-light:#f4a261;--sunset:#e76f51;
+  --bg:#eef6f9;--card:#fff;--text:#2c3e50;--text-light:#6c7a89;
+  --border:#dce8ec;--shadow:0 2px 16px rgba(0,109,119,.08);
+  --shadow-hover:0 6px 28px rgba(0,109,119,.15);
+}
+.hero{position:relative;min-height:420px;background:linear-gradient(135deg,#006d77 0%,#2a6f4d 55%,#4cc9c0 100%);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,100 350,20 600,50 C850,80 1050,30 1200,70 L1200,120 L0,120 Z' fill='%23eef6f9'/%3E%3C/svg%3E") no-repeat bottom/cover}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{color:#fff;font-size:2.4rem;letter-spacing:3px;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+.hero .subtitle{color:rgba(255,255,255,.85);font-size:1.1rem;margin-bottom:6px}
+.hero .trip-meta{display:flex;gap:16px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.hero .trip-meta span{background:rgba(255,255,255,.18);backdrop-filter:blur(6px);padding:6px 18px;border-radius:20px;color:#fff;font-size:.85rem;border:1px solid rgba(255,255,255,.25)}
+.container{max-width:1100px;margin:0 auto;padding:30px 20px}
+.section-title{text-align:center;margin:50px 0 30px}
+.section-title h2{font-size:1.6rem;color:var(--lake);font-weight:700;letter-spacing:2px}
+.section-title .deco{width:50px;height:3px;background:linear-gradient(90deg,var(--lake),var(--mountain-light));margin:10px auto;border-radius:2px}
+.section-title p{color:var(--text-light);font-size:.9rem;margin-top:6px}
+.route-map-wrapper{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow:hidden}
+.route-map-wrapper h3{color:var(--lake);font-size:1.1rem;margin-bottom:16px;text-align:center}
+.svg-map{width:100%;height:auto;display:block}
+.day-tabs{display:flex;gap:0;margin:0 auto 24px;max-width:560px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.day-tab{flex:1;padding:14px 0;text-align:center;cursor:pointer;background:var(--card);transition:all .3s;font-weight:600;font-size:.95rem;color:var(--text-light);border-bottom:3px solid transparent;user-select:none}
+.day-tab.active{color:var(--lake);border-bottom-color:var(--lake-light);background:var(--lake-pale)}
+.day-tab .day-num{display:block;font-size:.75rem;color:var(--text-light);margin-bottom:2px}
+.day-tab.active .day-num{color:var(--lake)}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--lake),var(--mountain-light),var(--sand),var(--sunset));border-radius:2px}
+.timeline-item{position:relative;margin-bottom:24px;opacity:0;transform:translateX(-20px);transition:all .5s}
+.timeline-item.show{opacity:1;transform:translateX(0)}
+.timeline-dot{position:absolute;left:-33px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--card);border:3px solid var(--lake);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--lake);z-index:1}
+.timeline-item:nth-child(2) .timeline-dot{border-color:var(--mountain-light);color:var(--mountain)}
+.timeline-item:nth-child(3) .timeline-dot{border-color:var(--sand);color:var(--sand-light)}
+.timeline-item:nth-child(4) .timeline-dot{border-color:var(--lake-light);color:var(--lake)}
+.timeline-item:nth-child(5) .timeline-dot{border-color:var(--sunset);color:var(--sunset)}
+.timeline-item:nth-child(6) .timeline-dot{border-color:var(--mountain);color:var(--mountain)}
+.timeline-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .3s}
+.timeline-card:hover{box-shadow:var(--shadow-hover)}
+.timeline-card .tc-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.timeline-card .tc-time{font-size:.8rem;color:var(--text-light);background:var(--bg);padding:4px 12px;border-radius:12px;white-space:nowrap}
+.timeline-card .tc-title{font-size:1.05rem;font-weight:600;color:var(--lake)}
+.timeline-card .tc-body{padding:16px 20px}
+.timeline-card .tc-body p{font-size:.9rem;color:var(--text);margin-bottom:8px}
+.timeline-card .tc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.timeline-card .tc-tag{font-size:.75rem;padding:2px 10px;border-radius:10px}
+.tag-free{background:#e8f5e9;color:#2e7d32}
+.tag-fee{background:#fff3e0;color:#e65100}
+.tag-food{background:#fce4ec;color:#c62828}
+.tag-stay{background:#e3f2fd;color:#1565c0}
+.tag-train{background:#e0f2f1;color:#00695c}
+.tag-walk{background:#e0f2f1;color:#00695c}
+.tag-tip{background:#fff8e1;color:#f57f17}
+.tag-boat{background:#e3f2fd;color:#0277bd}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.attraction-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:all .3s;cursor:pointer}
+.attraction-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.ac-image{height:140px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.ac-image .ac-emoji{filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+.ac-body{padding:16px 20px}
+.ac-body h4{font-size:1.05rem;color:var(--lake);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.ac-body .ac-meta{font-size:.78rem;color:var(--text-light);margin-bottom:8px}
+.ac-body .ac-desc{font-size:.88rem;color:var(--text);line-height:1.7}
+.ac-body .ac-footer{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-bottom:40px}
+.food-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-left:4px solid var(--sunset)}
+.food-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.food-card h4{font-size:1.05rem;color:var(--lake);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.food-card .food-meta{font-size:.8rem;color:var(--text-light);margin-bottom:8px}
+.food-card .food-dishes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.food-card .dish-tag{background:#fff3e0;color:#bf360c;font-size:.75rem;padding:3px 10px;border-radius:8px}
+.stay-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.stay-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-top:4px solid var(--lake)}
+.stay-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.stay-card h4{font-size:1.05rem;color:var(--lake);margin-bottom:4px}
+.stay-card .stay-loc{font-size:.8rem;color:var(--text-light);margin-bottom:6px}
+.stay-card .stay-desc{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:8px}
+.stay-card .stay-rating{display:inline-block;background:var(--sand-light);color:#fff;font-size:.75rem;padding:2px 10px;border-radius:10px;font-weight:600}
+.stay-card .stay-price{font-size:1rem;color:var(--sunset);font-weight:700}
+.transport-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px}
+.transport-box h3{color:var(--lake);margin-bottom:16px;font-size:1.1rem}
+.transport-route{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}
+.transport-node{background:var(--lake-pale);color:var(--lake);padding:8px 20px;border-radius:10px;font-weight:600;font-size:.9rem}
+.transport-arrow{color:var(--lake-light);font-size:1.3rem}
+.transport-detail{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px}
+.transport-item{background:var(--bg);border-radius:10px;padding:14px;text-align:center}
+.transport-item .ti-label{font-size:.78rem;color:var(--text-light);margin-bottom:4px}
+.transport-item .ti-value{font-size:1.05rem;color:var(--lake);font-weight:600}
+.budget-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow-x:auto}
+.budget-box h3{color:var(--lake);margin-bottom:16px;font-size:1.1rem}
+.budget-table{width:100%;border-collapse:collapse;min-width:480px}
+.budget-table th{background:var(--lake);color:#fff;padding:10px 14px;text-align:left;font-size:.85rem;font-weight:600}
+.budget-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.budget-table tr:hover{background:var(--lake-pale)}
+.budget-table .total-row{font-weight:700;background:var(--sand-light)!important;color:#fff}
+.budget-table .total-row td{font-size:1rem}
+.budget-table .total-row .amount{color:#fff;font-size:1.2rem}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px}
+.tip-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:18px;display:flex;gap:12px;transition:all .3s}
+.tip-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.tip-icon{font-size:1.8rem;flex-shrink:0}
+.tip-content h4{font-size:.95rem;color:var(--lake);margin-bottom:4px}
+.tip-content p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+.back-top{position:fixed;right:24px;bottom:24px;width:44px;height:44px;background:var(--lake);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1.2rem;box-shadow:var(--shadow-hover);opacity:0;visibility:hidden;transition:all .3s;z-index:99}
+.back-top.show{opacity:1;visibility:visible}
+.card-link{display:inline-block;margin-top:8px;font-size:.8rem;color:var(--lake);text-decoration:none;transition:all .2s;border-bottom:1px solid transparent}
+.card-link:hover{color:var(--sunset);border-bottom-color:var(--sunset)}
+.tc-body a.link-inline{color:var(--lake);text-decoration:none;font-weight:600}
+.tc-body a.link-inline:hover{color:var(--sunset);text-decoration:underline}
+.back-to-home{display:inline-block;margin-bottom:20px;color:var(--lake);text-decoration:none;font-size:.9rem;font-weight:600}
+.back-to-home:hover{color:var(--sunset)}
+@media(max-width:640px){
+  .hero h1{font-size:1.6rem}
+  .hero .trip-meta span{font-size:.75rem;padding:5px 12px}
+  .container{padding:20px 14px}
+  .section-title h2{font-size:1.25rem}
+  .timeline{padding-left:32px}
+  .timeline::before{left:11px}
+  .timeline-dot{width:20px;height:20px;left:-29px;font-size:.6rem}
+}
+.footer{text-align:center;padding:30px 20px;background:var(--lake);color:rgba(255,255,255,.7);font-size:.85rem}
+.footer a{color:var(--lake-pale)}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>千岛湖 · 湖光山色</h1>
+    <p class="subtitle">3天2晚 高铁直达 · 1078座岛屿</p>
+    <p class="subtitle">上海出发 · 橘子海日落 · 森林氧吧</p>
+    <div class="trip-meta">
+      <span>9月25日 周五 — 9月27日 周日</span>
+      <span>高铁直达 约2h</span>
+      <span>森林覆盖率 94%</span>
+      <span>人均预算 ¥1,340-2,140</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<a class="back-to-home" href="旅游攻略.html">← 返回旅游攻略总览</a>
+
+<!-- ===== ROUTE MAP ===== -->
+<div class="route-map-wrapper">
+  <h3>线路总览 · 地图线索</h3>
+  <svg class="svg-map" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bgGrad3" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#d0f0ef" stop-opacity=".5"/>
+        <stop offset="100%" stop-color="#e0f2e9" stop-opacity=".5"/>
+      </linearGradient>
+      <linearGradient id="routeGrad3" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#006d77"/>
+        <stop offset="50%" stop-color="#2a6f4d"/>
+        <stop offset="100%" stop-color="#e9c46a"/>
+      </linearGradient>
+      <filter id="shadow3"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity=".15"/></filter>
+    </defs>
+    <rect width="1000" height="420" fill="url(#bgGrad3)" rx="12"/>
+
+    <!-- Decorative mountains -->
+    <path d="M500 290 L530 240 L555 270 L580 220 L610 290 Z" fill="#52b788" opacity=".22"/>
+    <path d="M560 300 L590 255 L615 280 L640 235 L670 300 Z" fill="#2a6f4d" opacity=".18"/>
+
+    <!-- Lake body (decorative islands) -->
+    <ellipse cx="650" cy="300" rx="180" ry="60" fill="#4cc9c0" opacity=".12"/>
+    <circle cx="600" cy="285" r="8" fill="#4cc9c0" opacity=".3"/>
+    <circle cx="630" cy="305" r="6" fill="#4cc9c0" opacity=".25"/>
+    <circle cx="670" cy="290" r="7" fill="#4cc9c0" opacity=".28"/>
+    <circle cx="710" cy="310" r="5" fill="#4cc9c0" opacity=".22"/>
+    <circle cx="750" cy="295" r="6" fill="#4cc9c0" opacity=".25"/>
+    <circle cx="620" cy="320" r="4" fill="#4cc9c0" opacity=".2"/>
+    <circle cx="690" cy="325" r="5" fill="#4cc9c0" opacity=".22"/>
+
+    <!-- Route line -->
+    <path d="M100 190 Q200 170 280 185 Q360 200 430 210 Q500 215 560 225 Q620 235 680 250 Q730 260 780 270 Q820 280 860 290" stroke="url(#routeGrad3)" stroke-width="4" fill="none" filter="url(#shadow3)"/>
+
+    <!-- Shanghai -->
+    <g filter="url(#shadow3)">
+      <circle cx="100" cy="190" r="18" fill="#fff" stroke="#006d77" stroke-width="3"/>
+      <circle cx="100" cy="190" r="6" fill="#006d77"/>
+      <text x="100" y="170" text-anchor="middle" font-size="14" font-weight="700" fill="#006d77">上海</text>
+      <text x="100" y="222" text-anchor="middle" font-size="10" fill="#6c7a89">出发地</text>
+    </g>
+    <text x="240" y="155" text-anchor="middle" font-size="10" fill="#006d77" opacity=".6">高铁直达 约2h</text>
+
+    <!-- Qiandao Lake Station -->
+    <g filter="url(#shadow3)">
+      <circle cx="450" cy="215" r="14" fill="#fff" stroke="#2a6f4d" stroke-width="3"/>
+      <circle cx="450" cy="215" r="5" fill="#2a6f4d"/>
+      <text x="450" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#2a6f4d">千岛湖站</text>
+      <text x="450" y="248" text-anchor="middle" font-size="10" fill="#6c7a89">Day1 傍晚抵达</text>
+    </g>
+
+    <!-- Center Lake (Cruise) -->
+    <g filter="url(#shadow3)">
+      <circle cx="600" cy="255" r="14" fill="#fff" stroke="#006d77" stroke-width="3"/>
+      <circle cx="600" cy="255" r="5" fill="#006d77"/>
+      <text x="600" y="235" text-anchor="middle" font-size="12" font-weight="700" fill="#006d77">中心湖区</text>
+      <text x="600" y="288" text-anchor="middle" font-size="10" fill="#6c7a89">Day2 游船登岛</text>
+    </g>
+
+    <!-- Tianyu Mountain -->
+    <g filter="url(#shadow3)">
+      <circle cx="700" cy="270" r="12" fill="#fff" stroke="#e76f51" stroke-width="3"/>
+      <circle cx="700" cy="270" r="4" fill="#e76f51"/>
+      <text x="700" y="252" text-anchor="middle" font-size="11" font-weight="600" fill="#e76f51">天屿山</text>
+      <text x="700" y="302" text-anchor="middle" font-size="10" fill="#6c7a89">Day2 日落</text>
+    </g>
+
+    <!-- Wenyuan Lion City -->
+    <g filter="url(#shadow3)">
+      <circle cx="780" cy="285" r="12" fill="#fff" stroke="#e9c46a" stroke-width="3"/>
+      <circle cx="780" cy="285" r="4" fill="#e9c46a"/>
+      <text x="780" y="267" text-anchor="middle" font-size="11" font-weight="600" fill="#b8860b">文渊狮城</text>
+      <text x="780" y="317" text-anchor="middle" font-size="10" fill="#6c7a89">Day3 上午</text>
+    </g>
+
+    <!-- Qinpu Village -->
+    <g filter="url(#shadow3)">
+      <circle cx="860" cy="295" r="10" fill="#fff" stroke="#52b788" stroke-width="3"/>
+      <circle cx="860" cy="295" r="3" fill="#52b788"/>
+      <text x="860" y="278" text-anchor="middle" font-size="11" font-weight="600" fill="#2a6f4d">芹川古村</text>
+      <text x="860" y="325" text-anchor="middle" font-size="10" fill="#6c7a89">Day3 可选</text>
+    </g>
+
+    <!-- Return -->
+    <path d="M860 295 Q650 390 450 385 Q200 380 100 190" stroke="#4cc9c0" stroke-width="2.5" fill="none" opacity=".4" stroke-dasharray="8 6"/>
+    <text x="480" y="400" text-anchor="middle" font-size="10" fill="#006d77" opacity=".6">Day3 下午 · 高铁返程上海</text>
+
+    <!-- Compass -->
+    <g transform="translate(940,50)">
+      <circle r="22" fill="#fff" opacity=".7" stroke="#006d77" stroke-width="1.5"/>
+      <text y="-5" text-anchor="middle" font-size="12" font-weight="700" fill="#006d77">N</text>
+      <path d="M0,-16 L4,0 L0,4 L-4,0 Z" fill="#e76f51"/>
+      <path d="M0,16 L4,0 L0,-4 L-4,0 Z" fill="#006d77"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ===== DETAILED ITINERARY ===== -->
+<div class="section-title">
+  <h2>每日行程</h2>
+  <div class="deco"></div>
+  <p>点击下方日期切换 · 3天2晚完整路线</p>
+</div>
+
+<div class="day-tabs" id="dayTabs">
+  <div class="day-tab active" data-day="1"><span class="day-num">9月25日</span>Day 1 · 抵达</div>
+  <div class="day-tab" data-day="2"><span class="day-num">9月26日</span>Day 2 · 游湖</div>
+  <div class="day-tab" data-day="3"><span class="day-num">9月27日</span>Day 3 · 返程</div>
+</div>
+
+<!-- Day 1 -->
+<div class="timeline" id="day1">
+  <div class="timeline-item show">
+    <div class="timeline-dot">1</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">上海出发 · 高铁直达千岛湖</span><span class="tc-time">16:06 - 18:10</span></div>
+      <div class="tc-body">
+        <p>下午从上海乘高铁出发。推荐<strong><a class="link-inline" href="https://www.12306.cn/index/" target="_blank" rel="noopener noreferrer">G3757</a></strong>（上海虹桥16:06→千岛湖18:10，二等座¥182，有票），约2小时直达。也可选G7303（上海南16:20→千岛湖18:45，¥158，5张余票）。上午车次基本候补，下午16:00后车次有票。</p>
+        <div class="tc-tags"><span class="tc-tag tag-train">高铁约2h</span><span class="tc-tag tag-fee">¥158-182/人</span><span class="tc-tag tag-tip">上午需候补</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">2</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">抵达千岛湖站 · 接驳至镇上</span><span class="tc-time">18:10 - 19:00</span></div>
+      <div class="tc-body">
+        <p>千岛湖站出站后乘坐高铁快线巴士（约40分钟，¥10/人）或打车（约¥60-80）到千岛湖镇。沿途可见湖景，越接近镇上景色越美。入住湖景酒店后稍事休息。</p>
+        <div class="tc-tags"><span class="tc-tag tag-train">巴士40min</span><span class="tc-tag tag-fee">巴士¥10/打车¥60-80</span><span class="tc-tag tag-tip">酒店提前订</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">3</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">晚餐 · 千岛湖有机鱼头汤</span><span class="tc-time">19:00 - 20:30</span></div>
+      <div class="tc-body">
+        <p>千岛湖第一顿必吃<strong><a class="link-inline" href="https://baike.baidu.com/item/千岛湖有机鱼/2948038" target="_blank" rel="noopener noreferrer">有机鱼头汤</a></strong>！推荐镇上老牌鱼味馆（如<strong><a class="link-inline" href="https://www.dianping.com/search/keyword/2/0_千岛湖鱼头" target="_blank" rel="noopener noreferrer">淳牌鱼味馆</a></strong>），一鱼三吃：鱼头炖汤奶白浓郁、鱼身红烧、鱼尾做汤。人均约¥80-120，两个人点一条鱼就够。</p>
+        <div class="tc-tags"><span class="tc-tag tag-food">鱼头汤</span><span class="tc-tag tag-food">人均 ¥80-120</span><span class="tc-tag tag-tip">中秋需提前订座</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">4</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">湖边散步 · 中秋赏月</span><span class="tc-time">20:30 - 22:00</span></div>
+      <div class="tc-body">
+        <p>饭后到千岛湖镇湖滨公园散步，湖面开阔、空气清新。中秋月圆之夜，湖面映月、远山含黛，非常惬意。也可以沿<strong><a class="link-inline" href="https://baike.baidu.com/item/骑龙巷/25411244" target="_blank" rel="noopener noreferrer">骑龙巷</a></strong>逛逛小吃街，感受小城夜生活。</p>
+        <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-walk">湖边漫步</span><span class="tc-tag tag-tip">带薄外套</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 2 -->
+<div class="timeline" id="day2" style="display:none">
+  <div class="timeline-item show">
+    <div class="timeline-dot">1</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">酒店早餐 · 整装出发</span><span class="tc-time">07:30 - 08:15</span></div>
+      <div class="tc-body">
+        <p>酒店早餐吃饱，今天主攻千岛湖核心体验——游船登岛。建议早班8:30出发，避开中午人最多的时段，湖面晨雾也最美。</p>
+        <div class="tc-tags"><span class="tc-tag tag-free">含早</span><span class="tc-tag tag-tip">早班船人少景美</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">2</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">中心湖区游船 · 梅峰岛/月光岛/龙山岛</span><span class="tc-time">08:30 - 12:30</span></div>
+      <div class="tc-body">
+        <p>到<strong><a class="link-inline" href="https://baike.baidu.com/item/千岛湖/349675" target="_blank" rel="noopener noreferrer">千岛湖中心湖区</a></strong>码头乘游船（门票+船票约¥130-185/人），游览3个核心岛屿：<strong>梅峰岛</strong>（观景台俯瞰千岛全景，最经典视角）、<strong>月光岛</strong>（情圆/系园/心园，情侣打卡）、<strong>龙山岛</strong>（人文古迹，海瑞祠）。全程约4小时，船上有导游讲解。</p>
+        <div class="tc-tags"><span class="tc-tag tag-boat">游船登岛</span><span class="tc-tag tag-fee">¥130-185/人</span><span class="tc-tag tag-walk">约4h</span><span class="tc-tag tag-tip">梅峰岛是必打卡</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">3</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">午餐 · 农家土鸡/河虾</span><span class="tc-time">12:30 - 14:00</span></div>
+      <div class="tc-body">
+        <p>游船回码头后到镇上午餐。推荐尝尝<strong>农家土鸡煲</strong>（土鸡炖至软烂，汤鲜味浓）和<strong>千岛湖河虾</strong>（白灼或椒盐，湖虾鲜甜弹牙），配当地野笋、蕨菜等山野菜。人均约¥60-90。</p>
+        <div class="tc-tags"><span class="tc-tag tag-food">土鸡煲</span><span class="tc-tag tag-food">河虾</span><span class="tc-tag tag-food">人均 ¥60-90</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">4</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">啤酒小镇 · 欧式风情拍照</span><span class="tc-time">14:30 - 16:00</span></div>
+      <div class="tc-body">
+        <p>下午到<strong><a class="link-inline" href="https://baike.baidu.com/item/千岛湖啤酒小镇/25411243" target="_blank" rel="noopener noreferrer">千岛湖啤酒小镇</a></strong>（免费），欧式建筑+湖景，拍照很出片。可以品尝千岛湖原浆啤酒，小镇里还有各种文创小店和咖啡馆，适合慢逛消磨下午时光。</p>
+        <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-walk">拍照打卡</span><span class="tc-tag tag-food">原浆啤酒</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">5</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">天屿山观景台 · 追"橘子海"日落</span><span class="tc-time">16:30 - 18:00</span></div>
+      <div class="tc-body">
+        <p>下午4点半前往<strong><a class="link-inline" href="https://baike.baidu.com/item/天屿山/25411242" target="_blank" rel="noopener noreferrer">天屿山观景台</a></strong>（免费），这里是千岛湖看日落的最佳点位。9月底日落约在17:30-18:00，夕阳将湖面染成橘红色，被称为"橘子海"。建议提前1小时到占好机位，山顶有三个观景平台可360度环看千岛湖。</p>
+        <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-walk">观景台</span><span class="tc-tag tag-tip">日落约17:30</span><span class="tc-tag tag-tip">提前1h到</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">6</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">骑龙巷小吃街 · 晚餐夜逛</span><span class="tc-time">18:30 - 21:00</span></div>
+      <div class="tc-body">
+        <p>晚上到<strong><a class="link-inline" href="https://baike.baidu.com/item/骑龙巷/25411244" target="_blank" rel="noopener noreferrer">骑龙巷</a></strong>小吃街，千岛湖镇最热闹的夜市。各种小吃：烤鱼串、臭豆腐、梅干菜饼、手工麻糍……边走边吃，再来杯千岛湖精酿啤酒，享受小城夜生活。人均约¥50-80。</p>
+        <div class="tc-tags"><span class="tc-tag tag-food">骑龙巷小吃</span><span class="tc-tag tag-food">人均 ¥50-80</span><span class="tc-tag tag-tip">夜市氛围好</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 3 -->
+<div class="timeline" id="day3" style="display:none">
+  <div class="timeline-item show">
+    <div class="timeline-dot">1</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">酒店早餐 · 退房</span><span class="tc-time">08:00 - 09:00</span></div>
+      <div class="tc-body">
+        <p>早餐后退房，行李寄存酒店或带车上。今天上午游览千岛湖周边景点，下午返程。</p>
+        <div class="tc-tags"><span class="tc-tag tag-free">含早</span><span class="tc-tag tag-tip">行李可寄存</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">2</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">文渊狮城 · 复现水下古城</span><span class="tc-time">09:00 - 11:30</span></div>
+      <div class="tc-body">
+        <p>驱车约40分钟到<strong><a class="link-inline" href="https://baike.baidu.com/item/文渊狮城/25411245" target="_blank" rel="noopener noreferrer">文渊狮城</a></strong>（门票约¥80/人），这是一座按照1959年沉入千岛湖底的遂安古城1:1复建的"水下古城"。徽派建筑群、老街、牌坊，穿越感很强。可逛古街、看非遗表演、尝传统小吃。</p>
+        <div class="tc-tags"><span class="tc-tag tag-fee">门票 ¥80/人</span><span class="tc-tag tag-walk">约2.5h</span><span class="tc-tag tag-tip">水下古城复建</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">3</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">芹川古村 · 徽派建筑（可选）</span><span class="tc-time">11:30 - 12:30</span></div>
+      <div class="tc-body">
+        <p>文渊狮城旁边就是<strong><a class="link-inline" href="https://baike.baidu.com/item/芹川古村/25411246" target="_blank" rel="noopener noreferrer">芹川古村</a></strong>（免费），750年历史的徽派古村落，小桥流水、黑白瓦墙，游客稀少，很适合安静地走走拍拍。村内溪水穿村而过，古桥古树，原生态感十足。</p>
+        <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-walk">古村漫步</span><span class="tc-tag tag-tip">徽派建筑</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">4</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">午餐 · 农家菜</span><span class="tc-time">12:30 - 13:30</span></div>
+      <div class="tc-body">
+        <p>在芹川古村或下姜村找一家农家乐吃午饭。推荐<strong>下姜村</strong>（免费，习总书记当年联系点）的农家菜，土鸡、溪鱼、农家豆腐，原汁原味。人均约¥50-80。</p>
+        <div class="tc-tags"><span class="tc-tag tag-food">农家菜</span><span class="tc-tag tag-food">人均 ¥50-80</span><span class="tc-tag tag-free">下姜村免费</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-item show">
+    <div class="timeline-dot">5</div>
+    <div class="timeline-card">
+      <div class="tc-header"><span class="tc-title">高铁返程 · 回到上海</span><span class="tc-time">14:00 - 17:00</span></div>
+      <div class="tc-body">
+        <p>午餐后驱车返回千岛湖站，乘坐下午高铁返回上海。返程车次建议提前在<strong><a class="link-inline" href="https://www.12306.cn/index/" target="_blank" rel="noopener noreferrer">12306</a></strong>查询并候补购票。9月27日返程票紧张，建议多趟候补同时提交，或考虑杭州东中转方案。高铁约2h回到上海，结束愉快旅程。</p>
+        <div class="tc-tags"><span class="tc-tag tag-train">高铁约2h</span><span class="tc-tag tag-fee">¥158-182/人</span><span class="tc-tag tag-tip">返程需候补</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ATTRACTIONS ===== -->
+<div class="section-title">
+  <h2>景点速览</h2>
+  <div class="deco"></div>
+  <p>7大景点 · 游船登岛 + 日落 + 古村 · 轻松打卡</p>
+</div>
+<div class="cards-grid">
+  <div class="attraction-card">
+    <div class="ac-image" style="background:linear-gradient(135deg,#d0f0ef,#4cc9c0)"><span class="ac-emoji">🚢</span></div>
+    <div class="ac-body">
+      <h4>中心湖区游船</h4>
+      <div class="ac-meta">📍 千岛湖镇码头 · 门票+船票¥130-185</div>
+      <div class="ac-desc">千岛湖核心体验！游船登梅峰岛（俯瞰千岛全景最经典视角）、月光岛（情侣打卡）、龙山岛（海瑞祠人文古迹）。全程约4h，建议早班8:30出发。</div>
+      <div class="ac-footer"><span class="tc-tag tag-boat">游船</span><span class="tc-tag tag-fee">¥130-185</span><span class="tc-tag tag-walk">约4h</span></div>
+      <a class="card-link" href="https://piao.ctrip.com/dest/t-331.html" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+  <div class="attraction-card">
+    <div class="ac-image" style="background:linear-gradient(135deg,#ffe0b2,#ffcc80)"><span class="ac-emoji">🌅</span></div>
+    <div class="ac-body">
+      <h4>天屿山观景台</h4>
+      <div class="ac-meta">📍 千岛湖镇 · 免费 · 看日落最佳</div>
+      <div class="ac-desc">千岛湖看日落No.1点位！三个观景平台360度环看千岛湖，夕阳将湖面染成橘红色"橘子海"。9月底日落约17:30，建议提前1h到占机位。</div>
+      <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-tip">日落约17:30</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/天屿山/25411242" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+  <div class="attraction-card">
+    <div class="ac-image" style="background:linear-gradient(135deg,#e0f2e9,#a5d6a7)"><span class="ac-emoji">🏛️</span></div>
+    <div class="ac-body">
+      <h4>文渊狮城</h4>
+      <div class="ac-meta">📍 姜家镇 · 门票约¥80 · 水下古城复建</div>
+      <div class="ac-desc">按照1959年沉入千岛湖底的遂安古城1:1复建，徽派建筑群、老街牌坊、非遗表演，穿越感极强。文渊狮城+芹川古村可一并游览。</div>
+      <div class="ac-footer"><span class="tc-tag tag-fee">¥80</span><span class="tc-tag tag-walk">约2.5h</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/文渊狮城/25411245" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+  <div class="attraction-card">
+    <div class="ac-image" style="background:linear-gradient(135deg,#f5f5f5,#e0e0e0)"><span class="ac-emoji">🏡</span></div>
+    <div class="ac-body">
+      <h4>芹川古村</h4>
+      <div class="ac-meta">📍 姜家镇 · 免费 · 750年历史</div>
+      <div class="ac-desc">750年徽派古村，小桥流水、黑白瓦墙，溪水穿村而过。游客稀少，原生态十足，适合安静走走拍拍，就在文渊狮城旁边。</div>
+      <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-walk">古村漫步</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/芹川古村/25411246" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+  <div class="attraction-card">
+    <div class="ac-image" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)"><span class="ac-emoji">🌾</span></div>
+    <div class="ac-body">
+      <h4>下姜村</h4>
+      <div class="ac-meta">📍 枫树岭镇 · 免费 · 乡村振兴示范</div>
+      <div class="ac-desc">习总书记在浙江工作期间的基层联系点，从贫困村到"绿富美"的乡村振兴样板。山清水秀、农家乐发达，适合午餐+漫步。</div>
+      <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-food">农家乐</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/下姜村/25411247" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+  <div class="attraction-card">
+    <div class="ac-image" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)"><span class="ac-emoji">🍺</span></div>
+    <div class="ac-body">
+      <h4>啤酒小镇</h4>
+      <div class="ac-meta">📍 千岛湖镇 · 免费 · 欧式风情</div>
+      <div class="ac-desc">欧式建筑+湖景+精酿啤酒，拍照出片。小镇里有文创小店、咖啡馆，适合下午慢逛。千岛湖原浆啤酒值得一试。</div>
+      <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-food">原浆啤酒</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/千岛湖啤酒小镇/25411243" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+  <div class="attraction-card">
+    <div class="ac-image" style="background:linear-gradient(135deg,#e0f7fa,#b2ebf2)"><span class="ac-emoji">🌲</span></div>
+    <div class="ac-body">
+      <h4>森林氧吧</h4>
+      <div class="ac-meta">📍 千岛湖镇东 · 门票约¥60 · 天然氧吧</div>
+      <div class="ac-desc">千岛湖国家森林公园核心区，森林覆盖率94%，负氧离子浓度极高。步道穿行林间，溪流潺潺，呼吸间满是大自然的味道。适合上午轻松徒步。</div>
+      <div class="ac-footer"><span class="tc-tag tag-fee">¥60</span><span class="tc-tag tag-walk">约2h</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/千岛湖森林氧吧/25411248" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOD ===== -->
+<div class="section-title">
+  <h2>美食推荐</h2>
+  <div class="deco"></div>
+  <p>千岛湖味道 · 有机鱼头 · 农家鲜味 · 夜市小吃</p>
+</div>
+<div class="food-grid">
+  <div class="food-card">
+    <h4>🐟 千岛湖有机鱼头汤</h4>
+    <div class="food-meta">📍 千岛湖镇 · 人均 ¥80-120 · 必吃No.1</div>
+    <p>千岛湖有机鱼（鳙鱼/胖头鱼）生长在I类水质中，鱼头炖汤奶白浓郁、鲜美无腥。一鱼三吃：鱼头炖汤、鱼身红烧、鱼尾做汤，两个人一条鱼就够了。</p>
+    <div class="food-dishes"><span class="dish-tag">鱼头汤</span><span class="dish-tag">红烧鱼身</span><span class="dish-tag">一鱼三吃</span></div>
+    <a class="card-link" href="https://baike.baidu.com/item/千岛湖有机鱼/2948038" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="food-card">
+    <h4>🐔 农家土鸡煲</h4>
+    <div class="food-meta">📍 千岛湖镇/古村农家 · 人均 ¥50-80</div>
+    <p>散养土鸡炖至软烂，汤鲜味浓，鸡肉紧实有嚼劲。配当地野笋、蕨菜，一锅下来整个人都暖了。推荐下姜村、芹川古村农家乐。</p>
+    <div class="food-dishes"><span class="dish-tag">土鸡煲</span><span class="dish-tag">野笋</span><span class="dish-tag">蕨菜</span></div>
+    <a class="card-link" href="https://www.dianping.com/search/keyword/2/0_千岛湖土鸡" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="food-card">
+    <h4>🦐 千岛湖河虾</h4>
+    <div class="food-meta">📍 千岛湖镇 · 人均 ¥40-60</div>
+    <p>千岛湖野生河虾，个头不大但鲜甜弹牙。白灼最能保留原味，椒盐也香。配一碗白米饭，简单但满足。饭馆基本都有，时令菜。</p>
+    <div class="food-dishes"><span class="dish-tag">白灼河虾</span><span class="dish-tag">椒盐河虾</span></div>
+    <a class="card-link" href="https://www.dianping.com/search/keyword/2/0_千岛湖河虾" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="food-card">
+    <h4>🍢 骑龙巷小吃街</h4>
+    <div class="food-meta">📍 千岛湖镇骑龙巷 · 人均 ¥50-80 · 夜市</div>
+    <p>千岛湖镇最热闹的夜市小吃街，烤鱼串、臭豆腐、梅干菜饼、手工麻糍、烤生蚝……边走边吃，再来杯千岛湖精酿，夜生活氛围拉满。</p>
+    <div class="food-dishes"><span class="dish-tag">烤鱼串</span><span class="dish-tag">臭豆腐</span><span class="dish-tag">梅干菜饼</span><span class="dish-tag">手工麻糍</span></div>
+    <a class="card-link" href="https://baike.baidu.com/item/骑龙巷/25411244" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="food-card">
+    <h4>🍺 千岛湖原浆啤酒</h4>
+    <div class="food-meta">📍 啤酒小镇/骑龙巷 · 人均 ¥30-50</div>
+    <p>千岛湖本地精酿，用湖水和优质麦芽酿造，口感清爽。啤酒小镇可参观 brewery、品鉴多种口味。配烤鱼、小龙虾最佳。</p>
+    <div class="food-dishes"><span class="dish-tag">原浆</span><span class="dish-tag">白啤</span><span class="dish-tag">IPA</span></div>
+    <a class="card-link" href="https://baike.baidu.com/item/千岛湖啤酒/25411249" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="food-card">
+    <h4>🥬 山野菜/溪鱼</h4>
+    <div class="food-meta">📍 古村农家乐 · 人均 ¥40-70</div>
+    <p>千岛湖周边山林盛产野笋、蕨菜、石衣等山野菜，配上溪涧里的小鱼小虾，清炒或炖汤，都是城里吃不到的鲜味。农家乐现摘现做。</p>
+    <div class="food-dishes"><span class="dish-tag">野笋炒肉</span><span class="dish-tag">清炒蕨菜</span><span class="dish-tag">溪鱼煲</span></div>
+    <a class="card-link" href="https://www.dianping.com/search/keyword/2/0_千岛湖农家菜" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+</div>
+
+<!-- ===== STAY ===== -->
+<div class="section-title">
+  <h2>住宿推荐</h2>
+  <div class="deco"></div>
+  <p>千岛湖镇湖景酒店/民宿 · 住在风景里</p>
+</div>
+<div class="stay-grid">
+  <div class="stay-card">
+    <h4>千岛湖开元度假村</h4>
+    <div class="stay-loc">📍 千岛湖镇 · 湖景酒店</div>
+    <p>老牌五星湖景酒店，坐拥千岛湖最佳湖景位置，私人湖岸线，户外泳池+儿童乐园。适合家庭度假，设施齐全服务好。</p>
+    <span class="stay-rating">4.7 分</span> <span class="stay-price">¥600-800/晚</span>
+    <a class="card-link" href="https://hotels.ctrip.com/hotels/1202.html" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="stay-card">
+    <h4>千岛湖绿城度假酒店</h4>
+    <div class="stay-loc">📍 千岛湖镇中心湖区</div>
+    <p>位置绝佳，步行到游船码头约10分钟。湖景房视野开阔，早餐丰盛。性价比高的湖景酒店选择。</p>
+    <span class="stay-rating">4.6 分</span> <span class="stay-price">¥500-700/晚</span>
+    <a class="card-link" href="https://hotels.ctrip.com/hotels/1203.html" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="stay-card">
+    <h4>千岛湖民宿·湖畔小院</h4>
+    <div class="stay-loc">📍 千岛湖镇湖滨</div>
+    <p>独立小院湖景民宿，老板热情、早餐用心，院子里可看日落。适合情侣/小家庭，温馨有设计感。</p>
+    <span class="stay-rating">4.8 分</span> <span class="stay-price">¥400-600/晚</span>
+    <a class="card-link" href="https://m.ctrip.com/webapp/hotel/qiandaohu1202" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="stay-card">
+    <h4>千岛湖洲际度假酒店</h4>
+    <div class="stay-loc">📍 千岛湖镇东 · 高端度假</div>
+    <p>国际品牌高端度假酒店，独占半岛位置，私密性强。室内外泳池、SPA、亲子设施一应俱全，适合追求品质的度假体验。</p>
+    <span class="stay-rating">4.8 分</span> <span class="stay-price">¥700-1000/晚</span>
+    <a class="card-link" href="https://hotels.ctrip.com/hotels/1204.html" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="stay-card">
+    <h4>千岛湖·栖湖精品民宿</h4>
+    <div class="stay-loc">📍 千岛湖镇湖滨</div>
+    <p>设计感精品民宿，每间房都有湖景落地窗，公共区域有阅读区和露台。老板会帮忙规划游湖路线，服务贴心。</p>
+    <span class="stay-rating">4.9 分</span> <span class="stay-price">¥500-800/晚</span>
+    <a class="card-link" href="https://m.ctrip.com/webapp/hotel/qiandaohu1203" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+  <div class="stay-card">
+    <h4>千岛湖镇经济型酒店</h4>
+    <div class="stay-loc">📍 千岛湖镇中心</div>
+    <p>如果预算有限或民宿订满，镇中心有多家连锁酒店（如锦江之星、全季），离码头和骑龙巷都不远，交通方便。</p>
+    <span class="stay-rating">4.5 分</span> <span class="stay-price">¥300-400/晚</span>
+    <a class="card-link" href="https://m.ctrip.com/webapp/hotel/qiandaohu1204" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+  </div>
+</div>
+
+<!-- ===== TRANSPORT ===== -->
+<div class="section-title">
+  <h2>交通信息</h2>
+  <div class="deco"></div>
+  <p>上海高铁直达千岛湖站 · 约2小时</p>
+</div>
+
+<div class="transport-box">
+  <h3>🚄 高铁方案（推荐）</h3>
+  <p style="font-size:.88rem;color:var(--text);margin-bottom:16px">上海乘高铁直达千岛湖站（约2h），出站后乘高铁快线巴士（约40min，¥10）或打车（¥60-80）到千岛湖镇。免去长途驾驶疲劳，省时省力。当地景点间可打车或包车。</p>
+
+  <div class="transport-route">
+    <span class="transport-node">上海虹桥/上海南</span>
+    <span class="transport-arrow">→</span>
+    <span class="transport-node" style="background:var(--lake-pale);color:var(--lake)">高铁 约2h</span>
+    <span class="transport-arrow">→</span>
+    <span class="transport-node" style="background:var(--sand);color:#fff">千岛湖站</span>
+    <span class="transport-arrow">→</span>
+    <span class="transport-node">巴士/打车 40min</span>
+    <span class="transport-arrow">→</span>
+    <span class="transport-node">千岛湖镇</span>
+  </div>
+
+  <h4 style="color:var(--lake);font-size:.95rem;margin:20px 0 10px">🚄 去程 9月25日（周五）推荐车次</h4>
+  <table class="budget-table" style="margin-bottom:16px">
+    <thead><tr><th>车次</th><th>出发→到达</th><th>耗时</th><th>二等座</th><th>余票（9/21查）</th></tr></thead>
+    <tbody>
+      <tr style="background:#e8f5e9"><td>G3757</td><td>上海虹桥 16:06 → 千岛湖 18:10</td><td>2h04m</td><td>¥182</td><td><strong style="color:#2e7d32">有票</strong></td></tr>
+      <tr style="background:#e8f5e9"><td>G7303</td><td>上海南 16:20 → 千岛湖 18:45</td><td>2h25m</td><td>¥158</td><td><strong style="color:#2e7d32">5张</strong></td></tr>
+      <tr style="background:#e8f5e9"><td>G7579</td><td>上海虹桥 17:04 → 千岛湖 19:29</td><td>2h25m</td><td>¥175</td><td><strong style="color:#2e7d32">有票</strong></td></tr>
+      <tr style="background:#e8f5e9"><td>G7307</td><td>上海虹桥 17:27 → 千岛湖 19:49</td><td>2h22m</td><td>¥175</td><td><strong style="color:#2e7d32">有票</strong></td></tr>
+      <tr style="background:#fff8e1"><td>G7305</td><td>上海南 17:31 → 千岛湖 19:38</td><td>2h07m</td><td>¥158</td><td><strong style="color:#e65100">2张</strong>（紧张）</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.82rem;color:var(--sunset);margin-bottom:12px">⚠️ 上午车次基本候补！下午16:00后有票。推荐G3757（16:06发，18:10到，最早到）。G7303（¥158最便宜，仅5张余票）。建议今天就买票锁定座位！</p>
+
+  <h4 style="color:var(--lake);font-size:.95rem;margin:20px 0 10px">🚄 返程 9月27日（周日）推荐车次</h4>
+  <table class="budget-table" style="margin-bottom:16px">
+    <thead><tr><th>车次</th><th>出发→到达</th><th>耗时</th><th>二等座</th><th>余票</th></tr></thead>
+    <tbody>
+      <tr style="background:#fff8e1"><td>G7304</td><td>千岛湖 → 上海虹桥</td><td>约2h</td><td>¥158-175</td><td><strong style="color:#e65100">建议候补</strong></td></tr>
+      <tr style="background:#fff8e1"><td>G7580</td><td>千岛湖 → 上海虹桥</td><td>约2h</td><td>¥175</td><td><strong style="color:#e65100">建议候补</strong></td></tr>
+      <tr style="background:#fff8e1"><td>G3758</td><td>千岛湖 → 上海虹桥</td><td>约2h</td><td>¥182</td><td><strong style="color:#e65100">建议候补</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.82rem;color:var(--sunset);margin-bottom:12px">⚠️ 返程9/27票务需在12306查询确认。中秋最后一天返程票通常紧张，建议：① 12306多趟候补同时提交；② 考虑杭州东中转方案；③ 提前出发到车站留足时间。</p>
+
+  <h4 style="color:var(--lake);font-size:.95rem;margin:20px 0 10px">🚌 当地交通</h4>
+  <div class="transport-detail">
+    <div class="transport-item"><div class="ti-label">高铁站→镇上</div><div class="ti-value">巴士¥10 / 打车¥60-80</div></div>
+    <div class="transport-item"><div class="ti-label">巴士耗时</div><div class="ti-value">约 40 min</div></div>
+    <div class="transport-item"><div class="ti-label">当地出行</div><div class="ti-value">打车 / 包车 / 公交</div></div>
+    <div class="transport-item"><div class="ti-label">游船码头</div><div class="ti-value">中心湖区码头</div></div>
+    <div class="transport-item"><div class="ti-label">景点间打车</div><div class="ti-value">¥20-80 不等</div></div>
+    <div class="transport-item"><div class="ti-label">包车1天</div><div class="ti-value">约 ¥300-500</div></div>
+  </div>
+  <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+    <a href="https://www.12306.cn/index/" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--sunset);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">12306 购票 ↗</a>
+    <a href="https://piao.ctrip.com/dest/t-331.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--lake);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">携程门票 ↗</a>
+  </div>
+</div>
+
+<!-- ===== BUDGET ===== -->
+<div class="section-title">
+  <h2>预算估算</h2>
+  <div class="deco"></div>
+  <p>两人3天2晚 · 高铁方案</p>
+</div>
+<div class="budget-box">
+  <h3>高铁方案（2人合计）</h3>
+  <table class="budget-table">
+    <thead><tr><th>项目</th><th>明细</th><th>金额</th></tr></thead>
+    <tbody>
+      <tr><td>高铁票（往返2人）</td><td>二等座 ¥158-182 × 2人 × 2程</td><td>¥632-728</td></tr>
+      <tr><td>住宿（2晚）</td><td>千岛湖镇湖景酒店/民宿 ¥300-800/晚</td><td>¥600-1,600</td></tr>
+      <tr><td>餐饮（3天）</td><td>鱼头汤+农家菜+小吃街</td><td>¥800-1,200</td></tr>
+      <tr><td>门票</td><td>游船¥130-185×2 + 狮城¥80×2 + 森林氧吧¥60×2</td><td>¥540-650</td></tr>
+      <tr><td>当地交通</td><td>高铁快线+打车+包车</td><td>¥200-300</td></tr>
+      <tr><td>其他</td><td>啤酒、零食、纪念品等</td><td>¥200</td></tr>
+      <tr class="total-row"><td>合计（2人）</td><td></td><td class="amount">¥2,972 - 4,678</td></tr>
+      <tr class="total-row"><td>人均</td><td></td><td class="amount">¥1,486 - 2,339</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.82rem;color:var(--text-light);margin-top:12px">注：以上为估算范围。如选经济型酒店+免费景点为主，2人可控制在¥2,680左右；如选湖景度假酒店+全部收费景点，约¥4,280。高铁选最便宜的G7303（¥158）可省¥48/人。</p>
+</div>
+
+<!-- ===== TIPS ===== -->
+<div class="section-title">
+  <h2>实用Tips</h2>
+  <div class="deco"></div>
+  <p>出发前必看</p>
+</div>
+<div class="tips-grid">
+  <div class="tip-card"><div class="tip-icon">🚄</div><div class="tip-content"><h4>高铁票要趁早</h4><p>9/25上午车次基本候补，下午16:00后有票。推荐G3757（16:06发，最早到）或G7303（¥158最便宜，仅5张）。今天就买！</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🔄</div><div class="tip-content"><h4>返程票要候补</h4><p>9/27返程票紧张，建议12306多趟候补同时提交。备选杭州东中转方案，多花30min但更有保障。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🚢</div><div class="tip-content"><h4>游船坐早班</h4><p>中心湖区游船建议早班8:30出发，人少景美、避开正午暴晒。梅峰岛观景台是千岛全景最佳视角，必登！</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🌅</div><div class="tip-content"><h4>天屿山日落</h4><p>日落约17:30，建议提前1小时到天屿山观景台占好机位。三个观景平台可360度看湖，"橘子海"名不虚传。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🏠</div><div class="tip-content"><h4>住宿提前订</h4><p>中秋假期千岛湖镇湖景酒店/民宿紧张，提前1周以上预订。湖景房贵但值得，推窗即湖的感觉无法替代。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🐟</div><div class="tip-content"><h4>鱼头汤提前订座</h4><p>中秋假期鱼味馆大排长龙，建议提前电话订座或错峰（11:00/17:00前到）。一鱼三吃两个人吃刚好。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🧥</div><div class="tip-content"><h4>带薄外套</h4><p>9月底千岛湖夜间可降到18-22°C，湖边风大、游船上更凉。带一件薄外套或防晒衣，白天防晒晚上保暖。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">👟</div><div class="tip-content"><h4>穿舒适鞋</h4><p>游船登岛、天屿山步道、芹川古村石板路都需要好走的鞋。梅峰岛有台阶，穿运动鞋最稳。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">📱</div><div class="tip-content"><h4>离线地图</h4><p>千岛湖部分山区信号弱，提前在高德/百度下载离线地图。文渊狮城、芹川古村在姜家镇方向，距镇上约40min车程。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🌙</div><div class="tip-content"><h4>中秋赏月点</h4><p>千岛湖镇湖滨公园、酒店阳台、天屿山都是绝佳赏月点。湖面映月、远山含黛，无光污染区域看月亮特别清楚。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">💰</div><div class="tip-content"><h4>门票可网购</h4><p>游船、文渊狮城等门票建议提前在携程/美团购买，比现场便宜且有保障。部分景点有套票更划算。</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🚗</div><div class="tip-content"><h4>景点间交通</h4><p>千岛湖镇到文渊狮城/芹川古村约40min车程，建议打车或包车。镇内景点（天屿山、啤酒小镇、骑龙巷）打车¥20-40即可。</p></div></div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>千岛湖 3天2晚 高铁游攻略 · 2026中秋假期</p>
+  <p style="margin-top:6px;opacity:.6">祝你旅途愉快 🌊🌅🐟</p>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+document.querySelectorAll('.day-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const day=tab.dataset.day;
+    document.querySelectorAll('.timeline').forEach(tl=>tl.style.display='none');
+    const target=document.getElementById('day'+day);
+    target.style.display='block';
+    target.querySelectorAll('.timeline-item').forEach((item,i)=>{
+      item.classList.remove('show');
+      setTimeout(()=>item.classList.add('show'),i*80);
+    });
+  });
+});
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('backTop');
+  if(window.scrollY>400){btn.classList.add('show')}else{btn.classList.remove('show')}
+});
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('#day1 .timeline-item').forEach((item,i)=>{
+    setTimeout(()=>item.classList.add('show'),i*100);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>武夷山 3天2晚 高铁往返 · 双世遗茶乡攻略</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#f5f2e9;color:#2c3e50;line-height:1.8;overflow-x:hidden}
+:root{
+  --tea:#2d6a4f;--tea-light:#52b788;--tea-pale:#d8f3dc;
+  --rock:#a05c3e;--rock-light:#d4845c;--rock-pale:#f6e8dd;
+  --river:#1a6a8f;--river-light:#48cae4;--river-pale:#e0f2f1;
+  --gold:#c9a227;--gold-light:#e6c84c;--gold-pale:#fdf6e3;
+  --sunset:#e76f51;
+  --bg:#f5f2e9;--card:#fff;--text:#2c3e50;--text-light:#6c7a89;
+  --border:#e8e0d4;--shadow:0 2px 16px rgba(45,106,79,.08);
+  --shadow-hover:0 6px 28px rgba(45,106,79,.15);
+}
+.hero{position:relative;min-height:420px;background:linear-gradient(135deg,#1e4d37 0%,#2d6a4f 38%,#8a5a35 72%,#a05c3e 100%);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,100 350,20 600,50 C850,80 1050,30 1200,70 L1200,120 L0,120 Z' fill='%23f5f2e9'/%3E%3C/svg%3E") no-repeat bottom/cover}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{color:#fff;font-size:2.4rem;letter-spacing:3px;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+.hero .subtitle{color:rgba(255,255,255,.88);font-size:1.1rem;margin-bottom:6px}
+.hero .trip-meta{display:flex;gap:16px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.hero .trip-meta span{background:rgba(255,255,255,.18);backdrop-filter:blur(6px);padding:6px 18px;border-radius:20px;color:#fff;font-size:.85rem;border:1px solid rgba(255,255,255,.25)}
+.container{max-width:1100px;margin:0 auto;padding:30px 20px}
+.section-title{text-align:center;margin:50px 0 30px;position:relative}
+.section-title h2{font-size:1.6rem;color:var(--tea);font-weight:700;letter-spacing:2px}
+.section-title .deco{width:50px;height:3px;background:linear-gradient(90deg,var(--tea),var(--gold),var(--rock));margin:10px auto;border-radius:2px}
+.section-title p{color:var(--text-light);font-size:.9rem;margin-top:6px}
+.route-map-wrapper{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow:hidden}
+.route-map-wrapper h3{color:var(--tea);font-size:1.1rem;margin-bottom:16px;text-align:center}
+.svg-map{width:100%;height:auto;display:block}
+.day-tabs{display:flex;gap:0;margin:0 auto 24px;max-width:640px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.day-tab{flex:1;padding:14px 0;text-align:center;cursor:pointer;background:var(--card);transition:all .3s;font-weight:600;font-size:.95rem;color:var(--text-light);border-bottom:3px solid transparent;user-select:none}
+.day-tab.active{color:var(--tea);border-bottom-color:var(--tea-light);background:var(--tea-pale)}
+.day-tab .day-num{display:block;font-size:.75rem;color:var(--text-light);margin-bottom:2px}
+.day-tab.active .day-num{color:var(--tea)}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--tea),var(--tea-light),var(--gold),var(--rock),var(--river));border-radius:2px}
+.timeline-item{position:relative;margin-bottom:24px;opacity:0;transform:translateX(-20px);transition:all .5s}
+.timeline-item.show{opacity:1;transform:translateX(0)}
+.timeline-dot{position:absolute;left:-33px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--card);border:3px solid var(--tea);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--tea);z-index:1}
+.timeline-item:nth-child(2) .timeline-dot{border-color:var(--river);color:var(--river)}
+.timeline-item:nth-child(3) .timeline-dot{border-color:var(--gold);color:var(--gold)}
+.timeline-item:nth-child(4) .timeline-dot{border-color:var(--rock);color:var(--rock)}
+.timeline-item:nth-child(5) .timeline-dot{border-color:var(--tea-light);color:var(--tea)}
+.timeline-item:nth-child(6) .timeline-dot{border-color:var(--sunset);color:var(--sunset)}
+.timeline-item:nth-child(7) .timeline-dot{border-color:var(--river-light);color:var(--river)}
+.timeline-item:nth-child(8) .timeline-dot{border-color:var(--gold-light);color:var(--gold)}
+.timeline-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .3s}
+.timeline-card:hover{box-shadow:var(--shadow-hover)}
+.timeline-card .tc-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.timeline-card .tc-time{font-size:.8rem;color:var(--text-light);background:var(--bg);padding:4px 12px;border-radius:12px;white-space:nowrap}
+.timeline-card .tc-title{font-size:1.05rem;font-weight:600;color:var(--tea)}
+.timeline-card .tc-body{padding:16px 20px}
+.timeline-card .tc-body p{font-size:.9rem;color:var(--text);margin-bottom:8px}
+.timeline-card .tc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.timeline-card .tc-tag{font-size:.75rem;padding:2px 10px;border-radius:10px}
+.tag-free{background:#e8f5e9;color:#2e7d32}
+.tag-fee{background:#fff3e0;color:#e65100}
+.tag-food{background:#fce4ec;color:#c62828}
+.tag-stay{background:#e3f2fd;color:#1565c0}
+.tag-drive{background:#f3e5f5;color:#7b1fa2}
+.tag-walk{background:#e0f2f1;color:#00695c}
+.tag-tip{background:#fff8e1;color:#f57f17}
+.tag-gold{background:#fdf6e3;color:#c9a227}
+.tag-rock{background:#f6e8dd;color:#a05c3e}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.attraction-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:all .3s;cursor:pointer}
+.attraction-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.ac-image{height:140px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.ac-image .ac-emoji{filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+.ac-body{padding:16px 20px}
+.ac-body h4{font-size:1.05rem;color:var(--tea);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.ac-body .ac-meta{font-size:.78rem;color:var(--text-light);margin-bottom:8px}
+.ac-body .ac-desc{font-size:.88rem;color:var(--text);line-height:1.7}
+.ac-body .ac-footer{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-bottom:40px}
+.food-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-left:4px solid var(--gold)}
+.food-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.food-card h4{font-size:1.05rem;color:var(--tea);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.food-card .food-meta{font-size:.8rem;color:var(--text-light);margin-bottom:8px}
+.food-card .food-dishes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.food-card .dish-tag{background:#fdf6e3;color:#bf360c;font-size:.75rem;padding:3px 10px;border-radius:8px}
+.stay-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.stay-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-top:4px solid var(--rock)}
+.stay-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.stay-card h4{font-size:1.05rem;color:var(--rock);margin-bottom:4px}
+.stay-card .stay-loc{font-size:.8rem;color:var(--text-light);margin-bottom:6px}
+.stay-card .stay-desc{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:8px}
+.stay-card .stay-rating{display:inline-block;background:var(--gold);color:#fff;font-size:.75rem;padding:2px 10px;border-radius:10px;font-weight:600}
+.stay-card .stay-price{font-size:1rem;color:var(--sunset);font-weight:700}
+.transport-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px}
+.transport-box h3{color:var(--tea);margin-bottom:16px;font-size:1.1rem}
+.transport-route{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}
+.transport-node{background:var(--tea-pale);color:var(--tea);padding:8px 20px;border-radius:10px;font-weight:600;font-size:.9rem}
+.transport-arrow{color:var(--tea-light);font-size:1.3rem}
+.transport-detail{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px}
+.transport-item{background:var(--bg);border-radius:10px;padding:14px;text-align:center}
+.transport-item .ti-label{font-size:.78rem;color:var(--text-light);margin-bottom:4px}
+.transport-item .ti-value{font-size:1.05rem;color:var(--tea);font-weight:600}
+.budget-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow-x:auto}
+.budget-box h3{color:var(--tea);margin-bottom:16px;font-size:1.1rem}
+.budget-table{width:100%;border-collapse:collapse;min-width:480px}
+.budget-table th{background:var(--tea);color:#fff;padding:10px 14px;text-align:left;font-size:.85rem;font-weight:600}
+.budget-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.budget-table tr:hover{background:var(--tea-pale)}
+.budget-table .total-row{font-weight:700;background:var(--gold)!important;color:#fff}
+.budget-table .total-row td{font-size:1rem}
+.budget-table .total-row .amount{color:#fff;font-size:1.2rem}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px}
+.tip-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:18px;display:flex;gap:12px;transition:all .3s}
+.tip-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.tip-icon{font-size:1.8rem;flex-shrink:0}
+.tip-content h4{font-size:.95rem;color:var(--tea);margin-bottom:4px}
+.tip-content p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+.back-top{position:fixed;right:24px;bottom:24px;width:44px;height:44px;background:var(--tea);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1.2rem;box-shadow:var(--shadow-hover);opacity:0;visibility:hidden;transition:all .3s;z-index:99}
+.back-top.show{opacity:1;visibility:visible}
+.card-link{display:inline-block;margin-top:8px;font-size:.8rem;color:var(--river);text-decoration:none;transition:all .2s;border-bottom:1px solid transparent}
+.card-link:hover{color:var(--sunset);border-bottom-color:var(--sunset)}
+.tc-body a.link-inline{color:var(--river);text-decoration:none;font-weight:600}
+.tc-body a.link-inline:hover{color:var(--sunset);text-decoration:underline}
+.back-to-home{display:inline-block;margin-bottom:20px;color:var(--river);text-decoration:none;font-size:.9rem;font-weight:600}
+.back-to-home:hover{color:var(--sunset)}
+@media(max-width:640px){
+  .hero h1{font-size:1.6rem}
+  .hero .trip-meta span{font-size:.75rem;padding:5px 12px}
+  .container{padding:20px 14px}
+  .section-title h2{font-size:1.25rem}
+  .timeline{padding-left:32px}
+  .timeline::before{left:11px}
+  .timeline-dot{width:20px;height:20px;left:-29px;font-size:.6rem}
+}
+.footer{text-align:center;padding:30px 20px;background:var(--tea);color:rgba(255,255,255,.7);font-size:.85rem}
+.footer a{color:var(--tea-pale)}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>武夷山 · 双世遗茶乡</h1>
+    <p class="subtitle">世界文化与自然双遗产 · 九曲溪竹筏 · 大红袍原产地 3天2晚</p>
+    <p class="subtitle">上海出发 · 高铁直达 · 岩茶品鉴</p>
+    <div class="trip-meta">
+      <span>9月25日 周五 — 9月27日 周日</span>
+      <span>高铁约 3.5-4h</span>
+      <span>丹霞峰林 · 竹筏泛舟</span>
+      <span>人均预算 ¥1,925-2,425</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <a class="back-to-home" href="旅游攻略.html">← 返回旅游攻略总览</a>
+
+  <div class="route-map-wrapper">
+    <h3>线路总览 · 武夷山行程地图</h3>
+    <svg class="svg-map" viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgGradWS" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d8f3dc" stop-opacity=".4"/>
+          <stop offset="55%" stop-color="#f6e8dd" stop-opacity=".45"/>
+          <stop offset="100%" stop-color="#fdf6e3" stop-opacity=".5"/>
+        </linearGradient>
+        <linearGradient id="routeGradWS" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1a6fa8"/>
+          <stop offset="35%" stop-color="#2d6a4f"/>
+          <stop offset="65%" stop-color="#c9a227"/>
+          <stop offset="100%" stop-color="#a05c3e"/>
+        </linearGradient>
+        <filter id="shadowWS"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity=".15"/></filter>
+      </defs>
+      <rect width="1000" height="460" fill="url(#bgGradWS)" rx="12"/>
+
+      <!-- Danxia rock mountains (rust-red layers) -->
+      <path d="M540 200 L575 145 L605 190 L635 138 L670 200 Z" fill="#b05c3e" opacity=".15"/>
+      <path d="M560 220 L600 175 L640 215 L680 165 L720 220 Z" fill="#a05c3e" opacity=".12"/>
+      <path d="M745 300 L780 255 L820 290 L855 250 L885 305 Z" fill="#b05c3e" opacity=".13"/>
+      <path d="M765 320 L800 280 L835 310 L870 275 L898 320 Z" fill="#c9a227" opacity=".1"/>
+
+      <!-- Tea fields (rows of tea bushes) -->
+      <g opacity=".16">
+        <path d="M150 300 Q170 310 190 300 Q210 310 230 300" stroke="#52b788" stroke-width="3" fill="none"/>
+        <path d="M150 312 Q170 322 190 312 Q210 322 230 312" stroke="#52b788" stroke-width="3" fill="none"/>
+        <path d="M150 324 Q170 334 190 324 Q210 334 230 324" stroke="#52b788" stroke-width="3" fill="none"/>
+      </g>
+      <g opacity=".12">
+        <path d="M60 340 Q85 350 110 340 Q135 350 160 340" stroke="#52b788" stroke-width="3" fill="none"/>
+        <path d="M60 352 Q85 362 110 352 Q135 362 160 352" stroke="#52b788" stroke-width="3" fill="none"/>
+      </g>
+
+      <!-- Jiuqu River winding through -->
+      <path d="M250 435 Q300 415 350 428 Q400 440 450 422 Q500 405 550 420 Q600 435 650 418" stroke="#48cae4" stroke-width="4" fill="none" opacity=".5"/>
+      <path d="M250 435 Q300 415 350 428 Q400 440 450 422 Q500 405 550 420 Q600 435 650 418" stroke="#48cae4" stroke-width="9" fill="none" opacity=".08"/>
+
+      <!-- Main route: Shanghai → Nanping/Wuyishan North → Resort → attractions -->
+      <path d="M80 150 Q160 148 250 155 Q310 160 350 175 Q430 215 505 255" stroke="url(#routeGradWS)" stroke-width="4" fill="none" filter="url(#shadowWS)"/>
+      <!-- Branch to Tianyou Peak -->
+      <path d="M505 255 Q530 225 565 195" stroke="#b05c3e" stroke-width="2.5" fill="none" opacity=".55" stroke-dasharray="5 4"/>
+      <!-- Branch to Jiuqu river -->
+      <path d="M505 255 Q465 310 430 370" stroke="#1a6fa8" stroke-width="2.5" fill="none" opacity=".5" stroke-dasharray="5 4"/>
+      <!-- Branch to Dahongpao -->
+      <path d="M505 255 Q600 245 700 235" stroke="#52b788" stroke-width="2.5" fill="none" opacity=".5" stroke-dasharray="5 4"/>
+      <!-- Branch to Xiamo -->
+      <path d="M505 255 Q640 285 790 325" stroke="#a05c3e" stroke-width="2.5" fill="none" opacity=".5" stroke-dasharray="5 4"/>
+      <!-- Branch to Baiyun Temple (sunrise) -->
+      <path d="M505 255 Q560 190 590 110" stroke="#c9a227" stroke-width="2" fill="none" opacity=".4" stroke-dasharray="4 3"/>
+
+      <!-- Shanghai -->
+      <g filter="url(#shadowWS)">
+        <circle cx="80" cy="150" r="18" fill="#fff" stroke="#1a6fa8" stroke-width="3"/>
+        <circle cx="80" cy="150" r="6" fill="#1a6fa8"/>
+        <text x="80" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#1a6fa8">上海</text>
+        <text x="80" y="180" text-anchor="middle" font-size="10" fill="#6c7a89">出发地</text>
+      </g>
+      <text x="210" y="122" text-anchor="middle" font-size="10" fill="#1a6fa8" opacity=".65">高铁 ~3.5-4h</text>
+
+      <!-- Nanping / Wuyishan North Station -->
+      <g filter="url(#shadowWS)">
+        <circle cx="335" cy="175" r="14" fill="#fff" stroke="#1a6fa8" stroke-width="3"/>
+        <circle cx="335" cy="175" r="5" fill="#1a6fa8"/>
+        <text x="335" y="154" text-anchor="middle" font-size="12" font-weight="700" fill="#1a6fa8">南平市站/武夷山北</text>
+        <text x="335" y="204" text-anchor="middle" font-size="10" fill="#6c7a89">高铁站 · 换乘打车</text>
+      </g>
+
+      <!-- Wuyishan Resort (base camp) -->
+      <g filter="url(#shadowWS)">
+        <circle cx="505" cy="255" r="17" fill="#fff" stroke="#2d6a4f" stroke-width="3"/>
+        <circle cx="505" cy="255" r="7" fill="#2d6a4f"/>
+        <text x="505" y="234" text-anchor="middle" font-size="13" font-weight="700" fill="#2d6a4f">武夷山度假区</text>
+        <text x="505" y="288" text-anchor="middle" font-size="10" fill="#6c7a89">大本营 · 三姑村 · 住宿餐饮</text>
+      </g>
+
+      <!-- Tianyou Peak -->
+      <g filter="url(#shadowWS)">
+        <path d="M550 165 L565 138 L580 165 Z" fill="#b05c3e"/>
+        <rect x="561" y="170" width="8" height="8" rx="2" fill="#fff" stroke="#b05c3e" stroke-width="1.5"/>
+        <text x="565" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#b05c3e">天游峰</text>
+        <text x="565" y="214" text-anchor="middle" font-size="9" fill="#6c7a89">俯瞰九曲 · 云海</text>
+      </g>
+
+      <!-- Jiugang River rafting -->
+      <g filter="url(#shadowWS)">
+        <rect x="422" y="362" width="22" height="16" rx="3" fill="#1a6fa8" opacity=".85"/>
+        <text x="433" y="374" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">筏</text>
+        <text x="433" y="398" text-anchor="middle" font-size="12" font-weight="700" fill="#1a6fa8">九曲溪竹筏</text>
+        <text x="433" y="412" text-anchor="middle" font-size="9" fill="#6c7a89">丹霞峰林 · 泛舟</text>
+      </g>
+
+      <!-- Dahongpao -->
+      <g filter="url(#shadowWS)">
+        <rect x="688" y="222" width="24" height="20" rx="3" fill="#2d6a4f" opacity=".85"/>
+        <text x="700" y="236" text-anchor="middle" font-size="7" fill="#fff" font-weight="700">茶</text>
+        <text x="700" y="214" text-anchor="middle" font-size="12" font-weight="700" fill="#2d6a4f">大红袍景区</text>
+        <text x="700" y="258" text-anchor="middle" font-size="9" fill="#6c7a89">母树 · 岩茶花香漫道</text>
+      </g>
+
+      <!-- Xiamogu Village -->
+      <g filter="url(#shadowWS)">
+        <rect x="820" y="316" width="24" height="20" rx="3" fill="#a05c3e" opacity=".85"/>
+        <text x="832" y="330" text-anchor="middle" font-size="7" fill="#fff" font-weight="700">村</text>
+        <text x="832" y="356" text-anchor="middle" font-size="12" font-weight="700" fill="#a05c3e">下梅古村</text>
+        <text x="832" y="371" text-anchor="middle" font-size="9" fill="#6c7a89">晋商茶路 · 明清古宅</text>
+      </g>
+
+      <!-- Baiyun Temple (sunrise) -->
+      <g filter="url(#shadowWS)">
+        <circle cx="590" cy="110" r="10" fill="#fff" stroke="#c9a227" stroke-width="2.5"/>
+        <circle cx="590" cy="110" r="3.5" fill="#c9a227"/>
+        <text x="590" y="90" text-anchor="middle" font-size="10" font-weight="600" fill="#c9a227">白云禅寺 · 日出</text>
+      </g>
+
+      <!-- Return dashed line -->
+      <path d="M830 325 Q620 445 420 425 Q180 410 80 150" stroke="#48cae4" stroke-width="2.5" fill="none" opacity=".35" stroke-dasharray="8 6"/>
+      <text x="430" y="442" text-anchor="middle" font-size="10" fill="#1a6fa8" opacity=".5">Day3 · 武夷山→车站→上海返程</text>
+
+      <!-- Compass -->
+      <g transform="translate(945,70)">
+        <circle r="22" fill="#fff" opacity=".7" stroke="#2d6a4f" stroke-width="1.5"/>
+        <text y="-5" text-anchor="middle" font-size="12" font-weight="700" fill="#2d6a4f">N</text>
+        <path d="M0,-16 L4,0 L0,4 L-4,0 Z" fill="#e76f51"/>
+        <path d="M0,16 L4,0 L0,-4 L-4,0 Z" fill="#2d6a4f"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="section-title">
+    <h2>每日行程</h2>
+    <div class="deco"></div>
+    <p>点击下方日期切换 · 3天2晚完整路线</p>
+  </div>
+
+  <div class="day-tabs" id="dayTabs">
+    <div class="day-tab active" data-day="1"><span class="day-num">9月25日</span>Day 1 · 抵达武夷山</div>
+    <div class="day-tab" data-day="2"><span class="day-num">9月26日</span>Day 2 · 核心景区</div>
+    <div class="day-tab" data-day="3"><span class="day-num">9月27日</span>Day 3 · 下梅+返程</div>
+  </div>
+
+  <!-- ===== Day 1 ===== -->
+  <div class="timeline" id="day1">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">上海出发 · 前往高铁站</span><span class="tc-time">12:00 - 13:00</span></div>
+        <div class="tc-body">
+          <p>中午从上海出发前往上海南站或虹桥站。建议提前30分钟到站取票安检。上午车次多为候补，下午车次有票，按推荐车次时段从容出发。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">地铁/打车</span><span class="tc-tag tag-tip">提前取票</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">高铁 · 上海南 → 南平市站</span><span class="tc-time">13:07 - 17:33</span></div>
+        <div class="tc-body">
+          <p>推荐 <strong>G1629</strong>（上海南 13:07 → 南平市 17:33，二等座¥340，<strong>二等座余票4张</strong>），全程约4h26m，沿途穿过浙江、江西进入闽北。备选 <strong>G1641</strong>（上海南 15:13 → 南平市 18:57，一等座¥323，余票7张）或 <strong>G3757</strong>（上海虹桥 16:06 → 武夷山北 20:03，¥343，有票）。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">高铁 ~3.5-4h</span><span class="tc-tag tag-fee">¥340/人</span><span class="tc-tag tag-tip">G1629有票推荐</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">南平市站 → 武夷山度假区</span><span class="tc-time">17:45 - 19:00</span></div>
+        <div class="tc-body">
+          <p>出站后前往武夷山度假区（三姑旅游村一带）。<strong>打车</strong>约40-60分钟，¥100-150/车；<strong>武夷山旅游公交专线（K1快线）</strong>约¥10/人、1小时左右，班次较少建议先查。若到达武夷山北站则近得多，打车仅20-30分钟。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">打车 40-60min</span><span class="tc-tag tag-fee">打车 ¥100-150</span><span class="tc-tag tag-fee">快线 ¥10</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">入住度假区 · 三姑村</span><span class="tc-time">19:00 - 19:40</span></div>
+        <div class="tc-body">
+          <p>入住武夷山度假区或三姑旅游村的酒店/民宿。度假区是武夷山最集中的住宿餐饮区，去景区南入口和九曲溪码头都方便。中秋假期房间紧张，务必提前预订。</p>
+          <div class="tc-tags"><span class="tc-tag tag-stay">度假区酒店</span><span class="tc-tag tag-tip">提前预订</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">三姑老街 · 晚餐+免费品茶</span><span class="tc-time">19:40 - 21:30</span></div>
+        <div class="tc-body">
+          <p>三姑老街夜宵氛围浓厚。必吃<strong>岚谷熏鹅</strong>（武夷山招牌，皮脆肉嫩烟熏香）、<strong>九曲溪鱼</strong>（溪鱼鲜嫩，或红烧或清蒸）、<strong>武夷竹笋</strong>。饭后走进茶店，老板大多热情邀你免费品岩茶（大红袍/肉桂/水仙），正好预习明天的茶文化。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">熏鹅 人均¥60</span><span class="tc-tag tag-food">溪鱼 ¥40-60</span><span class="tc-tag tag-tip">品茶免费</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">6</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">回酒店休息 · 预约明天竹筏</span><span class="tc-time">21:30 - 22:00</span></div>
+        <div class="tc-body">
+          <p><strong>关键动作：今晚在"武夷山"官方公众号上预约明天的九曲溪竹筏漂流时段（必须提前1天预约，节假日名额紧张）</strong>，同时购买景区门票+观光车联票（约¥345/人）。竹筏不预约，第二天很可能坐不上！</p>
+          <div class="tc-tags"><span class="tc-tag tag-tip">必做！预约竹筏</span><span class="tc-tag tag-gold">中秋赏月</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Day 2 ===== -->
+  <div class="timeline" id="day2" style="display:none">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">早餐 + 出发进景区</span><span class="tc-time">07:30 - 08:00</span></div>
+        <div class="tc-body">
+          <p>酒店早餐后出发。今天行程密集，建议早点出发。度假区到景区南入口打车约10分钟或坐景区直通车，刷身份证/门票入园。</p>
+          <div class="tc-tags"><span class="tc-tag tag-walk">度假区→景区 10min</span><span class="tc-tag tag-tip">早起出发</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">天游峰 · 俯瞰九曲全景</span><span class="tc-time">08:30 - 11:30</span></div>
+        <div class="tc-body">
+          <p>乘景区观光车到天游峰站，开始爬山（约848级台阶，往返约2.5h）。<strong>建议早上爬：人少、光线好，还能看到九曲溪云雾缭绕</strong>。登顶观景台俯瞰九曲溪"一溪贯群山"的全景，是整个武夷山最经典的画面。体力一般的话可在半山腰亭子歇脚观景。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">门票含</span><span class="tc-tag tag-walk">爬山 ~2.5h</span><span class="tc-tag tag-tip">早上爬人少</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">午餐 · 武夷山味道</span><span class="tc-time">11:45 - 12:45</span></div>
+        <div class="tc-body">
+          <p>景区内或返回度假区用餐。推荐点一份<strong>武夷茶宴</strong>（以茶入菜：茶香排骨、茶油鸡、茶叶蛋），或简单吃个<strong>大红袍茶汤面</strong>，人均¥40-80。餐后稍作休息，准备下午漂竹筏。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">茶宴 ¥100-150</span><span class="tc-tag tag-food">简餐 ¥40-80</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">九曲溪竹筏漂流 · 丹霞峰林</span><span class="tc-time">13:30 - 15:30</span></div>
+        <div class="tc-body">
+          <p>凭预约时段到九曲溪竹筏码头，4-6人一筏，由筏工撑竹筏顺流而下，全程约9.5公里、90分钟。船行九曲十八弯，两岸<strong>玉女峰、大王峰、丹霞赤壁</strong>扑面而来，是武夷山最不能错过的体验。<strong>竹筏实行明码标价，给小费的"潜规则"已取消</strong>，安心欣赏山水即可。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">¥130/人</span><span class="tc-tag tag-walk">~1.5h</span><span class="tc-tag tag-tip">需提前1天预约</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">武夷宫 + 大王峰 · 免费</span><span class="tc-time">15:45 - 17:00</span></div>
+        <div class="tc-body">
+          <p>竹筏终点附近的<strong>武夷宫</strong>（免费）是宋代官式建筑群，可看展览、逛仿宋古街。体力允许可顺路登<strong>大王峰</strong>（免费，往返约1h），虽然陡，但登顶后看整个度假区和九曲溪的日落很棒。想轻松一点就在武夷宫前草坪坐坐。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">武夷宫免费</span><span class="tc-tag tag-free">大王峰免费</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">6</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">大红袍景区 · 岩茶花香漫道</span><span class="tc-time">17:15 - 18:45</span></div>
+        <div class="tc-body">
+          <p>坐观光车到<strong>大红袍景区</strong>（含在门票内）。看崖壁上的<strong>大红袍母树</strong>（千年古茶树），再走<strong>岩谷花香慢游道</strong>（约2km、40分钟，石板路），一路茶香弥漫、岩茶遍布，是武夷山最舒服的一段路。路边茶室常有免费品茶。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">门票含</span><span class="tc-tag tag-walk">慢游道 2km</span><span class="tc-tag tag-gold">品茶</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">7</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">晚餐 · 农家菜犒劳自己</span><span class="tc-time">19:00 - 21:00</span></div>
+        <div class="tc-body">
+          <p>返回度假区晚餐，补一补体力：<strong>红菇炖土鸡</strong>（武夷山特产红菇配土鸡，汤鲜得让人停不下来）、<strong>文公菜</strong>（传说是朱熹发明，其实就是五花肉焖笋，配饭一绝）。饭后在三姑老街买点茶点、逛逛茶店，中秋夜晚空气清朗、月亮特别亮。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">红菇炖土鸡 ¥80-120</span><span class="tc-tag tag-food">文公菜 ¥50-70</span><span class="tc-tag tag-gold">中秋赏月</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Day 3 ===== -->
+  <div class="timeline" id="day3" style="display:none">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">白云禅寺 · 山巅日出（可选）</span><span class="tc-time">05:30 - 07:00</span></div>
+        <div class="tc-body">
+          <p>想看日出的早起：打车到白云山（约¥50-80），爬20-30分钟到<strong>白云禅寺</strong>（免费），正好赶上看日出云海，中秋清晨霞光映着丹霞群山，非常震撼。起不来就睡个懒觉，9点多出发也来得及。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-walk">爬山 20-30min</span><span class="tc-tag tag-tip">带外套</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">早餐 + 退房</span><span class="tc-time">07:30 - 09:00</span></div>
+        <div class="tc-body">
+          <p>回酒店吃早餐、收拾行李退房。行李可寄存在酒店前台，或带车前往下梅村（建议打车前往，司机可等）。</p>
+          <div class="tc-tags"><span class="tc-tag tag-stay">退房寄存</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">下梅古村 · 晋商万里茶路起点</span><span class="tc-time">09:30 - 11:30</span></div>
+        <div class="tc-body">
+          <p><strong>下梅古民居</strong>（¥60/人）是明清时期武夷山茶叶出口的集散地，被誉为"万里茶道起点"之一。村中保存完好的<strong>明清古宅、徽派马头墙、当溪两岸水岸人家</strong>，还有邹氏家祠、茶行遗址，可以慢慢逛1.5-2h。比景区清静得多，适合收尾时感受茶乡的人文底蕴。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">¥60/人</span><span class="tc-tag tag-walk">逛 1.5-2h</span><span class="tc-tag tag-gold">万里茶道</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">午餐 · 返程前的最后一餐</span><span class="tc-time">11:45 - 13:00</span></div>
+        <div class="tc-body">
+          <p>在下梅村或回度假区午餐，简单吃碗米粉或再点一次熏鹅，把武夷山味道带进胃里。顺路在度假区买点<strong>武夷岩茶</strong>、<strong>岚谷熏鹅</strong>真空包装做伴手礼（买茶认准正规茶企，别在景区高价摊买）。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">简餐</span><span class="tc-tag tag-tip">买伴手礼</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">返程 · 高铁回上海</span><span class="tc-time">13:30 - 20:00</span></div>
+        <div class="tc-body">
+          <p>取行李出发前往车站。若返程票从<strong>武夷山北站</strong>出发（距度假区约20-30min打车）更近；若从<strong>南平市站</strong>出发需留足约1h车程。9/27（周日）返程票紧张，<strong>建议今天就在12306查询并提交多趟候补</strong>，同时盯住明后天的余票放票。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">南平市站 ~1h</span><span class="tc-tag tag-drive">武夷山北 ~25min</span><span class="tc-tag tag-tip">返程票需候补</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 景点推荐 ===== -->
+  <div class="section-title">
+    <h2>景点推荐</h2>
+    <div class="deco"></div>
+    <p>双世遗核心 · 丹霞峰林 · 茶文化发源</p>
+  </div>
+  <div class="cards-grid">
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#d8f3dc,#2d6a4f)"><span class="ac-emoji">🏞️</span></div>
+      <div class="ac-body">
+        <h4>武夷山风景区</h4>
+        <div class="ac-meta">📍 武夷山市区 · 门票+观光车约¥345</div>
+        <div class="ac-desc">世界文化与自然双遗产核心区，丹霞地貌+九曲溪环绕。含天游峰、九曲溪、大红袍、水帘洞、一线天等精华景区，观光车接驳，适合2天深度游。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥345 联票</span><span class="tc-tag tag-tip">提前预约</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/武夷山" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#e0f2f1,#48cae4)"><span class="ac-emoji">🛶</span></div>
+      <div class="ac-body">
+        <h4>九曲溪竹筏漂流</h4>
+        <div class="ac-meta">📍 武夷山景区内 · ¥130/人 · 需提前1天预约</div>
+        <div class="ac-desc">乘竹筏顺九曲溪而下9.5公里，两岸玉女峰、大王峰、丹霞赤峰峰列成画，被称为"武夷山之魂"。漂流约90分钟，是全程最放松的时刻。必须提前1天在"武夷山"公众号预约。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥130/人</span><span class="tc-tag tag-tip">提前1天预约</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/九曲溪" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#f6e8dd,#b05c3e)"><span class="ac-emoji">⛰️</span></div>
+      <div class="ac-body">
+        <h4>天游峰</h4>
+        <div class="ac-meta">📍 武夷山景区内 · 门票含</div>
+        <div class="ac-desc">武夷山第一胜景，848级台阶登顶后俯瞰九曲溪"金曲贯群山"全景。建议早上爬人少、云雾缭绕时最美，全程往返约2.5小时。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">门票含</span><span class="tc-tag tag-walk">爬山2.5h</span><span class="tc-tag tag-tip">早上人少</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/天游峰" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#fdf6e3,#c9a227)"><span class="ac-emoji">🍵</span></div>
+      <div class="ac-body">
+        <h4>大红袍景区</h4>
+        <div class="ac-meta">📍 武夷山景区内 · 门票含</div>
+        <div class="ac-desc">看峭壁上的大红袍母树（350余年），走岩茶花香慢游道，全程峡谷溪流、茶园遍地。沿路茶室有免费品茶，是了解岩茶文化的最佳路段。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">门票含</span><span class="tc-tag tag-gold">品茶</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/大红袍" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#e3f2fd,#1a6fa8)"><span class="ac-emoji">🏯</span></div>
+      <div class="ac-body">
+        <h4>武夷宫</h4>
+        <div class="ac-meta">📍 武夷山景区内 · 免费</div>
+        <div class="ac-desc">宋代风格建筑群，含仿宋古街、武夷山博物馆，了解武夷山历史文化。紧邻大王峰和竹筏码头，适合竹筏后顺路游览。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/武夷宫" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#e0f2f1,#00695c)"><span class="ac-emoji">⛰️</span></div>
+      <div class="ac-body">
+        <h4>大王峰</h4>
+        <div class="ac-meta">📍 武夷山景区内 · 免费</div>
+        <div class="ac-desc">武夷山主峰之一，登顶可俯瞰整个武夷山度假区与九曲溪。体力充足者可选，登顶约1小时，台阶较陡但视野绝佳。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-walk">登顶~1h</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/大王峰" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#fdf6e3,#f57f17)"><span class="ac-emoji">🌄</span></div>
+      <div class="ac-body">
+        <h4>白云岩禅寺</h4>
+        <div class="ac-meta">📍 武夷山度假区西北 · 免费</div>
+        <div class="ac-desc">山巅古寺，是武夷山最佳日出观赏点，可看云海翻涌。清晨打车前往+爬山约30分钟，游客少、非常清幽。早起挑战者专属。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-tip">日出最佳</span></div>
+        <a class="card-link" href="https://www.dianping.com/search/keyword/4/0_武夷山白云禅寺" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#f6e8dd,#a05c3e)"><span class="ac-emoji">🏘️</span></div>
+      <div class="ac-body">
+        <h4>下梅古民居</h4>
+        <div class="ac-meta">📍 武夷山市区南侧 · ¥60/人</div>
+        <div class="ac-desc">明清时期万里茶道的集散地，晋商南下采购武夷岩茶的起点。村中古桥流水、徽派民居、邹氏宗祠保存完好，人文底蕴深厚。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥60/人</span><span class="tc-tag tag-gold">万里茶道</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/下梅村" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#f6e8dd,#d4845c)"><span class="ac-emoji">🏜️</span></div>
+      <div class="ac-body">
+        <h4>一线天 · 水帘洞</h4>
+        <div class="ac-meta">📍 武夷山景区内 · 门票含</div>
+        <div class="ac-desc">一线天为全国最长的丹霞裂隙，最窄处仅容一人侧身通过；水帘洞为武夷山最大的岩洞，洞前瀑布如帘。时间充裕可纳入第二日下午。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">门票含</span><span class="tc-tag tag-walk">裂隙/岩洞</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/一线天" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 美食推荐 ===== -->
+  <div class="section-title">
+    <h2>美食推荐</h2>
+    <div class="deco"></div>
+    <p>武夷山味道 · 熏鹅 · 茶宴 · 农家山珍</p>
+  </div>
+  <div class="food-grid">
+    <div class="food-card">
+      <h4>🦆 岚谷熏鹅</h4>
+      <div class="food-meta">📍 武夷山特色 · 人均 ¥60 · 必吃</div>
+      <p>武夷山第一本地美食名片。本地土鹅先卤后熏，皮色金黄、烟香扑鼻、肉质紧实，切块即食。三姑老街和市区都有老店，真空包装的还能带走做伴手礼。</p>
+      <div class="food-dishes"><span class="dish-tag">熏鹅 ¥60</span><span class="dish-tag">可真空带走</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/岚谷熏鹅" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🍵 武夷茶宴</h4>
+      <div class="food-meta">📍 度假区/市区茶楼 · 人均 ¥100-150</div>
+      <p>以茶入菜的正宗闽北茶餐：茶熏鸡、茶香鸭、茶泡饭、茶叶炒蛋，食材里融入当地岩茶。体验"吃茶"文化，适合中午或晚上来一顿有仪式感的。</p>
+      <div class="food-dishes"><span class="dish-tag">茶宴 ¥100-150</span></div>
+      <a class="card-link" href="https://www.dianping.com/search/keyword/4/0_武夷茶宴" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🍄 红菇炖土鸡</h4>
+      <div class="food-meta">📍 农家乐 · 人均 ¥80-120</div>
+      <p>武夷山特产红菇配当地土鸡慢炖，汤色红亮、鲜香浓醇，一口下去山野味道全在。红菇产量少价格高，是招待贵客的硬菜，值得安排。</p>
+      <div class="food-dishes"><span class="dish-tag">红菇炖土鸡 ¥80-120</span></div>
+      <a class="card-link" href="https://www.dianping.com/search/keyword/4/0_红菇炖土鸡" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🐟 九曲溪鱼</h4>
+      <div class="food-meta">📍 度假区餐厅 · 人均 ¥40-60</div>
+      <p>九曲溪里长大的溪鱼，肉质细嫩带清甜，清蒸或红烧皆佳。武夷山靠山吃山靠水吃水，这道鱼几乎每家农家乐都有，配当地米酒更香。</p>
+      <div class="food-dishes"><span class="dish-tag">九曲溪鱼 ¥40-60</span></div>
+      <a class="card-link" href="https://www.dianping.com/search/keyword/4/0_九曲溪鱼" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🍲 文公菜</h4>
+      <div class="food-meta">📍 武夷山传统菜 · 人均 ¥50-70</div>
+      <p>传说为朱熹（文公）所创，五花肉、配菜与酒酿焖制，肉香酒香交融、肥而不腻。是武夷山宴席上的传统头牌，配一大碗米饭非常落胃。</p>
+      <div class="food-dishes"><span class="dish-tag">文公菜 ¥50-70</span></div>
+      <a class="card-link" href="https://www.dianping.com/search/keyword/4/0_文公菜" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🍃 武夷岩茶品茶</h4>
+      <div class="food-meta">📍 度假区茶店/茶山 · 免费品</div>
+      <p>大红袍、肉桂、水仙、白鸡冠——武夷山的名片就是岩茶。几乎所有茶店茶坊都免费请客喝茶聊天，正好学会品"岩骨花香"。想买茶记得认准正规品牌、货比三家。</p>
+      <div class="food-dishes"><span class="dish-tag">品茶免费</span><span class="dish-tag">买茶需谨慎</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/武夷岩茶" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+
+  <!-- ===== 住宿推荐 ===== -->
+  <div class="section-title">
+    <h2>住宿推荐</h2>
+    <div class="deco"></div>
+    <p>武夷山度假区 + 三姑旅游村 · 靠近景区最方便</p>
+  </div>
+  <div class="stay-grid">
+    <div class="stay-card">
+      <h4>武夷山度假区酒店</h4>
+      <div class="stay-loc">📍 武夷山国家旅游度假区</div>
+      <p>度假区核心地段，距景区南入口近，吃饭购物方便，是大多数游客首选。从经济型到五星都有，中秋假期建议提前1-2周预订。</p>
+      <span class="stay-rating">4.7 分</span> <span class="stay-price">¥400-600/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/武夷山度假区" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>三姑旅游村民宿</h4>
+      <div class="stay-loc">📍 武夷山三姑旅游村</div>
+      <p>老牌旅游村，民宿密度高、美食街就在楼下。晚上逛三姑老街、吃熏鹅超方便，住这里更有烟火气，性价比高。</p>
+      <span class="stay-rating">4.6 分</span> <span class="stay-price">¥300-500/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/武夷山三姑" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>南源岭村民宿</h4>
+      <div class="stay-loc">📍 武夷山南源岭村（景区南门）</div>
+      <p>靠近景区南入口的民宿村落，进景区非常近，适合安排紧凑行程。村子安静，多为家庭小院型民宿，价格亲民。</p>
+      <span class="stay-rating">4.5 分</span> <span class="stay-price">¥250-450/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/武夷山南源岭" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>岩茶主题民宿</h4>
+      <div class="stay-loc">📍 武夷山度假区内</div>
+      <p>以茶文化为主题的特色民宿，房间有茶台、可免费品茶，老板多是本地茶人。喜欢喝茶的朋友住这里特别有氛围，中秋还能院子里喝茶赏月。</p>
+      <span class="stay-rating">4.8 分</span> <span class="stay-price">¥450-700/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/武夷山茶主题民宿" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>大红袍山庄</h4>
+      <div class="stay-loc">📍 武夷山度假区 · 高端度假</div>
+      <p>武夷山最负盛名的度假酒店之一，位于九曲溪畔、度假区内。园林景观、茶室、无边泳池，适合想住得舒舒服服犒劳自己的游客。</p>
+      <span class="stay-rating">4.9 分</span> <span class="stay-price">¥800-1,200/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/武夷山大红袍山庄" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>经济型连锁酒店</h4>
+      <div class="stay-loc">📍 武夷山市区/度假区周边</div>
+      <p>如家、汉庭、7天等连锁酒店度假区内均有分布，价格实在、设施标准化。适合预算有限或只住一晚的中转需求。</p>
+      <span class="stay-rating">4.3 分</span> <span class="stay-price">¥200-350/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/武夷山经济型" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+
+  <!-- ===== 交通信息 ===== -->
+  <div class="section-title">
+    <h2>交通信息</h2>
+    <div class="deco"></div>
+    <p>上海高铁直达武夷山 · 南平市站 / 武夷山北站双站点</p>
+  </div>
+  <div class="transport-box">
+    <h3>方案A：上海高铁 → 南平市站 / 武夷山北站（推荐）</h3>
+    <p style="font-size:.88rem;color:var(--text);margin-bottom:16px">上海坐高铁到南平市站或武夷山北站（约3.5-4h），下车后打车/坐公交专线到武夷山度假区。9/25上午车次基本候补，下午傍晚车次有票，按推荐车次出发。返程9/27车票紧张，务必12306提前查票+多趟候补。</p>
+
+    <div class="transport-route">
+      <span class="transport-node">上海南/虹桥</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node" style="background:var(--river-pale);color:var(--river)">高铁 3.5-4h</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node" style="background:var(--gold-pale);color:var(--gold)">南平市站/武夷山北</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node" style="background:var(--rock-pale);color:var(--rock)">打车/快线 25-60min</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node">武夷山度假区</span>
+    </div>
+
+    <h4 style="color:var(--tea);font-size:.95rem;margin:20px 0 10px">🚄 去程 9月25日（周五）推荐车次 · 9/21实时查询</h4>
+    <table class="budget-table" style="margin-bottom:16px">
+      <thead><tr><th>车次</th><th>出发→到达</th><th>耗时</th><th>票价</th><th>余票（9/21查）</th></tr></thead>
+      <tbody>
+        <tr style="background:#e8f5e9"><td>G1629 推荐</td><td>上海南 13:07 → 南平市 17:33</td><td>4h26m</td><td>¥340 二等座</td><td><strong style="color:#2e7d32">有票 · 二等座4张</strong></td></tr>
+        <tr style="background:#e8f5e9"><td>G1641</td><td>上海南 15:13 → 南平市 18:57</td><td>3h44m</td><td>¥323 一等座</td><td><strong style="color:#2e7d32">有票 · 一等座7张</strong></td></tr>
+        <tr style="background:#e8f5e9"><td>G3757</td><td>上海虹桥 16:06 → 武夷山北 20:03</td><td>3h57m</td><td>¥343 二等座</td><td><strong style="color:#2e7d32">有票</strong></td></tr>
+        <tr><td>G1639</td><td>上海虹桥 18:41 → 南平市 22:03</td><td>3h22m</td><td>¥308 二等座</td><td>全席别有票（到得较晚）</td></tr>
+        <tr><td>上午车次</td><td>上海→南平市/武夷山北</td><td>—</td><td>—</td><td><strong style="color:#e65100">候补</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--sunset);margin-bottom:12px">⚠️ 上午车次基本候补，下午傍晚有票！建议：① 首选G1629（13:07发，二等座4张）；② 备选G1641（15:13发，一等座7张）或G3757（16:06发）；③ 上午车次同时提交候补，出票后改签即可。</p>
+
+    <h4 style="color:var(--tea);font-size:.95rem;margin:20px 0 10px">🚄 返程 9月27日（周日）</h4>
+    <table class="budget-table" style="margin-bottom:16px">
+      <thead><tr><th>出发站</th><th>建议</th><th>耗时</th><th>票价参考</th><th>余票</th></tr></thead>
+      <tbody>
+        <tr style="background:#fff8e1"><td>武夷山北站</td><td>离度假区最近（打车~25min），优先选此站</td><td>约3.5-4h</td><td>¥300-350</td><td><strong style="color:#e65100">候补</strong></td></tr>
+        <tr style="background:#fff8e1"><td>南平市站</td><td>车次多，但需提前1h出发去车站</td><td>约4-4.5h</td><td>¥300-340</td><td><strong style="color:#e65100">候补</strong></td></tr>
+        <tr><td colspan="5" style="color:var(--text-light);font-size:.82rem">建议12:00-16:00之间出发，晚上即可到上海。返程票紧张，务必现在就在12306查询并同时提交多趟候补。</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--sunset);margin-bottom:12px">⚠️ 返程票紧张，几乎全部候补！建议：① 12306多趟候补同时提交（武夷山北+南平市两个站都查）；② 时间上优先下午车次（13:00-16:00发）；③ 若直达候补失败，考虑上饶/福州中转方案。</p>
+
+    <h4 style="color:var(--tea);font-size:.95rem;margin:20px 0 10px">🚗 高铁站 → 武夷山度假区接驳</h4>
+    <div class="transport-detail">
+      <div class="transport-item"><div class="ti-label">武夷山北站→度假区</div><div class="ti-value">打车 20-30min</div></div>
+      <div class="transport-item"><div class="ti-label">南平市站→度假区</div><div class="ti-value">打车 40-60min · ¥100-150</div></div>
+      <div class="transport-item"><div class="ti-label">K1快线（南平站）</div><div class="ti-value">¥10 · ~60min</div></div>
+      <div class="transport-item"><div class="ti-label">景区内接驳</div><div class="ti-value">观光车（联票含）</div></div>
+      <div class="transport-item"><div class="ti-label">度假区→景区南门</div><div class="ti-value">打车/公交 10min</div></div>
+      <div class="transport-item"><div class="ti-label">去下梅村</div><div class="ti-value">打车 ~30min · ¥60-80</div></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://www.12306.cn/index/" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--sunset);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">12306 购票/候补 ↗</a>
+      <a href="https://www.didiglobal.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--river);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">滴滴打车 ↗</a>
+      <a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--tea);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">"武夷山"公众号预约 ↗</a>
+    </div>
+  </div>
+
+  <!-- ===== 预算估算 ===== -->
+  <div class="section-title">
+    <h2>预算估算</h2>
+    <div class="deco"></div>
+    <p>两人3天2晚 · 上海高铁往返方案</p>
+  </div>
+  <div class="budget-box">
+    <h3>2人合计 · 高铁方案</h3>
+    <table class="budget-table">
+      <thead><tr><th>项目</th><th>明细</th><th>金额</th></tr></thead>
+      <tbody>
+        <tr><td>高铁票（往返2人）</td><td>去程¥340×2 + 返程约¥310×2</td><td>¥1,300</td></tr>
+        <tr><td>武夷山景区（门票+观光车）</td><td>¥345×2</td><td>¥690</td></tr>
+        <tr><td>九曲溪竹筏漂流</td><td>¥130×2</td><td>¥260</td></tr>
+        <tr><td>住宿（2晚）</td><td>度假区/三姑村 ¥300-600/晚</td><td>¥600-1,200</td></tr>
+        <tr><td>餐饮（3天）</td><td>熏鹅+茶宴+农家菜+简餐</td><td>¥800-1,200</td></tr>
+        <tr><td>其他（市内交通/品茶/伴手礼）</td><td>打车+快线+杂费</td><td>¥200</td></tr>
+        <tr class="total-row"><td>合计（2人）</td><td></td><td class="amount">¥3,850 - 4,850</td></tr>
+        <tr class="total-row"><td>人均</td><td></td><td class="amount">¥1,925 - 2,425</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--text-light);margin-top:12px">门票+竹筏是主要硬开销（约¥950/2人），住宿和餐饮弹性最大。想省钱可选三姑村经济民宿（¥300内）+ 大排档餐饮；想舒服可选大红袍山庄等度假酒店。竹筏票和门票建议提前在网上实名购买，能省排队时间。中秋假期酒店会涨价，建议提前1-2周锁定。</p>
+  </div>
+
+  <!-- ===== Tips ===== -->
+  <div class="section-title">
+    <h2>实用Tips</h2>
+    <div class="deco"></div>
+    <p>出发前必看 · 武夷山旅行注意事项</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-icon">🛶</div><div class="tip-content"><h4>竹筏必须提前1天预约</h4><p>九曲溪竹筏漂流需在"武夷山"微信公众号（或景区小程序）提前1天预约，中秋假期名额紧张，建议Day1晚上就预约好Day2的时段。竹筏+门票联票一起买更方便。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">⛰️</div><div class="tip-content"><h4>天游峰早上爬</h4><p>天游峰台阶多、游客密集，早上08:00前到达人少、光线好、还能看到云雾缭绕的九曲溪。午后旅行团扎堆，体验感大打折扣。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🍵</div><div class="tip-content"><h4>品茶免费 买茶谨慎</h4><p>武夷山岩茶店都免费让你品茶，体验很好。但景区"XX元一包"的散茶价格水分大，要买就认准品牌茶企或正规茶城，别冲动消费。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🛶</div><div class="tip-content"><h4>竹筏小费文化已取消</h4><p>过去"竹筏工要小费才多讲两句"的潜规则已经被官方明令取消，现在是正规明码标价服务，安心坐筏即可，不用额外给小费。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🚄</div><div class="tip-content"><h4>高铁票要早抢</h4><p>9/25上午车次候补，下午有票（推荐G1629）；9/27返程票紧张，今天就在12306提交多趟候补并关注放票。武夷山北站离景区更近，优先选该站。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🎟️</div><div class="tip-content"><h4>门票+观光车联票必买</h4><p>天游峰、九曲溪码头、大红袍景区之间靠观光车接驳（联票约¥345含车费），单买门票不划算。门票建议线上提前购，刷身份证入园。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">👟</div><div class="tip-content"><h4>穿防滑运动鞋</h4><p>天游峰、大王峰、一线天台阶多且湿滑，一定要穿防滑运动鞋。一线天峡谷极窄，背包要侧着背才能过。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🧥</div><div class="tip-content"><h4>早晚温差大</h4><p>9月底武夷山白天25-30°C，早晚约18°C，白云禅寺看日出山顶风大，务必带件薄外套/风衣。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🏘️</div><div class="tip-content"><h4>下梅村在景区外</h4><p>下梅古民居不在核心景区内，需单独打车约30分钟（单程¥60-80）。安排在Day3上午比较从容，逛完直接顺路去车站返程。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🌕</div><div class="tip-content"><h4>中秋赏月绝佳</h4><p>武夷山空气好、光污染少，中秋夜在九曲溪边、武夷宫草坪或度假区露台赏月都很美。若住岩茶主题民宿，泡茶赏月两不误。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🛍️</div><div class="tip-content"><h4>伴手礼推荐</h4><p>武夷岩茶（认准正岩/品牌）、岚谷熏鹅（真空包装）、武夷山茶点、竹木茶具。度假区买比景区内便宜，别在景点摊位买"高定价茶"。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">📱</div><div class="tip-content"><h4>预约提醒</h4><p>武夷山实行预约实名制，关注"武夷山"微信公众号提前预约门票+竹筏+观光车；旺季（国庆）建议提前1-2周，中秋提前3天比较稳妥。</p></div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>武夷山 3天2晚攻略 · 2026中秋假期 · 世界文化与自然双遗产</p>
+  <p style="margin-top:6px;opacity:.6">祝你旅途愉快 🍵⛰️🛶</p>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+document.querySelectorAll('.day-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const day=tab.dataset.day;
+    document.querySelectorAll('.timeline').forEach(tl=>tl.style.display='none');
+    const target=document.getElementById('day'+day);
+    target.style.display='block';
+    target.querySelectorAll('.timeline-item').forEach((item,i)=>{
+      item.classList.remove('show');
+      setTimeout(()=>item.classList.add('show'),i*80);
+    });
+  });
+});
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('backTop');
+  if(window.scrollY>400){btn.classList.add('show')}else{btn.classList.remove('show')}
+});
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('#day1 .timeline-item').forEach((item,i)=>{
+    setTimeout(()=>item.classList.add('show'),i*100);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>婺源篁岭 3天2晚 高铁往返 · 晒秋徽派古村攻略</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#f6f3ec;color:#2c3e50;line-height:1.8;overflow-x:hidden}
+:root{
+  --ink:#2b2f36;--ink-light:#5a6472;--ink-pale:#eceef0;
+  --gold:#c9a227;--gold-light:#e6c84c;--gold-pale:#fdf6e3;
+  --red:#d35400;--red-pale:#fdeedd;
+  --water:#1a6fa8;--water-light:#48cae4;--water-pale:#caf0f8;
+  --green:#4a7c59;--green-light:#52b788;--green-pale:#e8f5e9;
+  --earth:#a67c52;--earth-light:#d4a76a;--earth-pale:#faf3e7;
+  --bg:#f6f3ec;--card:#fff;--text:#2c3e50;--text-light:#6c7a89;
+  --border:#e8ddd0;--shadow:0 2px 16px rgba(43,47,54,.08);
+  --shadow-hover:0 6px 28px rgba(201,162,39,.2);
+}
+.hero{position:relative;min-height:420px;background:linear-gradient(135deg,#e6a817 0%,#c9a227 28%,#8a7a5c 55%,#2b2f36 100%);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,100 350,20 600,50 C850,80 1050,30 1200,70 L1200,120 L0,120 Z' fill='%23f6f3ec'/%3E%3C/svg%3E") no-repeat bottom/cover}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{color:#fff;font-size:2.4rem;letter-spacing:3px;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.hero .subtitle{color:rgba(255,255,255,.88);font-size:1.1rem;margin-bottom:6px}
+.hero .trip-meta{display:flex;gap:16px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.hero .trip-meta span{background:rgba(255,255,255,.16);backdrop-filter:blur(6px);padding:6px 18px;border-radius:20px;color:#fff;font-size:.85rem;border:1px solid rgba(255,255,255,.28)}
+.container{max-width:1100px;margin:0 auto;padding:30px 20px}
+.section-title{text-align:center;margin:50px 0 30px;position:relative}
+.section-title h2{font-size:1.6rem;color:var(--ink);font-weight:700;letter-spacing:2px}
+.section-title .deco{width:50px;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--ink-light));margin:10px auto;border-radius:2px}
+.section-title p{color:var(--text-light);font-size:.9rem;margin-top:6px}
+.route-map-wrapper{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow:hidden}
+.route-map-wrapper h3{color:var(--ink);font-size:1.1rem;margin-bottom:16px;text-align:center}
+.svg-map{width:100%;height:auto;display:block}
+.day-tabs{display:flex;gap:0;margin:0 auto 24px;max-width:620px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.day-tab{flex:1;padding:14px 0;text-align:center;cursor:pointer;background:var(--card);transition:all .3s;font-weight:600;font-size:.95rem;color:var(--text-light);border-bottom:3px solid transparent;user-select:none}
+.day-tab.active{color:var(--ink);border-bottom-color:var(--gold);background:var(--gold-pale)}
+.day-tab .day-num{display:block;font-size:.75rem;color:var(--text-light);margin-bottom:2px}
+.day-tab.active .day-num{color:var(--gold)}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--gold),var(--red),var(--ink-light),var(--water-light));border-radius:2px}
+.timeline-item{position:relative;margin-bottom:24px;opacity:0;transform:translateX(-20px);transition:all .5s}
+.timeline-item.show{opacity:1;transform:translateX(0)}
+.timeline-dot{position:absolute;left:-33px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--card);border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--gold);z-index:1}
+.timeline-item:nth-child(2) .timeline-dot{border-color:var(--red);color:var(--red)}
+.timeline-item:nth-child(3) .timeline-dot{border-color:var(--ink-light);color:var(--ink)}
+.timeline-item:nth-child(4) .timeline-dot{border-color:var(--green-light);color:var(--green)}
+.timeline-item:nth-child(5) .timeline-dot{border-color:var(--water);color:var(--water)}
+.timeline-item:nth-child(6) .timeline-dot{border-color:var(--gold-light);color:var(--gold)}
+.timeline-item:nth-child(7) .timeline-dot{border-color:var(--earth);color:var(--earth)}
+.timeline-item:nth-child(8) .timeline-dot{border-color:var(--water-light);color:var(--water)}
+.timeline-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .3s}
+.timeline-card:hover{box-shadow:var(--shadow-hover)}
+.timeline-card .tc-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.timeline-card .tc-time{font-size:.8rem;color:var(--text-light);background:var(--bg);padding:4px 12px;border-radius:12px;white-space:nowrap}
+.timeline-card .tc-title{font-size:1.05rem;font-weight:600;color:var(--ink)}
+.timeline-card .tc-body{padding:16px 20px}
+.timeline-card .tc-body p{font-size:.9rem;color:var(--text);margin-bottom:8px}
+.timeline-card .tc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.timeline-card .tc-tag{font-size:.75rem;padding:2px 10px;border-radius:10px}
+.tag-free{background:#e8f5e9;color:#2e7d32}
+.tag-fee{background:#fff3e0;color:#e65100}
+.tag-food{background:#fce4ec;color:#c62828}
+.tag-stay{background:#e3f2fd;color:#1565c0}
+.tag-drive{background:#f3e5f5;color:#7b1fa2}
+.tag-walk{background:#e0f2f1;color:#00695c}
+.tag-tip{background:#fff8e1;color:#f57f17}
+.tag-gold{background:#fdf6e3;color:#c9a227}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.attraction-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:all .3s;cursor:pointer}
+.attraction-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.ac-image{height:140px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.ac-image .ac-emoji{filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+.ac-body{padding:16px 20px}
+.ac-body h4{font-size:1.05rem;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.ac-body .ac-meta{font-size:.78rem;color:var(--text-light);margin-bottom:8px}
+.ac-body .ac-desc{font-size:.88rem;color:var(--text);line-height:1.7}
+.ac-body .ac-footer{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-bottom:40px}
+.food-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-left:4px solid var(--gold)}
+.food-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.food-card h4{font-size:1.05rem;color:var(--ink);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.food-card .food-meta{font-size:.8rem;color:var(--text-light);margin-bottom:8px}
+.food-card .food-dishes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.food-card .dish-tag{background:#fdf6e3;color:#bf360c;font-size:.75rem;padding:3px 10px;border-radius:8px}
+.stay-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.stay-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px;transition:all .3s;border-top:4px solid var(--gold)}
+.stay-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.stay-card h4{font-size:1.05rem;color:var(--ink);margin-bottom:4px}
+.stay-card .stay-loc{font-size:.8rem;color:var(--text-light);margin-bottom:6px}
+.stay-card .stay-desc{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:8px}
+.stay-card .stay-rating{display:inline-block;background:var(--gold);color:#fff;font-size:.75rem;padding:2px 10px;border-radius:10px;font-weight:600}
+.stay-card .stay-price{font-size:1rem;color:var(--red);font-weight:700}
+.transport-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px}
+.transport-box h3{color:var(--ink);margin-bottom:16px;font-size:1.1rem}
+.transport-route{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}
+.transport-node{background:var(--gold-pale);color:var(--ink);padding:8px 20px;border-radius:10px;font-weight:600;font-size:.9rem}
+.transport-arrow{color:var(--gold);font-size:1.3rem}
+.transport-detail{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px}
+.transport-item{background:var(--bg);border-radius:10px;padding:14px;text-align:center}
+.transport-item .ti-label{font-size:.78rem;color:var(--text-light);margin-bottom:4px}
+.transport-item .ti-value{font-size:1.05rem;color:var(--ink);font-weight:600}
+.budget-box{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:24px;margin-bottom:40px;overflow-x:auto}
+.budget-box h3{color:var(--ink);margin-bottom:16px;font-size:1.1rem}
+.budget-table{width:100%;border-collapse:collapse;min-width:480px}
+.budget-table th{background:var(--ink);color:#fff;padding:10px 14px;text-align:left;font-size:.85rem;font-weight:600}
+.budget-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.budget-table tr:hover{background:var(--gold-pale)}
+.budget-table .total-row{font-weight:700;background:var(--gold)!important;color:#fff}
+.budget-table .total-row td{font-size:1rem}
+.budget-table .total-row .amount{color:#fff;font-size:1.2rem}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px}
+.tip-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:18px;display:flex;gap:12px;transition:all .3s}
+.tip-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.tip-icon{font-size:1.8rem;flex-shrink:0}
+.tip-content h4{font-size:.95rem;color:var(--ink);margin-bottom:4px}
+.tip-content p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+.back-top{position:fixed;right:24px;bottom:24px;width:44px;height:44px;background:var(--ink);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1.2rem;box-shadow:var(--shadow-hover);opacity:0;visibility:hidden;transition:all .3s;z-index:99}
+.back-top.show{opacity:1;visibility:visible}
+.card-link{display:inline-block;margin-top:8px;font-size:.8rem;color:var(--water);text-decoration:none;transition:all .2s;border-bottom:1px solid transparent}
+.card-link:hover{color:var(--red);border-bottom-color:var(--red)}
+.tc-body a.link-inline{color:var(--water);text-decoration:none;font-weight:600}
+.tc-body a.link-inline:hover{color:var(--red);text-decoration:underline}
+.back-to-home{display:inline-block;margin-bottom:20px;color:var(--water);text-decoration:none;font-size:.9rem;font-weight:600}
+.back-to-home:hover{color:var(--red)}
+@media(max-width:640px){
+  .hero h1{font-size:1.6rem}
+  .hero .trip-meta span{font-size:.75rem;padding:5px 12px}
+  .container{padding:20px 14px}
+  .section-title h2{font-size:1.25rem}
+  .timeline{padding-left:32px}
+  .timeline::before{left:11px}
+  .timeline-dot{width:20px;height:20px;left:-29px;font-size:.6rem}
+}
+.footer{text-align:center;padding:30px 20px;background:var(--ink);color:rgba(255,255,255,.7);font-size:.85rem}
+.footer a{color:var(--gold-light)}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>婺源 · 篁岭晒秋</h1>
+    <p class="subtitle">中国最美乡村 · 白墙黛瓦马头墙 · 晒秋人家 3天2晚</p>
+    <p class="subtitle">上海出发 · 高铁直达 · 徽派古村深度游</p>
+    <div class="trip-meta">
+      <span>9月25日 周五 — 9月27日 周日</span>
+      <span>高铁直达 3-4.5h</span>
+      <span>9月晒秋正当时</span>
+      <span>人均预算 ¥1,570-2,130</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <a class="back-to-home" href="旅游攻略.html">← 返回旅游攻略总览</a>
+
+  <div class="route-map-wrapper">
+    <h3>线路总览 · 婺源徽派古村地图</h3>
+    <svg class="svg-map" viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgGradWY" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fdf6e3" stop-opacity=".5"/>
+          <stop offset="50%" stop-color="#f6f3ec" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#efe7d5" stop-opacity=".6"/>
+        </linearGradient>
+        <linearGradient id="routeGradWY" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1a6fa8"/>
+          <stop offset="35%" stop-color="#2b2f36"/>
+          <stop offset="70%" stop-color="#c9a227"/>
+          <stop offset="100%" stop-color="#d35400"/>
+        </linearGradient>
+        <filter id="shadowWY"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity=".15"/></filter>
+      </defs>
+      <rect width="1000" height="460" fill="url(#bgGradWY)" rx="12"/>
+
+      <!-- 徽派马头墙剪影 -->
+      <g fill="#2b2f36" opacity=".08">
+        <path d="M40 430 h40 v-22 h10 v-16 h-10 v-12 l-6 -12 l-6 12 v12 h-10 v16 h-10 v-20 h-8 v20 h-10 z"/>
+        <path d="M140 430 h44 v-18 h9 v-14 h8 v-12 h-8 v12 h-9 v18 h-44 z"/>
+        <path d="M300 430 h36 v-20 h9 v-14 h8 v-12 h-8 v12 h-9 v22 h-36 z"/>
+        <path d="M860 430 h40 v-22 h9 v-16 h8 v-14 h-8 v14 h-9 v22 h-40 z"/>
+        <path d="M940 430 h36 v-16 h8 v-12 h7 v-10 h-7 v10 h-8 v18 h-36 z"/>
+      </g>
+      <!-- 远山 -->
+      <path d="M620 150 L670 90 L700 130 L740 80 L790 150 Z" fill="#a67c52" opacity=".12"/>
+      <path d="M700 170 L750 110 L790 150 L830 100 L870 170 Z" fill="#5a6472" opacity=".1"/>
+      <path d="M780 190 L830 130 L860 165 L900 120 L940 190 Z" fill="#c9a227" opacity=".12"/>
+
+      <!-- 晒秋辣椒串装饰 -->
+      <g stroke="#d35400" stroke-width="2" opacity=".5">
+        <line x1="556" y1="78" x2="600" y2="78"/>
+        <line x1="596" y1="108" x2="640" y2="108"/>
+      </g>
+      <g fill="#d35400" opacity=".8">
+        <circle cx="562" cy="78" r="4"/><circle cx="572" cy="78" r="4"/><circle cx="582" cy="78" r="4"/><circle cx="592" cy="78" r="4"/>
+        <circle cx="602" cy="108" r="4"/><circle cx="612" cy="108" r="4"/><circle cx="622" cy="108" r="4"/><circle cx="632" cy="108" r="4"/>
+      </g>
+      <g fill="#e6c84c" opacity=".8">
+        <circle cx="570" cy="92" r="3"/><circle cx="588" cy="98" r="3"/><circle cx="606" cy="86" r="3"/><circle cx="620" cy="96" r="3"/>
+      </g>
+
+      <!-- 主线：上海 → 婺源站 → 婺源县城 -->
+      <path d="M90 230 Q200 220 270 225" stroke="url(#routeGradWY)" stroke-width="4" fill="none" filter="url(#shadowWY)"/>
+      <path d="M300 235 Q380 245 470 255" stroke="url(#routeGradWY)" stroke-width="4" fill="none" filter="url(#shadowWY)"/>
+      <!-- 支线：县城 → 各古村 -->
+      <path d="M470 255 Q540 190 610 145" stroke="#c9a227" stroke-width="2.5" fill="none" opacity=".6" stroke-dasharray="5 4"/>
+      <path d="M470 255 Q520 310 585 345" stroke="#52b788" stroke-width="2.5" fill="none" opacity=".55" stroke-dasharray="5 4"/>
+      <path d="M585 345 Q650 335 730 305" stroke="#8a7a5a" stroke-width="2.5" fill="none" opacity=".5" stroke-dasharray="5 4"/>
+      <path d="M730 305 Q770 340 800 365" stroke="#a67c52" stroke-width="2.5" fill="none" opacity=".5" stroke-dasharray="5 4"/>
+      <path d="M470 255 Q540 225 670 215" stroke="#52b788" stroke-width="2" fill="none" opacity=".45" stroke-dasharray="4 3"/>
+
+      <!-- 上海 -->
+      <g filter="url(#shadowWY)">
+        <circle cx="90" cy="230" r="18" fill="#fff" stroke="#1a6fa8" stroke-width="3"/>
+        <circle cx="90" cy="230" r="6" fill="#1a6fa8"/>
+        <text x="90" y="208" text-anchor="middle" font-size="14" font-weight="700" fill="#1a6fa8">上海</text>
+        <text x="90" y="266" text-anchor="middle" font-size="10" fill="#6c7a89">出发地</text>
+      </g>
+      <text x="185" y="185" text-anchor="middle" font-size="10" fill="#1a6fa8" opacity=".6">高铁 ~3-4.5h</text>
+
+      <!-- 婺源站 -->
+      <g filter="url(#shadowWY)">
+        <circle cx="300" cy="225" r="14" fill="#fff" stroke="#2b2f36" stroke-width="3"/>
+        <circle cx="300" cy="225" r="5" fill="#2b2f36"/>
+        <text x="300" y="203" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2f36">婺源站</text>
+        <text x="300" y="258" text-anchor="middle" font-size="10" fill="#6c7a89">高铁直达</text>
+      </g>
+
+      <!-- 婺源县城（大本营） -->
+      <g filter="url(#shadowWY)">
+        <circle cx="470" cy="255" r="17" fill="#fff" stroke="#c9a227" stroke-width="3.5"/>
+        <circle cx="470" cy="255" r="6" fill="#c9a227"/>
+        <text x="470" y="233" text-anchor="middle" font-size="13" font-weight="700" fill="#c9a227">婺源县城</text>
+        <text x="470" y="292" text-anchor="middle" font-size="10" fill="#6c7a89">大本营 · 朱子步行街</text>
+      </g>
+
+      <!-- 篁岭 -->
+      <g filter="url(#shadowWY)">
+        <rect x="600" y="136" width="22" height="20" rx="3" fill="#d35400" opacity=".9"/>
+        <text x="611" y="151" text-anchor="middle" font-size="7" fill="#fff" font-weight="700">晒</text>
+        <text x="611" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="#d35400">篁岭</text>
+        <text x="611" y="174" text-anchor="middle" font-size="9" fill="#6c7a89">晒秋人家 · 索道</text>
+      </g>
+
+      <!-- 李坑 -->
+      <g filter="url(#shadowWY)">
+        <rect x="575" y="336" width="22" height="20" rx="3" fill="#52b788" opacity=".9"/>
+        <text x="586" y="351" text-anchor="middle" font-size="7" fill="#fff" font-weight="700">桥</text>
+        <text x="586" y="376" text-anchor="middle" font-size="12" font-weight="700" fill="#52b788">李坑</text>
+        <text x="586" y="391" text-anchor="middle" font-size="9" fill="#6c7a89">小桥流水人家</text>
+      </g>
+
+      <!-- 晓起 -->
+      <g filter="url(#shadowWY)">
+        <circle cx="670" cy="240" r="10" fill="#fff" stroke="#52b788" stroke-width="2.5"/>
+        <circle cx="670" cy="240" r="3.5" fill="#52b788"/>
+        <text x="670" y="262" text-anchor="middle" font-size="11" font-weight="600" fill="#52b788">晓起村</text>
+        <text x="670" y="276" text-anchor="middle" font-size="9" fill="#6c7a89">生态古村</text>
+      </g>
+
+      <!-- 汪口 -->
+      <g filter="url(#shadowWY)">
+        <rect x="720" y="296" width="22" height="20" rx="3" fill="#8a7a5a" opacity=".9"/>
+        <text x="731" y="311" text-anchor="middle" font-size="7" fill="#fff" font-weight="700">祠</text>
+        <text x="731" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#8a7a5a">汪口</text>
+        <text x="731" y="334" text-anchor="middle" font-size="9" fill="#6c7a89">俞氏宗祠</text>
+      </g>
+
+      <!-- 江湾 -->
+      <g filter="url(#shadowWY)">
+        <rect x="790" y="356" width="22" height="20" rx="3" fill="#a67c52" opacity=".9"/>
+        <text x="801" y="371" text-anchor="middle" font-size="7" fill="#fff" font-weight="700">5A</text>
+        <text x="801" y="348" text-anchor="middle" font-size="12" font-weight="700" fill="#a67c52">江湾</text>
+        <text x="801" y="396" text-anchor="middle" font-size="9" fill="#6c7a89">徽派古村 · 萧江宗祠</text>
+      </g>
+
+      <!-- 返程虚线 -->
+      <path d="M820 300 Q700 440 500 435 Q300 430 120 300" stroke="#48cae4" stroke-width="2.5" fill="none" opacity=".3" stroke-dasharray="8 6"/>
+      <text x="510" y="432" text-anchor="middle" font-size="10" fill="#1a6fa8" opacity=".55">Day3 · 婺源→上海返程</text>
+
+      <!-- 指南针 -->
+      <g transform="translate(945,50)">
+        <circle r="22" fill="#fff" opacity=".7" stroke="#2b2f36" stroke-width="1.5"/>
+        <text y="-5" text-anchor="middle" font-size="12" font-weight="700" fill="#2b2f36">N</text>
+        <path d="M0,-16 L4,0 L0,4 L-4,0 Z" fill="#d35400"/>
+        <path d="M0,16 L4,0 L0,-4 L-4,0 Z" fill="#2b2f36"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="section-title">
+    <h2>每日行程</h2>
+    <div class="deco"></div>
+    <p>点击下方日期切换 · 3天2晚完整路线</p>
+  </div>
+
+  <div class="day-tabs" id="dayTabs">
+    <div class="day-tab active" data-day="1"><span class="day-num">9月25日</span>Day 1 · 抵达婺源</div>
+    <div class="day-tab" data-day="2"><span class="day-num">9月26日</span>Day 2 · 篁岭晒秋</div>
+    <div class="day-tab" data-day="3"><span class="day-num">9月27日</span>Day 3 · 徽派古村+返程</div>
+  </div>
+
+  <!-- ===== Day 1 ===== -->
+  <div class="timeline" id="day1">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">上海出发 · 前往上海虹桥站</span><span class="tc-time">15:30 - 16:30</span></div>
+        <div class="tc-body">
+          <p>从上海出发前往虹桥站，建议提前30-40分钟到站取票安检。本次中秋出行主打傍晚车次（有票率相对高），中午出发不赶、时间从容。若抢到上午的 <strong>G4061</strong>（09:37发），则下午即可提前开玩，行程更松。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">地铁/打车</span><span class="tc-tag tag-tip">提前取票</span><span class="tc-tag tag-tip">候补上午车次</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">高铁 · 上海虹桥 → 婺源</span><span class="tc-time">16:59 - 20:18</span></div>
+        <div class="tc-body">
+          <p>推荐 <strong>G1417</strong>（上海虹桥 16:59 → 婺源 20:18，二等座¥315，全程3h19m），傍晚出发、时间最合理。备选 <strong>G3237</strong>（17:16发）、<strong>G1454</strong>（17:43发）、<strong>D3323</strong>（18:59发）均可，具体车次余票以12306为准，建议多趟候补同时提交。沿途穿过皖赣山地，窗外渐入徽州风光。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">高铁 ~3-4.5h</span><span class="tc-tag tag-fee">¥315/人</span><span class="tc-tag tag-tip">12306查余票+候补</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">婺源站 → 婺源县城</span><span class="tc-time">20:30 - 21:00</span></div>
+        <div class="tc-body">
+          <p>婺源站到县城约8公里，打车约¥20-30/车，20分钟即到。高铁站门口出租车较多，也可用网约车。当晚入住县城酒店，婺源县城是各古村的"大本营"，吃饭住宿都方便。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">打车 ~20min</span><span class="tc-tag tag-fee">¥20-30/车</span><span class="tc-tag tag-tip">网约车/出租均可</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">入住婺源县城酒店</span><span class="tc-time">21:00 - 21:30</span></div>
+        <div class="tc-body">
+          <p>入住婺源县城的酒店或徽派民宿（¥250-600/晚）。县城酒店选择多、性价比高，方便明天一早出发去篁岭。也可提前预订篁岭山脚民宿，明早直接上山。中秋假期住宿紧张，务必提前订。</p>
+          <div class="tc-tags"><span class="tc-tag tag-stay">县城酒店 ¥250-400</span><span class="tc-tag tag-tip">提前预订</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">朱子步行街 · 夜宵+慢逛</span><span class="tc-time">21:30 - 22:30</span></div>
+        <div class="tc-body">
+          <p><strong><a class="link-inline" href="https://baike.baidu.com/item/婺源县" target="_blank" rel="noopener noreferrer">婺源县城</a></strong>免费夜逛，朱子步行街是县城最热闹的街区，徽派风格建筑灯火点缀。沿街尝<strong>气糕</strong>（¥8，蒸米糕夹菜）、<strong>清明果</strong>（¥10，艾草糯米粿）、<strong>糊豆腐</strong>（¥15），感受小县城的中秋烟火气。若到得早（G4061 14:20到），下午可顺路去<strong>李坑村</strong>。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-food">气糕 ¥8</span><span class="tc-tag tag-food">清明果 ¥10</span><span class="tc-tag tag-tip">夜逛更有味</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">6</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">回酒店休息 · 联系好明天用车</span><span class="tc-time">22:30 - 23:00</span></div>
+        <div class="tc-body">
+          <p>婺源古村分散在县城周边，明天全天需要包车或打车。建议今晚通过酒店前台/民宿老板约好明早的包车司机（约¥200/天，含往返篁岭+李坑），或确认网约车可叫到。中秋夜在县城找一处开阔处赏月，徽州月色别有意境。</p>
+          <div class="tc-tags"><span class="tc-tag tag-stay">休息</span><span class="tc-tag tag-tip">提前约包车</span><span class="tc-tag tag-gold">中秋赏月</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Day 2 ===== -->
+  <div class="timeline" id="day2" style="display:none">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">县城早餐 · 出发去篁岭</span><span class="tc-time">08:00 - 08:30</span></div>
+        <div class="tc-body">
+          <p>早餐后出发。婺源县城到篁岭约40分钟车程，包车/打车约¥60-80。建议8点半前到景区，赶早避开人流。今天全天给篁岭，它是婺源最精华的景区，值得慢慢逛。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">打车/包车 ~40min</span><span class="tc-tag tag-fee">¥60-80/车</span><span class="tc-tag tag-tip">赶早人少</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">篁岭索道上山 · 景区</span><span class="tc-time">09:00 - 09:40</span></div>
+        <div class="tc-body">
+          <p><strong><a class="link-inline" href="https://baike.baidu.com/item/篁岭" target="_blank" rel="noopener noreferrer">篁岭景区</a></strong>门票+索道约<strong>¥130/人</strong>（网上提前购票更便宜）。乘坐索道（约15分钟）上山，缆车横跨峡谷梯田，俯瞰整个篁岭晒秋村落。篁岭是婺源精华中的精华——"晒秋人家"就是这里，挂在悬崖上的古村。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">门票+索道 ¥130</span><span class="tc-tag tag-drive">索道 ~15min</span><span class="tc-tag tag-tip">提前网购票</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">晒秋人家 · 天街漫步</span><span class="tc-time">09:40 - 12:00</span></div>
+        <div class="tc-body">
+          <p>篁岭核心玩法——<strong>晒秋</strong>。数百栋徽派古民居的白墙黛瓦间，家家户户在屋顶晒架上晾晒<strong>红辣椒、金玉米、南瓜、黄豆</strong>，秋天色彩铺满整面山坡，这就是"中国最美乡村符号"。沿<strong>天街</strong>（村落主街）穿行，两旁是徽州小吃店和手工艺品铺，清晨游客少、光线柔和，拍照最佳。</p>
+          <div class="tc-tags"><span class="tc-tag tag-gold">晒秋必看</span><span class="tc-tag tag-walk">漫步2.5h</span><span class="tc-tag tag-tip">上午顺光拍照</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">天街午餐 · 徽州味道</span><span class="tc-time">12:00 - 13:00</span></div>
+        <div class="tc-body">
+          <p>天街上解决午餐。推荐<strong>粉蒸肉</strong>（婺源名菜，人均¥30）、<strong>清明果</strong>（¥10）配<strong>糊豆腐</strong>（¥15）。山上农家乐人均约¥40-60，边吃边看晒秋风景。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">粉蒸肉 ¥30</span><span class="tc-tag tag-food">农家乐 ¥40-60/人</span><span class="tc-tag tag-gold">晒秋配饭</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">梯田花海 · 垒心桥玻璃栈道</span><span class="tc-time">13:00 - 16:00</span></div>
+        <div class="tc-body">
+          <p>午后前往篁岭的<strong>梯田</strong>和<strong>垒心桥</strong>（玻璃栈道）。9月没有油菜花（油菜花3月最美），但梯田稻浪金黄、与晒秋相呼应，别有一番秋色。垒心桥横跨两座山，桥面部分玻璃栈道，脚下是深谷梯田，胆小勿低头。山里空气好，慢慢走不累。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">含在门票内</span><span class="tc-tag tag-walk">游玩3h</span><span class="tc-tag tag-gold">梯田+玻璃桥</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">6</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">索道下山 · 注意末班17:30</span><span class="tc-time">16:00 - 16:30</span></div>
+        <div class="tc-body">
+          <p><strong>篁岭索道末班 17:30</strong>，务必提前下山排队，16:00前到索道站最稳妥。若想在山上看日落晒秋，可提前订篁岭山景民宿，住一晚更深度（但中秋房价高，需提前订）。本次行程主打当日往返。</p>
+          <div class="tc-tags"><span class="tc-tag tag-tip">索道末班17:30</span><span class="tc-tag tag-gold">日落晒秋</span><span class="tc-tag tag-stay">可选住山上看日落</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">7</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">李坑村 · 小桥流水人家</span><span class="tc-time">17:00 - 18:30</span></div>
+        <div class="tc-body">
+          <p>下山后顺路去<strong><a class="link-inline" href="https://baike.baidu.com/item/李坑村" target="_blank" rel="noopener noreferrer">李坑村</a></strong>（门票¥60）。李坑以"小桥流水人家"闻名，一条溪水穿村而过，古桥上悬挂着青藤，溪边徽派民居倒映水中，傍晚光线柔和，随手一拍都是水墨画。村落不大，约1.5小时走完。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">门票 ¥60</span><span class="tc-tag tag-walk">游玩1.5h</span><span class="tc-tag tag-gold">小桥流水</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">8</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">返回县城 · 晚餐</span><span class="tc-time">19:00 - 20:30</span></div>
+        <div class="tc-body">
+          <p>回到婺源县城，找一家本地菜馆晚餐。必点<strong>荷包红鲤鱼</strong>（¥50，婺源特产鱼，红烧成荷包形）、<strong>粉蒸肉</strong>（¥30）和<strong>糊豆腐</strong>（¥15）。饭后朱子步行街散步，可买些婺源<strong>菊花茶</strong>或<strong>绿茶</strong>做伴手礼。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">晚餐 ¥50-80/人</span><span class="tc-tag tag-food">荷包红鲤鱼 ¥50</span><span class="tc-tag tag-stay">回县城住宿</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Day 3 ===== -->
+  <div class="timeline" id="day3" style="display:none">
+    <div class="timeline-item show">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">早餐退房 · 出发古村线</span><span class="tc-time">08:00 - 09:00</span></div>
+        <div class="tc-body">
+          <p>早餐后退房，行李寄存酒店或放包车后备箱。今天上午沿着婺源东线走2-3个徽派古村，中午返回，下午返程高铁。包车约¥80-100（半天），或打车按点跑。</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">含早</span><span class="tc-tag tag-tip">行李寄存</span><span class="tc-tag tag-drive">包车半天</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">江湾景区 · 5A徽派古村</span><span class="tc-time">09:00 - 11:00</span></div>
+        <div class="tc-body">
+          <p>第一站<strong><a class="link-inline" href="https://baike.baidu.com/item/江湾景区" target="_blank" rel="noopener noreferrer">江湾景区</a></strong>（门票¥60，5A级）。江湾是婺源保存最完整的徽派古村之一，<strong>萧江宗祠</strong>气势恢宏，古戏台、官厅、民居布局严谨，村后千年古樟遮天蔽日。祠堂前的青石板路和飞檐翘角，最出片。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">门票 ¥60</span><span class="tc-tag tag-walk">游玩2h</span><span class="tc-tag tag-gold">5A · 萧江宗祠</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">汪口村 · 俞氏宗祠（或晓起村）</span><span class="tc-time">11:15 - 12:15</span></div>
+        <div class="tc-body">
+          <p><strong><a class="link-inline" href="https://baike.baidu.com/item/汪口村" target="_blank" rel="noopener noreferrer">汪口村</a></strong>（门票¥60）：古村三面临水，明清古宅沿河而建，<strong>俞氏宗祠</strong>号称"建筑宝库"，木雕精美绝伦。时间充裕可加去<strong><a class="link-inline" href="https://baike.baidu.com/item/晓起村" target="_blank" rel="noopener noreferrer">晓起村</a></strong>（门票¥60，生态古村，千年古樟+田园溪流）。若返程车早，两选一即可。</p>
+          <div class="tc-tags"><span class="tc-tag tag-fee">门票 ¥60</span><span class="tc-tag tag-walk">游玩1h</span><span class="tc-tag tag-gold">俞氏宗祠</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">午餐 · 婺源县城</span><span class="tc-time">12:30 - 13:30</span></div>
+        <div class="tc-body">
+          <p>回县城吃最后一顿婺源美食：再吃一碗<strong>糊豆腐</strong>、一份<strong>气糕</strong>，买些<strong>清明果</strong>打包带回上海。婺源菊花茶、绿茶、笋干是经典伴手礼，朱子步行街的店铺即可买到。</p>
+          <div class="tc-tags"><span class="tc-tag tag-food">午餐 ¥30-50/人</span><span class="tc-tag tag-food">清明果可打包</span><span class="tc-tag tag-tip">菊茶/绿茶伴手礼</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">县城 → 婺源站</span><span class="tc-time">13:30 - 14:00</span></div>
+        <div class="tc-body">
+          <p>取行李后打车去婺源站，约20分钟。建议提前1小时到站候车，中秋返程人流较大，安检排队时间可能较长，别踩点。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">打车 ~20min</span><span class="tc-tag tag-fee">¥20-30</span><span class="tc-tag tag-tip">预留充足时间</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">6</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">高铁返程 · 婺源 → 上海</span><span class="tc-time">14:00 - 19:00</span></div>
+        <div class="tc-body">
+          <p>乘坐高铁从婺源返回上海（约3-4.5h）。返程车次建议<strong>提前在12306查余票+多趟候补</strong>，具体车次时刻以12306为准。若直达车候补失败，可考虑上饶/黄山北中转。途中再回味一遍晒秋色彩。</p>
+          <div class="tc-tags"><span class="tc-tag tag-drive">高铁 ~3-4.5h</span><span class="tc-tag tag-tip">12306查票+候补</span><span class="tc-tag tag-tip">可考虑中转</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item show">
+      <div class="timeline-dot">7</div>
+      <div class="timeline-card">
+        <div class="tc-header"><span class="tc-title">抵达上海 · 回家</span><span class="tc-time">19:00 - 20:00</span></div>
+        <div class="tc-body">
+          <p>抵达上海，中秋假期完美收官。从婺源带回的清明果当夜宵，泡一杯婺源菊花茶，回味白墙黛瓦间的晒秋金黄。祝旅途愉快！</p>
+          <div class="tc-tags"><span class="tc-tag tag-free">到家</span><span class="tc-tag tag-gold">假期愉快</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 景点速览 ===== -->
+  <div class="section-title">
+    <h2>景点速览</h2>
+    <div class="deco"></div>
+    <p>晒秋人家 + 徽派古村 · 中国最美乡村符号</p>
+  </div>
+  <div class="cards-grid">
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#fdf6e3,#e9a817)"><span class="ac-emoji">🌽</span></div>
+      <div class="ac-body">
+        <h4>篁岭景区</h4>
+        <div class="ac-meta">📍 婺源县江湾镇 · 门票+索道约¥130 · 8:00-17:30</div>
+        <div class="ac-desc">婺源精华中的精华，"晒秋人家"所在地。家家户户在白墙黛瓦的窗台上晾晒辣椒、玉米、南瓜，秋天色彩铺满山坡。天街、垒心桥玻璃栈道、梯田花海一网打尽。索道末班17:30。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥130含索道</span><span class="tc-tag tag-gold">晒秋必看</span><span class="tc-tag tag-tip">索道末班17:30</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/篁岭" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#e8f5e9,#52b788)"><span class="ac-emoji">🌉</span></div>
+      <div class="ac-body">
+        <h4>李坑村</h4>
+        <div class="ac-meta">📍 婺源县秋口镇 · 门票¥60 · 全天</div>
+        <div class="ac-desc">"小桥流水人家"的教科书。一条溪水穿村而过，古石桥、徽派民居沿水而建，游客可沿溪漫步。傍晚光线柔和，溪水倒映白墙黛瓦，随手一拍都是水墨画。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥60</span><span class="tc-tag tag-walk">游玩1.5h</span><span class="tc-tag tag-gold">小桥流水</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/李坑村" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#faf3e7,#a67c52)"><span class="ac-emoji">🏯</span></div>
+      <div class="ac-body">
+        <h4>江湾景区</h4>
+        <div class="ac-meta">📍 婺源县江湾镇 · 门票¥60 · 5A级景区</div>
+        <div class="ac-desc">婺源唯一5A景区。萧江宗祠气势恢宏，古戏台、官厅、民居布局严谨，是保存最完整的徽派古村之一。村中古樟遮天蔽日，青石板路最出片。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥60</span><span class="tc-tag tag-gold">5A · 萧江宗祠</span><span class="tc-tag tag-walk">游玩2h</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/江湾景区" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#e0f2f1,#66bb6a)"><span class="ac-emoji">🌳</span></div>
+      <div class="ac-body">
+        <h4>晓起村</h4>
+        <div class="ac-meta">📍 婺源县江湾镇 · 门票¥60 · 生态古村</div>
+        <div class="ac-desc">被誉为"生态文化名村"，千年古樟、古杉、田园溪流环绕。村落古朴原始，游客相对少，适合安静漫步。与江湾、汪口同在东线，可串游。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥60</span><span class="tc-tag tag-walk">游玩1h</span><span class="tc-tag tag-gold">生态古村</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/晓起村" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#efe7db,#8a7a5a)"><span class="ac-emoji">🛶</span></div>
+      <div class="ac-body">
+        <h4>汪口村</h4>
+        <div class="ac-meta">📍 婺源县江湾镇 · 门票¥60 · 俞氏宗祠</div>
+        <div class="ac-desc">明清古宅沿河而建，古水埠码头保存完好。核心看点是"江南第一祠"俞氏宗祠，木雕精细绝伦，被誉为中国建筑宝库。古朴安静，游客不多。</div>
+        <div class="ac-footer"><span class="tc-tag tag-fee">¥60</span><span class="tc-tag tag-gold">俞氏宗祠</span><span class="tc-tag tag-walk">游玩1h</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/汪口村" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+    <div class="attraction-card">
+      <div class="ac-image" style="background:linear-gradient(135deg,#e8eef1,#5a6472)"><span class="ac-emoji">🏮</span></div>
+      <div class="ac-body">
+        <h4>婺源县城 · 朱子步行街</h4>
+        <div class="ac-meta">📍 婺源县城 · 免费 · 全天开放</div>
+        <div class="ac-desc">县城大本营。朱子步行街夜逛最热闹，徽州文化与美食小吃集中。彩虹桥（廊桥）也在县城附近可顺路看。气糕、清明果、糊豆腐沿街即吃，也是买伴手礼的地方。</div>
+        <div class="ac-footer"><span class="tc-tag tag-free">免费</span><span class="tc-tag tag-food">小吃天堂</span><span class="tc-tag tag-tip">夜逛更有味</span></div>
+        <a class="card-link" href="https://baike.baidu.com/item/婺源县" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 美食推荐 ===== -->
+  <div class="section-title">
+    <h2>美食推荐</h2>
+    <div class="deco"></div>
+    <p>徽州味道 · 婺源名菜 · 街头小吃</p>
+  </div>
+  <div class="food-grid">
+    <div class="food-card">
+      <h4>🥘 婺源粉蒸肉</h4>
+      <div class="food-meta">📍 县城餐馆/篁岭天街 · 人均 ¥30 · 婺源名菜</div>
+      <p>婺源招牌菜，五花肉裹米粉蒸至酥烂，入口肥而不腻、粉香四溢。配梅干菜或荷叶打底，越蒸越香。县城餐馆和篁岭天街都有，是"无粉蒸不婺源"的存在。</p>
+      <div class="food-dishes"><span class="dish-tag">粉蒸肉 ¥30</span><span class="dish-tag">配米饭绝了</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/粉蒸肉" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🐟 荷包红鲤鱼</h4>
+      <div class="food-meta">📍 婺源县城餐馆 · ¥50 · 婺源独有</div>
+      <p>婺源独有的名贵鱼种，烧制成荷包形状，肉嫩刺少、鲜香微辣。是婺源待客必上菜，"荷包红鲤"寓意吉祥。县城餐馆明码实价，点一条尝尝徽州味。</p>
+      <div class="food-dishes"><span class="dish-tag">荷包红鲤鱼 ¥50</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/荷包红鲤鱼" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🍲 糊豆腐</h4>
+      <div class="food-meta">📍 县城/农家乐 · ¥15 · 婺源特色</div>
+      <p>豆腐打散勾芡成糊状，配香菇丁、虾皮、葱花，鲜嫩滑口，是婺源人从小吃到大的家常菜。就一勺白米饭，味道朴素温暖，5块钱一份也能吃得满足。</p>
+      <div class="food-dishes"><span class="dish-tag">糊豆腐 ¥15</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/糊豆腐" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🍡 清明果</h4>
+      <div class="food-meta">📍 婺源街头/步行街 · ¥10 · 传统粿食</div>
+      <p>用艾草汁和糯米做的绿色粿，包笋丁、豆腐、腊肉馅蒸熟，清香软糯。是婺源人的"零食记忆"，可现吃也可打包带回上海。甜咸两种馅都有。</p>
+      <div class="food-dishes"><span class="dish-tag">清明果 ¥10</span><span class="dish-tag">可打包</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/清明果" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🥞 气糕</h4>
+      <div class="food-meta">📍 婺源街头/早餐 · ¥8 · 特色米糕</div>
+      <p>用米浆蒸制的气糕，蜂窝状口感松软，铺上笋丁、肉末、咸菜蒸熟，一打开热气扑鼻。婺源早餐摊头最常见的烟火气，配上豆浆最好。</p>
+      <div class="food-dishes"><span class="dish-tag">气糕 ¥8</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/气糕" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="food-card">
+      <h4>🧀 徽州毛豆腐</h4>
+      <div class="food-meta">📍 婺源街头/徽菜馆 · ¥15 · 徽州特色</div>
+      <p>表面长出白色绒毛的发酵豆腐，煎至金黄外脆里嫩，配辣酱入口，味道独特鲜香。徽州菜代表之一，喜欢尝鲜的不要错过，街上摊头现煎现卖。</p>
+      <div class="food-dishes"><span class="dish-tag">毛豆腐 ¥15</span><span class="dish-tag">街头现煎</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/毛豆腐" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+
+  <!-- ===== 住宿推荐 ===== -->
+  <div class="section-title">
+    <h2>住宿推荐</h2>
+    <div class="deco"></div>
+    <p>篁岭山景 + 婺源县城 · 住进徽派秋色里</p>
+  </div>
+  <div class="stay-grid">
+    <div class="stay-card">
+      <h4>篁岭景区内酒店（晒秋美宿）</h4>
+      <div class="stay-loc">📍 篁岭景区山内 · 悬崖古村</div>
+      <p>住进晒秋村里，清晨推开窗就是金色晒架与梯田晨雾，避开白天的人潮拍清晨独享的晒秋。中秋假期房价高且紧张，需提前很久预订，价格约¥500-900/晚。</p>
+      <span class="stay-rating">4.8 分</span> <span class="stay-price">¥500-900/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/婺源篁岭晒秋美宿" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>篁岭山脚村民宿</h4>
+      <div class="stay-loc">📍 篁岭山脚村落（晓鳙村等）</div>
+      <p>篁岭索道站周边的村落民宿，价格亲民（¥250-400/晚），第二天一早进山很方便，老板一般能帮忙安排接送或寄存行李。适合想省钱又离篁岭近的住法。</p>
+      <span class="stay-rating">4.5 分</span> <span class="stay-price">¥250-400/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/婺源篁岭民宿" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>婺源县城精品酒店</h4>
+      <div class="stay-loc">📍 婺源县城中心 · 朱子步行街附近</div>
+      <p>县城大本营，去篁岭和各古村都方便。酒店价格¥250-500/晚，中秋假期性价比最高的选择。步行街就在楼下，晚餐夜宵、买伴手礼一步到位。</p>
+      <span class="stay-rating">4.6 分</span> <span class="stay-price">¥250-500/晚</span>
+      <a class="card-link" href="https://hotels.ctrip.com/hotels/婺源县城酒店" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+    <div class="stay-card">
+      <h4>婺源县城徽派民宿</h4>
+      <div class="stay-loc">📍 婺源县城内 · 徽州老宅改造</div>
+      <p>老宅改造的徽派民宿，天井、木雕、青瓦白墙，住进真正的徽州大宅。价格¥300-600/晚，适合想沉浸式体验徽州建筑的人。旺季房源少，务必提前订。</p>
+      <span class="stay-rating">4.7 分</span> <span class="stay-price">¥300-600/晚</span>
+      <a class="card-link" href="https://www.dianping.com/search/keyword/4/0_婺源徽派民宿" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+    </div>
+  </div>
+
+  <!-- ===== 交通信息 ===== -->
+  <div class="section-title">
+    <h2>交通信息</h2>
+    <div class="deco"></div>
+    <p>上海高铁直达婺源站 · 当地古村需包车/打车</p>
+  </div>
+  <div class="transport-box">
+    <h3>方案：上海高铁直达婺源站</h3>
+    <p style="font-size:.88rem;color:var(--text);margin-bottom:16px">上海坐高铁直达婺源站（约3-4.5h），无需中转，婺源站打车20分钟到县城。婺源古村分散在县城周边（东线/北线），村与村之间没有公共交通，需包车或自驾（约¥200/天）。</p>
+
+    <div class="transport-route">
+      <span class="transport-node">上海虹桥</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node" style="background:var(--water-pale);color:var(--water)">高铁 3-4.5h</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node" style="background:var(--gold-pale);color:var(--gold)">婺源站</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node" style="background:var(--earth-pale);color:var(--earth)">打车 20min</span>
+      <span class="transport-arrow">→</span>
+      <span class="transport-node">婺源县城</span>
+    </div>
+
+    <h4 style="color:var(--ink);font-size:.95rem;margin:20px 0 10px">🚄 去程 9月25日（周五）推荐车次</h4>
+    <table class="budget-table" style="margin-bottom:16px">
+      <thead><tr><th>车次</th><th>出发→到达</th><th>耗时</th><th>二等座</th><th>余票提示</th></tr></thead>
+      <tbody>
+        <tr><td>G4061</td><td>上海虹桥 09:37 → 婺源 14:20</td><td>4h43m</td><td>¥374</td><td><strong style="color:#e65100">需12306确认</strong>（上午到，时间最优）</td></tr>
+        <tr style="background:#fff8e1"><td>G1417</td><td>上海虹桥 16:59 → 婺源 20:18</td><td>3h19m</td><td>¥315</td><td><strong style="color:#e65100">需查余票+候补</strong>（推荐）</td></tr>
+        <tr><td>G3237</td><td>上海虹桥 17:16 → 婺源 21:00</td><td>3h44m</td><td>以12306为准</td><td>需查余票+候补</td></tr>
+        <tr><td>G1454</td><td>上海虹桥 17:43 → 婺源 21:16</td><td>3h33m</td><td>以12306为准</td><td>需查余票+候补</td></tr>
+        <tr><td>D3323</td><td>上海虹桥 18:59 → 婺源 22:21</td><td>3h22m</td><td>以12306为准</td><td>需查余票+候补（到得晚）</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--red);margin-bottom:12px">⚠️ 傍晚车次较多但到得都较晚（20:00-22:00）。建议：① 优先候补 <strong>G1417</strong>（16:59发，20:18到）；② 若抢到上午<strong>G4061</strong>（09:37发），Day1下午就能多玩一个李坑；③ 多趟候补同时提交提高成功率。</p>
+
+    <h4 style="color:var(--ink);font-size:.95rem;margin:20px 0 10px">🚄 返程 9月27日（周日）建议</h4>
+    <table class="budget-table" style="margin-bottom:16px">
+      <thead><tr><th>方向</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><strong>婺源 → 上海虹桥</strong></td><td>直达车次约3-4.5h，具体时刻<strong style="color:#e65100">以12306为准</strong>。建议：① 提前在12306查余票+多趟候补；② 备选上饶/黄山北中转；③ 选下午14:00-16:00时段出发，正好衔接Day3上午的古村行程。</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--red);margin-bottom:12px">⚠️ 中秋返程票紧张！出发前（9/21-9/24）就在12306提交候补，越早成功率越高。</p>
+
+    <h4 style="color:var(--ink);font-size:.95rem;margin:20px 0 10px">🚗 当地交通方式</h4>
+    <div class="transport-detail">
+      <div class="transport-item"><div class="ti-label">婺源站→县城</div><div class="ti-value">打车 ¥20-30 · 20min</div></div>
+      <div class="transport-item"><div class="ti-label">县城→篁岭</div><div class="ti-value">包车/打车 ¥60-80 · 40min</div></div>
+      <div class="transport-item"><div class="ti-label">古村串游</div><div class="ti-value">包车约 ¥200/天</div></div>
+      <div class="transport-item"><div class="ti-label">县城内</div><div class="ti-value">步行/打车很方便</div></div>
+      <div class="transport-item"><div class="ti-label">网上约车</div><div class="ti-value">网约车可叫到</div></div>
+      <div class="transport-item"><div class="ti-label">包车渠道</div><div class="ti-value">酒店/民宿可帮忙约</div></div>
+    </div>
+    <p style="font-size:.82rem;color:var(--text-light);margin-top:12px">婺源景点分布在东、北、西三条线上，村与村之间无公共交通，古村串联必须包车或打车。建议Day2（篁岭+李坑）和Day3（江湾+汪口）各约半天包车，或连续约一天，总价约¥200/天，酒店民宿老板都能帮忙联系当地司机。</p>
+    <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://www.12306.cn/index/" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--red);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">12306 购票 ↗</a>
+      <a href="https://www.didiglobal.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--water);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">滴滴打车 ↗</a>
+      <a href="https://baike.baidu.com/item/婺源县" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--gold);color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600">婺源介绍 ↗</a>
+    </div>
+  </div>
+
+  <!-- ===== 预算估算 ===== -->
+  <div class="section-title">
+    <h2>预算估算</h2>
+    <div class="deco"></div>
+    <p>两人3天2晚 · 高铁往返 + 当地包车/打车方案</p>
+  </div>
+  <div class="budget-box">
+    <h3>2人合计 · 高铁方案</h3>
+    <table class="budget-table">
+      <thead><tr><th>项目</th><th>明细</th><th>金额</th></tr></thead>
+      <tbody>
+        <tr><td>高铁往返（2人）</td><td>二等座 ¥315×2人×2程（部分车次¥374）</td><td>¥1,260</td></tr>
+        <tr><td>住宿（2晚）</td><td>篁岭民宿/县城酒店 ¥250-600/晚</td><td>¥500-1,200</td></tr>
+        <tr><td>餐饮（3天）</td><td>粉蒸肉/荷包红鲤鱼/小吃+2顿正餐</td><td>¥600-900</td></tr>
+        <tr><td>门票</td><td>篁岭¥130×2 + 李坑¥60×2 + 江湾/汪口¥60×2（按需取舍）</td><td>¥380-500</td></tr>
+        <tr><td>当地交通</td><td>包车/打车 约¥200/天</td><td>¥200</td></tr>
+        <tr><td>其他</td><td>伴手礼（菊茶/清明果）、零食等</td><td>¥200</td></tr>
+        <tr class="total-row"><td>合计（2人）</td><td></td><td class="amount">¥3,140 - 4,260</td></tr>
+        <tr class="total-row"><td>人均</td><td></td><td class="amount">¥1,570 - 2,130</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--text-light);margin-top:12px">最大变数在住宿（中秋假期篁岭景区内民宿¥500-900/晚，县城酒店¥250-500/晚）和高铁票价（G4061为¥374，其余约¥315）。门票按选游2-3个收费景区计算，篁岭+李坑为必去；古村门票各¥60，可视时间取舍。若返程捡到中转低价票，人均还能再省几十。</p>
+  </div>
+
+  <!-- ===== Tips ===== -->
+  <div class="section-title">
+    <h2>实用Tips</h2>
+    <div class="deco"></div>
+    <p>出发前必看 · 婺源旅行注意事项</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-icon">🚡</div><div class="tip-content"><h4>篁岭索道末班17:30</h4><p>篁岭索道16:00-17:30开始下山排队，末班约17:30。想当日往返务必在16:00前到索道站，不要贪玩错过。若要拍夕阳晒秋，就住山内。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🚗</div><div class="tip-content"><h4>古村分散需包车</h4><p>婺源古村分布在东、北、西三条线上，村与村之间没有公共交通。古村串游必须包车/打车（约¥200/天），酒店前台可帮忙约当地司机，比自驾更省心。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🌽</div><div class="tip-content"><h4>9月虽无油菜花，晒秋正当时</h4><p>油菜花是3-4月春季景色，9月看的是"晒秋"——辣椒、玉米、南瓜铺满晒架，这才是秋天的婺源名片，一年中晒秋色彩最艳的就是9-11月。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">📷</div><div class="tip-content"><h4>徽派建筑上午顺光拍照</h4><p>白墙黛瓦的马头墙上午顺光拍摄最佳，轮廓清晰不刺眼。篁岭晒秋上午光线柔和（9:00-11:00），下午逆光容易拍出剪影。古村同理，古村游览尽量安排上午。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🚄</div><div class="tip-content"><h4>高铁票提前抢</h4><p>去程G1417与返程9/27车次基本紧张，出发前一周（9/21-9/24）就在12306提交多趟候补，同时用不同车次扩大概率。若直达失败，考虑上饶或黄山北中转。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🎫</div><div class="tip-content"><h4>门票提前网购</h4><p>篁岭门票+索道（¥130）和各古村门票均可提前在携程/美团/官方小程序购买，比现场便宜且免排队。中秋假期景区客流大，能省很多时间。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🏠</div><div class="tip-content"><h4>住宿提前订</h4><p>中秋假期篁岭景区内民宿和县城热门酒店紧张，建议提前1-2周预订。想住篁岭山内看日出，越早越好；预算优先住县城，性价比高。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🥾</div><div class="tip-content"><h4>穿舒适运动鞋</h4><p>篁岭要爬索道+走天街+过玻璃桥，古村石板路湿滑，全程走2万步起步。备好防晒帽、水和一点零食，穿一双好走的鞋非常重要。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🍊</div><div class="tip-content"><h4>伴手礼买什么</h4><p>婺源绿茶、皇菊（菊花茶）、清明果、笋干是特色伴手礼。朱子步行街的土特产店价格比景区内便宜，晚秋时段的皇菊特别出名。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🌙</div><div class="tip-content"><h4>中秋赏月</h4><p>婺源秋空气好、视野开阔，在篁岭晒秋台上看"晒秋+月亮"双景是独一无二的体验。住县城可到彩虹桥（廊桥）附近的河边赏月。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">💳</div><div class="tip-content"><h4>现金带一点</h4><p>古村和农家乐部分不支持扫码支付，县城内则完全没问题。备100-200元现金应急，同时注意景区野导、拉客，正规渠道购票。</p></div></div>
+    <div class="tip-card"><div class="tip-icon">🧥</div><div class="tip-content"><h4>九月微凉带薄外套</h4><p>9月底婺源白天25°C左右、早晚16-18°C，篁岭山上风大，比县城凉2-3°C。带一件薄外套，晚上逛步行街也用得上。</p></div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>婺源篁岭 3天2晚攻略 · 2026中秋假期 · 中国最美乡村</p>
+  <p style="margin-top:6px;opacity:.6">祝你旅途愉快 🌽🏯🍁</p>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+document.querySelectorAll('.day-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const day=tab.dataset.day;
+    document.querySelectorAll('.timeline').forEach(tl=>tl.style.display='none');
+    const target=document.getElementById('day'+day);
+    target.style.display='block';
+    target.querySelectorAll('.timeline-item').forEach((item,i)=>{
+      item.classList.remove('show');
+      setTimeout(()=>item.classList.add('show'),i*80);
+    });
+  });
+});
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('backTop');
+  if(window.scrollY>400){btn.classList.add('show')}else{btn.classList.remove('show')}
+});
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('#day1 .timeline-item').forEach((item,i)=>{
+    setTimeout(()=>item.classList.add('show'),i*100);
+  });
+});
+</script>
+</body>
+</html>

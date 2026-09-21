@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>镇江·西津渡3天2晚中秋攻略 | 上海出发高铁游</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 50%, #e0f7fa 100%);
+  color: #333; line-height: 1.7; min-height: 100vh;
+}
+
+/* 返回导航 */
+.back-nav {
+  display: block; text-decoration: none; position: sticky; top: 0; z-index: 100;
+  background: linear-gradient(90deg, #1565c0, #0288d1); color: #fff;
+  padding: 10px 24px; font-size: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+}
+.back-nav:hover { background: linear-gradient(90deg, #0d47a1, #01579b); }
+.back-nav::before { content: "← "; font-size: 18px; font-weight: bold; }
+
+/* 头部横幅 */
+.hero {
+  position: relative; height: 260px; overflow: hidden;
+  background: linear-gradient(135deg, #006064, #00838f, #0288d1);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+  background: linear-gradient(to top, rgba(232,245,233,1), transparent);
+}
+.hero-content { position: relative; z-index: 2; color: #fff; }
+.hero-content h1 { font-size: 38px; margin-bottom: 8px; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); }
+.hero-content .subtitle { font-size: 17px; opacity: 0.92; }
+.hero-content .tags { margin-top: 12px; }
+.hero-content .tag {
+  display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 20px; padding: 4px 14px; margin: 0 4px; font-size: 13px;
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 15% 40%, rgba(255,255,255,0.12) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.08) 0%, transparent 35%);
+}
+
+/* SVG地图 */
+.map-section { max-width: 1100px; margin: -20px auto 20px; padding: 0 16px; position: relative; z-index: 3; }
+.map-section h2 {
+  text-align: center; font-size: 22px; color: #006064; margin-bottom: 12px;
+}
+.map-section h2::before { content: "🗺️ "; }
+.map-container {
+  background: #fff; border-radius: 16px; padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
+.map-container svg { display: block; max-width: 100%; height: auto; }
+
+/* 通用容器 */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px 24px; }
+.section-title {
+  font-size: 24px; color: #006064; margin: 28px 0 16px;
+  padding-bottom: 8px; border-bottom: 3px solid #4fc3f7;
+}
+.section-title::before { content: ""; }
+
+/* Tab切换 */
+.tabs {
+  display: flex; gap: 8px; justify-content: center; margin: 20px 0 0;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  padding: 10px 28px; border: none; border-radius: 24px;
+  font-size: 16px; cursor: pointer; transition: all 0.3s;
+  background: #fff; color: #555; box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-weight: 600;
+}
+.tab-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+.tab-btn.active {
+  background: linear-gradient(135deg, #00838f, #0288d1);
+  color: #fff; box-shadow: 0 4px 14px rgba(2,136,209,0.35);
+}
+.tab-content { display: none; animation: fadeIn 0.4s ease; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 时间线 */
+.timeline { position: relative; padding-left: 36px; margin-top: 20px; }
+.timeline::before {
+  content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+  width: 3px; background: linear-gradient(to bottom, #4fc3f7, #26c6da, #66bb6a);
+  border-radius: 2px;
+}
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -28px; top: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #fff; border: 3px solid #0288d1; box-shadow: 0 2px 6px rgba(2,136,209,0.3);
+}
+.timeline-time {
+  display: inline-block; background: linear-gradient(90deg, #e3f2fd, #e0f7fa);
+  color: #00838f; font-weight: 700; font-size: 14px;
+  padding: 3px 12px; border-radius: 12px; margin-bottom: 6px;
+}
+.timeline-item h3 { font-size: 17px; color: #00695c; margin-bottom: 4px; }
+.timeline-item p { font-size: 14px; color: #666; }
+.timeline-item .tip-note {
+  display: inline-block; background: #fff3e0; border-left: 3px solid #ff9800;
+  padding: 4px 10px; margin-top: 6px; font-size: 13px; color: #e65100; border-radius: 4px;
+}
+
+/* 卡片网格 */
+.card-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px; margin-top: 16px;
+}
+.card {
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex; flex-direction: column;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.card-header {
+  padding: 12px 16px; color: #fff; font-size: 16px; font-weight: 700;
+}
+.card-header.scenic { background: linear-gradient(90deg, #00838f, #0288d1); }
+.card-header.food { background: linear-gradient(90deg, #e65100, #ff8f00); }
+.card-header.hotel { background: linear-gradient(90deg, #6a1b9a, #8e24aa); }
+.card-body { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; }
+.card-body p { font-size: 14px; color: #555; margin-bottom: 8px; flex: 1; }
+.card-tag {
+  display: inline-block; font-size: 12px; padding: 2px 10px;
+  border-radius: 10px; margin-right: 6px; margin-bottom: 4px; font-weight: 600;
+}
+.card-tag.free { background: #e8f5e9; color: #2e7d32; }
+.card-tag.price { background: #e3f2fd; color: #1565c0; }
+.card-tag.must { background: #fff3e0; color: #e65100; }
+.card-link {
+  display: inline-block; margin-top: 8px; color: #0288d1; text-decoration: none;
+  font-size: 13px; font-weight: 600; border: 1.5px solid #0288d1;
+  padding: 4px 14px; border-radius: 18px; transition: all 0.3s; align-self: flex-start;
+}
+.card-link:hover { background: #0288d1; color: #fff; }
+.card-link::after { content: " ↗"; }
+
+/* 交通信息 */
+.transport-box {
+  background: #fff; border-radius: 14px; padding: 20px 24px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08); margin-top: 16px;
+}
+.transport-box h3 { font-size: 18px; color: #006064; margin-bottom: 12px; }
+.transport-highlight {
+  background: linear-gradient(90deg, #e8f5e9, #e3f2fd);
+  border-left: 4px solid #4caf50; border-radius: 8px;
+  padding: 10px 16px; margin-bottom: 12px; font-size: 15px; color: #2e7d32;
+}
+.transport-highlight strong { font-size: 16px; }
+.train-info {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.train-card {
+  border: 1.5px solid #e0e0e0; border-radius: 10px; padding: 12px 14px;
+  background: #fafafa; transition: border-color 0.3s;
+}
+.train-card:hover { border-color: #0288d1; }
+.train-card .route { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 4px; }
+.train-card .detail { font-size: 13px; color: #777; }
+.train-card .badge {
+  display: inline-block; font-size: 12px; background: #e3f2fd; color: #1565c0;
+  padding: 2px 8px; border-radius: 10px; margin-top: 4px;
+}
+
+/* 预算表 */
+.budget-table {
+  width: 100%; border-collapse: collapse; margin-top: 16px;
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+.budget-table th {
+  background: linear-gradient(90deg, #00838f, #0288d1); color: #fff;
+  padding: 12px 16px; text-align: left; font-size: 15px;
+}
+.budget-table td {
+  padding: 12px 16px; border-bottom: 1px solid #f0f0f0; font-size: 14px;
+}
+.budget-table tr:hover td { background: #f5fafc; }
+.budget-table .total-row td {
+  background: linear-gradient(90deg, #e8f5e9, #e3f2fd);
+  font-weight: 700; font-size: 16px; color: #006064; border-bottom: none;
+}
+.budget-table .per-person td { background: #fff8e1; color: #e65100; font-weight: 700; }
+
+/* Tips */
+.tips-list { margin-top: 16px; }
+.tip-item {
+  background: #fff; border-radius: 10px; padding: 14px 16px;
+  margin-bottom: 10px; border-left: 4px solid #ff9800;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-size: 14px;
+}
+.tip-item strong { color: #e65100; }
+.tip-item .tip-icon { font-size: 18px; margin-right: 6px; }
+
+/* 页脚 */
+.footer {
+  text-align: center; padding: 24px 16px; color: #888; font-size: 13px;
+  background: linear-gradient(to bottom, transparent, #e0f7fa);
+}
+
+/* 亮点横排 */
+.highlights {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; justify-content: center;
+}
+.highlight-pill {
+  background: linear-gradient(90deg, #00838f, #0288d1); color: #fff;
+  padding: 8px 18px; border-radius: 22px; font-size: 14px; font-weight: 600;
+  box-shadow: 0 3px 10px rgba(2,136,209,0.25);
+}
+.highlight-pill::before { content: "✨ "; }
+
+/* Day标题 */
+.day-header {
+  background: linear-gradient(90deg, #e0f7fa, #e3f2fd);
+  border-radius: 12px; padding: 14px 20px; margin: 16px 0;
+}
+.day-header h3 { font-size: 20px; color: #00695c; }
+.day-header .day-route { font-size: 14px; color: #555; margin-top: 4px; }
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .hero-content h1 { font-size: 28px; }
+  .hero { height: 220px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .train-info { grid-template-columns: 1fr; }
+  .budget-table th, .budget-table td { padding: 10px 10px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<a href="旅游攻略.html" class="back-nav">返回旅游攻略总览</a>
+
+<!-- 头部横幅 -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>🏞️ 镇江 · 西津渡3天2晚</h1>
+    <div class="subtitle">三山一渡 · 三国文化 · 白蛇传说 · 长江边的慢生活古城</div>
+    <div class="tags">
+      <span class="tag">📅 2026.9.25 - 9.27</span>
+      <span class="tag">🚄 高铁1.5h直达</span>
+      <span class="tag">👥 2人 · 人均¥880-1,260</span>
+      <span class="tag">🏨 西津渡住宿</span>
+    </div>
+  </div>
+</div>
+
+<!-- SVG手绘地图 -->
+<div class="map-section">
+  <h2>镇江·三山一渡手绘地图</h2>
+  <div class="map-container">
+    <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+      <!-- 背景 -->
+      <defs>
+        <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#b3e5fc" stop-opacity="0.5"/>
+          <stop offset="50%" stop-color="#81d4fa" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#b3e5fc" stop-opacity="0.5"/>
+        </linearGradient>
+        <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f1f8e9"/>
+          <stop offset="100%" stop-color="#e8f5e9"/>
+        </linearGradient>
+      </defs>
+
+      <!-- 陆地背景 -->
+      <rect x="0" y="0" width="800" height="460" fill="url(#landGrad)"/>
+
+      <!-- 长江 -->
+      <path d="M 0,80 Q 200,70 400,100 T 800,110 L 800,30 L 0,40 Z" fill="url(#riverGrad)" stroke="#4fc3f7" stroke-width="1.5"/>
+      <text x="120" y="55" font-size="14" fill="#0288d1" font-weight="bold" opacity="0.7">长 江</text>
+      <text x="520" y="55" font-size="14" fill="#0288d1" font-weight="bold" opacity="0.7">长 江</text>
+
+      <!-- 焦山（长江中岛屿） -->
+      <ellipse cx="300" cy="70" rx="50" ry="25" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2"/>
+      <text x="280" y="70" font-size="15" fill="#2e7d32" font-weight="bold">🏔️焦山</text>
+      <text x="272" y="84" font-size="10" fill="#388e3c">长江岛屿·碑林</text>
+      <!-- 连接桥虚线 -->
+      <path d="M 300,95 L 300,130" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+      <!-- 路线虚线 -->
+      <path d="M 150,180 L 260,180 L 260,140 L 300,140" fill="none" stroke="#0288d1" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+      <path d="M 260,180 L 400,200" fill="none" stroke="#0288d1" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+      <path d="M 400,200 L 500,280" fill="none" stroke="#0288d1" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+      <path d="M 400,200 L 580,170" fill="none" stroke="#0288d1" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+      <path d="M 500,280 L 600,350" fill="none" stroke="#0288d1" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+
+      <!-- 西津渡古街 -->
+      <circle cx="150" cy="180" r="8" fill="#fff" stroke="#e65100" stroke-width="3"/>
+      <text x="105" y="195" font-size="14" fill="#e65100" font-weight="bold">🏘️西津渡</text>
+      <text x="105" y="210" font-size="10" fill="#bf360c">免费古街·一眼看千年</text>
+
+      <!-- 金山景区 -->
+      <circle cx="260" cy="180" r="8" fill="#fff" stroke="#00838f" stroke-width="3"/>
+      <text x="225" y="165" font-size="14" fill="#00838f" font-weight="bold">⛰️金山</text>
+      <text x="218" y="200" font-size="10" fill="#00695c">¥50·白蛇传说·金山寺</text>
+
+      <!-- 镇江站 -->
+      <rect x="385" y="193" width="30" height="22" rx="4" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+      <text x="388" y="207" font-size="11" fill="#e65100" font-weight="bold">🚄镇江</text>
+      <text x="378" y="230" font-size="10" fill="#888">高铁站</text>
+
+      <!-- 北固山 -->
+      <circle cx="580" cy="170" r="8" fill="#fff" stroke="#7b1fa2" stroke-width="3"/>
+      <text x="545" y="155" font-size="14" fill="#7b1fa2" font-weight="bold">⛰️北固山</text>
+      <text x="538" y="188" font-size="10" fill="#6a1b9a">¥30·刘备招亲·看长江</text>
+
+      <!-- 南山景区 -->
+      <circle cx="500" cy="280" r="8" fill="#fff" stroke="#2e7d32" stroke-width="3"/>
+      <text x="470" y="305" font-size="14" fill="#2e7d32" font-weight="bold">🌿南山</text>
+      <text x="462" y="320" font-size="10" fill="#388e3c">¥30·招隐寺·人极少</text>
+
+      <!-- 美食区 -->
+      <circle cx="600" cy="350" r="8" fill="#fff" stroke="#e65100" stroke-width="3"/>
+      <text x="575" y="375" font-size="13" fill="#e65100" font-weight="bold">🍜美食区</text>
+      <text x="568" y="390" font-size="10" fill="#bf360c">锅盖面·肴肉·三怪</text>
+
+      <!-- 住宿区 -->
+      <circle cx="120" cy="300" r="8" fill="#fff" stroke="#8e24aa" stroke-width="3"/>
+      <text x="95" y="325" font-size="13" fill="#8e24aa" font-weight="bold">🏨住宿</text>
+      <text x="90" y="340" font-size="10" fill="#6a1b9a">西津渡附近</text>
+
+      <!-- Day标注 -->
+      <text x="170" y="160" font-size="11" fill="#0288d1" font-weight="bold" opacity="0.7">Day1</text>
+      <text x="450" y="160" font-size="11" fill="#0288d1" font-weight="bold" opacity="0.7">Day2</text>
+      <text x="560" y="310" font-size="11" fill="#0288d1" font-weight="bold" opacity="0.7">Day3</text>
+
+      <!-- 指北针 -->
+      <g transform="translate(750,40)">
+        <circle r="18" fill="#fff" stroke="#0288d1" stroke-width="1.5"/>
+        <path d="M 0,-12 L 4,4 L 0,0 L -4,4 Z" fill="#0288d1"/>
+        <text x="-4" y="-20" font-size="10" fill="#0288d1" font-weight="bold">N</text>
+      </g>
+
+      <!-- 比例尺 -->
+      <g transform="translate(40,420)">
+        <line x1="0" y1="0" x2="80" y2="0" stroke="#666" stroke-width="2"/>
+        <line x1="0" y1="-4" x2="0" y2="4" stroke="#666" stroke-width="2"/>
+        <line x1="80" y1="-4" x2="80" y2="4" stroke="#666" stroke-width="2"/>
+        <text x="20" y="16" font-size="10" fill="#666">约5km</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 亮点 -->
+  <h2 class="section-title">⭐ 行程亮点</h2>
+  <div class="highlights">
+    <span class="highlight-pill">西津渡"一眼看千年"免费古街</span>
+    <span class="highlight-pill">金山白娘子传说发源地</span>
+    <span class="highlight-pill">北固山刘备招亲甘露寺</span>
+    <span class="highlight-pill">焦山长江中岛屿碑林</span>
+    <span class="highlight-pill">锅盖面+肴肉+香醋"三怪"</span>
+    <span class="highlight-pill">南山招隐寺人少清幽</span>
+    <span class="highlight-pill">高铁1.5h直达·票好买</span>
+  </div>
+
+  <!-- Tab切换 -->
+  <h2 class="section-title">📋 三日行程</h2>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('day1')">Day1 · 9/25 周五</button>
+    <button class="tab-btn" onclick="switchTab('day2')">Day2 · 9/26 周六</button>
+    <button class="tab-btn" onclick="switchTab('day3')">Day3 · 9/27 周日</button>
+  </div>
+
+  <!-- Day1 -->
+  <div class="tab-content active" id="day1">
+    <div class="day-header">
+      <h3>📍 Day1 · 9月25日 周五 · 初到镇江·西津渡+金山</h3>
+      <div class="day-route">上海虹桥 →（高铁1.5h）→ 镇江站 → 西津渡古街 → 金山景区 → 西津渡夜景</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-time">08:00 - 09:30</span>
+        <h3>🚄 上海虹桥出发，高铁直达镇江站</h3>
+        <p>上午车次多（G7051/G7053等），约1.5h二等座¥100-110，车次多票好买，建议12306直接购买。抵达镇江站后打车或公交到西津渡约15分钟。</p>
+        <div class="tip-note">💡 镇江站离西津渡仅3公里，打车约10元，非常近</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">10:00 - 12:00</span>
+        <h3>🏘️ 西津渡古街（免费·一眼看千年）</h3>
+        <p>先到民宿/酒店寄存行李，步行游览西津渡古街。这里是千年古渡，有"一眼看千年"玻璃栈道（脚下是历代路面遗迹）、昭关石塔（国内唯一过街石塔）、英国领事馆旧址。古街不长，1-2小时可逛完，适合慢慢走。</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">12:00 - 13:00</span>
+        <h3>🍜 锅盖面午餐（人均¥20）</h3>
+        <p>西津渡附近面馆众多，尝一碗正宗锅盖面（面条浮于面汤之上，锅盖在锅里"漂"着）。配一块水晶肴肉，再来一碟镇江香醋——"三怪"之一的锅盖面就齐了。</p>
+        <div class="tip-note">💡 锅盖面是镇江"三怪"之首，面锅小盖是精髓</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">13:30 - 16:30</span>
+        <h3>⛰️ 金山景区（门票¥50）</h3>
+        <p>下午前往金山，这是白蛇传"水漫金山"的发源地。金山寺雄踞山上，登临可俯瞰长江。游览路线：金山寺→慈寿塔→白龙洞→法海洞→天下第一泉。景区不大但底蕴深厚，2-3小时可游完。</p>
+        <div class="tip-note">💡 三山联票（金山+北固山+焦山）¥100，比单买便宜¥30</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">17:00 - 18:30</span>
+        <h3>🦀 蟹黄汤包晚餐（人均¥30）</h3>
+        <p>回西津渡附近吃蟹黄汤包，皮薄汁多，吸管先喝汤再吃馅。搭配肴肉、炒河虾仁等当地菜。</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">19:00 - 20:30</span>
+        <h3>🌃 西津渡夜景漫步</h3>
+        <p>夜幕降临，西津渡亮灯后非常漂亮。昭关石塔灯光映照，老街氛围浓厚。晚风凉快，散步拍照。回民宿休息。</p>
+        <div class="tip-note">💡 西津渡晚上亮灯后比白天更美，一定要晚上来</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day2 -->
+  <div class="tab-content" id="day2">
+    <div class="day-header">
+      <h3>📍 Day2 · 9月26日 周六 · 三山揽胜·北固山+焦山</h3>
+      <div class="day-route">酒店出发 → 北固山（刘备招亲甘露寺）→ 焦山（长江岛屿碑林）→ 市区晚餐</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-time">08:00 - 08:45</span>
+        <h3>🍜 锅盖面早餐</h3>
+        <p>在酒店附近面馆吃锅盖面当早餐，加个荷包蛋，地道镇江人的吃法。</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">09:00 - 11:30</span>
+        <h3>⛰️ 北固山景区（门票¥30）</h3>
+        <p>上午登北固山，这里是三国"刘备招亲"甘露寺所在地。从山脚拾级而上，游览甘露寺→多景楼（看长江最佳处）→北固楼→铁塔。多景楼可远眺长江天际流，气势壮阔，是"天下第一江山"。</p>
+        <div class="tip-note">💡 北固山不高，登顶约30分钟，多景楼看长江是最佳角度</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">12:00 - 13:00</span>
+        <h3>🍽️ 长江三鲜午餐</h3>
+        <p>焦山附近或市区品尝长江三鲜（刀鱼/鲥鱼/河豚），选一家当地口碑好的饭店。中秋时节河豚正鲜，有河豚炖汤、河豚刺身等做法。</p>
+        <div class="tip-note">💡 长江三鲜偏贵，人均¥80-150，量力而行</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">13:30 - 16:30</span>
+        <h3>🏔️ 焦山景区（门票¥50）</h3>
+        <p>下午乘船（含在门票内）渡江上焦山——长江中唯一岛屿景区。游览定慧寺→焦山碑林（全国重点文保，摩崖石刻数百方）→万佛塔→古炮台。焦山满山古树参天，"书法之山"名不虚传。</p>
+        <div class="tip-note">💡 焦山需乘渡船上岛，末班船约17:00，注意时间</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">17:00 - 18:30</span>
+        <h3>🦀 市区晚餐·肴肉+香醋</h3>
+        <p>回市区吃晚餐，水晶肴肉蘸镇江香醋是经典搭配。再来一碗鳝鱼面或大煮干丝。</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">19:00 - 20:00</span>
+        <h3>🛒 逛超市买伴手礼</h3>
+        <p>镇江香醋（恒顺品牌最正宗）是最佳伴手礼，超市买比景区便宜很多。买几瓶香醋和肴肉真空包装带回。</p>
+        <div class="tip-note">💡 恒顺香醋超市价¥10-15/瓶，比景区便宜一倍</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day3 -->
+  <div class="tab-content" id="day3">
+    <div class="day-header">
+      <h3>📍 Day3 · 9月27日 周日 · 南山清幽·返程上海</h3>
+      <div class="day-route">酒店退房 → 南山景区（招隐寺·人极少）→ 市区午餐 → 镇江站 → 高铁返上海</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-time">08:00 - 08:45</span>
+        <h3>🍜 锅盖面早餐</h3>
+        <p>最后一天再吃一碗锅盖面，镇江人的日常早餐。</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">09:00 - 12:00</span>
+        <h3>🌿 南山景区（门票¥30）</h3>
+        <p>上午前往南山，这里人极少、非常清幽，是镇江人本地人休闲的地方。游览招隐寺→竹林寺→文苑。招隐寺隐于竹林深处，"鸟鸣山更幽"。南山也是刘勰写《文心雕龙》之地，有文苑纪念。</p>
+        <div class="tip-note">💡 南山人少景美，如果时间紧也可改为补逛西津渡或二刷某山</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">12:00 - 13:30</span>
+        <h3>🍲 最后一顿镇江美食</h3>
+        <p>市区午餐，点一份大煮干丝+肴肉+锅盖面，把"三怪"吃齐了再走。也可吃蟹粉狮子头、河豚泡饭等。</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">14:00 - 15:30</span>
+        <h3>🚄 镇江站 → 高铁返程上海</h3>
+        <p>提前30分钟到镇江站，下午车次多（G7052/G7054等），约1.5h回上海虹桥。车次多票好买，12306直接购买即可。</p>
+        <div class="tip-note">💡 建议买14:00-15:00车次，留足时间吃午餐</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">16:30 - 17:00</span>
+        <h3>🏠 抵达上海，结束旅程</h3>
+        <p>约下午4:30-5:00到达上海虹桥站，3天2晚镇江慢生活之旅圆满结束。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 交通信息 -->
+  <h2 class="section-title">🚄 交通信息</h2>
+  <div class="transport-box">
+    <h3>上海 ⇄ 镇江 高铁直达</h3>
+    <div class="transport-highlight">
+      <strong>✅ 车次多 · 1.5h直达 · 票好买！</strong><br>
+      上海到镇江每天30+趟高铁，全程约1.5h，二等座¥90-110。车次密集、票源充足，不像热门旅游城市那么紧张，建议直接在12306购买即可。
+    </div>
+    <div class="train-info">
+      <div class="train-card">
+        <div class="route">去程 9/25（周五）上海 → 镇江</div>
+        <div class="detail">推荐上午车次：G7051 / G7053 / G7055等，上海虹桥→镇江，约1.5h，二等座¥100-110</div>
+        <div class="badge">车次多·请12306查询购买</div>
+      </div>
+      <div class="train-card">
+        <div class="route">返程 9/27（周日）镇江 → 上海</div>
+        <div class="detail">推荐下午车次：G7052 / G7054 / G7056等，镇江→上海虹桥，约1.5h，二等座¥100-110</div>
+        <div class="badge">车次多·请12306查询购买</div>
+      </div>
+    </div>
+    <div style="margin-top:14px; font-size:14px; color:#555;">
+      <p><strong>市内交通：</strong>镇江站到西津渡约3km（打车¥10/15分钟），各景区之间打车¥10-20，镇江不大，打车很方便。</p>
+      <p style="margin-top:6px;"><strong>焦山渡船：</strong>焦山门票已含渡船费，码头乘船约5分钟上岛。</p>
+    </div>
+  </div>
+
+  <!-- 景点卡片 -->
+  <h2 class="section-title">🏛️ 景点推荐</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-header scenic">🏘️ 西津渡古街</div>
+      <div class="card-body">
+        <p>千年古渡，"一眼看千年"玻璃栈道展示历代路面遗迹。昭关石塔（国内唯一过街石塔）、英国领事馆旧址、救生会等历史建筑。免费开放，夜晚亮灯后更美。</p>
+        <div>
+          <span class="card-tag free">免费</span>
+          <span class="card-tag must">必去</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E8%A5%BF%E6%B4%A5%E6%B8%A1" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header scenic">⛰️ 金山景区</div>
+      <div class="card-body">
+        <p>白蛇传"水漫金山"发源地，金山寺千年古刹。登慈寿塔俯瞰长江，探白龙洞、法海洞、天下第一泉。景区不大，底蕴深厚。</p>
+        <div>
+          <span class="card-tag price">¥50</span>
+          <span class="card-tag must">必去</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E9%87%91%E5%B1%B1%E5%AF%BA/6607" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header scenic">⛰️ 北固山景区</div>
+      <div class="card-body">
+        <p>三国"刘备招亲"甘露寺所在地。多景楼是看长江最佳处，"天下第一江山"。北固楼怀古，铁塔千年屹立。山不高，登顶约30分钟。</p>
+        <div>
+          <span class="card-tag price">¥30</span>
+          <span class="card-tag must">必去</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E5%8C%97%E5%9B%BA%E5%B1%B1/5002836" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header scenic">🏔️ 焦山景区</div>
+      <div class="card-body">
+        <p>长江中唯一岛屿景区，乘渡船上岛。焦山碑林全国重点文保，摩崖石刻数百方。定慧寺千年古刹，万佛塔登高望远。"书法之山"名不虚传。</p>
+        <div>
+          <span class="card-tag price">¥50</span>
+          <span class="card-tag must">必去</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E7%84%A6%E5%B1%B1/20666" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header scenic">🌿 南山景区</div>
+      <div class="card-body">
+        <p>招隐寺、竹林寺隐于山中，人极少、非常清幽。刘勰在此写《文心雕龙》，文苑纪念。满山竹林，"鸟鸣山更幽"，镇江本地人休闲首选。</p>
+        <div>
+          <span class="card-tag price">¥30</span>
+          <span class="card-tag free">人少</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E5%8D%97%E5%B1%B1%E9%A3%8E%E6%99%AF%E5%90%8D%E8%83%9C%E5%8C%BA" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header scenic">🏛️ 镇江博物馆</div>
+      <div class="card-body">
+        <p>位于英国领事馆旧址内，展示镇江千年历史文物。建筑本身就是近代洋楼，中西合璧。免费参观，与西津渡步行可达。</p>
+        <div>
+          <span class="card-tag free">免费</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E9%95%87%E6%B1%9F%E5%8D%9A%E7%89%A9%E9%A6%86" target="_blank">查看详情</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 美食卡片 -->
+  <h2 class="section-title">🍜 美食推荐（镇江三怪）</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-header food">🍜 锅盖面（三怪之一）</div>
+      <div class="card-body">
+        <p>镇江三怪之首："面锅里面煮锅盖"。面条浮于面汤之上，锅盖漂在锅中，汤清面韧。当早餐或午餐，配肴肉最经典。</p>
+        <div>
+          <span class="card-tag price">人均¥20</span>
+          <span class="card-tag must">必吃</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E9%94%85%E7%9B%96%E9%9D%A2" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header food">🥩 水晶肴肉（三怪之二）</div>
+      <div class="card-body">
+        <p>镇江三怪之二："肴肉不当菜"。猪皮冻包裹瘦肉，切片晶莹如水晶，蘸香醋吃，肥而不腻。当地冷盘必备。</p>
+        <div>
+          <span class="card-tag price">¥30-50</span>
+          <span class="card-tag must">必吃</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E8%82%B4%E8%82%89" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header food">🍶 镇江香醋（三怪之三）</div>
+      <div class="card-body">
+        <p>镇江三怪之三："香醋摆不坏"。恒顺香醋百年品牌，色香味俱全，蘸肴肉、拌凉菜一绝。超市买做伴手礼，比景区便宜。</p>
+        <div>
+          <span class="card-tag price">¥10-15/瓶</span>
+          <span class="card-tag must">伴手礼</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E9%95%87%E6%B1%9F%E9%A6%99%E9%86%8B" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header food">🦀 蟹黄汤包</div>
+      <div class="card-body">
+        <p>皮薄如纸，蟹黄鲜美，吸管先喝汤再吃馅。秋季蟹黄最肥，中秋前后正是最佳时节。西津渡附近多家老字号。</p>
+        <div>
+          <span class="card-tag price">人均¥30</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E8%9F%B9%E9%BB%84%E6%B1%A4%E5%8C%85" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header food">🐟 长江三鲜</div>
+      <div class="card-body">
+        <p>刀鱼、鲥鱼、河豚，长江珍馐。中秋时节河豚最鲜，河豚炖汤、刺身皆可。人均偏贵，量力而行选一家好店。</p>
+        <div>
+          <span class="card-tag price">人均¥80-150</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E9%95%BF%E6%B1%9F%E4%B8%89%E9%B2%9C" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header food">🫘 大煮干丝</div>
+      <div class="card-body">
+        <p>淮扬经典菜，豆腐干切极细丝，鸡汤煮制，清爽鲜美。配肴肉、狮子头组成一桌淮扬盛宴。</p>
+        <div>
+          <span class="card-tag price">¥28-48</span>
+        </div>
+        <a class="card-link" href="https://baike.baidu.com/item/%E5%A4%A7%E7%85%AE%E5%B9%B2%E4%B8%9D" target="_blank">查看详情</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 住宿卡片 -->
+  <h2 class="section-title">🏨 住宿推荐</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-header hotel">🏠 西津渡附近民宿</div>
+      <div class="card-body">
+        <p>住在西津渡古街附近，步行可达古街、镇江博物馆，出门就是古街夜景。民宿有古宅改造，体验感好。¥200-350/晚。</p>
+        <div>
+          <span class="card-tag price">¥200-350/晚</span>
+          <span class="card-tag must">推荐</span>
+        </div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?city=149&checkin=2026-09-25&checkout=2026-09-27" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header hotel">🏨 镇江市区连锁酒店</div>
+      <div class="card-body">
+        <p>全季、亚朵、如家等连锁酒店，位于市中心大市口附近，交通便利，打车去各景区5-15分钟。¥250-400/晚。</p>
+        <div>
+          <span class="card-tag price">¥250-400/晚</span>
+        </div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?city=149&checkin=2026-09-25&checkout=2026-09-27" target="_blank">查看详情</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header hotel">🌊 金山/北固山附近酒店</div>
+      <div class="card-body">
+        <p>住在金山湖附近，推窗见湖景，环境清幽。适合喜欢安静、早起去三山不用赶路。¥300-400/晚。</p>
+        <div>
+          <span class="card-tag price">¥300-400/晚</span>
+        </div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?city=149&checkin=2026-09-25&checkout=2026-09-27" target="_blank">查看详情</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 预算表 -->
+  <h2 class="section-title">💰 费用预算（2人·高铁方案）</h2>
+  <table class="budget-table">
+    <thead>
+      <tr>
+        <th>项目</th>
+        <th>明细</th>
+        <th>费用（2人）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🚄 高铁往返</td>
+        <td>上海⇄镇江 二等座 ¥100×2人×2趟</td>
+        <td>¥400</td>
+      </tr>
+      <tr>
+        <td>🏨 住宿</td>
+        <td>西津渡民宿/市区酒店 ¥200-400/晚 × 2晚</td>
+        <td>¥400 - ¥800</td>
+      </tr>
+      <tr>
+        <td>🍜 餐饮</td>
+        <td>锅盖面/蟹黄汤包/肴肉/长江三鲜/正餐 3天</td>
+        <td>¥500 - ¥800</td>
+      </tr>
+      <tr>
+        <td>🎫 门票</td>
+        <td>三山联票¥100×2 + 南山¥30×2（或单买金山¥50+北固山¥30+焦山¥50+南山¥30）</td>
+        <td>¥260 - ¥320</td>
+      </tr>
+      <tr>
+        <td>🚕 市内交通</td>
+        <td>打车各景区 + 焦山渡船含门票</td>
+        <td>¥100</td>
+      </tr>
+      <tr>
+        <td>🎁 伴手礼/其他</td>
+        <td>恒顺香醋、肴肉真空包等</td>
+        <td>¥100</td>
+      </tr>
+      <tr class="total-row">
+        <td>📋 合计</td>
+        <td>2人 3天2晚全包</td>
+        <td>¥1,760 - ¥2,520</td>
+      </tr>
+      <tr class="per-person">
+        <td>👤 人均</td>
+        <td></td>
+        <td>¥880 - ¥1,260</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tips -->
+  <h2 class="section-title">💡 实用Tips</h2>
+  <div class="tips-list">
+    <div class="tip-item">
+      <span class="tip-icon">🌃</span><strong>西津渡晚上亮灯好看</strong>：西津渡古街白天免费逛，但晚上亮灯后更漂亮，昭关石塔灯光映照、老街氛围浓厚，一定要晚上来走走。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🎫</span><strong>三山联票有优惠</strong>：金山+北固山+焦山联票¥100，比单买（¥50+¥30+¥50=¥130）便宜¥30，2人省¥60。在各景区售票处均可购买。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🍜</span><strong>锅盖面当早餐</strong>：镇江人的一天从一碗锅盖面开始，面馆早7点就开门。面+肴肉+蛋是标配，人均¥15-20，便宜又满足。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🚄</span><strong>高铁票好买</strong>：上海到镇江每天30+趟车，票源充足，不像台州等热门城市紧张。建议提前1-2天在12306购买即可，无需候补。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🍶</span><strong>镇江香醋做伴手礼</strong>：恒顺香醋是镇江名片，超市价¥10-15/瓶，比景区便宜一倍。买几瓶带回送亲友，实用又体面。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🚢</span><strong>焦山末班船约17:00</strong>：焦山需乘渡船上岛，末班船约17:00，注意安排好时间。建议下午13:30前到焦山码头。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">📱</span><strong>中秋假期人流</strong>：镇江不是热门旅游城市，即使中秋假期人也不多。但建议住宿提前1-2周预订西津渡附近民宿，位置好的容易订满。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🌤️</span><strong>9月底天气</strong>：9月25-27日镇江气温约20-28℃，早晚凉、中午暖。带一件薄外套，穿舒适运动鞋（三山需爬山）。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🗺️</span><strong>行程节奏</strong>：镇江不大，三山之间打车10-15分钟。建议上午爬山、下午逛古街，避开正午太阳。南山如果时间紧可舍去。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🏨</span><strong>住西津渡最方便</strong>：住在西津渡古街附近，步行可达古街和镇江博物馆，晚上出门就是夜景，各景区打车10-15分钟，是最佳选择。
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>🏞️ 镇江·西津渡3天2晚中秋攻略 | 三山一渡 · 三国文化 · 白蛇传说</p>
+  <p style="margin-top:4px;">📅 2026.9.25-9.27 | 🚄 高铁1.5h直达 | 💰 人均¥880-1,260</p>
+</div>
+
+<script>
+function switchTab(dayId) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(dayId).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// 移动端点击处理
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const dayId = this.getAttribute('onclick').match(/'(\w+)'/)[1];
+    switchTab(dayId);
+  });
+});
+</script>
+
+</body>
+</html>

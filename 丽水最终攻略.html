@@ -147,9 +147,9 @@ a{color:var(--primary);text-decoration:none;}
     <h1>🌊 丽水3天2晚 · 宽松躺平式旅行</h1>
     <p class="subtitle">上海出发 · 高铁往返 · 中秋假期9/25-9/27 · 2人出行</p>
     <div class="hero-tags">
-      <span>🚄 G7333 06:20→丽水09:12</span>
+      <span>🚄 G7333 06:20→丽水09:12 · 返程缙云西15:24</span>
       <span class="gold">🏞 古堰画乡 + 缙云仙都</span>
-      <span>💰 人均¥1,841-2,241</span>
+      <span>💰 人均¥1,821-2,221</span>
       <span>松弛感拉满</span>
     </div>
   </div>
@@ -167,8 +167,8 @@ a{color:var(--primary);text-decoration:none;}
     <div class="overview-card">
       <div class="icon">🚄</div>
       <div class="label">返程 · 9/27周日</div>
-      <div class="value">G7336 15:09-17:46</div>
-      <div class="label" style="font-size:10px;color:#e8930c">买苍南始发全程票¥513 丽水上</div>
+      <div class="value">G7336 15:24-17:46</div>
+      <div class="label" style="font-size:10px;color:#e8930c">买苍南始发全程票¥513 缙云西上</div>
     </div>
     <div class="overview-card">
       <div class="icon">🗓️</div>
@@ -178,7 +178,7 @@ a{color:var(--primary);text-decoration:none;}
     <div class="overview-card">
       <div class="icon">💰</div>
       <div class="label">2人总预算</div>
-      <div class="value">¥3,682-4,482</div>
+      <div class="value">¥3,642-4,442</div>
     </div>
     <div class="overview-card">
       <div class="icon">🏞️</div>
@@ -275,19 +275,15 @@ a{color:var(--primary);text-decoration:none;}
       <text x="525" y="332" text-anchor="middle" font-size="8" fill="#888" font-weight="500">方案B:回丽水→高铁¥10→缙云西→打车¥30</text>
 
       <!-- Day3: 缙云仙都→缙云西站（打车，橙色短线） -->
-      <path d="M745 355 Q760 370 775 390 Q785 405 790 420" stroke="url(#taxiGrad)" stroke-width="3.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
-      <text x="820" y="400" font-size="8" fill="#E8930C" font-weight="600">打车15min ¥30</text>
+      <path d="M745 355 Q760 370 775 380 Q785 395 790 405" stroke="url(#taxiGrad)" stroke-width="3.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
+      <text x="820" y="388" font-size="8" fill="#E8930C" font-weight="600">打车15min ¥30</text>
 
-      <!-- Day3: 缙云西→丽水站（高铁，蓝色短线） -->
-      <path d="M790 425 Q700 430 560 435 Q500 438 460 440" stroke="url(#hsrGrad)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-dasharray="5 3" filter="url(#mShadow)"/>
-      <text x="620" y="432" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">🚄 高铁10min ¥10</text>
-
-      <!-- Day3: 丽水站→上海（返程高铁，蓝色粗线） -->
-      <path d="M440 450 Q300 460 200 470 Q140 475 100 480" stroke="url(#hsrGrad)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
-      <rect x="210" y="468" width="80" height="20" rx="10" fill="#357ABD" filter="url(#mShadow)"/>
-      <text x="250" y="482" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">🚄 G7336</text>
-      <text x="250" y="510" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">15:09→17:46 · 2h37m · ¥513/人</text>
-      <text x="250" y="523" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">🎫 买苍南始发全程票¥513 · 丽水站上车</text>
+      <!-- Day3: 缙云西→上海（返程高铁，蓝色粗线） -->
+      <path d="M790 415 Q600 430 350 445 Q200 460 100 480" stroke="url(#hsrGrad)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
+      <rect x="500" y="438" width="80" height="20" rx="10" fill="#357ABD" filter="url(#mShadow)"/>
+      <text x="540" y="452" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">🚄 G7336</text>
+      <text x="540" y="478" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">15:24发→17:46到 · 2h22m · ¥513/人</text>
+      <text x="540" y="492" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">🎫 买苍南全程票¥513 · 缙云西上车</text>
 
       <!-- ===== 地图节点 ===== -->
 
@@ -348,12 +344,12 @@ a{color:var(--primary);text-decoration:none;}
       <rect x="763" y="442" width="54" height="16" rx="8" fill="#1B7A8C"/>
       <text x="790" y="454" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">缙云西站</text>
 
-      <!-- 丽水站（返程位置） -->
+      <!-- 丽水站（去程到达位置） -->
       <g filter="url(#mShadow2)">
-        <circle cx="460" cy="445" r="16" fill="#fff" stroke="#1B7A8C" stroke-width="2.5"/>
-        <circle cx="460" cy="445" r="6" fill="#1B7A8C"/>
+        <circle cx="460" cy="445" r="14" fill="#fff" stroke="#1B7A8C" stroke-width="2" opacity="0.4"/>
+        <circle cx="460" cy="445" r="5" fill="#1B7A8C" opacity="0.4"/>
       </g>
-      <text x="460" y="478" text-anchor="middle" font-size="8" fill="#888">丽水站 · Day3 15:09发</text>
+      <text x="460" y="472" text-anchor="middle" font-size="7" fill="#AAA">丽水站（去程到达）</text>
 
       <!-- 上海（终点） -->
       <g filter="url(#mShadow2)">
@@ -586,22 +582,22 @@ a{color:var(--primary);text-decoration:none;}
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">12:30 - 13:30</span>
-        <div class="title">🚄 缙云西站 → 丽水站</div>
-        <div class="desc">高铁¥10/人，约10分钟；或打车直达丽水站约¥80。到丽水站后候车。</div>
+        <span class="time">12:30 - 14:30</span>
+        <div class="title">☕ 缙云县城自由时间</div>
+        <div class="desc">不用赶去丽水站了！返程在缙云西站上车，时间充裕。可以在县城再溜达一下，买点缙云烧饼带回家，或者找个茶馆歇脚。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">14:00</span>
-        <div class="title">☕ 丽水站候车</div>
-        <div class="desc">不赶时间，在车站里喝杯咖啡等车。丽水站不大，提前30分钟到即可。</div>
+        <span class="time">14:30 - 14:50</span>
+        <div class="title">🚕 仙都 → 缙云西站</div>
+        <div class="desc">从仙都景区/缙云县城打车到缙云西站，仅需15分钟，约¥30。提前30分钟到站即可。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">15:09</span>
+        <span class="time">15:24</span>
         <span class="badge">返程</span>
-        <div class="title">🚄 丽水 → 上海南 G7336</div>
-        <div class="desc">15:09发车，17:46到达上海南站。🎫 <strong>买的是苍南→上海南全程票¥513/人</strong>（买长乘短，在丽水站上车）。睡一觉就到家了，完美收官！</div>
+        <div class="title">🚄 缙云西 → 上海南 G7336</div>
+        <div class="desc">🎫 <strong>买的是苍南→上海南全程票¥513/人（买长乘短）</strong>。G7336停靠缙云西站（15:22到/15:24发），<strong>直接在缙云西站上车即可</strong>，不用去丽水站也不用去苍南！15:24发，17:46到上海南。</div>
       </div>
     </div>
   </div>
@@ -858,16 +854,16 @@ a{color:var(--primary);text-decoration:none;}
         <td>电瓶车 ¥40 <span style="font-size:12px;color:var(--text-light);">¥20×2</span></td>
       </tr>
       <tr>
-        <td class="route">缙云西站 → 丽水站</td>
-        <td>高铁（约10分钟）</td>
-        <td>约10min</td>
-        <td><span class="price-tag">¥20</span> <span style="font-size:12px;color:var(--text-light);">¥10×2</span></td>
+        <td class="route">仙都景区 → 缙云西站</td>
+        <td>打车约15min</td>
+        <td>约15min</td>
+        <td><span class="price-tag">¥30</span> <span style="font-size:12px;color:var(--text-light);">不用去丽水站了</span></td>
       </tr>
       <tr>
-        <td class="route">丽水 → 上海南</td>
-        <td>G7336 高铁（15:09发 → 17:46到）</td>
-        <td>2h37m</td>
-        <td>苍南→上海南全程票（买长乘短丽水上）</td>
+        <td class="route">缙云西 → 上海南</td>
+        <td>G7336 高铁（15:24发 → 17:46到）</td>
+        <td>2h22m</td>
+        <td>苍南→上海南全程票（买长乘短缙云西上）</td>
         <td><span class="price-tag">¥1,026</span> <span style="font-size:12px;color:var(--text-light);">¥513×2</span></td>
       </tr>
     </table>
@@ -886,9 +882,9 @@ a{color:var(--primary);text-decoration:none;}
     </tr>
     <tr>
 <td class="item">🚄 高铁</td>
-      <td>去程 G7333 ¥393×2 + 返程 G7336 ¥513×2 + 丽水ó缙云西 ¥10×2×2</td>
-      <td class="price">¥1,852</td>
-      <td class="note">买长乘短全程票</td>
+      <td>去程 G7333 ¥393×2 + 返程 G7336 ¥513×2</td>
+      <td class="price">¥1,812</td>
+      <td class="note">买长乘短·全程票</td>
     </tr>
     <tr>
       <td class="item">🏨 住宿</td>
@@ -910,7 +906,7 @@ a{color:var(--primary);text-decoration:none;}
     </tr>
     <tr>
       <td class="item">🚕 当地交通</td>
-      <td>丽水站→古堰画乡打车¥80 + 古堰→仙都打车¥150-200 + 缙云→丽水打车/高铁</td>
+      <td>仙都→缙云西打车¥30），约¥280-380</td>
       <td class="price">¥250-350</td>
       <td class="note">打车为主</td>
     </tr>
@@ -921,10 +917,9 @@ a{color:var(--primary);text-decoration:none;}
       <td class="note">预留弹性</td>
     </tr>
     <tr class="total-row">
-      <td>💰 合计</td>
-      <td>2人总预算</td>
-      <td>¥3,682-4,482</td>
-      <td>人均 ¥1,841-2,241</td>
+<td>💰 合计</td>
+      <td>¥3,642-4,442</td>
+      <td>人均 ¥1,821-2,221</td>
     </tr>
   </table>
 </div>
@@ -943,8 +938,8 @@ a{color:var(--primary);text-decoration:none;}
       <li><b>带薄外套</b>，山里早晚温差大，9月丽水气温17-27℃，早上看晨雾时偏凉。</li>
       <li><b>中秋赏月推荐</b>：古堰画乡瓯江边、仙都朱潭山石桥旁都是赏月绝佳位置，人少景美。</li>
 <li><b>G7333发车较早（06:20）</b>，建议提前一天收拾好行李，早上5:30前出发去虹桥站。🎫 你买的是上海虹桥→温州南全程票（¥393/人），在丽水站下车即可，不用管终点站。</li>
-    <li><b>返程G7336 15:09发车</b>，Day3上午11点前离开景区即可，时间充裕，不用急。🎫 你买的是苍南→上海南全程票（¥513/人），在丽水站上车，不用去苍南。</li>
-    <li><b>买长乘短说明</b>：去程买“上海→温州南”全程票（¥393），在丽水站下车，比买“上海→丽水”直达票（¥163）贵¥230，但当时直达票候补抢不到。返程同理买“苍南→上海南”全程票（¥513），在丽水上。按全程票价计算，差价不退。</li>
+    <li><b>返程G7336 缙云西15:24发车</b>，不用去丽水站！G7336停靠缙云西（15:22到/15:24发），你买的是苍南→上海南全程票，直接在缙云西站刷身份证上车。Day3中午12点前离开景区即可，时间非常充裕。</li>
+    <li><b>买长乘短说明</b>：去程买“上海→温州南”全程票（¥393），在丽水站下车，比买“上海→丽水”直达票（¥163）贵¥230，但直达票候补抢不到。返程买“苍南→上海南”全程票（¥513），在<strong>缙云西站上车</strong>（G7336停缙云西），省去了仙都→丽水站约1小时车程。按全程票价计算，差价不退。</li>
     </ul>
   </div>
 </div>
@@ -952,7 +947,7 @@ a{color:var(--primary);text-decoration:none;}
 <!-- ============ Footer ============ -->
 <div class="footer">
   <p>🌊 丽水3天2晚中秋攻略 · 宽松躺平式旅行 · 2人出行</p>
-  <p style="margin-top:6px;">古堰画乡 + 缙云仙都 · 人均¥1,841-2,241 · <a href="旅游攻略.html">返回旅游攻略总览</a></p>
+  <p style="margin-top:6px;">古堰画乡 + 缙云仙都 · 人均¥1,821-2,221 · <a href="旅游攻略.html">返回旅游攻略总览</a></p>
 </div>
 
 <script>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>丽水3天2晚中秋攻略 · 宽松躺平式旅行</title>
+<title>丽水3天2晚中秋攻略 · 自驾版（古堰画乡→松阳→云和梯田）</title>
 <style>
 :root{
   --primary:#1B7A8C;--primary-light:#3AA6B8;--primary-dark:#0F5563;
@@ -123,6 +123,12 @@ a{color:var(--primary);text-decoration:none;}
 /* Weather badge */
 .weather-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3AA6B8,#2E9CC4);color:#fff;padding:10px 20px;border-radius:12px;font-size:14px;box-shadow:var(--shadow);margin-bottom:16px;}
 
+/* Rent info box */
+.rent-box{background:linear-gradient(135deg,#E8EEF6,#F0F6F7);border-radius:12px;padding:20px;margin-bottom:20px;border-left:4px solid var(--primary);}
+.rent-box h4{color:var(--primary-dark);font-size:16px;margin-bottom:8px;}
+.rent-box p{font-size:14px;color:var(--text);}
+.rent-box .tag{display:inline-block;background:#fff;color:var(--primary);border:1px solid var(--primary);border-radius:12px;padding:2px 12px;font-size:12px;margin:4px 6px 0 0;}
+
 /* Footer */
 .footer{text-align:center;padding:40px 20px;color:var(--text-light);font-size:13px;background:#0F5563;color:rgba(255,255,255,0.7);}
 .footer a{color:var(--accent-light);}
@@ -144,12 +150,13 @@ a{color:var(--primary);text-decoration:none;}
 <div class="hero">
   <div class="hero-content">
     <a href="旅游攻略.html" class="back-link">← 返回旅游攻略总览</a>
-    <h1>🌊 丽水3天2晚 · 宽松躺平式旅行</h1>
-    <p class="subtitle">上海出发 · 高铁往返 · 中秋假期9/25-9/27 · 2人出行</p>
+    <h1>🌾 丽水3天2晚 · 自驾·古村·梯田</h1>
+    <p class="subtitle">上海出发 · 高铁往返 + 落地自驾 · 中秋假期9/25-9/27 · 2人出行</p>
     <div class="hero-tags">
-      <span>🚄 G7333 06:20→丽水09:12 · 返程缙云西15:24</span>
-      <span class="gold">🏞 古堰画乡 + 缙云仙都</span>
-      <span>💰 人均¥1,821-2,221</span>
+      <span>🚄 G7333 06:20→丽水09:12 · 返程G7336 丽水15:09</span>
+      <span class="gold">🚗 租车自驾 · 全程说走就走</span>
+      <span>🏞 古堰画乡 + 松阳古村 + 云和梯田</span>
+      <span>💰 人均¥2,286-2,886</span>
       <span>松弛感拉满</span>
     </div>
   </div>
@@ -167,8 +174,14 @@ a{color:var(--primary);text-decoration:none;}
     <div class="overview-card">
       <div class="icon">🚄</div>
       <div class="label">返程 · 9/27周日</div>
-      <div class="value">G7336 15:24-17:46</div>
-      <div class="label" style="font-size:10px;color:#e8930c">买苍南始发全程票¥513 缙云西上</div>
+      <div class="value">G7336 15:09-17:46</div>
+      <div class="label" style="font-size:10px;color:#e8930c">买苍南始发全程票¥513 丽水站上车</div>
+    </div>
+    <div class="overview-card">
+      <div class="icon">🚗</div>
+      <div class="label">自驾座驾</div>
+      <div class="value">经济型轿车</div>
+      <div class="label" style="font-size:10px;color:#e8930c">丽水站取/还 · 3天约¥900-1200</div>
     </div>
     <div class="overview-card">
       <div class="icon">🗓️</div>
@@ -178,16 +191,16 @@ a{color:var(--primary);text-decoration:none;}
     <div class="overview-card">
       <div class="icon">💰</div>
       <div class="label">2人总预算</div>
-      <div class="value">¥3,642-4,442</div>
+      <div class="value">¥4,572-5,772</div>
     </div>
     <div class="overview-card">
       <div class="icon">🏞️</div>
       <div class="label">核心景点</div>
-      <div class="value">古堰画乡 + 仙都</div>
+      <div class="value">古堰画乡+松阳+梯田</div>
     </div>
   </div>
   <div class="weather-badge" style="margin-top:16px;">
-    🌤️ <b>9月丽水天气</b>：17-27℃，早晚凉带薄外套，中秋赏月绝佳
+    🌤️ <b>9月丽水天气</b>：17-27℃，早晚凉带薄外套，中秋梯田稻黄正当时
   </div>
 </div>
 
@@ -197,184 +210,167 @@ a{color:var(--primary);text-decoration:none;}
   <div class="map-box" style="overflow:hidden">
     <svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" style="background:#f5f3ed">
       <defs>
-        <!-- 地图滤镜 -->
         <filter id="mShadow"><feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-opacity="0.25"/></filter>
         <filter id="mShadow2"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/></filter>
-        <!-- 公路渐变 -->
         <linearGradient id="hsrGrad" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#4A90D9"/><stop offset="100%" stop-color="#357ABD"/>
         </linearGradient>
-        <linearGradient id="taxiGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#F5A623"/><stop offset="100%" stop-color="#E8930C"/>
-        </linearGradient>
-        <linearGradient id="transferGrad" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="driveGrad" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#E85D3D"/><stop offset="100%" stop-color="#D04525"/>
         </linearGradient>
-        <!-- 瓯江渐变 -->
+        <linearGradient id="driveGrad2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#E8930C"/><stop offset="100%" stop-color="#F5A623"/>
+        </linearGradient>
         <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#B4DCE8" stop-opacity="0.5"/>
           <stop offset="100%" stop-color="#9ECEDE" stop-opacity="0.3"/>
         </linearGradient>
-        <!-- 山脉渐变 -->
         <linearGradient id="mtnGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#C8DEBB" stop-opacity="0.5"/>
           <stop offset="100%" stop-color="#B5D0A5" stop-opacity="0.2"/>
         </linearGradient>
       </defs>
 
-      <!-- ===== 地图底图：地形 ===== -->
-      <!-- 山脉区域（绿化） -->
-      <path d="M380 320 Q420 280 480 300 Q540 260 600 290 Q660 270 720 310 Q780 290 840 320 L840 520 L380 520 Z" fill="url(#mtnGrad)"/>
-      <path d="M80 180 Q140 150 200 170 Q260 140 320 165 L320 280 L80 280 Z" fill="url(#mtnGrad)" opacity="0.6"/>
+      <!-- ===== 地形 ===== -->
+      <path d="M300 320 Q340 260 400 280 Q460 240 520 270 Q580 250 640 290 Q700 270 760 310 L760 520 L300 520 Z" fill="url(#mtnGrad)"/>
+      <path d="M60 200 Q120 170 180 190 Q240 160 300 185 L300 300 L60 300 Z" fill="url(#mtnGrad)" opacity="0.6"/>
 
       <!-- 瓯江水系 -->
-      <path d="M440 380 Q460 360 490 370 Q520 350 550 365 Q580 345 610 360 Q640 340 670 355"
+      <path d="M360 400 Q380 380 410 390 Q440 370 470 385 Q500 365 530 380 Q560 360 590 375"
             stroke="#B4DCE8" stroke-width="14" fill="none" opacity="0.5" stroke-linecap="round"/>
-      <path d="M440 380 Q460 360 490 370 Q520 350 550 365 Q580 345 610 360 Q640 340 670 355"
+      <path d="M360 400 Q380 380 410 390 Q440 370 470 385 Q500 365 530 380 Q560 360 590 375"
             stroke="#8EC5DE" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
-      <text x="555" y="390" font-size="9" fill="#7AA8BC" font-style="italic" opacity="0.7">瓯江</text>
+      <text x="460" y="415" font-size="9" fill="#7AA8BC" font-style="italic" opacity="0.7">瓯江</text>
 
-      <!-- 好溪水系（缙云方向） -->
-      <path d="M650 355 Q670 340 690 345 Q710 330 730 340 Q750 320 770 330"
-            stroke="#B4DCE8" stroke-width="10" fill="none" opacity="0.4" stroke-linecap="round"/>
-      <text x="720" y="365" font-size="8" fill="#7AA8BC" font-style="italic" opacity="0.6">好溪</text>
+      <!-- 松阴溪（松阳方向） -->
+      <path d="M200 380 Q250 330 320 310 Q380 295 440 310" stroke="#B4DCE8" stroke-width="8" fill="none" opacity="0.4" stroke-linecap="round"/>
+      <text x="300" y="345" font-size="8" fill="#7AA8BC" font-style="italic" opacity="0.6">松阴溪</text>
 
       <!-- 小山脉装饰 -->
-      <path d="M460 310 L480 285 L500 310 Z" fill="#8FBC8F" opacity="0.15"/>
-      <path d="M490 315 L515 285 L540 315 Z" fill="#8FBC8F" opacity="0.12"/>
-      <path d="M530 312 L555 282 L580 312 Z" fill="#8FBC8F" opacity="0.1"/>
-      <path d="M680 315 L705 285 L730 315 Z" fill="#8FBC8F" opacity="0.15"/>
-      <path d="M710 320 L740 290 L770 320 Z" fill="#8FBC8F" opacity="0.12"/>
+      <path d="M620 220 L645 190 L670 220 Z" fill="#8FBC8F" opacity="0.15"/>
+      <path d="M680 230 L705 195 L730 230 Z" fill="#8FBC8F" opacity="0.12"/>
+      <path d="M720 210 L745 175 L770 210 Z" fill="#8FBC8F" opacity="0.1"/>
+      <path d="M180 160 L210 130 L240 160 Z" fill="#8FBC8F" opacity="0.15"/>
+      <path d="M280 150 L310 115 L340 150 Z" fill="#8FBC8F" opacity="0.12"/>
 
-      <!-- ===== 公路网背景（灰色道路） ===== -->
-      <line x1="80" y1="120" x2="440" y2="120" stroke="#D5D0C5" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
-      <line x1="440" y1="120" x2="440" y2="380" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
-      <line x1="440" y1="380" x2="700" y2="350" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+      <!-- ===== 背景公路（灰） ===== -->
+      <line x1="80" y1="120" x2="600" y2="120" stroke="#D5D0C5" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+      <line x1="600" y1="120" x2="600" y2="380" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+      <line x1="200" y1="380" x2="600" y2="380" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+      <line x1="600" y1="380" x2="800" y2="330" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
 
       <!-- ===== 行程路线 ===== -->
 
-      <!-- Day1: 上海→丽水站（高铁，蓝色粗线） -->
-      <path d="M100 120 Q200 110 300 115 Q380 118 440 120" stroke="url(#hsrGrad)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
-      <!-- 高铁图标 -->
-      <rect x="220" y="96" width="70" height="20" rx="10" fill="#357ABD" filter="url(#mShadow)"/>
-      <text x="255" y="110" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">🚄 G7333</text>
-      <text x="255" y="90" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">06:20→09:12 · 2h52m · ¥393/人</text>
-      <text x="255" y="77" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">🎫 买温州南全程票¥393 · 丽水站下车</text>
+      <!-- Day1 高铁：上海虹桥→丽水站 -->
+      <path d="M100 120 Q250 110 400 115 Q520 118 600 120" stroke="url(#hsrGrad)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
+      <rect x="280" y="96" width="70" height="20" rx="10" fill="#357ABD" filter="url(#mShadow)"/>
+      <text x="315" y="110" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">🚄 G7333</text>
+      <text x="315" y="88" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">06:20→09:12 · 2h52m · ¥393/人</text>
+      <text x="315" y="42" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">🎫 买温州南全程票 · 丽水站下车</text>
 
-      <!-- Day1: 丽水站→古堰画乡（打车，橙色线） -->
-      <path d="M440 130 Q400 180 370 240 Q350 290 340 340" stroke="url(#taxiGrad)" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-dasharray="0" filter="url(#mShadow)"/>
-      <rect x="333" y="225" width="80" height="18" rx="9" fill="#E8930C" filter="url(#mShadow)"/>
-      <text x="373" y="238" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚕 打车40min</text>
-      <text x="373" y="258" text-anchor="middle" font-size="9" fill="#E8930C" font-weight="600">约¥80</text>
+      <!-- Day1 自驾：丽水站→古堰画乡 -->
+      <path d="M600 130 Q480 160 350 200 Q280 225 230 270" stroke="url(#driveGrad2)" stroke-width="4.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
+      <rect x="330" y="158" width="110" height="18" rx="9" fill="#E8930C" filter="url(#mShadow)"/>
+      <text x="385" y="171" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚗 自驾约40min</text>
 
-      <!-- Day2: 古堰画乡→缙云仙都（转场，红色线） -->
-      <path d="M350 360 Q420 345 500 335 Q580 325 660 330 Q700 335 740 340" stroke="url(#transferGrad)" stroke-width="4.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
-      <rect x="460" y="298" width="130" height="20" rx="10" fill="#E85D3D" filter="url(#mShadow)"/>
-      <text x="525" y="312" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚗 转场约1h</text>
-      <text x="525" y="290" text-anchor="middle" font-size="8" fill="#E85D3D" font-weight="600">方案A:打车¥150-200</text>
-      <text x="525" y="332" text-anchor="middle" font-size="8" fill="#888" font-weight="500">方案B:回丽水→高铁¥10→缙云西→打车¥30</text>
+      <!-- Day1 自驾：古堰画乡→松阳 -->
+      <path d="M215 300 Q260 330 330 335 Q400 340 460 355" stroke="url(#driveGrad)" stroke-width="4.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
+      <rect x="268" y="305" width="120" height="18" rx="9" fill="#E85D3D" filter="url(#mShadow)"/>
+      <text x="328" y="318" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚗 自驾约1h</text>
 
-      <!-- Day3: 缙云仙都→缙云西站（打车，橙色短线） -->
-      <path d="M745 355 Q760 370 775 380 Q785 395 790 405" stroke="url(#taxiGrad)" stroke-width="3.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
-      <text x="820" y="388" font-size="8" fill="#E8930C" font-weight="600">打车15min ¥30</text>
+      <!-- Day2 自驾：松阳→云和梯田 -->
+      <path d="M480 380 Q570 350 640 310 Q700 280 750 270" stroke="url(#driveGrad)" stroke-width="4.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
+      <rect x="545" y="332" width="120" height="18" rx="9" fill="#E85D3D" filter="url(#mShadow)"/>
+      <text x="600" y="345" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚗 自驾约1小时</text>
 
-      <!-- Day3: 缙云西→上海（返程高铁，蓝色粗线） -->
-      <path d="M790 415 Q600 430 350 445 Q200 460 100 480" stroke="url(#hsrGrad)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
-      <rect x="500" y="438" width="80" height="20" rx="10" fill="#357ABD" filter="url(#mShadow)"/>
-      <text x="540" y="452" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">🚄 G7336</text>
-      <text x="540" y="478" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">15:24发→17:46到 · 2h22m · ¥513/人</text>
-      <text x="540" y="492" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">🎫 买苍南全程票¥513 · 缙云西上车</text>
+      <!-- Day3 自驾：云和梯田→丽水站（返程） -->
+      <path d="M740 290 Q700 340 650 370 Q620 400 610 430" stroke="url(#driveGrad2)" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-dasharray="1 0" filter="url(#mShadow)"/>
+      <rect x="648" y="390" width="110" height="18" rx="9" fill="#E8930C" filter="url(#mShadow)"/>
+      <text x="703" y="403" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚗 自驾约2h</text>
+
+      <!-- Day3 高铁返程 -->
+      <path d="M600 440 Q350 480 150 500" stroke="url(#hsrGrad)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
+      <rect x="360" y="486" width="90" height="20" rx="10" fill="#357ABD" filter="url(#mShadow)"/>
+      <text x="405" y="500" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">🚄 G7336</text>
+      <text x="405" y="522" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">15:09发→17:46到 · 2h37m · ¥513/人</text>
+      <text x="405" y="536" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">🎫 买苍南始发全程票 · 丽水站上车</text>
 
       <!-- ===== 地图节点 ===== -->
 
-      <!-- 上海虹桥（起点） -->
+      <!-- 上海虹桥 -->
       <g filter="url(#mShadow2)">
         <circle cx="100" cy="120" r="20" fill="#fff" stroke="#357ABD" stroke-width="3"/>
         <circle cx="100" cy="120" r="8" fill="#357ABD"/>
       </g>
-      <rect x="66" y="87" width="68" height="18" rx="9" fill="#357ABD"/>
-      <text x="100" y="100" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">上海虹桥</text>
-      <text x="100" y="158" text-anchor="middle" font-size="9" fill="#666" font-weight="600">📍 起点 · Day1 06:20出发</text>
+      <rect x="60" y="90" width="80" height="18" rx="9" fill="#357ABD"/>
+      <text x="100" y="103" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">上海虹桥</text>
+      <text x="100" y="160" text-anchor="middle" font-size="9" fill="#666" font-weight="600">📍 起点 · Day1 06:20</text>
 
-      <!-- 丽水站（中转枢纽） -->
+      <!-- 丽水站 -->
       <g filter="url(#mShadow2)">
-        <circle cx="440" cy="120" r="18" fill="#fff" stroke="#1B7A8C" stroke-width="3"/>
-        <circle cx="440" cy="120" r="7" fill="#1B7A8C"/>
+        <circle cx="600" cy="140" r="18" fill="#fff" stroke="#1B7A8C" stroke-width="3"/>
+        <circle cx="600" cy="140" r="7" fill="#1B7A8C"/>
       </g>
-      <rect x="410" y="87" width="60" height="18" rx="9" fill="#1B7A8C"/>
-      <text x="440" y="100" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">丽水站</text>
-      <text x="440" y="158" text-anchor="middle" font-size="8" fill="#888">中转枢纽 · Day1到/Day3返</text>
+      <rect x="560" y="105" width="80" height="18" rx="9" fill="#1B7A8C"/>
+      <text x="600" y="118" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">丽水站</text>
+      <text x="600" y="178" text-anchor="middle" font-size="8" fill="#888">🚗 取车/还车点</text>
+      <text x="600" y="190" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">神舟/一嗨 · 09:20取 · 13:00还</text>
 
-      <!-- 古堰画乡（住宿1） -->
+      <!-- 古堰画乡（景点1） -->
       <g filter="url(#mShadow2)">
-        <circle cx="340" cy="355" r="24" fill="#fff" stroke="#E8930C" stroke-width="3"/>
-        <circle cx="340" cy="355" r="11" fill="#E8930C"/>
+        <circle cx="225" cy="290" r="20" fill="#fff" stroke="#2E8B57" stroke-width="3"/>
+        <circle cx="225" cy="290" r="9" fill="#2E8B57"/>
       </g>
-      <rect x="298" y="322" width="84" height="20" rx="10" fill="#E8930C"/>
-      <text x="340" y="336" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">古堰画乡</text>
-      <!-- 住宿标签 -->
-      <rect x="300" y="385" width="80" height="19" rx="4" fill="#FF6B6B" filter="url(#mShadow)"/>
-      <text x="340" y="399" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">🏠 住宿第1晚</text>
-      <text x="340" y="415" text-anchor="middle" font-size="8" fill="#888"> ¥300-500/晚 · 景区内</text>
-      <!-- 景点标签 -->
-      <text x="285" y="350" text-anchor="end" font-size="8" fill="#E8930C" font-weight="600">🎫 ¥50含船</text>
-      <text x="285" y="362" text-anchor="end" font-size="7" fill="#aaa">画舫·通济堰·古樟</text>
+      <rect x="180" y="257" width="90" height="20" rx="10" fill="#2E8B57"/>
+      <text x="225" y="271" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">古堰画乡</text>
+      <text x="160" y="285" text-anchor="end" font-size="8" fill="#2E8B57" font-weight="600">🎫 ¥50含船</text>
+      <text x="160" y="297" text-anchor="end" font-size="7" fill="#aaa">画舫·通济堰·古樟</text>
 
-      <!-- 缙云仙都（住宿2） -->
+      <!-- 松阳古村（住宿1） -->
       <g filter="url(#mShadow2)">
-        <circle cx="745" cy="345" r="24" fill="#fff" stroke="#2E8B57" stroke-width="3"/>
-        <circle cx="745" cy="345" r="11" fill="#2E8B57"/>
+        <circle cx="455" cy="365" r="24" fill="#fff" stroke="#E8930C" stroke-width="3"/>
+        <circle cx="455" cy="365" r="11" fill="#E8930C"/>
       </g>
-      <rect x="708" y="312" width="74" height="20" rx="10" fill="#2E8B57"/>
-      <text x="745" y="326" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">缙云仙都</text>
-      <!-- 住宿标签 -->
-      <rect x="705" y="370" width="80" height="19" rx="4" fill="#FF6B6B" filter="url(#mShadow)"/>
-      <text x="745" y="384" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">🏠 住宿第2晚</text>
-      <text x="745" y="402" text-anchor="middle" font-size="8" fill="#888"> ¥300-500/晚 · 景区内</text>
-      <!-- 景点标签 -->
-      <text x="780" y="340" font-size="8" fill="#2E8B57" font-weight="600">🎫 ¥90</text>
-      <text x="780" y="352" font-size="7" fill="#aaa">鼎湖峰·朱潭山</text>
-      <text x="780" y="362" font-size="7" fill="#aaa">岩宕书房·小赤壁</text>
+      <rect x="415" y="330" width="80" height="20" rx="10" fill="#E8930C"/>
+      <text x="455" y="344" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">松阳古村</text>
+      <rect x="415" y="396" width="80" height="19" rx="4" fill="#FF6B6B" filter="url(#mShadow)"/>
+      <text x="455" y="410" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">🏠 住宿第1晚</text>
+      <text x="330" y="360" text-anchor="end" font-size="8" fill="#E8930C" font-weight="600">杨家堂·松庄村</text>
+      <text x="330" y="372" text-anchor="end" font-size="7" fill="#aaa">先锋书店·夯土房</text>
 
-      <!-- 缙云西站 -->
+      <!-- 云和梯田（住宿2） -->
       <g filter="url(#mShadow2)">
-        <circle cx="790" cy="425" r="14" fill="#fff" stroke="#1B7A8C" stroke-width="2.5"/>
-        <circle cx="790" cy="425" r="5" fill="#1B7A8C"/>
+        <circle cx="760" cy="265" r="24" fill="#fff" stroke="#3AA6B8" stroke-width="3"/>
+        <circle cx="760" cy="265" r="11" fill="#3AA6B8"/>
       </g>
-      <rect x="763" y="442" width="54" height="16" rx="8" fill="#1B7A8C"/>
-      <text x="790" y="454" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">缙云西站</text>
+      <rect x="722" y="232" width="76" height="20" rx="10" fill="#3AA6B8"/>
+      <text x="760" y="246" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">云和梯田</text>
+      <rect x="720" y="296" width="80" height="19" rx="4" fill="#FF6B6B" filter="url(#mShadow)"/>
+      <text x="760" y="310" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">🏠 住宿第2晚</text>
+      <text x="795" y="260" font-size="8" fill="#3AA6B8" font-weight="600">🎫 ¥80</text>
+      <text x="795" y="272" font-size="7" fill="#aaa">九曲云环·七星墩</text>
 
-      <!-- 丽水站（去程到达位置） -->
+      <!-- 上海南（终点） -->
       <g filter="url(#mShadow2)">
-        <circle cx="460" cy="445" r="14" fill="#fff" stroke="#1B7A8C" stroke-width="2" opacity="0.4"/>
-        <circle cx="460" cy="445" r="5" fill="#1B7A8C" opacity="0.4"/>
+        <circle cx="130" cy="560" r="16" fill="#fff" stroke="#357ABD" stroke-width="3"/>
+        <circle cx="130" cy="560" r="6" fill="#357ABD"/>
       </g>
-      <text x="460" y="472" text-anchor="middle" font-size="7" fill="#AAA">丽水站（去程到达）</text>
-
-      <!-- 上海（终点） -->
-      <g filter="url(#mShadow2)">
-        <circle cx="100" cy="480" r="18" fill="#fff" stroke="#357ABD" stroke-width="3"/>
-        <circle cx="100" cy="480" r="7" fill="#357ABD"/>
-      </g>
-      <rect x="70" y="505" width="60" height="18" rx="9" fill="#357ABD"/>
-      <text x="100" y="518" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">上海南</text>
-      <text x="100" y="542" text-anchor="middle" font-size="9" fill="#666" font-weight="600">📍 终点 · Day3 17:46到</text>
+      <rect x="95" y="474" width="70" height="18" rx="9" fill="#357ABD"/>
+      <text x="130" y="487" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">上海南</text>
+      <text x="190" y="565" text-anchor="middle" font-size="9" fill="#666" font-weight="600">📍 终点 · Day3 17:46</text>
 
       <!-- ===== Day标签 ===== -->
-      <!-- Day1 -->
-      <rect x="170" y="60" width="58" height="22" rx="11" fill="#357ABD" filter="url(#mShadow2)"/>
-      <text x="199" y="76" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 1</text>
-      <text x="199" y="54" text-anchor="middle" font-size="8" fill="#357ABD" font-weight="600">9月25日 周五</text>
+      <rect x="160" y="205" width="58" height="22" rx="11" fill="#E8930C" filter="url(#mShadow2)"/>
+      <text x="189" y="221" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 1</text>
+      <text x="189" y="199" text-anchor="middle" font-size="8" fill="#E8930C" font-weight="600">9月25日 周五</text>
 
-      <!-- Day2 -->
-      <rect x="495" y="268" width="58" height="22" rx="11" fill="#E85D3D" filter="url(#mShadow2)"/>
-      <text x="524" y="284" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 2</text>
-      <text x="524" y="262" text-anchor="middle" font-size="8" fill="#E85D3D" font-weight="600">9月26日 周六</text>
+      <rect x="495" y="248" width="58" height="22" rx="11" fill="#E85D3D" filter="url(#mShadow2)"/>
+      <text x="524" y="264" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 2</text>
+      <text x="524" y="242" text-anchor="middle" font-size="8" fill="#E85D3D" font-weight="600">9月26日 周六</text>
 
-      <!-- Day3 -->
-      <rect x="590" y="510" width="58" height="22" rx="11" fill="#357ABD" filter="url(#mShadow2)"/>
-      <text x="619" y="526" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 3</text>
-      <text x="619" y="548" text-anchor="middle" font-size="8" fill="#357ABD" font-weight="600">9月27日 周日</text>
+      <rect x="480" y="428" width="58" height="22" rx="11" fill="#357ABD" filter="url(#mShadow2)"/>
+      <text x="509" y="444" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 3</text>
+      <text x="509" y="422" text-anchor="middle" font-size="8" fill="#357ABD" font-weight="600">9月27日 周日</text>
 
       <!-- ===== 罗盘 ===== -->
       <g transform="translate(900,60)">
@@ -385,7 +381,7 @@ a{color:var(--primary);text-decoration:none;}
       </g>
 
       <!-- ===== 比例尺 ===== -->
-      <g transform="translate(20,520)">
+      <g transform="translate(20,540)">
         <line x1="0" y1="0" x2="80" y2="0" stroke="#666" stroke-width="2"/>
         <line x1="0" y1="-4" x2="0" y2="4" stroke="#666" stroke-width="2"/>
         <line x1="40" y1="-3" x2="40" y2="3" stroke="#666" stroke-width="1.5"/>
@@ -396,36 +392,62 @@ a{color:var(--primary);text-decoration:none;}
       </g>
 
       <!-- ===== 图例 ===== -->
-      <g transform="translate(660,30)">
-        <rect x="0" y="0" width="280" height="92" rx="8" fill="#fff" opacity="0.92" stroke="#E0E0E0" stroke-width="1" filter="url(#mShadow)"/>
-        <text x="140" y="16" text-anchor="middle" font-size="10" fill="#333" font-weight="700">图例</text>
-        <line x1="12" y1="30" x2="32" y2="30" stroke="#357ABD" stroke-width="4" stroke-linecap="round"/>
-        <text x="38" y="34" font-size="9" fill="#333">高铁</text>
-        <line x1="80" y1="30" x2="100" y2="30" stroke="#E8930C" stroke-width="4" stroke-linecap="round"/>
-        <text x="106" y="34" font-size="9" fill="#333">打车</text>
-        <line x1="140" y1="30" x2="160" y2="30" stroke="#E85D3D" stroke-width="4" stroke-linecap="round"/>
-        <text x="166" y="34" font-size="9" fill="#333">转场</text>
-        <line x1="210" y1="30" x2="230" y2="30" stroke="#B4DCE8" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
-        <text x="236" y="34" font-size="9" fill="#333">水系</text>
+      <g transform="translate(680,60)">
+        <rect x="0" y="0" width="230" height="105" rx="8" fill="#fff" opacity="0.92" stroke="#E0E0E0" stroke-width="1" filter="url(#mShadow)"/>
+        <text x="115" y="16" text-anchor="middle" font-size="10" fill="#333" font-weight="700">图例</text>
+        <line x1="12" y1="32" x2="32" y2="32" stroke="#357ABD" stroke-width="4" stroke-linecap="round"/>
+        <text x="38" y="36" font-size="9" fill="#333">高铁</text>
+        <line x1="80" y1="32" x2="100" y2="32" stroke="#E85D3D" stroke-width="4" stroke-linecap="round"/>
+        <text x="106" y="36" font-size="9" fill="#333">自驾</text>
+        <line x1="140" y1="32" x2="160" y2="32" stroke="#E8930C" stroke-width="4" stroke-linecap="round"/>
+        <text x="166" y="36" font-size="9" fill="#333">自驾返程</text>
+        <line x1="12" y1="48" x2="32" y2="48" stroke="#B4DCE8" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+        <text x="38" y="52" font-size="9" fill="#333">水系</text>
 
-        <circle cx="20" cy="50" r="7" fill="#fff" stroke="#357ABD" stroke-width="2.5"/>
-        <circle cx="20" cy="50" r="3" fill="#357ABD"/>
-        <text x="32" y="54" font-size="9" fill="#333">火车站</text>
+        <circle cx="20" cy="66" r="7" fill="#fff" stroke="#357ABD" stroke-width="2.5"/>
+        <circle cx="20" cy="66" r="3" fill="#357ABD"/>
+        <text x="32" y="70" font-size="9" fill="#333">火车站/租车</text>
 
-        <circle cx="85" cy="50" r="8" fill="#fff" stroke="#E8930C" stroke-width="2.5"/>
-        <circle cx="85" cy="50" r="3.5" fill="#E8930C"/>
-        <text x="98" y="54" font-size="9" fill="#333">景点/住宿</text>
+        <circle cx="85" cy="66" r="8" fill="#fff" stroke="#2E8B57" stroke-width="2.5"/>
+        <circle cx="85" cy="66" r="3.5" fill="#2E8B57"/>
+        <text x="98" y="70" font-size="9" fill="#333">景点</text>
 
-        <rect x="165" y="44" width="14" height="12" rx="2" fill="#FF6B6B"/>
-        <text x="184" y="54" font-size="9" fill="#333">🏠 住宿点</text>
+        <rect x="165" y="60" width="14" height="12" rx="2" fill="#FF6B6B"/>
+        <text x="184" y="70" font-size="9" fill="#333">🏠 住宿点</text>
 
-        <rect x="12" y="66" width="58" height="16" rx="8" fill="#357ABD"/>
-        <text x="41" y="78" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">Day N</text>
-        <text x="80" y="78" font-size="9" fill="#333">日程标签</text>
+        <rect x="12" y="82" width="58" height="16" rx="8" fill="#357ABD"/>
+        <text x="41" y="94" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">Day N</text>
+        <text x="80" y="94" font-size="9" fill="#333">日程标签</text>
       </g>
 
     </svg>
-    <div class="map-title">上海虹桥 → 丽水站 → 古堰画乡(住1晚) → 缙云仙都(住1晚) → 丽水站 → 上海南</div>
+    <div class="map-title">上海虹桥 → 丽水站(取车) → 古堰画乡 → 松阳古村(住1晚) → 云和梯田(住1晚) → 丽水站(还车) → 上海南</div>
+  </div>
+</div>
+
+<!-- ============ 租车信息 ============ -->
+<div class="section">
+  <div class="section-title">🚗 租车信息</div>
+  <div class="rent-box">
+    <div class="row"><b>推荐：</b>神州租车 / 一嗨租车（丽水站均有门店，高铁站出站即可取还车）</div>
+    <p>
+      <span class="tag">📍 取车：丽水站门店 · 9/25 09:30取</span>
+      <span class="tag">📍 还车：丽水站门店 · 9/27 13:00还</span>
+      <span class="tag">🚙 车型：经济型轿车（如朗逸/轩逸/科鲁兹）</span>
+      <span class="tag">💰 租金：约¥300-400/天 × 3天 ≈ ¥900-1200</span>
+      <span class="tag">⛽ 油费+过路费：全程约400km ≈ ¥300-400</span>
+      <span class="tag">📱 预订：提前在APP/小程序下单，选"丽水站"门店</span>
+    </p>
+  </div>
+  <div class="rent-box" style="border-left-color:var(--accent);background:linear-gradient(135deg,#FFF8E0,#FFF3D5);">
+    <div class="row"><b style="color:var(--accent);">💡 租车TIPS</b></div>
+    <p>
+      <span class="tag">需要驾照（驾龄1年以上）</span>
+      <span class="tag">建议买"不计免赔险"（约¥50-60/天）省心</span>
+      <span class="tag">确认ETC/过路费结算方式</span>
+      <span class="tag">取车时拍视频留证车况</span>
+      <span class="tag">加满油还车（或按店规）</span>
+    </p>
   </div>
 </div>
 
@@ -441,7 +463,7 @@ a{color:var(--primary);text-decoration:none;}
   <!-- Day 1 -->
   <div class="tab-content active" id="tab-0">
     <div style="background:#E0F4E8;border-radius:10px;padding:12px 20px;margin-bottom:20px;font-size:14px;">
-      <b style="color:#2D7A4E;">🌿 今日主题：抵达丽水 → 古堰画乡慢生活</b>
+      <b style="color:#2D7A4E;">🌿 今日主题：落地取车 → 古堰画乡 → 松阳古村（住古村）</b>
       <span style="float:right;background:#2D7A4E;color:#fff;padding:2px 12px;border-radius:12px;font-size:12px;">松弛 · 不赶</span>
     </div>
     <div class="timeline">
@@ -450,45 +472,52 @@ a{color:var(--primary);text-decoration:none;}
         <span class="time">06:20</span>
         <span class="badge">出发</span>
         <div class="title">🚄 上海虹桥 → 丽水站 G7333</div>
-        <div class="desc">06:20发车，09:12到达丽水站，车程约2小时52分。🎫 <strong>买的是上海虹桥→温州南全程票¥393/人</strong>（买长乘短，在丽水站下车）。早点去虹桥吃个早餐，上车补个觉就到了。</div>
+        <div class="desc">06:20发车，09:12到达丽水站，车程约2小时52分。🎫 <strong>买的是上海虹桥→温州南全程票¥393/人</strong>（买长乘短，在丽水站下车）。早点到虹桥吃早餐，上车补个觉。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
         <span class="time">09:30</span>
-        <div class="title">🚕 丽水站 → 古堰画乡</div>
-        <div class="desc">出站打车约40分钟，约¥80；或坐K202路公交¥3。行李不多建议打车，省心省力。</div>
+        <span class="badge">取车</span>
+        <div class="title">🚗 丽水站取车 · 自驾出发</div>
+        <div class="desc">出站直奔租车门店（神州/一嗨在丽水站都有门店），办手续约15-20分钟。检查车况、设好导航，开启3天自驾模式。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">10:00 - 12:00</span>
+        <span class="time">10:15 - 13:00</span>
         <div class="title">🏞️ 古堰画乡景区 · 画舫游瓯江</div>
-        <div class="desc">门票¥50/人（含船票）。坐画舫游瓯江，看千年通济堰（世界灌溉工程遗产）、千年古樟群、巴比松油画街。水秀山清，不用爬坡，很轻松。<a href="https://you.ctrip.com/place/lishui263.html" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">自驾约40分钟到达。门票¥50/人（含船票）。坐画舫游瓯江，看千年通济堰（世界灌溉工程遗产）、千年古樟群、巴比松油画街。轻松不爬坡，逛完在老街吃午餐。<a href="https://you.ctrip.com/place/lishui263.html" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
         <span class="time">12:00 - 13:00</span>
         <div class="title">🍽️ 午餐 · 画乡老街</div>
-        <div class="desc">吃红烧溪鱼（现捞现做，鲜掉眉毛）、缙云烧饼。老街沿江而建，边吃边看江景，很惬意。</div>
+        <div class="desc">吃红烧溪鱼（现捞现做，鲜掉眉毛）、缙云烧饼。老街沿江而建，边吃边看江景。饭后在古堰画乡慢慢散步消食。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">13:00 - 16:00</span>
-        <span class="badge">躺平时段</span>
-        <div class="title">☕ 漫步画乡老街 · 逛画廊 · 发呆</div>
-        <div class="desc">画乡老街很短，慢慢逛逛画廊、喝杯江边咖啡、拍拍照。节奏很慢，完全不用赶。累了就找个江边台阶坐着吹风。</div>
+        <span class="time">13:30 - 14:30</span>
+        <span class="badge">转场</span>
+        <div class="title">🚗 自驾 → 松阳古村（约1小时）</div>
+        <div class="desc">沿松阴溪方向自驾约1小时到松阳古村区域。山路风景绝佳，溪水清澈，一路绿意盎然。下午光线正好，适合逛村拍照。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">16:00</span>
-        <div class="title">🏨 入住古堰画乡民宿</div>
-        <div class="desc">住景区里，不用搬行李。放下东西歇一会儿，准备晚上赏月。</div>
+        <span class="time">14:30 - 16:30</span>
+        <div class="title">🏘️ 杨家堂村 · 金色布达拉宫</div>
+        <div class="desc">被誉为"金色布达拉宫"的夯土黄墙古村，层层叠叠依山而建，是中国传统村落。下午光线斜照，黄墙发金光，拍照绝佳。<a href="https://baike.baidu.com/item/%E6%9D%A8%E5%AE%B6%E5%A0%82%E6%9D%91" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">18:00+</span>
-        <span class="badge">赏月</span>
-        <div class="title">🌙 民宿晚餐 · 江边赏月</div>
-        <div class="desc">在民宿吃晚餐或老街农家菜，饭后江边散步赏月。中秋月圆，瓯江映月，安静美好。</div>
+        <span class="time">16:30 - 18:00</span>
+        <div class="title">📚 陈家铺村 · 悬崖先锋书店</div>
+        <div class="desc">海拔800m+的悬崖古村，村中先锋书店被称为"中国最美乡村书店"，落地窗外云雾山谷，喝杯咖啡等夕阳。<a href="https://baike.baidu.com/item/%E9%99%88%E5%AE%B6%E9%93%BA%E6%9D%91" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+      </div>
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <span class="time">18:30+</span>
+        <span class="badge">住宿</span>
+        <div class="title">🏨 入住松阳古村 / 民宿晚餐</div>
+        <div class="desc">入住松阳古村民宿（云上平田/原舍揽树等，见下方住宿推荐）。民宿晚餐：<strong>歇力茶猪脚、煨盐鸡、端午茶</strong>，山里吃饭配晚霞。饭后古村漫步，空气清冽，星星很多。</div>
       </div>
     </div>
   </div>
@@ -496,60 +525,55 @@ a{color:var(--primary);text-decoration:none;}
   <!-- Day 2 -->
   <div class="tab-content" id="tab-1">
     <div style="background:#FFF3E0;border-radius:10px;padding:12px 20px;margin-bottom:20px;font-size:14px;">
-      <b style="color:#C77A1D;">🌅 今日主题：古堰晨雾 → 转场缙云仙都</b>
-      <span style="float:right;background:#C77A1D;color:#fff;padding:2px 12px;border-radius:12px;font-size:12px;">晨雾 · 日落</span>
+      <b style="color:#C77A1D;">🌅 今日主题：松阳古村晨光 → 云和梯田（住梯田）</b>
+      <span style="float:right;background:#C77A1D;color:#fff;padding:2px 12px;border-radius:12px;font-size:12px;">云海 · 稻浪</span>
     </div>
     <div class="timeline">
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">07:00 - 08:00</span>
+        <span class="time">07:00 - 08:30</span>
         <span class="badge">必看</span>
-        <div class="title">🌫️ 瓯江晨雾 · 古堰画乡最美时刻</div>
-        <div class="desc">薄雾弥漫瓯江，如水墨画般。住景区里才能看到！在民宿吃早餐，坐在窗前看雾慢慢散开。</div>
+        <div class="title">🌫️ 古村晨雾 · 松庄村的清晨</div>
+        <div class="desc">清晨薄雾笼罩夯土古村，是"最后的江南秘境"最美时刻。去<strong>松庄村</strong>看300年石拱桥横跨溪水（《国家地理》推荐机位），溪水清澈，可下水踩石。人少景美，完全没游客。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">09:00 - 11:00</span>
-        <div class="title">🚶 画乡闲逛 · 买特产 · 退房</div>
-        <div class="desc">再在画乡逛逛，买点当地特产（如莲都椪柑、丽水山茶油），退房出发。</div>
+        <span class="time">08:30 - 09:30</span>
+        <div class="title">🍳 民宿早餐 · 退房</div>
+        <div class="desc">吃一碗松阳手工水牵面（非遗面食），退房出发。如果时间富余可再去一个村（杨家堂村晨光/大木山茶园骑行）。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">11:00 - 12:30</span>
+        <span class="time">09:30 - 10:45</span>
         <span class="badge">转场</span>
-        <div class="title">🚕 古堰画乡 → 缙云仙都</div>
-        <div class="desc">方案A：打车直达约1小时，¥150-200，最省心。方案B：回丽水站坐高铁到缙云西站¥10约10分钟，再打车到仙都约¥30。推荐方案A，不用折腾。</div>
+        <div class="title">🚗 自驾 → 云和梯田（约1小时）</div>
+        <div class="desc">沿丽龙高速自驾约1小时到云和梯田景区（云和县崇头镇）。路上山景渐佳，9月底正是<strong>稻谷金黄收割季</strong>，梯田金色稻浪，非常震撼。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">12:30 - 13:30</span>
-        <div class="title">🍽️ 缙云县城午餐 · 缙云烧饼一均店</div>
-        <div class="desc">全国第一家缙云烧饼品牌示范店（黄龙路301号）。¥15套餐=烧饼+小馄饨，刚出炉的烧饼外酥里嫩，配上小馄饨绝了。<a href="https://www.dianping.com/search/keyword/4/0_%E7%BC%99%E4%BA%91%E7%83%A7%E9%A5%BC" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <span class="time">11:00 - 12:00</span>
+        <div class="title">🏨 入住梯田民宿 · 午餐</div>
+        <div class="desc">先到民宿放下行李（推荐住七星墩/九曲云环附近，见住宿推荐）。午餐在民宿或景区餐厅吃：梯田稻花鱼、农家土鸡、畲族特色菜。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">14:00</span>
-        <div class="title">🏨 入住仙都景区民宿</div>
-        <div class="desc">住景区里，第二天早上直接看鼎湖峰。入住前需提前向民宿报备车牌，车辆才能开进景区。</div>
+        <span class="time">12:30 - 16:00</span>
+        <div class="title">🌾 云和梯田 · 九曲云环 + 白银谷</div>
+        <div class="desc">门票¥80/人（含九曲云环、白银谷、坑根石寨）。<strong>九曲云环</strong>是梯田核心观景台，金黄色稻浪铺满山谷，层层叠叠非常壮观。<strong>白银谷</strong>有坑根石寨（石头古村落、溪流竹林），轻松徒步。<a href="https://baike.baidu.com/item/%E4%BA%91%E5%92%8C%E6%A2%AF%E7%94%B0%E6%99%AF%E5%8C%BA" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">14:30 - 17:00</span>
-        <div class="title">📚 仙都景区 · 岩宕书房 + 倪翁洞</div>
-        <div class="desc">岩宕书房：废弃石窟改造的书店，光影大片，拍照绝佳。倪翁洞：千年石刻，文化底蕴深厚。轻松逛，不累。<a href="https://baike.baidu.com/item/%E7%BC%99%E4%BA%91%E4%BB%99%E9%83%BD" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <span class="time">16:00 - 18:00</span>
+        <span class="badge">可选</span>
+        <div class="title">🚡 观云索道 · 上七星墩（可选）</div>
+        <div class="desc">华东最长观景索道，全长3.8km，11分钟从海拔200米升至1000米。<strong>七星墩</strong>是最高观景台，能俯瞰整片梯田。如果天气好强烈推荐；时间紧可跳过，Day3早起看日出更值。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">17:00 - 18:30</span>
-        <span class="badge">仙都最美</span>
-        <div class="title">🌅 朱潭山看日落 · 老农牵牛过石桥</div>
-        <div class="desc">仙都最美时刻！老农牵牛过石桥的经典画面就在朱潭山。日落金光洒在溪面上，如梦如幻。每天有固定表演时段（上午和下午各一次），到民宿先问老板确认时间。</div>
-      </div>
-      <div class="timeline-item">
-        <div class="dot"></div>
-        <span class="time">19:00+</span>
-        <div class="title">🌙 回民宿晚餐 · 山间安静</div>
-        <div class="desc">在民宿吃农家菜，山间安静，虫鸣蛙叫，好眠。</div>
+        <span class="time">18:30+</span>
+        <span class="badge">晚餐</span>
+        <div class="title">🌙 梯田民宿晚餐 · 星空</div>
+        <div class="desc">在民宿吃梯田农家菜（豆腐烧肉、时令蔬菜），饭后在观景台看日落。梯田海拔高光污染少，中秋夜里看<strong>月亮从梯田升起来</strong>，此生难忘。</div>
       </div>
     </div>
   </div>
@@ -557,47 +581,48 @@ a{color:var(--primary);text-decoration:none;}
   <!-- Day 3 -->
   <div class="tab-content" id="tab-2">
     <div style="background:#E8EEF6;border-radius:10px;padding:12px 20px;margin-bottom:20px;font-size:14px;">
-      <b style="color:#3A5B8C;">🏔️ 今日主题：仙都核心景区 → 返程上海</b>
-      <span style="float:right;background:#3A5B8C;color:#fff;padding:2px 12px;border-radius:12px;font-size:12px;">收尾 · 不赶</span>
+      <b style="color:#3A5B8C;">🌄 今日主题：梯田日出 → 返程上海</b>
+      <span style="float:right;background:#3A5B8C;color:#fff;padding:2px 12px;border-radius:12px;font-size:12px;">日出 · 从容返程</span>
     </div>
     <div class="timeline">
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">07:00 - 08:00</span>
-        <div class="title">🍳 民宿早餐 · 朱潭山晨雾（可选）</div>
-        <div class="desc">如果天气好，可以去朱潭山看晨雾。住在景区里，走几步就到。</div>
+        <span class="time">05:00 - 06:30</span>
+        <span class="badge">必看</span>
+        <div class="title">🌄 九曲云环 / 七星墩看日出云海</div>
+        <div class="desc">云和梯田最经典的画面！<strong>清晨日出+云海翻涌稻浪</strong>，是"长三角最佳日出观景点"之一。9月稻黄，日出金光洒在金色稻浪上。住梯田民宿出门走几分钟就到观景台。<a href="https://gs.ctrip.com/html5/you/sight/688/4590063.html" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">08:00 - 11:00</span>
-        <span class="badge">核心景区</span>
-        <div class="title">🏔️ 鼎湖峰 + 小赤壁</div>
-        <div class="desc">鼎湖峰：天下第一笋，170m单体石柱，全球最高！不用爬山，在观景台看就行。小赤壁：临江栈道散步，赤色崖壁如画，很轻松。<a href="https://you.ctrip.com/sight/jinyun653.html" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <span class="time">06:30 - 08:30</span>
+        <div class="title">🍳 早餐 · 收拾退房</div>
+        <div class="desc">看完日出回民宿吃早餐，休息一下，收拾行李退房。早上空气清冽，再看一眼梯田。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">11:00 - 12:00</span>
-        <div class="title">🧳 退房 · 景区午餐</div>
-        <div class="desc">退房后在景区或缙云县城吃午餐：敲肉羹（肉片裹粉敲打上浆，滑嫩鲜美）、土爽面（缙云特产）。</div>
+        <span class="time">09:00 - 11:00</span>
+        <div class="title">🏘️ 坑根石寨（可选） / 前往丽水</div>
+        <div class="desc">如果时间充裕，去<strong>坑根石寨</strong>（门票已含）看石头老屋、溪流竹林，约1小时。然后出发返回丽水站，车程约2小时（山路+高速）。<b>务必预留充足时间，山路弯多。</b></div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">12:30 - 14:30</span>
-        <div class="title">☕ 缙云县城自由时间</div>
-        <div class="desc">不用赶去丽水站了！返程在缙云西站上车，时间充裕。可以在县城再溜达一下，买点缙云烧饼带回家，或者找个茶馆歇脚。</div>
-      </div>
-      <div class="timeline-item">
-        <div class="dot"></div>
-        <span class="time">14:30 - 14:50</span>
-        <div class="title">🚕 仙都 → 缙云西站</div>
-        <div class="desc">从仙都景区/缙云县城打车到缙云西站，仅需15分钟，约¥30。提前30分钟到站即可。</div>
-      </div>
-      <div class="timeline-item">
-        <div class="dot"></div>
-        <span class="time">15:24</span>
+        <span class="time">11:00 - 13:00</span>
         <span class="badge">返程</span>
-        <div class="title">🚄 缙云西 → 上海南 G7336</div>
-        <div class="desc">🎫 <strong>买的是苍南→上海南全程票¥513/人（买长乘短）</strong>。G7336停靠缙云西站（15:22到/15:24发），<strong>直接在缙云西站上车即可</strong>，不用去丽水站也不用去苍南！15:24发，17:46到上海南。</div>
+        <div class="title">🚗 自驾 → 丽水站 · 还车</div>
+        <div class="desc">自驾约2小时返回丽水站，<strong>13:00前到站还车</strong>（加满油或按店规结算）。还车后到候车大厅，时间从容。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <span class="time">13:00 - 14:30</span>
+        <div class="title">🍜 丽水站附近午餐（可选）</div>
+        <div class="desc">如果饿了可在车站附近吃碗丽水米面/烧饼，或进站后买点零食。不饿就直接候车。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <span class="time">15:09</span>
+        <span class="badge">返程</span>
+        <div class="title">🚄 丽水站 → 上海南 G7336</div>
+        <div class="desc">🎫 <strong>买的是苍南→上海南全程票¥513/人（买长乘短）</strong>。G7336经停丽水站（15:07到/15:09发），<strong>直接在丽水站刷身份证上车</strong>，无需管终点站。15:09发，17:46到上海南，2小时37分。</div>
       </div>
     </div>
   </div>
@@ -610,58 +635,58 @@ a{color:var(--primary);text-decoration:none;}
     <div class="card">
       <span class="card-tag scenic">Day 1 · 必去</span>
       <div class="card-title">古堰画乡</div>
-      <div class="card-desc">千年通济堰（世界灌溉工程遗产）、瓯江画舫、巴比松油画街、千年古樟群。4A景区，仙居版世外桃源。</div>
+      <div class="card-desc">千年通济堰（世界灌溉工程遗产）、瓯江画舫、巴比松油画街、千年古樟群。4A景区，水秀山清，不用爬坡很轻松。</div>
       <div class="card-info"><b>门票：</b><span class="price-tag">¥50/人</span> <span style="font-size:12px;color:var(--text-light);">含船票</span></div>
-      <div class="card-info"><b>游览时间：</b>半天</div>
+      <div class="card-info"><b>游览时间：</b>2-3h</div>
       <a class="card-link" href="https://you.ctrip.com/place/lishui263.html" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag scenic">Day 3 · 核心</span>
-      <div class="card-title">鼎湖峰</div>
-      <div class="card-desc">天下第一笋，170m单体石柱，全球最高！壮观震撼，不用爬山，观景台即可。</div>
-      <div class="card-info"><b>门票：</b>含在仙都¥90内</div>
-      <div class="card-info"><b>游览时间：</b>1-2h</div>
-      <a class="card-link" href="https://baike.baidu.com/item/%E9%BC%8E%E6%B9%96%E5%B3%B0" target="_blank">查看详情 →</a>
+      <span class="card-tag scenic">Day 1 · 打卡</span>
+      <div class="card-title">杨家堂村</div>
+      <div class="card-desc">"金色布达拉宫"，层层叠叠夯土黄墙依山而建，下午光线斜照金光闪闪。宋濂后裔聚居地，370余年历史。</div>
+      <div class="card-info"><b>门票：</b><span class="price-tag">免费</span></div>
+      <div class="card-info"><b>最佳时间：</b>下午3-5点</div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E6%9D%A8%E5%AE%B6%E5%A0%82%E6%9D%91" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag scenic">Day 2 · 最美</span>
-      <div class="card-title">朱潭山</div>
-      <div class="card-desc">仙都最美景点！老农牵牛过石桥的经典画面，晨雾如水墨画。日落金光绝美。</div>
-      <div class="card-info"><b>门票：</b>含在仙都¥90内</div>
-      <div class="card-info"><b>最佳时间：</b>日出+日落</div>
-      <a class="card-link" href="https://baike.baidu.com/item/%E6%9C%B1%E6%BD%AD%E5%B1%B1" target="_blank">查看详情 →</a>
+      <span class="card-tag scenic">Day 1 · 文艺</span>
+      <div class="card-title">陈家铺村 · 先锋书店</div>
+      <div class="card-desc">海拔800m悬崖古村，"中国最美乡村书店"落地窗俯瞰云雾山谷，喝咖啡等夕阳，文艺气息拉满。</div>
+      <div class="card-info"><b>门票：</b><span class="price-tag">免费</span></div>
+      <div class="card-info"><b>推荐：</b>悬崖书店+咖啡馆</div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E9%99%88%E5%AE%B6%E9%93%BA%E6%9D%91" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag scenic">Day 2 · 打卡</span>
-      <div class="card-title">岩宕书房</div>
-      <div class="card-desc">废弃石窟改造的书店，光影大片，拍照绝佳。被网友称为"中国最美书房"之一。</div>
-      <div class="card-info"><b>门票：</b>免费/含在景区内</div>
-      <div class="card-info"><b>游览时间：</b>30-60min</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/7726/0_%E5%B2%A9%E5%AE%95%E4%B9%A6%E6%88%BF" target="_blank">查看详情 →</a>
+      <span class="card-tag scenic">Day 2 · 核心</span>
+      <div class="card-title">九曲云环 · 云和梯田</div>
+      <div class="card-desc">梯田核心观景地，9月金黄稻浪层层铺开如油画。云海日出最震撼，是"长三角最美观日出"。</div>
+      <div class="card-info"><b>门票：</b><span class="price-tag">¥80/人</span> <span style="font-size:12px;color:var(--text-light);">含白银谷/坑根石寨</span></div>
+      <div class="card-info"><b>最佳时间：</b>清晨日出</div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E4%BA%91%E5%92%8C%E6%A2%AF%E7%94%B0%E6%99%AF%E5%8C%BA" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag scenic">Day 3 · 轻松</span>
-      <div class="card-title">小赤壁</div>
-      <div class="card-desc">临江栈道散步，赤色崖壁如画。好溪边走一走，轻松不累。</div>
-      <div class="card-info"><b>门票：</b>含在仙都¥90内</div>
+      <span class="card-tag scenic">Day 2 · 高空</span>
+      <div class="card-title">七星墩 · 观云台（可选）</div>
+      <div class="card-desc">云和梯田最高观景台（海拔约900m），华东最长观云索道11分钟直达，俯瞰整片梯田全景，云海常驻。</div>
+      <div class="card-info"><b>门票：</b>含在¥80内 · <b>索道</b>单买约¥120</div>
+      <div class="card-info"><b>最佳时间：</b>日落/晴天</div>
+      <a class="card-link" href="https://gs.ctrip.com/html5/you/sight/4590063.html" target="_blank">查看详情 →</a>
+    </div>
+    <div class="card">
+      <span class="card-tag scenic">Day 3 · 可选</span>
+      <div class="card-title">坑根石寨</div>
+      <div class="card-desc">梯田深处的石头古村落，石板老屋、溪流竹林、古朴安静。返程顺路可逛，轻松不累。</div>
+      <div class="card-info"><b>门票：</b>含在梯田¥80内</div>
       <div class="card-info"><b>游览时间：</b>1h</div>
-      <a class="card-link" href="https://baike.baidu.com/item/%E7%BC%99%E4%BA%91%E4%BB%99%E9%83%BD" target="_blank">查看详情 →</a>
+      <a class="card-link" href="https://baike.baidu.com/item/%E5%9D%91%E6%A0%B9%E7%9F%B3%E5%AF%A8" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag scenic">Day 2 · 文化</span>
-      <div class="card-title">倪翁洞</div>
-      <div class="card-desc">千年石刻，唐代书法家颜真卿等历代文人题刻，文化底蕴深厚。</div>
-      <div class="card-info"><b>门票：</b>含在仙都¥90内</div>
-      <div class="card-info"><b>游览时间：</b>30-60min</div>
-      <a class="card-link" href="https://baike.baidu.com/item/%E5%80%AA%E7%BF%81%E6%B4%9E" target="_blank">查看详情 →</a>
-    </div>
-    <div class="card">
-      <span class="card-tag scenic">可选 · 市区</span>
-      <div class="card-title">七子楼</div>
-      <div class="card-desc">丽水市区仿古建筑群，夜游景点+丽水菜餐厅，如行程顺路可去。</div>
-      <div class="card-info"><b>地址：</b>莲都区学院路36号</div>
-      <div class="card-info"><b>入园：</b>免费</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E4%B8%83%E5%AD%90%E6%A5%BC" target="_blank">查看详情 →</a>
+      <span class="card-tag scenic">Day 2 · 晨间</span>
+      <div class="card-title">松庄村 · 石拱桥</div>
+      <div class="card-desc">300年石拱桥横跨溪水，《国家地理》收录的"水墨江南"机位。晨雾清晨最美，可下水踩石。</div>
+      <div class="card-info"><b>门票：</b><span class="price-tag">免费</span></div>
+      <div class="card-info"><b>最佳时间：</b>清晨</div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E6%9D%BE%E5%BA%84%E6%9D%91" target="_blank">查看详情 →</a>
     </div>
   </div>
 </div>
@@ -674,71 +699,71 @@ a{color:var(--primary);text-decoration:none;}
     <div class="card">
       <span class="card-tag food">必吃</span>
       <div class="card-title">红烧溪鱼</div>
-      <div class="card-desc">现捞现做，瓯江溪鱼红烧，鲜掉眉毛，古堰画乡特色菜。</div>
+      <div class="card-desc">现捞现做，瓯江溪鱼红烧，鲜嫩美味，古堰画乡特色菜。</div>
       <div class="card-info"><b>人均：</b><span class="price-tag">¥60</span></div>
       <div class="card-info"><b>推荐：</b>画乡老街农家菜馆</div>
       <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E7%94%BB%E4%B9%A1%E5%86%9C%E5%AE%B6%E8%8F%9C" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag food">特色</span>
-      <div class="card-title">画乡老街农家菜</div>
-      <div class="card-desc">江边老街农家菜馆，红烧溪鱼、土鸡、野菜，江景佐餐。</div>
-      <div class="card-info"><b>人均：</b><span class="price-tag">¥50-80</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E5%8F%A4%E5%A0%B0%E7%94%BB%E4%B9%A1%E7%BE%8E%E9%A3%9F" target="_blank">查看详情 →</a>
-    </div>
-    <div class="card">
       <span class="card-tag food">小吃</span>
       <div class="card-title">缙云烧饼</div>
-      <div class="card-desc">景区也有卖，¥5/个。刚出炉的外酥里嫩，梅干菜肉馅。</div>
+      <div class="card-desc">景区也有卖，¥5/个。刚出炉的外酥里嫩，梅干菜肉馅，停车休息时来一个。</div>
       <div class="card-info"><b>价格：</b><span class="price-tag">¥5/个</span></div>
     </div>
   </div>
-  <h3 style="font-size:16px;color:var(--primary-dark);margin:24px 0 10px;padding:8px 16px;background:linear-gradient(135deg,#FFF3E0,#F0F6F7);border-radius:10px;">📍 缙云仙都</h3>
+  <h3 style="font-size:16px;color:var(--primary-dark);margin:24px 0 10px;padding:8px 16px;background:linear-gradient(135deg,#FFF3E0,#F0F6F7);border-radius:10px;">📍 松阳古村</h3>
   <div class="cards-grid">
     <div class="card">
       <span class="card-tag food">必吃</span>
-      <div class="card-title">缙云烧饼一均店</div>
-      <div class="card-desc">全国第一家缙云烧饼品牌示范店！黄龙路301号，烧饼+小馄饨套餐绝配。</div>
-      <div class="card-info"><b>地址：</b>缙云县黄龙路301号</div>
-      <div class="card-info"><b>套餐：</b><span class="price-tag">¥15</span> <span style="font-size:12px;color:var(--text-light);">烧饼+小馄饨</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/4/0_%E7%BC%99%E4%BA%91%E7%83%A7%E9%A5%BC%E4%B8%80%E5%9D%87%E5%BA%97" target="_blank">查看详情 →</a>
+      <div class="card-title">煨盐鸡</div>
+      <div class="card-desc">松阳非遗！整鸡裹粗盐入铁锅煨烤，皮焦肉嫩、盐香入味。老街上多家老店现做现卖，可整只打包。</div>
+      <div class="card-info"><b>人均：</b><span class="price-tag">¥30-50</span></div>
+      <div class="card-info"><b>推荐：</b>松阳老街老店</div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E7%85%A8%E7%9B%90%E9%B8%A1" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
       <span class="card-tag food">特色</span>
-      <div class="card-title">敲肉羹</div>
-      <div class="card-desc">肉片裹粉敲打上浆，滑嫩鲜美，缙云特色汤羹。</div>
-      <div class="card-info"><b>价格：</b><span class="price-tag">¥20/碗</span></div>
-      <a class="card-link" href="https://baike.baidu.com/item/%E6%95%B2%E8%82%89%E7%BE%B9" target="_blank">查看详情 →</a>
+      <div class="card-title">歇力茶烤脚</div>
+      <div class="card-desc">用松阳特产"歇力茶"炖猪脚，茶香去腻、猪脚软糯脱骨，松阳独有吃法。</div>
+      <div class="card-info"><b>人均：</b><span class="price-tag">¥40-60</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E6%AD%87%E5%8A%9B%E8%8C%B6" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag food">特产</span>
-      <div class="card-title">土爽面/土索面</div>
-      <div class="card-desc">缙云特产手工面，细如发丝，煮汤鲜美，可做伴手礼。</div>
+      <span class="card-tag food">非遗</span>
+      <div class="card-title">手工水牵面</div>
+      <div class="card-desc">松阳传统手工面，面条宽薄筋道，土猪骨汤头，老面馆现场拉面。</div>
       <div class="card-info"><b>价格：</b><span class="price-tag">¥15/碗</span></div>
-      <a class="card-link" href="https://baike.baidu.com/item/%E7%BC%99%E4%BA%91%E5%9C%9F%E7%88%BD%E9%9D%A2" target="_blank">查看详情 →</a>
+      <a class="card-link" href="https://baike.baidu.com/item/%E6%B0%B4%E7%89%B5%E9%9D%A2" target="_blank">查看详情 →</a>
     </div>
     <div class="card">
-      <span class="card-tag food">农家菜</span>
-      <div class="card-title">仙都农家菜</div>
-      <div class="card-desc">景区民宿可做，本地土鸡、溪鱼、时令野菜，山间风味。</div>
-      <div class="card-info"><b>人均：</b><span class="price-tag">¥50-80</span></div>
+      <span class="card-tag food">甜品</span>
+      <div class="card-title">松阳仙草 / 沙擂</div>
+      <div class="card-desc">仙草=本地版烧仙草，清凉解暑；沙擂=糯米团裹芝麻黄豆粉，甜香软糯。</div>
+      <div class="card-info"><b>价格：</b><span class="price-tag">¥5-10</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E6%9D%BE%E9%98%B3%E4%BB%99%E8%8D%89" target="_blank">查看详情 →</a>
+    </div>
+    <div class="card">
+      <span class="card-tag food">茶饮</span>
+      <div class="card-title">端午茶 / 松阳红茶</div>
+      <div class="card-desc">松阳特色草本茶，清热消暑，可买茶包做伴手礼。松阳也是产茶大县，红茶绿茶都可带。</div>
+      <div class="card-info"><b>价格：</b><span class="price-tag">¥5-10</span></div>
+      <a class="card-link" href="https://baike.baidu.com/item/%E7%AB%AF%E5%8D%88%E8%8C%B6" target="_blank">查看详情 →</a>
     </div>
   </div>
-  <h3 style="font-size:16px;color:var(--primary-dark);margin:24px 0 10px;padding:8px 16px;background:linear-gradient(135deg,#E8EEF6,#F0F6F7);border-radius:10px;">📍 丽水市区（如经停）</h3>
+  <h3 style="font-size:16px;color:var(--primary-dark);margin:24px 0 10px;padding:8px 16px;background:linear-gradient(135deg,#E8EEF6,#F0F6F7);border-radius:10px;">📍 云和梯田</h3>
   <div class="cards-grid">
     <div class="card">
-      <span class="card-tag food">推荐</span>
-      <div class="card-title">七子楼</div>
-      <div class="card-desc">莲都区学院路36号，丽水菜+夜游景区，仿古建筑群内用餐。</div>
-      <div class="card-info"><b>人均：</b><span class="price-tag">¥80-100</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E4%B8%83%E5%AD%90%E6%A5%BC" target="_blank">查看详情 →</a>
+      <span class="card-tag food">必吃</span>
+      <div class="card-title">梯田农家饭</div>
+      <div class="card-desc">梯田稻花鱼、走地鸡、时令蔬菜，在民宿或景区农家乐吃，山野味十足。</div>
+      <div class="card-info"><b>人均：</b><span class="price-tag">¥50-80</span></div>
+      <div class="card-info"><b>推荐：</b>七星墩附近民宿</div>
     </div>
     <div class="card">
-      <span class="card-tag food">本地</span>
-      <div class="card-title">老丽水·丽水菜</div>
-      <div class="card-desc">本地菜馆，地道丽水风味。</div>
-      <div class="card-info"><b>人均：</b><span class="price-tag">¥80</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E8%80%81%E4%B8%BD%E6%B0%B4%E4%B8%BD%E6%B0%B4%E8%8F%9C" target="_blank">查看详情 →</a>
+      <span class="card-tag food">特色</span>
+      <div class="card-title">云和豆腐 / 山笋</div>
+      <div class="card-desc">当地高山豆腐、竹林笋干，都是云和梯田的地道食材，豆腐烧肉是民宿拿手菜。</div>
+      <div class="card-info"><b>人均：</b><span class="price-tag">¥30-50</span></div>
     </div>
   </div>
 </div>
@@ -749,69 +774,79 @@ a{color:var(--primary);text-decoration:none;}
 
   <div class="stay-section">
     <div class="stay-header">
-      🌾 第1晚（9/25）：古堰画乡民宿 <span class="night-tag">住景区里 · 方便看晨雾</span>
+      🏘️ 第1晚（9/25）：松阳古村民宿 <span class="night-tag">住进"最后的江南秘境"</span>
     </div>
     <div class="cards-grid">
       <div class="card">
         <span class="card-tag stay">推荐</span>
-        <div class="card-title">乡约里民宿（古堰画乡店）</div>
-        <div class="card-info"><b>评分：</b>⭐ 4.9</div>
-        <div class="card-info"><b>价格：</b><span class="price-tag">¥300-500/晚</span></div>
-        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?countryId=1&city=263&keyword=%E4%B9%A1%E7%BA%A6%E9%87%8C%E6%B0%91%E5%AE%BF" target="_blank">查看详情 →</a>
+        <div class="card-title">原舍揽云民宿（陈家铺村旁）</div>
+        <div class="card-info"><b>评分：</b>⭐ 4.8</div>
+        <div class="card-info"><b>位置：</b>松阳四都乡陈家铺村旁，步行可达先锋书店</div>
+        <div class="card-info"><b>价格：</b><span class="price-tag">¥600-800/晚</span></div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/%E6%9D%BE%E9%98%B3%E5%8E%9F%E8%88%8D%E6%8F%BD%E4%BA%91" target="_blank">查看详情 →</a>
       </div>
       <div class="card">
-        <span class="card-tag stay">江景房</span>
-        <div class="card-title">云水江舍民宿</div>
-        <div class="card-info"><b>评分：</b>⭐ 4.9</div>
-        <div class="card-info"><b>价格：</b><span class="price-tag">¥400-600/晚</span> <span style="font-size:12px;color:var(--text-light);">江景房</span></div>
-        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?countryId=1&city=263&keyword=%E4%BA%91%E6%B0%B4%E6%B1%9F%E8%88%8D" target="_blank">查看详情 →</a>
+        <span class="card-tag stay">文艺</span>
+        <div class="card-title">云上平田民宿</div>
+        <div class="card-info"><b>评分：</b>⭐ 4.7</div>
+        <div class="card-info"><b>位置：</b>松阳四都乡平田村，老宅改造，有茶室咖啡馆</div>
+        <div class="card-info"><b>价格：</b><span class="price-tag">¥400-600/晚</span></div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/%E6%9D%BE%E9%98%B3%E5%B9%B3%E7%94%B0%E6%B0%91%E5%AE%BF" target="_blank">查看详情 →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag stay">观景</span>
+        <div class="card-title">云端觅境民宿</div>
+        <div class="card-info"><b>评分：</b>⭐ 4.8</div>
+        <div class="card-info"><b>位置：</b>高海拔山间，可观云海星空</div>
+        <div class="card-info"><b>价格：</b><span class="price-tag">¥500-700/晚</span></div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/%E6%9D%BE%E9%98%B3%E4%BA%91%E7%AB%AF%E8%A7%81%E5%A2%83" target="_blank">查看详情 →</a>
       </div>
       <div class="card">
         <span class="card-tag stay">性价比</span>
-        <div class="card-title">澜舍民宿</div>
-        <div class="card-info"><b>评分：</b>⭐ 4.7</div>
-        <div class="card-info"><b>地址：</b>江滨路123号</div>
-        <div class="card-info"><b>价格：</b><span class="price-tag">¥300-500/晚</span></div>
-        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?countryId=1&city=263&keyword=%E6%BE%9C%E8%88%8D%E6%B0%91%E5%AE%BF" target="_blank">查看详情 →</a>
+        <div class="card-title">松阳县城商务酒店</div>
+        <div class="card-info"><b>位置：</b>松阳县城中心，交通便利（古村自驾方便）</div>
+        <div class="card-info"><b>价格：</b><span class="price-tag">¥200-350/晚</span></div>
+        <a class="card-link" href="https://m.ctrip.com/webapp/hotel/songyang3832" target="_blank">查看详情 →</a>
       </div>
     </div>
   </div>
 
   <div class="stay-section">
     <div class="stay-header">
-      ⛰️ 第2晚（9/26）：缙云仙都景区民宿 <span class="night-tag">住景区里 · 方便看鼎湖峰晨雾</span>
+      ⛰️ 第2晚（9/26）：云和梯田民宿 <span class="night-tag">住景区里 · 早起看日出云海</span>
     </div>
     <div class="cards-grid">
       <div class="card">
-        <span class="card-tag stay">推荐</span>
-        <div class="card-title">界之宿·野奢民宿</div>
+        <span class="card-tag stay">观景</span>
+        <div class="card-title">望田居民宿（云梯田景区店）</div>
         <div class="card-info"><b>评分：</b>⭐ 4.8</div>
-        <div class="card-info"><b>位置：</b>仙都景区内</div>
+        <div class="card-info"><b>位置：</b>七星墩观景台旁50米，推窗看云海日出</div>
         <div class="card-info"><b>价格：</b><span class="price-tag">¥400-600/晚</span></div>
-        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?countryId=1&city=653&keyword=%E7%95%8C%E4%B9%8B%E5%AE%BF" target="_blank">查看详情 →</a>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/2129572.html" target="_blank">查看详情 →</a>
       </div>
       <div class="card">
-        <span class="card-tag stay">主题</span>
-        <div class="card-title">YAYA主题民宿</div>
+        <span class="card-tag stay">高评分</span>
+        <div class="card-title">有米公社民宿（七星墩）</div>
         <div class="card-info"><b>评分：</b>⭐ 4.9</div>
-        <div class="card-info"><b>地址：</b>轩辕街237号</div>
+        <div class="card-info"><b>位置：</b>梅竹村，老板家常菜赞，看完日落回来吃</div>
+        <div class="card-info"><b>价格：</b><span class="price-tag">¥400-650/晚</span></div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/81299634.html" target="_blank">查看详情 →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag stay">口碑</span>
+        <div class="card-title">筑心小阁·梯山云居</div>
+        <div class="card-info"><b>评分：</b>⭐ 4.8</div>
+        <div class="card-info"><b>位置：</b>梯田景区店，老板娘会接送到游客中心</div>
         <div class="card-info"><b>价格：</b><span class="price-tag">¥300-500/晚</span></div>
-        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?countryId=1&city=653&keyword=YAYA%E4%B8%BB%E9%A2%98%E6%B0%91%E5%AE%BF" target="_blank">查看详情 →</a>
+        <a class="card-link" href="https://hotels.corporatetravel.ctrip.com/hotels/6644773.html" target="_blank">查看详情 →</a>
       </div>
       <div class="card">
-        <span class="card-tag stay">性价比</span>
-        <div class="card-title">好溪云舍民宿</div>
-        <div class="card-info"><b>评分：</b>⭐ 4.6</div>
-        <div class="card-info"><b>地址：</b>下洋村312号</div>
-        <div class="card-info"><b>价格：</b><span class="price-tag">¥250-400/晚</span></div>
-        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?countryId=1&city=653&keyword=%E5%A5%BD%E6%BA%AA%E4%BA%91%E8%88%8D" target="_blank">查看详情 →</a>
-      </div>
-      <div class="card">
-        <span class="card-tag stay">观景位</span>
-        <div class="card-title">景台隐墅</div>
-        <div class="card-info"><b>位置：</b>步行3-5分钟到鼎湖峰/朱潭山</div>
-        <div class="card-info"><b>价格：</b><span class="price-tag">¥500-800/晚</span></div>
-        <a class="card-link" href="https://hotels.ctrip.com/hotels/list?countryId=1&city=653&keyword=%E6%99%AF%E5%8F%B0%E9%9A%90%E5%A2%85" target="_blank">查看详情 →</a>
+        <span class="card-tag stay">安静</span>
+        <div class="card-title">听苔民宿（坑根村）</div>
+        <div class="card-info"><b>评分：</b>⭐ 4.8</div>
+        <div class="card-info"><b>位置：</b>坑根村内，安静悠然，独栋小别墅</div>
+        <div class="card-info"><b>价格：</b><span class="price-tag">¥300-500/晚</span></div>
+        <a class="card-link" href="https://hotels.ctrip.com/hotels/125689043.html" target="_blank">查看详情 →</a>
       </div>
     </div>
   </div>
@@ -823,47 +858,45 @@ a{color:var(--primary);text-decoration:none;}
   <div style="background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:20px;overflow-x:auto;">
     <table class="transport-table">
       <tr>
-        <th style="width:30%;">路线</th>
+        <th style="width:28%;">路线</th>
         <th style="width:35%;">方式</th>
         <th style="width:15%;">耗时</th>
-        <th style="width:20%;">费用（2人）</th>
+        <th style="width:22%;">费用（2人）</th>
       </tr>
       <tr>
-        <td class="route">上海虹桥 → 丽水</td>
+        <td class="route">上海虹桥 → 丽水站</td>
         <td>G7333 高铁（06:20发 → 09:12到）</td>
         <td>2h52m</td>
-        <td>上海虹桥→温州南全程票（买长乘短丽水下）</td>
         <td><span class="price-tag">¥786</span> <span style="font-size:12px;color:var(--text-light);">¥393×2</span></td>
       </tr>
       <tr>
         <td class="route">丽水站 → 古堰画乡</td>
-        <td>打车（推荐）或 K202路公交</td>
+        <td>🚗 自驾（租车）</td>
         <td>约40min</td>
-        <td>打车 ¥80 · 公交¥6</td>
+        <td>租车含内</td>
       </tr>
       <tr>
-        <td class="route">古堰画乡 → 缙云仙都</td>
-        <td>方案A：打车直达（推荐）<br>方案B：高铁丽水→缙云西+打车</td>
-        <td>A: 1h / B: 1.5h</td>
-        <td>A: ¥150-200<br>B: 高铁¥20+打车¥30</td>
+        <td class="route">古堰画乡 → 松阳古村</td>
+        <td>🚗 自驾</td>
+        <td>约1h</td>
+        <td>租车含内</td>
       </tr>
       <tr>
-        <td class="route">仙都景区内</td>
-        <td>电瓶车 或 步行</td>
-        <td>随走随停</td>
-        <td>电瓶车 ¥40 <span style="font-size:12px;color:var(--text-light);">¥20×2</span></td>
+        <td class="route">松阳古村 → 云和梯田</td>
+        <td>🚗 自驾（西南方向）</td>
+        <td>约1h</td>
+        <td>租车含内</td>
       </tr>
       <tr>
-        <td class="route">仙都景区 → 缙云西站</td>
-        <td>打车约15min</td>
-        <td>约15min</td>
-        <td><span class="price-tag">¥30</span> <span style="font-size:12px;color:var(--text-light);">不用去丽水站了</span></td>
+        <td class="route">云和梯田 → 丽水站（返程）</td>
+        <td>🚗 自驾</td>
+        <td>约2h</td>
+        <td>租车含内</td>
       </tr>
       <tr>
-        <td class="route">缙云西 → 上海南</td>
-        <td>G7336 高铁（15:24发 → 17:46到）</td>
-        <td>2h22m</td>
-        <td>苍南→上海南全程票（买长乘短缙云西上）</td>
+        <td class="route">丽水站 → 上海南</td>
+        <td>G7336 高铁（15:09发 → 17:46到）</td>
+        <td>2h37m</td>
         <td><span class="price-tag">¥1,026</span> <span style="font-size:12px;color:var(--text-light);">¥513×2</span></td>
       </tr>
     </table>
@@ -881,15 +914,27 @@ a{color:var(--primary);text-decoration:none;}
       <th style="width:20%;">备注</th>
     </tr>
     <tr>
-<td class="item">🚄 高铁</td>
+      <td class="item">🚄 高铁</td>
       <td>去程 G7333 ¥393×2 + 返程 G7336 ¥513×2</td>
       <td class="price">¥1,812</td>
       <td class="note">买长乘短·全程票</td>
     </tr>
     <tr>
-      <td class="item">🏨 住宿</td>
-      <td>古堰画乡¥300-500 + 缙云仙都¥300-500（各1晚）</td>
-      <td class="price">¥600-1000</td>
+      <td class="item">🚗 租车</td>
+      <td>经济型轿车 3天（¥300-400/天）</td>
+      <td class="price">¥900-1,200</td>
+      <td class="note">含基础保险</td>
+    </tr>
+    <tr>
+      <td class="item">⛽ 油费/路费</td>
+      <td>全程约400km自驾</td>
+      <td class="price">¥300-400</td>
+      <td class="note">油费+过路费</td>
+    </tr>
+    <tr>
+      <td class="item">🏡 住宿</td>
+      <td>松阳古村¥300-800 + 云和梯田¥300-600（各1晚）</td>
+      <td class="price">¥600-1,400</td>
       <td class="note">2晚分2地</td>
     </tr>
     <tr>
@@ -900,26 +945,20 @@ a{color:var(--primary);text-decoration:none;}
     </tr>
     <tr>
       <td class="item">🎫 门票</td>
-      <td>古堰画乡¥50×2 + 仙都¥90×2</td>
-      <td class="price">¥280</td>
-      <td class="note">古堰含船票</td>
-    </tr>
-    <tr>
-      <td class="item">🚕 当地交通</td>
-      <td>仙都→缙云西打车¥30），约¥280-380</td>
-      <td class="price">¥250-350</td>
-      <td class="note">打车为主</td>
+      <td>古堰画乡¥50×2 + 云和梯田¥80×2（索道另计）</td>
+      <td class="price">¥260</td>
+      <td class="note">云梯田两日有效</td>
     </tr>
     <tr>
       <td class="item">🛒 其他</td>
-      <td>特产、零食、饮料等</td>
+      <td>特产（煨盐鸡、端午茶）、零食等</td>
       <td class="price">¥200</td>
       <td class="note">预留弹性</td>
     </tr>
     <tr class="total-row">
-<td>💰 合计</td>
-      <td>¥3,642-4,442</td>
-      <td>人均 ¥1,821-2,221</td>
+      <td>💰 合计</td>
+      <td>¥4,572-5,772</td>
+      <td>人均 ¥2,286-2,886</td>
     </tr>
   </table>
 </div>
@@ -930,24 +969,24 @@ a{color:var(--primary);text-decoration:none;}
   <div class="tips-box">
     <h3>⚠️ 行前必看</h3>
     <ul class="tips-list">
-      <li><b>古堰画乡晨雾最美在早上7-8点</b>，薄雾弥漫如水墨画，住景区里才能看到。务必住景区内，不要住市区。</li>
-      <li><b>朱潭山老农牵牛表演每天有固定时段</b>（上午和下午各一次），具体时间不一定，到民宿后第一时间问老板确认。</li>
-      <li><b>仙都景区内住宿需提前报备车牌</b>才能开车进入。订房后把车牌号发给民宿老板报备。</li>
-      <li><b>丽水景点分散但本次只去2个地方</b>（古堰画乡+缙云仙都），全程不用赶路。每天最多2个景点，宽松为主。</li>
-      <li><b>缙云烧饼一定要吃刚出炉的</b>，冷了就不好吃了。一均店排饼的时候等一下新鲜出炉的。</li>
-      <li><b>带薄外套</b>，山里早晚温差大，9月丽水气温17-27℃，早上看晨雾时偏凉。</li>
-      <li><b>中秋赏月推荐</b>：古堰画乡瓯江边、仙都朱潭山石桥旁都是赏月绝佳位置，人少景美。</li>
-<li><b>G7333发车较早（06:20）</b>，建议提前一天收拾好行李，早上5:30前出发去虹桥站。🎫 你买的是上海虹桥→温州南全程票（¥393/人），在丽水站下车即可，不用管终点站。</li>
-    <li><b>返程G7336 缙云西15:24发车</b>，不用去丽水站！G7336停靠缙云西（15:22到/15:24发），你买的是苍南→上海南全程票，直接在缙云西站刷身份证上车。Day3中午12点前离开景区即可，时间非常充裕。</li>
-    <li><b>买长乘短说明</b>：去程买“上海→温州南”全程票（¥393），在丽水站下车，比买“上海→丽水”直达票（¥163）贵¥230，但直达票候补抢不到。返程买“苍南→上海南”全程票（¥513），在<strong>缙云西站上车</strong>（G7336停缙云西），省去了仙都→丽水站约1小时车程。按全程票价计算，差价不退。</li>
+      <li><b>G7333发车较早（06:20）</b>，建议提前一天收拾行李，早上5:30前出发去虹桥站。🎫 买的是上海虹桥→温州南全程票（¥393/人），在丽水站下车即可。</li>
+      <li><b>返程G7336 丽水站15:09发车</b>：不用去缙云西！G7336经停丽水站（15:07到/15:09发），你买的苍南→上海南全程票，在<strong>丽水站直接刷身份证上车</strong>。Day3中午12点前从云梯田出发，13:00前到站还车即可。</li>
+      <li><b>买长乘短说明</b>：去程买"上海→温州南"全程票（¥393）在丽水下；返程买"苍南→上海南"全程票（¥513）在丽水站上车。差价不退，只为保底有座。</li>
+      <li><b>租车务必提前预订</b>：中秋+国庆前丽水租车紧张，现在就在神州/一嗨APP锁定丽水站门店车型（经济型），选"不约不计免赔"更省心。</li>
+      <li><b>云和梯田日出约5-6点</b>：9月日出时间约6:00，建议5:00起床、5:30前到观景台。日出+云海+金色稻浪是本次旅行最值得期待的一刻，务必住景区内民宿。</li>
+      <li><b>梯田门票两日有效</b>：¥80通票含九曲云环/白银谷/坑根石寨，Day2买票Day3早晨继续用，不用重复买。</li>
+      <li><b>山路驾驶注意</b>：松阳到云和路段多弯道，控制车速、会车留宽。租车建议选自动挡，山路更轻松。</li>
+      <li><b>带薄外套</b>：梯田海拔高，早晚温差大，日出时可能只有15℃左右，注意保暖。</li>
+      <li><b>松阳古村中秋赏月</b>：海拔高光污染少，古村观景台是绝佳赏月点。云上梯田的月亮升过金色稻田，视觉震撼。</li>
+      <li><b>备选方案</b>：如果松阳古村/云梯田民宿订满，可在<strong>松阳县城</strong>或<strong>云和县城</strong>住商务酒店（¥200-350），次日早开车进景区也来得及。</li>
     </ul>
   </div>
 </div>
 
 <!-- ============ Footer ============ -->
 <div class="footer">
-  <p>🌊 丽水3天2晚中秋攻略 · 宽松躺平式旅行 · 2人出行</p>
-  <p style="margin-top:6px;">古堰画乡 + 缙云仙都 · 人均¥1,821-2,221 · <a href="旅游攻略.html">返回旅游攻略总览</a></p>
+  <p>🌄 丽水3天2晚中秋攻略 · 自驾版 · 2人出行</p>
+  <p style="margin-top:6px;">古堰画乡 + 松阳古村 + 云和梯田 · 人均¥2,286-2,886 · <a href="旅游攻略.html">返回旅游攻略总览</a></p>
 </div>
 
 <script>

@@ -83,15 +83,21 @@ a{color:var(--primary);text-decoration:none;}
 .card .card-desc{font-size:14px;color:var(--text-light);margin-bottom:10px;}
 .card .card-info{font-size:13px;color:var(--text);margin-bottom:6px;}
 .card .card-info b{color:var(--primary-dark);}
-.card .card-link{display:inline-block;font-size:13px;color:var(--primary);border:1px solid var(--primary);padding:3px 12px;border-radius:14px;margin-top:6px;transition:all .2s;}
-.card .card-link:hover{background:var(--primary);color:#fff;}
 .card .price-tag{display:inline-block;background:var(--accent-light);color:#8B6914;font-weight:700;padding:2px 10px;border-radius:8px;font-size:13px;}
+
+/* Detail toggle (内嵌详情) */
+.detail-toggle{display:inline-block;font-size:13px;color:var(--primary);border:1px solid var(--primary);padding:3px 12px;border-radius:14px;margin-top:6px;transition:all .2s;background:var(--card);cursor:pointer;font-family:inherit;}
+.detail-toggle:hover{background:var(--primary);color:#fff;}
+.detail-content{display:none;margin-top:10px;padding:14px 16px;background:linear-gradient(135deg,#F5FAFB,#E8EEF6);border-radius:10px;border-left:3px solid var(--primary-light);font-size:13px;line-height:1.8;}
+.detail-content p{margin-bottom:3px;}
+.detail-content p:last-child{margin-bottom:0;}
+.detail-content b{color:var(--primary-dark);}
+.detail-content.show{display:block;animation:fadeIn .3s;}
 
 /* Accommodation */
 .stay-section{margin-bottom:24px;}
 .stay-header{font-size:16px;font-weight:700;color:var(--primary-dark);margin-bottom:12px;padding:10px 16px;background:linear-gradient(135deg,#E8EEF6,#D5E5E8);border-radius:10px;}
 .stay-header .night-tag{float:right;font-size:13px;color:var(--accent);font-weight:400;}
-.booked-tag{display:inline-block;background:#2D7A4E;color:#fff;font-size:12px;padding:2px 10px;border-radius:10px;margin-left:8px;}
 
 /* Transport */
 .transport-table{width:100%;border-collapse:collapse;font-size:14px;}
@@ -222,47 +228,29 @@ a{color:var(--primary);text-decoration:none;}
         <linearGradient id="driveGrad2" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#E8930C"/><stop offset="100%" stop-color="#F5A623"/>
         </linearGradient>
-        <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#B4DCE8" stop-opacity="0.5"/>
-          <stop offset="100%" stop-color="#9ECEDE" stop-opacity="0.3"/>
-        </linearGradient>
         <linearGradient id="mtnGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#C8DEBB" stop-opacity="0.5"/>
           <stop offset="100%" stop-color="#B5D0A5" stop-opacity="0.2"/>
         </linearGradient>
       </defs>
-
-      <!-- ===== 地形 ===== -->
       <path d="M300 320 Q340 260 400 280 Q460 240 520 270 Q580 250 640 290 Q700 270 760 310 L760 520 L300 520 Z" fill="url(#mtnGrad)"/>
       <path d="M60 200 Q120 170 180 190 Q240 160 300 185 L300 300 L60 300 Z" fill="url(#mtnGrad)" opacity="0.6"/>
-
-      <!-- 瓯江水系 -->
-      <path d="M360 400 Q380 380 410 390 Q440 370 470 385 Q500 365 530 380 Q560 360 590 375"
-            stroke="#B4DCE8" stroke-width="14" fill="none" opacity="0.5" stroke-linecap="round"/>
-      <path d="M360 400 Q380 380 410 390 Q440 370 470 385 Q500 365 530 380 Q560 360 590 375"
-            stroke="#8EC5DE" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
+      <path d="M360 400 Q380 380 410 390 Q440 370 470 385 Q500 365 530 380 Q560 360 590 375" stroke="#B4DCE8" stroke-width="14" fill="none" opacity="0.5" stroke-linecap="round"/>
+      <path d="M360 400 Q380 380 410 390 Q440 370 470 385 Q500 365 530 380 Q560 360 590 375" stroke="#8EC5DE" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
       <text x="460" y="415" font-size="9" fill="#7AA8BC" font-style="italic" opacity="0.7">瓯江</text>
-
-      <!-- 松阴溪（松阳方向） -->
       <path d="M200 380 Q250 330 320 310 Q380 295 440 310" stroke="#B4DCE8" stroke-width="8" fill="none" opacity="0.4" stroke-linecap="round"/>
-      <text x="300" y="345" font-size="12" fill="#7AA8BC" font-style="italic" opacity="0.6">松阴溪</text>
-
-      <!-- 小山脉装饰 -->
+      <text x="300" y="345" font-size="8" fill="#7AA8BC" font-style="italic" opacity="0.6">松阴溪</text>
       <path d="M620 220 L645 190 L670 220 Z" fill="#8FBC8F" opacity="0.15"/>
       <path d="M680 230 L705 195 L730 230 Z" fill="#8FBC8F" opacity="0.12"/>
       <path d="M720 210 L745 175 L770 210 Z" fill="#8FBC8F" opacity="0.1"/>
       <path d="M180 160 L210 130 L240 160 Z" fill="#8FBC8F" opacity="0.15"/>
       <path d="M280 150 L310 115 L340 150 Z" fill="#8FBC8F" opacity="0.12"/>
-
-      <!-- ===== 背景公路（灰） ===== -->
       <line x1="80" y1="120" x2="600" y2="120" stroke="#D5D0C5" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
       <line x1="600" y1="120" x2="600" y2="380" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
       <line x1="200" y1="380" x2="600" y2="380" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
       <line x1="600" y1="380" x2="800" y2="330" stroke="#D5D0C5" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
 
-      <!-- ===== 行程路线 ===== -->
-
-      <!-- Day1 高铁：上海虹桥→丽水站 -->
+      <!-- Day1 高铁 -->
       <path d="M100 120 Q250 110 400 115 Q520 118 600 120" stroke="url(#hsrGrad)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
       <rect x="280" y="96" width="70" height="20" rx="10" fill="#357ABD" filter="url(#mShadow)"/>
       <text x="315" y="110" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">🚄 G7333</text>
@@ -284,7 +272,7 @@ a{color:var(--primary);text-decoration:none;}
       <rect x="545" y="342" width="130" height="18" rx="9" fill="#E85D3D" filter="url(#mShadow)"/>
       <text x="610" y="355" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚗 自驾约68km</text>
 
-      <!-- Day3 自驾：松阳→丽水站（返程还车） -->
+      <!-- Day3 自驾：松阳→丽水站 -->
       <path d="M740 290 Q700 340 650 370 Q620 400 610 430" stroke="url(#driveGrad2)" stroke-width="4.5" fill="none" stroke-linecap="round" filter="url(#mShadow)"/>
       <rect x="648" y="395" width="130" height="18" rx="9" fill="#E8930C" filter="url(#mShadow)"/>
       <text x="713" y="408" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">🚗 自驾约55km</text>
@@ -296,42 +284,25 @@ a{color:var(--primary);text-decoration:none;}
       <text x="400" y="522" text-anchor="middle" font-size="9" fill="#357ABD" font-weight="600">15:09发→17:46到 · ¥262.5/人</text>
       <text x="400" y="536" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">🎫 买苍南始发全程票 · 丽水站上车</text>
 
-      <!-- ===== 地图节点 ===== -->
-
-      <!-- 上海虹桥 -->
-      <g filter="url(#mShadow2)">
-        <circle cx="100" cy="100" r="20" fill="#fff" stroke="#357ABD" stroke-width="3"/>
-        <circle cx="100" cy="100" r="8" fill="#357ABD"/>
-      </g>
+      <!-- 节点 -->
+      <g filter="url(#mShadow2)"><circle cx="100" cy="100" r="20" fill="#fff" stroke="#357ABD" stroke-width="3"/><circle cx="100" cy="100" r="8" fill="#357ABD"/></g>
       <rect x="56" y="66" width="88" height="18" rx="9" fill="#357ABD"/>
       <text x="100" y="79" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">上海虹桥</text>
       <text x="100" y="140" text-anchor="middle" font-size="9" fill="#666" font-weight="600">📍 起点 · 06:20</text>
 
-      <!-- 丽水站 -->
-      <g filter="url(#mShadow2)">
-        <circle cx="600" cy="130" r="18" fill="#fff" stroke="#1B7A8C" stroke-width="3"/>
-        <circle cx="600" cy="130" r="7" fill="#1B7A8C"/>
-      </g>
+      <g filter="url(#mShadow2)"><circle cx="600" cy="130" r="18" fill="#fff" stroke="#1B7A8C" stroke-width="3"/><circle cx="600" cy="130" r="7" fill="#1B7A8C"/></g>
       <rect x="556" y="96" width="88" height="18" rx="9" fill="#1B7A8C"/>
       <text x="600" y="109" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">丽水站</text>
       <text x="600" y="168" text-anchor="middle" font-size="8" fill="#888">🚗 取车/还车点</text>
       <text x="600" y="180" text-anchor="middle" font-size="7" fill="#E8930C" font-weight="600">一嗨 · 9:30取 / 14:00还</text>
 
-      <!-- 古堰画乡（景点1） -->
-      <g filter="url(#mShadow2)">
-        <circle cx="210" cy="275" r="20" fill="#fff" stroke="#2E8B57" stroke-width="3"/>
-        <circle cx="210" cy="275" r="9" fill="#2E8B57"/>
-      </g>
+      <g filter="url(#mShadow2)"><circle cx="210" cy="275" r="20" fill="#fff" stroke="#2E8B57" stroke-width="3"/><circle cx="210" cy="275" r="9" fill="#2E8B57"/></g>
       <rect x="160" y="242" width="100" height="20" rx="10" fill="#2E8B57"/>
       <text x="210" y="256" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">古堰画乡</text>
       <text x="140" y="270" text-anchor="end" font-size="8" fill="#2E8B57" font-weight="600">🎫 ¥50含船</text>
       <text x="140" y="282" text-anchor="end" font-size="7" fill="#aaa">画舫·通济堰·古樟</text>
 
-      <!-- 云和梯田（住宿1） -->
-      <g filter="url(#mShadow2)">
-        <circle cx="455" cy="375" r="24" fill="#fff" stroke="#E8930C" stroke-width="3"/>
-        <circle cx="455" cy="375" r="11" fill="#E8930C"/>
-      </g>
+      <g filter="url(#mShadow2)"><circle cx="455" cy="375" r="24" fill="#fff" stroke="#E8930C" stroke-width="3"/><circle cx="455" cy="375" r="11" fill="#E8930C"/></g>
       <rect x="410" y="340" width="90" height="20" rx="10" fill="#E8930C"/>
       <text x="455" y="354" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">云和梯田</text>
       <rect x="410" y="406" width="90" height="19" rx="4" fill="#FF6B6B" filter="url(#mShadow)"/>
@@ -339,11 +310,7 @@ a{color:var(--primary);text-decoration:none;}
       <text x="330" y="370" text-anchor="end" font-size="8" fill="#E8930C" font-weight="600">九曲云环·白银谷</text>
       <text x="330" y="382" text-anchor="end" font-size="7" fill="#aaa">日出云海·稻浪</text>
 
-      <!-- 松阳古村（住宿2） -->
-      <g filter="url(#mShadow2)">
-        <circle cx="760" cy="275" r="24" fill="#fff" stroke="#3AA6B8" stroke-width="3"/>
-        <circle cx="760" cy="275" r="11" fill="#3AA6B8"/>
-      </g>
+      <g filter="url(#mShadow2)"><circle cx="760" cy="275" r="24" fill="#fff" stroke="#3AA6B8" stroke-width="3"/><circle cx="760" cy="275" r="11" fill="#3AA6B8"/></g>
       <rect x="720" y="243" width="80" height="20" rx="10" fill="#3AA6B8"/>
       <text x="760" y="257" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">松阳古村</text>
       <rect x="718" y="306" width="85" height="19" rx="4" fill="#FF6B6B" filter="url(#mShadow)"/>
@@ -351,16 +318,12 @@ a{color:var(--primary);text-decoration:none;}
       <text x="800" y="270" font-size="8" fill="#3AA6B8" font-weight="600">杨家堂·陈家铺</text>
       <text x="800" y="282" font-size="7" fill="#aaa">先锋书店·夯土房</text>
 
-      <!-- 上海南（终点） -->
-      <g filter="url(#mShadow2)">
-        <circle cx="100" cy="550" r="16" fill="#fff" stroke="#357ABD" stroke-width="3"/>
-        <circle cx="100" cy="550" r="6" fill="#357ABD"/>
-      </g>
+      <g filter="url(#mShadow2)"><circle cx="100" cy="550" r="16" fill="#fff" stroke="#357ABD" stroke-width="3"/><circle cx="100" cy="550" r="6" fill="#357ABD"/></g>
       <rect x="66" y="468" width="68" height="18" rx="9" fill="#357ABD"/>
       <text x="100" y="481" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">上海南</text>
       <text x="160" y="555" text-anchor="middle" font-size="9" fill="#666" font-weight="600">📍 终点 · 17:46</text>
 
-      <!-- ===== Day标签 ===== -->
+      <!-- Day标签 -->
       <rect x="160" y="190" width="58" height="22" rx="11" fill="#E8930C" filter="url(#mShadow2)"/>
       <text x="189" y="206" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 1</text>
       <text x="189" y="184" text-anchor="middle" font-size="8" fill="#E8930C" font-weight="600">9/25 周五</text>
@@ -373,15 +336,12 @@ a{color:var(--primary);text-decoration:none;}
       <text x="499" y="456" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Day 3</text>
       <text x="499" y="434" text-anchor="middle" font-size="8" fill="#357ABD" font-weight="600">9/27 周日</text>
 
-      <!-- ===== 罗盘 ===== -->
       <g transform="translate(900,60)">
         <circle r="22" fill="#fff" opacity="0.9" stroke="#CCC" stroke-width="1" filter="url(#mShadow)"/>
         <text y="-5" text-anchor="middle" font-size="13" font-weight="700" fill="#E85D3D">N</text>
         <path d="M0,-14 L4,2 L0,5 L-4,2 Z" fill="#E85D3D"/>
         <path d="M0,14 L4,-2 L0,-5 L-4,-2 Z" fill="#888"/>
       </g>
-
-      <!-- ===== 比例尺 ===== -->
       <g transform="translate(20,540)">
         <line x1="0" y1="0" x2="80" y2="0" stroke="#666" stroke-width="2"/>
         <line x1="0" y1="-4" x2="0" y2="4" stroke="#666" stroke-width="2"/>
@@ -391,8 +351,6 @@ a{color:var(--primary);text-decoration:none;}
         <text x="40" y="14" font-size="8" fill="#888">50km</text>
         <text x="80" y="14" font-size="8" fill="#888">100km</text>
       </g>
-
-      <!-- ===== 图例 ===== -->
       <g transform="translate(680,60)">
         <rect x="0" y="0" width="230" height="105" rx="8" fill="#fff" opacity="0.92" stroke="#E0E0E0" stroke-width="1" filter="url(#mShadow)"/>
         <text x="115" y="16" text-anchor="middle" font-size="10" fill="#333" font-weight="700">图例</text>
@@ -404,23 +362,16 @@ a{color:var(--primary);text-decoration:none;}
         <text x="166" y="36" font-size="9" fill="#333">自驾返程</text>
         <line x1="12" y1="48" x2="32" y2="48" stroke="#B4DCE8" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
         <text x="38" y="52" font-size="9" fill="#333">水系</text>
-
-        <circle cx="20" cy="66" r="7" fill="#fff" stroke="#357ABD" stroke-width="2.5"/>
-        <circle cx="20" cy="66" r="3" fill="#357ABD"/>
+        <circle cx="20" cy="66" r="7" fill="#fff" stroke="#357ABD" stroke-width="2.5"/><circle cx="20" cy="66" r="3" fill="#357ABD"/>
         <text x="32" y="70" font-size="9" fill="#333">火车站/租车</text>
-
-        <circle cx="85" cy="66" r="8" fill="#fff" stroke="#2E8B57" stroke-width="2.5"/>
-        <circle cx="85" cy="66" r="3.5" fill="#2E8B57"/>
+        <circle cx="85" cy="66" r="8" fill="#fff" stroke="#2E8B57" stroke-width="2.5"/><circle cx="85" cy="66" r="3.5" fill="#2E8B57"/>
         <text x="98" y="70" font-size="9" fill="#333">景点</text>
-
         <rect x="165" y="60" width="14" height="12" rx="2" fill="#FF6B6B"/>
         <text x="184" y="70" font-size="9" fill="#333">🏠 住宿点</text>
-
         <rect x="12" y="82" width="58" height="16" rx="8" fill="#357ABD"/>
         <text x="41" y="94" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">Day N</text>
         <text x="80" y="94" font-size="9" fill="#333">日程标签</text>
       </g>
-
     </svg>
     <div class="map-title">上海虹桥 → 丽水站(取车) → 古堰画乡 → 云和梯田(住1晚) → 松阳古村(住1晚) → 丽水站(还车) → 上海南</div>
   </div>
@@ -431,30 +382,15 @@ a{color:var(--primary);text-decoration:none;}
   <div class="section-title">✅ 已预订清单（出行前核对）</div>
   <div class="rent-box" style="border-left-color:#2D7A4E;background:linear-gradient(135deg,#E0F4E8,#F0F6F7);">
     <div class="row"><b style="color:#2D7A4E;">🚗 租车已订 · 一嗨租车</b></div>
-    <p>
-      <span class="tag">🚙 大众高尔夫</span>
-      <span class="tag">📅 9/25 09:30 取 → 9/27 14:00 还</span>
-      <span class="tag">📍 丽水站门店</span>
-      <span class="tag">💰 ¥651（总价）</span>
-    </p>
+    <p><span class="tag">🚙 大众高尔夫</span><span class="tag">📅 9/25 09:30 取 → 9/27 14:00 还</span><span class="tag">📍 丽水站门店</span><span class="tag">💰 ¥651（总价）</span></p>
   </div>
   <div class="rent-box" style="border-left-color:#2D7A4E;background:linear-gradient(135deg,#E0F4E8,#F0F6F7);">
     <div class="row"><b style="color:#2D7A4E;">🏠 住宿已订</b></div>
-    <p>
-      <span class="tag">🌄 9/25晚：Airbnb云上民宿 ¥1310</span>
-      <span class="tag">含双早</span>
-      <span class="tag">🏡 9/26晚：松阳叶子庄园民宿 ¥647</span>
-    </p>
+    <p><span class="tag">🌄 9/25晚：AirArk云上民宿 ¥1310</span><span class="tag">含双早</span><span class="tag">🏡 9/26晚：松阳叶子庄园民宿 ¥647</span></p>
   </div>
   <div class="rent-box" style="border-left-color:var(--accent);background:linear-gradient(135deg,#FFF8E0,#FFF3D5);">
     <div class="row"><b style="color:var(--accent);">💡 取还车TIPS</b></div>
-    <p>
-      <span class="tag">取车：丽水站一嗨门店，09:30到店</span>
-      <span class="tag">取车拍视频留证车况</span>
-      <span class="tag">还车：9/27 14:00前到店</span>
-      <span class="tag">确认油量结算方式（满油还/按量计）</span>
-      <span class="tag">高德导航到"一嗨租车丽水站店"</span>
-    </p>
+    <p><span class="tag">取车：丽水站一嗨门店，09:30到店</span><span class="tag">取车拍视频留证车况</span><span class="tag">还车：9/27 14:00前到店</span><span class="tag">确认油量结算方式</span><span class="tag">高德导航到"一嗨租车丽水站店"</span></p>
   </div>
 </div>
 
@@ -470,40 +406,45 @@ a{color:var(--primary);text-decoration:none;}
   <!-- Day 1 -->
   <div class="tab-content active" id="tab-0">
     <div style="background:#E0F4E8;border-radius:10px;padding:12px 20px;margin-bottom:20px;font-size:14px;">
-      <b style="color:#2D7A4E;">🌿 今日主题：落地取车 → 古堰画海 → 云和梯田（住梯田）</b>
+      <b style="color:#2D7A4E;">🌿 今日主题：落地取车 → 古堰画乡 → 云和梯田（住梯田）</b>
       <span style="float:right;background:#2D7A4E;color:#fff;padding:2px 12px;border-radius:12px;font-size:12px;">画舫 · 稻浪</span>
     </div>
     <div class="timeline">
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">06:20</span>
-        <span class="badge">出发</span>
+        <span class="time">06:20</span><span class="badge">出发</span>
         <div class="title">🚄 上海虹桥 → 丽水站 G7333</div>
-        <div class="desc">06:20发车，09:12到达丽水站，车程约2小时52分。🎫 <strong>二等座¥238.5/人</strong>（买上海→温州南全程票，丽水站下车）。上车补个觉。</div>
+        <div class="desc">06:20发车，09:12到达丽水站，车程约2小时52分。🎫 <strong>二等座¥238.5/人</strong>（买上海→温州南全程票，丽水站下车）。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">09:30</span>
-        <span class="badge">取车</span>
+        <span class="time">09:30</span><span class="badge">取车</span>
         <div class="title">🚗 丽水站一嗨门店取车</div>
-        <div class="desc">出站直奔一嗨租车丽水站门店（导航"一嗨租车丽水站店"），办手续约15-20分钟。大众高尔夫已订好（¥651/3天）。检查车况、设导航出发。</div>
+        <div class="desc">出站直奔一嗨租车丽水站门店（导航"一嗨租车丽水站店"），办手续约15-20分钟。大众高尔夫已订好（¥651/3天）。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
         <span class="time">10:15 - 12:30</span>
         <div class="title">🏞️ 古堰画乡 · 画舫游瓯江</div>
-        <div class="desc">自驾约40分钟（~28km）到达。门票¥50/人（含船票）。坐画舫游瓯江，看千年通济堰（世界灌溉工程遗产）、千年古樟群、巴比松油画街。轻松不爬坡。<a href="https://www.dianping.com/search/keyword/1766/0_%E5%8F%A4%E5%A0%B0%E7%94%BB%E4%B9%A1" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">自驾约40分钟（~28km）到达。门票¥50/人（含船票）。坐画舫游瓯江，看千年通济堰、千年古樟群、巴比松油画街。</div>
+        <button class="detail-toggle" onclick="toggleDetail(this)" style="font-size:12px;padding:2px 10px;">📋 查看详情</button>
+        <div class="detail-content" style="margin-top:8px;">
+          <p><b>📍 地址：</b>丽水市莲都区大港头镇渡南路</p>
+          <p><b>🎫 门票：</b>¥50/人（含画舫船票），景区内步行免费</p>
+          <p><b>🕐 开放：</b>08:00-17:00（画舫末班约16:00）</p>
+          <p><b>✨ 看点：</b>通济堰（世界灌溉工程遗产，1500年前拱坝）、千年古樟群（10余棵遮天蔽日）、巴比松油画街（画廊+写生基地）、瓯江画舫（两岸风光）</p>
+          <p><b>💡 游玩建议：</b>先从大港头码头坐画舫到对岸堰头村（约5分钟），看通济堰和古樟群；再坐船回来逛画乡老街。全程平路不用爬坡，轻松2-3小时。老街上的画室可以买水彩画做伴手礼。</p>
+        </div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
         <span class="time">12:00 - 13:00</span>
         <div class="title">🍽️ 午餐 · 画乡老街</div>
-        <div class="desc">红烧溪鱼（现捞现做）、缙云烧饼。老街沿江，边吃边看江景。饭后消食散步。</div>
+        <div class="desc">红烧溪鱼（现捞现做）、缙云烧饼。老街沿江，边吃边看江景。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">13:30 - 15:00</span>
-        <span class="badge">转场</span>
+        <span class="time">13:30 - 15:00</span><span class="badge">转场</span>
         <div class="title">🚗 自驾 → 云和梯田（约50km）</div>
         <div class="desc">沿山路自驾约1小时到云和梯田景区（云和县崇头镇）。9月底稻谷金黄，沿途风景渐入佳境。</div>
       </div>
@@ -511,14 +452,24 @@ a{color:var(--primary);text-decoration:none;}
         <div class="dot"></div>
         <span class="time">15:00 - 17:30</span>
         <div class="title">🌾 云和梯田 · 九曲云环 + 白银谷</div>
-        <div class="desc">门票¥80/人（含九曲云环、白银谷、坑根石寨，两日有效）。<strong>九曲云环</strong>是核心观景台，金黄色稻浪铺满山谷；<strong>白银谷</strong>有坑根石寨石头古村落。轻松徒步。<a href="https://www.dianping.com/search/keyword/1766/0_%E4%BA%91%E5%92%8C%E6%A2%AF%E7%94%B0" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">门票¥80/人（含九曲云环、白银谷、坑根石寨，两日有效）。<strong>九曲云环</strong>是核心观景台，金黄色稻浪铺满山谷；<strong>白银谷</strong>有坑根石寨石头古村落。</div>
+        <button class="detail-toggle" onclick="toggleDetail(this)" style="font-size:12px;padding:2px 10px;">📋 查看详情</button>
+        <div class="detail-content" style="margin-top:8px;">
+          <p><b>📍 地址：</b>丽水市云和县崇头镇</p>
+          <p><b>🎫 门票：</b>¥80/人（含九曲云环+白银谷+坑根石寨，两日有效，Day1买Day2继续用）</p>
+          <p><b>🕐 开放：</b>08:00-17:00（次日日出可提前进入观景台）</p>
+          <p><b>🚡 观云索道：</b>全长3.8km，11分钟从山脚到七星墩，约¥120/人（可选）</p>
+          <p><b>✨ 九曲云环：</b>梯田核心观景台，9月金色稻浪层层叠叠，日出云海最震撼</p>
+          <p><b>✨ 白银谷：</b>谷内有坑根石寨（800年石头古村、溪流竹林），轻松徒步约1小时</p>
+          <p><b>✨ 七星墩：</b>最高观景台（海拔约900m），俯瞰整片梯田全景</p>
+          <p><b>💡 游玩建议：</b>下午先逛白银谷+坑根石寨（阴凉不晒），傍晚回九曲云环看日落。次日清晨5:30到九曲云环看日出+云海。住景区民宿步行可达观景台。</p>
+        </div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">18:00</span>
-        <span class="badge">住宿·已订</span>
+        <span class="time">18:00</span><span class="badge">住宿·已订</span>
         <div class="title">🏠 入住 AirArk云上民宿（¥1310 含双早）</div>
-        <div class="desc">放下行李，在民宿吃晚餐（梯田农家饭、稻花鱼）。晚上在观景台看星星，海拔高、光污染少，中秋月亮从梯田升起，此生难忘。</div>
+        <div class="desc">放下行李，在民宿吃晚餐（梯田农家饭、稻花鱼）。晚上在观景台看星星，中秋月亮从梯田升起。</div>
       </div>
     </div>
   </div>
@@ -532,10 +483,17 @@ a{color:var(--primary);text-decoration:none;}
     <div class="timeline">
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">05:30 - 06:30</span>
-        <span class="badge">必看</span>
+        <span class="time">05:30 - 06:30</span><span class="badge">必看</span>
         <div class="title">🌄 九曲云环 / 七星墩看日出云海</div>
-        <div class="desc">云和梯田最经典画面！<strong>清晨日出+云海翻涌稻浪</strong>，9月稻黄，日出金光洒满金稻。住民宿出门走几分钟就到观景台。<a href="https://www.dianping.com/search/keyword/1766/0_%E4%BA%91%E5%92%8C%E4%B8%83%E6%98%9F%E5%A2%A9" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">云和梯田最经典画面！<strong>清晨日出+云海翻涌稻浪</strong>，9月稻黄，日出金光洒满金稻。住民宿出门走几分钟就到观景台。</div>
+        <button class="detail-toggle" onclick="toggleDetail(this)" style="font-size:12px;padding:2px 10px;">📋 查看详情</button>
+        <div class="detail-content" style="margin-top:8px;">
+          <p><b>📍 地点：</b>九曲云环观景台（住AirArk步行可达）/ 七星墩观景台（需索道或开车上山）</p>
+          <p><b>🕐 日出时间：</b>9月下旬约05:50-06:10，建议5:30前到达占位</p>
+          <p><b>🌤️ 最佳天气：</b>前晚降温+无风→次日云海概率高；雨后初晴最佳</p>
+          <p><b>📸 拍摄建议：</b>九曲云环观景台正对东方，梯田+云海+日出同框。手机开HDR，带三脚架更稳。穿厚外套，日出时仅15℃左右</p>
+          <p><b>💡 提示：</b>如果当天阴天没日出，可以在观景台等云雾散开后的"佛光"效果，也别有韵味</p>
+        </div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
@@ -545,35 +503,59 @@ a{color:var(--primary);text-decoration:none;}
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">09:00 - 10:00</span>
-        <span class="badge">转场</span>
+        <span class="time">09:00 - 10:00</span><span class="badge">转场</span>
         <div class="title">🚗 自驾 → 松阳古村（约68km）</div>
-        <div class="desc">沿丽龙高速+龙丽温线自驾约1小时到松阳古村区域，山路风景绝佳，一路绿意盎然。</div>
+        <div class="desc">沿丽龙高速+龙丽温线自驾约1小时到松阳古村区域，山路风景绝佳。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
         <span class="time">10:30 - 12:30</span>
         <div class="title">🏘️ 杨家堂村 · 金色布达拉宫</div>
-        <div class="desc">层层叠叠的夯土黄墙依山而建，被誉为"金色布达拉宫"。上午光线好，拍照出片。<a href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E6%9D%A8%E5%AE%B6%E5%A0%82%E6%9D%91" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">层层叠叠的夯土黄墙依山而建，被誉为"金色布达拉宫"。上午光线好，拍照出片。</div>
+        <button class="detail-toggle" onclick="toggleDetail(this)" style="font-size:12px;padding:2px 10px;">📋 查看详情</button>
+        <div class="detail-content" style="margin-top:8px;">
+          <p><b>📍 地址：</b>松阳县西屏街道杨家堂村</p>
+          <p><b>🎫 门票：</b>免费</p>
+          <p><b>🕐 全天开放</b>（建议白天前往）</p>
+          <p><b>✨ 看点：</b>370余年历史，宋濂后裔聚居地。20多栋清代夯土民居依山层层叠建，黄墙黑瓦，被称为"金色布达拉宫"。村口有古樟树和石阶，村内有宋氏宗祠</p>
+          <p><b>📸 拍摄建议：</b>村口对面山坡是最佳拍摄点（拍全景），上午9-11点顺光，黄墙金光闪闪。走进村子走石阶路，细节也出片</p>
+          <p><b>💡 提示：</b>村中没有商业设施，自带水和零食。车停在村口停车场，步行进村</p>
+        </div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
         <span class="time">12:30 - 13:30</span>
         <div class="title">🍽️ 午餐 · 松阳古村</div>
-        <div class="desc">吃<strong>煨盐鸡</strong>（非遗，整鸡裹盐煨烤）、<strong>歇力茶猪脚</strong>（松阳独有）配端午茶。<a href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E7%85%A8%E7%9B%90%E9%B8%A1" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">吃<strong>煨盐鸡</strong>（非遗，整鸡裹盐煨烤）、<strong>歇力茶猪脚</strong>（松阳独有）配端午茶。</div>
+        <button class="detail-toggle" onclick="toggleDetail(this)" style="font-size:12px;padding:2px 10px;">📋 美食详情</button>
+        <div class="detail-content" style="margin-top:8px;">
+          <p><b>🍗 煨盐鸡：</b>松阳非遗美食！整鸡抹盐腌制，裹粗盐入铁锅慢煨2小时，皮焦肉嫩、盐香入味。松阳老街多家老店现做现卖，约¥50-80/只，可半只。建议打包一只带回</p>
+          <p><b>🥩 歇力茶猪脚：</b>松阳独有！用当地特产"歇力茶"（一种草本植物）炖猪脚，茶香去腻、猪脚软糯脱骨、汤汁鲜美。县城和古村农家乐都有，人均¥40-60</p>
+          <p><b>🍜 手工水牵面：</b>松阳非遗面食，面团手工拉扯，面条宽薄筋道，配土猪骨汤头。老街"百仙面馆"等老店，¥15/碗</p>
+          <p><b>🍵 端午茶：</b>松阳特色草本茶，多种草药配制，清热消暑，当地四季常饮，¥5-10/杯</p>
+        </div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
         <span class="time">14:00 - 17:00</span>
         <div class="title">📚 陈家铺村 · 悬崖先锋书店</div>
-        <div class="desc">海拔800m+的悬崖古村，村中先锋书店被称为"中国最美乡村书店"，落地窗外云雾山谷，喝杯咖啡等夕阳。<a href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E9%99%88%E5%AE%B6%E9%93%BA%E6%9D%91" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">海拔800m+的悬崖古村，村中先锋书店被称为"中国最美乡村书店"，落地窗外云雾山谷，喝杯咖啡等夕阳。</div>
+        <button class="detail-toggle" onclick="toggleDetail(this)" style="font-size:12px;padding:2px 10px;">📋 查看详情</button>
+        <div class="detail-content" style="margin-top:8px;">
+          <p><b>📍 地址：</b>松阳县四都乡陈家铺村</p>
+          <p><b>🎫 门票：</b>免费</p>
+          <p><b>🕐 全天开放</b>（先锋书店约09:00-18:00）</p>
+          <p><b>✨ 先锋书店：</b>南京先锋书店的乡村分店，被称为"中国最美乡村书店"。石头老房改造，落地窗正对山谷云海，可以买书盖纪念章、喝咖啡</p>
+          <p><b>✨ 村落：</b>海拔800m+悬崖古村，夯土房依崖而建，云雾缭绕如仙境。村中有古道、石阶、老祠堂</p>
+          <p><b>💡 游玩建议：</b>先到书店喝咖啡看书（下午光线好，落地窗正对山谷），再沿村中石阶走走拍照。傍晚等夕阳洒在云海上。陈家铺距杨家堂约15分钟车程，可串联游览</p>
+          <p><b>🅿️ 停车：</b>村口有停车场，步行约5分钟进村</p>
+        </div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">17:30</span>
-        <span class="badge">住宿·已订</span>
+        <span class="time">17:30</span><span class="badge">住宿·已订</span>
         <div class="title">🏠 入住 松阳叶子庄园民宿（¥647）</div>
-        <div class="desc">入住松阳叶子庄园民宿。晚餐再吃一顿松阳味道（歇力茶猪脚、仙草），饭后古村散步，空气清冽，星星很多。</div>
+        <div class="desc">入住松阳叶子庄园民宿。晚餐再吃一顿松阳味道，饭后古村散步，空气清冽，星星很多。</div>
       </div>
     </div>
   </div>
@@ -595,14 +577,22 @@ a{color:var(--primary);text-decoration:none;}
         <div class="dot"></div>
         <span class="time">09:00 - 10:30</span>
         <div class="title">🌉 松庄村 · 石拱桥（可选）</div>
-        <div class="desc">如果时间充裕，去<strong>松庄村</strong>看300年石拱桥横跨溪水（《国家地理》机位），溪水清澈可下水踩石。<a href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E6%9D%BE%E5%BA%84%E6%9D%91" target="_blank" style="color:var(--primary);font-weight:600;">查看详情→</a></div>
+        <div class="desc">如果时间充裕，去<strong>松庄村</strong>看300年石拱桥横跨溪水（《国家地理》机位），溪水清澈可下水踩石。</div>
+        <button class="detail-toggle" onclick="toggleDetail(this)" style="font-size:12px;padding:2px 10px;">📋 查看详情</button>
+        <div class="detail-content" style="margin-top:8px;">
+          <p><b>📍 地址：</b>松阳县三都乡松庄村</p>
+          <p><b>🎫 门票：</b>免费</p>
+          <p><b>🕐 全天开放</b>（建议清晨前往）</p>
+          <p><b>✨ 看点：</b>300年石拱桥横跨松庄溪，被《国家地理》收录为"水墨江南"经典机位。溪水清澈见底，可下水踩石。桥边有老樟树和夯土民居，如水墨画</p>
+          <p><b>📸 拍摄建议：</b>清晨7-9点晨雾最美，石拱桥+溪水+雾气=仙境感。可走到桥下溪边仰拍，也可在桥上俯拍倒影</p>
+          <p><b>💡 提示：</b>距叶子庄园约20-30分钟车程。控制好时间，11:00前出发返程</p>
+        </div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">11:00 - 12:30</span>
-        <span class="badge">返程</span>
+        <span class="time">11:00 - 12:30</span><span class="badge">返程</span>
         <div class="title">🚗 自驾 → 丽水站 · 还车</div>
-        <div class="desc">自驾约1.5小时（~55km）返回丽水站。<strong>13:00前到一嗨门店还车</strong>（14:00还车截止，预留1小时缓冲，确认油量/车况）。还车后到候车大厅，时间从容。</div>
+        <div class="desc">自驾约1.5小时（~55km）返回丽水站。<strong>13:00前到一嗨门店还车</strong>（14:00还车截止，预留1小时缓冲，确认油量/车况）。</div>
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
@@ -612,8 +602,7 @@ a{color:var(--primary);text-decoration:none;}
       </div>
       <div class="timeline-item">
         <div class="dot"></div>
-        <span class="time">15:09</span>
-        <span class="badge">返程</span>
+        <span class="time">15:09</span><span class="badge">返程</span>
         <div class="title">🚄 丽水站 → 上海南 G7336</div>
         <div class="desc">🎫 <strong>二等座¥262.5/人</strong>（买苍南→上海南全程票，丽水站上车）。15:09发，17:46到上海南，2小时37分。</div>
       </div>
@@ -628,18 +617,33 @@ a{color:var(--primary);text-decoration:none;}
     <div class="card">
       <span class="card-tag scenic">Day 1 · 必去</span>
       <div class="card-title">古堰画乡</div>
-      <div class="card-desc">千年通济堰（世界灌溉工程遗产）、瓯江画舫、巴比松油画街、千年古樟群。4A景区，水秀山清，不用爬坡。</div>
+      <div class="card-desc">千年通济堰（世界灌溉工程遗产）、瓯江画舫、巴比松油画街、千年古樟群。4A景区，不用爬坡。</div>
       <div class="card-info"><b>门票：</b><span class="price-tag">¥50/人</span> <span style="font-size:12px;color:var(--text-light);">含船票</span></div>
       <div class="card-info"><b>游览时间：</b>2-3h</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E5%8F%A4%E5%A0%B0%E7%94%BB%E4%B9%A1" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>📍 地址：</b>丽水市莲都区大港头镇渡南路</p>
+        <p><b>🎫 门票：</b>¥50/人（含画舫船票）</p>
+        <p><b>🕐 开放：</b>08:00-17:00（画舫末班约16:00）</p>
+        <p><b>✨ 看点：</b>通济堰（世界灌溉工程遗产，1500年拱坝）、千年古樟群、巴比松油画街、瓯江画舫</p>
+        <p><b>💡 建议：</b>先坐船到对岸堰头村看通济堰和古樟，再回来逛画乡老街。全程平路，轻松2-3h</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag scenic">Day 1 · 核心</span>
       <div class="card-title">九曲云环 · 云和梯田</div>
-      <div class="card-desc">梯田核心观景地，9月金黄稻浪层层铺开如油画。云海日出最震撼，是"长三角最美观日出"。</div>
+      <div class="card-desc">梯田核心观景地，9月金黄稻浪层层铺开如油画。云海日出最震撼。</div>
       <div class="card-info"><b>门票：</b><span class="price-tag">¥80/人</span> <span style="font-size:12px;color:var(--text-light);">两日有效</span></div>
       <div class="card-info"><b>最佳时间：</b>清晨日出</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E4%BA%91%E5%92%8C%E6%A2%AF%E7%94%B0" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>📍 地址：</b>丽水市云和县崇头镇</p>
+        <p><b>🎫 门票：</b>¥80/人（含九曲云环+白银谷+坑根石寨，两日有效）</p>
+        <p><b>🕐 开放：</b>08:00-17:00（次日日出可提前进入）</p>
+        <p><b>🚡 索道：</b>观云索道全长3.8km，约¥120/人（可选）</p>
+        <p><b>✨ 看点：</b>华东最大梯田群、5A景区。九曲云环观日出、白银谷徒步、坑根石寨800年石头古村</p>
+        <p><b>💡 建议：</b>下午逛白银谷+坑根石寨，次日清晨看日出云海。住景区民宿步行可达</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag scenic">Day 2 · 打卡</span>
@@ -647,31 +651,58 @@ a{color:var(--primary);text-decoration:none;}
       <div class="card-desc">"金色布达拉宫"，层层叠叠夯土黄墙依山而建。370余年历史，宋濂后裔聚居地。</div>
       <div class="card-info"><b>门票：</b><span class="price-tag">免费</span></div>
       <div class="card-info"><b>最佳时间：</b>上午光线</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E6%9D%A8%E5%AE%B6%E5%A0%82%E6%9D%91" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>📍 地址：</b>松阳县西屏街道杨家堂村</p>
+        <p><b>🎫 门票：</b>免费</p>
+        <p><b>✨ 看点：</b>370年历史，20多栋清代夯土民居依山层叠，黄墙黑瓦，"金色布达拉宫"</p>
+        <p><b>📸 拍摄：</b>村口对面山坡拍全景最佳，上午9-11点顺光黄墙发金光</p>
+        <p><b>💡 提示：</b>村中无商业设施，自带水。车停村口步行进村</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag scenic">Day 2 · 文艺</span>
       <div class="card-title">陈家铺村 · 先锋书店</div>
-      <div class="card-desc">海拔800m悬崖古村，"中国最美乡村书店"落地窗俯瞰云雾山谷，喝咖啡等夕阳。</div>
+      <div class="card-desc">海拔800m悬崖古村，"中国最美乡村书店"落地窗俯瞰云雾山谷。</div>
       <div class="card-info"><b>门票：</b><span class="price-tag">免费</span></div>
       <div class="card-info"><b>推荐：</b>悬崖书店+咖啡馆</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E9%99%88%E5%AE%B6%E9%93%BA%E6%9D%91" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>📍 地址：</b>松阳县四都乡陈家铺村</p>
+        <p><b>🎫 门票：</b>免费（书店09:00-18:00）</p>
+        <p><b>✨ 看点：</b>南京先锋书店乡村分店，石头老房改造，落地窗正对山谷云海。买书盖纪念章、喝咖啡</p>
+        <p><b>✨ 村落：</b>海拔800m+悬崖古村，夯土房依崖而建，云雾缭绕</p>
+        <p><b>💡 建议：</b>先到书店喝咖啡看书，再沿村中石阶拍照。傍晚夕阳洒云海绝美。距杨家堂约15分钟车程</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag scenic">Day 1 · 高空</span>
       <div class="card-title">七星墩 · 观云台（可选）</div>
-      <div class="card-desc">云和梯田最高观景台（海拔约900m），可俯瞰整片梯田全景，云海常驻。日出最佳。</div>
+      <div class="card-desc">云和梯田最高观景台（海拔约900m），俯瞰整片梯田全景，云海常驻。</div>
       <div class="card-info"><b>门票：</b>含在¥80内 · 索道另计</div>
       <div class="card-info"><b>最佳时间：</b>日出/晴好</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E4%BA%91%E5%92%8C%E4%B8%83%E6%98%9F%E5%A2%A9" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>📍 地址：</b>云和梯田景区内最高点</p>
+        <p><b>🎫 门票：</b>含在¥80通票内 · 观云索道约¥120/人</p>
+        <p><b>✨ 看点：</b>海拔约900m，俯瞰整片梯田全景，云海常驻。索道11分钟直达</p>
+        <p><b>💡 建议：</b>晴天傍晚或日出前往。如果时间紧可跳过，九曲云环已足够震撼</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag scenic">Day 3 · 可选</span>
       <div class="card-title">松庄村 · 石拱桥</div>
-      <div class="card-desc">300年石拱桥横跨溪水，《国家地理》收录的"水墨江南"机位，晨雾清晨最美。</div>
+      <div class="card-desc">300年石拱桥横跨溪水，《国家地理》收录的"水墨江南"机位。</div>
       <div class="card-info"><b>门票：</b><span class="price-tag">免费</span></div>
       <div class="card-info"><b>最佳时间：</b>清晨</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E6%9D%BE%E5%BA%84%E6%9D%91" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>📍 地址：</b>松阳县三都乡松庄村</p>
+        <p><b>🎫 门票：</b>免费</p>
+        <p><b>✨ 看点：</b>300年石拱桥+清澈溪水，《国家地理》"水墨江南"经典机位。可下水踩石</p>
+        <p><b>📸 拍摄：</b>清晨7-9点晨雾最美。桥下溪边仰拍或桥上俯拍倒影</p>
+        <p><b>💡 提示：</b>距叶子庄园约20-30分钟车程，11:00前出发返程</p>
+      </div>
     </div>
   </div>
 </div>
@@ -685,15 +716,26 @@ a{color:var(--primary);text-decoration:none;}
       <span class="card-tag food">必吃</span>
       <div class="card-title">红烧溪鱼</div>
       <div class="card-desc">现捞现做，瓯江溪鱼红烧，鲜嫩美味，古堰画乡特色菜。</div>
-      <div class="card-info"><b>人均：</b><span class="price-tag">¥60</span></div>
-      <div class="card-info"><b>推荐：</b>画乡老街农家菜馆</div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E7%94%BB%E4%B9%A1%E5%86%9C%E5%AE%B6%E8%8F%9C" target="_blank">查看详情 →</a>
+      <div class="card-info"><b>人均：</b><span class="price-tag">¥50-80</span></div>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🐟 特色：</b>瓯江野生溪鱼，红烧做法，肉质鲜嫩无腥味，是古堰画乡招牌菜</p>
+        <p><b>📍 去哪吃：</b>画乡老街沿江的农家菜馆都有，如"渔乡人家"等。现捞现做，点单后等15分钟</p>
+        <p><b>💰 价格：</b>约¥60-80/份（够2人吃），配一碗米饭绝佳</p>
+        <p><b>💡 搭配：</b>再点个炒时蔬+缙云烧饼，2人午餐约¥100-120</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag food">小吃</span>
       <div class="card-title">缙云烧饼</div>
-      <div class="card-desc">景区也有卖，¥5/个。刚出炉的外酥里嫩，梅干菜肉馅。</div>
+      <div class="card-desc">梅干菜肉馅，土炉烤制，外酥里嫩。</div>
       <div class="card-info"><b>价格：</b><span class="price-tag">¥5/个</span></div>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🫓 特色：</b>梅干菜+五花肉馅，贴土炉壁烤制，外皮酥脆内馅多汁。丽水地区名小吃</p>
+        <p><b>📍 去哪吃：</b>景区入口和小摊都有卖，认准现烤的买</p>
+        <p><b>💡 趁热吃</b>最佳，凉了口感差很多。可以买几个路上当零食</p>
+      </div>
     </div>
   </div>
   <h3 style="font-size:16px;color:var(--primary-dark);margin:24px 0 10px;padding:8px 16px;background:linear-gradient(135deg,#FFF3E0,#F0F6F7);border-radius:10px;">📍 云和梯田 · Day1 晚餐</h3>
@@ -703,12 +745,25 @@ a{color:var(--primary);text-decoration:none;}
       <div class="card-title">梯田农家饭</div>
       <div class="card-desc">梯田稻花鱼、走地鸡、时令蔬菜，民宿或景区农家乐，山野味十足。</div>
       <div class="card-info"><b>人均：</b><span class="price-tag">¥50-80</span></div>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🐟 稻花鱼：</b>养在稻田里的鲤鱼，吃稻花长大，肉质紧实无泥腥。红烧或汤煮都鲜</p>
+        <p><b>🐔 走地鸡：</b>梯田散养土鸡，炖汤或白斩，肉香浓郁</p>
+        <p><b>🥬 高山蔬菜：</b>梯田自种时令蔬菜，清甜无污染</p>
+        <p><b>📍 去哪吃：</b>住AirArk直接让老板做晚餐，不用出门。人均¥50-80</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag food">特色</span>
       <div class="card-title">云和豆腐 / 山笋</div>
       <div class="card-desc">高山豆腐、竹林笋干都是梯田地道食材，豆腐烧肉是民宿拿手菜。</div>
       <div class="card-info"><b>人均：</b><span class="price-tag">¥30-50</span></div>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🧈 云和豆腐：</b>山泉水做的手工豆腐，豆香浓郁、口感嫩滑。豆腐烧肉是民宿拿手菜</p>
+        <p><b>🎍 山笋：</b>竹林笋干泡发后清炒或炖肉，脆嫩爽口，山野清香</p>
+        <p><b>💡 建议：</b>点菜时跟老板说"来几个家常菜"，通常豆腐+笋干+土鸡+蔬菜，4菜一汤约¥150-200/2人</p>
+      </div>
     </div>
   </div>
   <h3 style="font-size:16px;color:var(--primary-dark);margin:24px 0 10px;padding:8px 16px;background:linear-gradient(135deg,#E8EEF6,#F0F6F7);border-radius:10px;">📍 松阳古村 · Day2-3</h3>
@@ -716,37 +771,62 @@ a{color:var(--primary);text-decoration:none;}
     <div class="card">
       <span class="card-tag food">必吃</span>
       <div class="card-title">煨盐鸡</div>
-      <div class="card-desc">松阳非遗！整鸡裹粗盐入铁锅煨烤，皮焦肉嫩、盐香入味。老店现做现卖，可打包带回。</div>
+      <div class="card-desc">松阳非遗！整鸡裹粗盐入铁锅煨烤，皮焦肉嫩、盐香入味。</div>
       <div class="card-info"><b>人均：</b><span class="price-tag">¥30-50</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E7%85%A8%E7%9B%90%E9%B8%A1" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🍗 特色：</b>松阳非遗美食！整鸡抹盐腌制，裹粗盐入铁锅慢煨2小时，皮焦肉嫩、盐香入味，撕着吃最过瘾</p>
+        <p><b>📍 去哪吃：</b>松阳老街多家老店现做现卖，如"王景煨盐鸡"等。可整只（¥50-80）或半只</p>
+        <p><b>💡 建议：</b>午餐吃半只，再打包一只回上海。冷了也好吃，微波炉加热即恢复风味</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag food">特色</span>
       <div class="card-title">歇力茶猪脚</div>
-      <div class="card-desc">用松阳特产"歇力茶"炖猪脚，茶香去腻、猪脚软糯脱骨，松阳独有吃法。</div>
+      <div class="card-desc">用松阳特产"歇力茶"炖猪脚，茶香去腻、猪脚软糯脱骨，松阳独有。</div>
       <div class="card-info"><b>人均：</b><span class="price-tag">¥40-60</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E6%AD%87%E5%8A%9B%E8%8C%B6%E7%8C%AA%E8%84%9A" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🥩 特色：</b>松阳独有！用当地"歇力茶"（一种草本植物）炖猪脚，茶香去腻、猪脚软糯脱骨、汤汁鲜美可泡饭</p>
+        <p><b>📍 去哪吃：</b>松阳县城和古村附近农家乐都有，点一份约¥60-80</p>
+        <p><b>💡 搭配：</b>配一碗水牵面+端午茶，就是地道松阳味</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag food">非遗</span>
       <div class="card-title">手工水牵面</div>
       <div class="card-desc">松阳传统手工面，面条宽薄筋道，土猪骨汤头，老面馆现场拉面。</div>
       <div class="card-info"><b>价格：</b><span class="price-tag">¥15/碗</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E6%B0%B4%E7%89%B5%E9%9D%A2" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🍜 特色：</b>松阳非遗面食，面团手工拉扯（"水牵"是手法名），面条宽薄筋道，配土猪骨汤头</p>
+        <p><b>📍 去哪吃：</b>松阳老街"百仙面馆"等老店，现场拉面，¥15/碗</p>
+        <p><b>💡 早上或中午来一碗</b>，加个荷包蛋或大肠，烟火气十足</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag food">甜品</span>
       <div class="card-title">松阳仙草 / 沙擂</div>
-      <div class="card-desc">仙草=本地版烧仙草，清凉解暑；沙擂=糯米团裹芝麻黄豆粉，甜香软糯。</div>
+      <div class="card-desc">仙草=本地版烧仙草；沙擂=糯米团裹芝麻黄豆粉，甜香软糯。</div>
       <div class="card-info"><b>价格：</b><span class="price-tag">¥5-10</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E4%BB%99%E8%8D%89" target="_blank">查看详情 →</a>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🌿 仙草：</b>用山间野生仙草熬制，加薄荷清凉解暑，本地版烧仙草</p>
+        <p><b>🟤 沙擂：</b>糯米团煮熟后裹芝麻黄豆粉，甜香软糯，松阳传统甜点</p>
+        <p><b>📍 去哪吃：</b>松阳老街甜品摊或茶馆，¥5-10/份。下午茶来一份</p>
+      </div>
     </div>
     <div class="card">
       <span class="card-tag food">茶饮</span>
       <div class="card-title">端午茶 / 松阳红茶</div>
-      <div class="card-desc">松阳特色草本茶，清热消暑，可买茶包做伴手礼。松阳是产茶大县。</div>
-      <div class="card-info"><b>价格：</b><span class="price-tag">¥5-10</span></div>
-      <a class="card-link" href="https://www.dianping.com/search/keyword/1766/0_%E6%9D%BE%E9%98%B3%E7%AB%AF%E5%8D%88%E8%8C%B6" target="_blank">查看详情 →</a>
+      <div class="card-desc">松阳特色草本茶，清热消暑，可买茶包做伴手礼。</div>
+      <div class="card-info"><b>价格：</b><span class="price-tag">¥5-10/杯</span></div>
+      <button class="detail-toggle" onclick="toggleDetail(this)">📋 查看详情</button>
+      <div class="detail-content">
+        <p><b>🍵 端午茶：</b>松阳特色草本茶，多种草药配制，清热消暑，当地四季常饮。吃肉配一碗端午茶，解腻消食</p>
+        <p><b>🫖 松阳银猴茶：</b>松阳是产茶大县，银猴茶是地理标志产品。红茶、绿茶均可买茶包做伴手礼</p>
+        <p><b>💰 伴手礼：</b>端午茶包约¥30-50/盒，银猴茶约¥50-100/盒</p>
+      </div>
     </div>
   </div>
 </div>
@@ -754,7 +834,6 @@ a{color:var(--primary);text-decoration:none;}
 <!-- ============ 住宿安排 ============ -->
 <div class="section">
   <div class="section-title">🏨 住宿安排（2晚 · 已预订）</div>
-
   <div class="stay-section">
     <div class="stay-header">
       ⛰️ 第1晚（9/25）：云和梯田 · AirArk云上民宿 <span class="night-tag">¥1,310 · 含双早 · 已订</span>
@@ -762,15 +841,14 @@ a{color:var(--primary);text-decoration:none;}
     <div class="cards-grid">
       <div class="card">
         <span class="card-tag stay">已预订</span>
-        <div class="card-title">AirbnbArb云上民宿</div>
+        <div class="card-title">AirArk云上民宿</div>
         <div class="card-info"><b>价格：</b><span class="price-tag">¥1,310/晚</span> <span style="font-size:12px;color:var(--text-light);">含双早</span></div>
         <div class="card-info"><b>位置：</b>云和梯田景区内，近观景台</div>
         <div class="card-info"><b>优势：</b>早起看日出云海超方便，中秋赏月绝佳</div>
-        <div class="card-desc" style="margin-top:6px;">✅ 已预订，凭订单号入住即可。到店先和老板确认日出时间与早餐时段。</div>
+        <div class="card-desc" style="margin-top:6px;">✅ 已预订。到店先和老板确认日出时间与早餐时段。让老板做晚餐（梯田农家饭）。</div>
       </div>
     </div>
   </div>
-
   <div class="stay-section">
     <div class="stay-header">
       🏘️ 第2晚（9/26）：松阳古村 · 叶子庄园民宿 <span class="night-tag">¥647 · 已订</span>
@@ -794,54 +872,14 @@ a{color:var(--primary);text-decoration:none;}
   <div style="background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:20px;overflow-x:auto;">
     <table class="transport-table">
       <tr>
-        <th style="width:25%;">路线</th>
-        <th style="width:30%;">方式</th>
-        <th style="width:12%;">里程</th>
-        <th style="width:13%;">耗时</th>
-        <th style="width:20%;">费用（2人）</th>
+        <th style="width:25%;">路线</th><th style="width:30%;">方式</th><th style="width:12%;">里程</th><th style="width:13%;">耗时</th><th style="width:20%;">费用（2人）</th>
       </tr>
-      <tr>
-        <td class="route">上海虹桥 → 丽水站</td>
-        <td>G7333 高铁（06:20发 → 09:12到）</td>
-        <td>—</td>
-        <td>2h52m</td>
-        <td><span class="price-tag">¥477</span> <span style="font-size:12px;color:var(--text-light);">¥238.5×2</span></td>
-      </tr>
-      <tr>
-        <td class="route">丽水站 → 古堰画乡</td>
-        <td>🚗 自驾（一嗨高尔夫）</td>
-        <td>~28km</td>
-        <td>约40min</td>
-        <td>租车含内</td>
-      </tr>
-      <tr>
-        <td class="route">古堰画乡 → 云和梯田</td>
-        <td>🚗 自驾</td>
-        <td>~50km</td>
-        <td>约1h</td>
-        <td>租车含内</td>
-      </tr>
-      <tr>
-        <td class="route">云和梯田 → 松阳古村</td>
-        <td>🚗 自驾</td>
-        <td>~68km</td>
-        <td>约1h</td>
-        <td>租车含内</td>
-      </tr>
-      <tr>
-        <td class="route">松阳古村 → 丽水站（返程）</td>
-        <td>🚗 自驾</td>
-        <td>~55km</td>
-        <td>约1.5h</td>
-        <td>租车含内</td>
-      </tr>
-      <tr>
-        <td class="route">丽水站 → 上海南</td>
-        <td>G7336 高铁（15:09发 → 17:46到）</td>
-        <td>—</td>
-        <td>2h37m</td>
-        <td><span class="price-tag">¥525</span> <span style="font-size:12px;color:var(--text-light);">¥262.5×2</span></td>
-      </tr>
+      <tr><td class="route">上海虹桥 → 丽水站</td><td>G7333 高铁（06:20发 → 09:12到）</td><td>—</td><td>2h52m</td><td><span class="price-tag">¥477</span> <span style="font-size:12px;color:var(--text-light);">¥238.5×2</span></td></tr>
+      <tr><td class="route">丽水站 → 古堰画乡</td><td>🚗 自驾（一嗨高尔夫）</td><td>~28km</td><td>约40min</td><td>租车含内</td></tr>
+      <tr><td class="route">古堰画乡 → 云和梯田</td><td>🚗 自驾</td><td>~50km</td><td>约1h</td><td>租车含内</td></tr>
+      <tr><td class="route">云和梯田 → 松阳古村</td><td>🚗 自驾</td><td>~68km</td><td>约1h</td><td>租车含内</td></tr>
+      <tr><td class="route">松阳古村 → 丽水站（返程）</td><td>🚗 自驾</td><td>~55km</td><td>约1.5h</td><td>租车含内</td></tr>
+      <tr><td class="route">丽水站 → 上海南</td><td>G7336 高铁（15:09发 → 17:46到）</td><td>—</td><td>2h37m</td><td><span class="price-tag">¥525</span> <span style="font-size:12px;color:var(--text-light);">¥262.5×2</span></td></tr>
     </table>
   </div>
 </div>
@@ -850,59 +888,15 @@ a{color:var(--primary);text-decoration:none;}
 <div class="section">
   <div class="section-title">💰 预算明细（2人合计 · 已订项标黄）</div>
   <table class="budget-table">
-    <tr>
-      <th style="width:20%;">类别</th>
-      <th style="width:40%;">明细</th>
-      <th style="width:20%;">费用</th>
-      <th style="width:20%;">备注</th>
-    </tr>
-    <tr>
-      <td class="item">🚄 高铁</td>
-      <td>去程 G7333 ¥238.5×2 + 返程 G7336 ¥262.5×2</td>
-      <td class="price">¥1,002</td>
-      <td class="note">二等座·全程票</td>
-    </tr>
-    <tr class="fixed-row">
-      <td class="item">🚗 租车（已订）</td>
-      <td>一嗨租车 大众高尔夫 3天（9/25 09:30-9/27 14:00）</td>
-      <td class="price">¥651</td>
-      <td class="note">✅ 已预订</td>
-    </tr>
-    <tr class="fixed-row">
-      <td class="item">⛽ 油费/路费</td>
-      <td>全程约200km自驾</td>
-      <td class="price">¥200-300</td>
-      <td class="note">油费+过路费</td>
-    </tr>
-    <tr class="fixed-row">
-      <td class="item">🏡 住宿（已订）</td>
-      <td>云和Airbnb¥1310 + 松阳叶子¥647</td>
-      <td class="price">¥1,957</td>
-      <td class="note">✅已预订含早</td>
-    </tr>
-    <tr>
-      <td class="item">🍽️ 餐饮</td>
-      <td>3天含早午晚餐（民宿含早则减）</td>
-      <td class="price">¥500-800</td>
-      <td class="note">约¥80-130/人/天</td>
-    </tr>
-    <tr>
-      <td class="item">🎫 门票</td>
-      <td>古堰画乡¥50×2 + 云和梯田¥80×2</td>
-      <td class="price">¥260</td>
-      <td class="note">云梯田两日有效</td>
-    </tr>
-    <tr>
-      <td class="item">🛒 其他</td>
-      <td>特产（煨盐鸡、端午茶）、零食等</td>
-      <td class="price">¥200</td>
-      <td class="note">预留弹性</td>
-    </tr>
-    <tr class="total-row">
-      <td>💰 合计</td>
-      <td>¥4,770-5,170</td>
-      <td>人均 ¥2,385-2,585</td>
-    </tr>
+    <tr><th style="width:20%;">类别</th><th style="width:40%;">明细</th><th style="width:20%;">费用</th><th style="width:20%;">备注</th></tr>
+    <tr><td class="item">🚄 高铁</td><td>去程 G7333 ¥238.5×2 + 返程 G7336 ¥262.5×2</td><td class="price">¥1,002</td><td class="note">二等座·全程票</td></tr>
+    <tr class="fixed-row"><td class="item">🚗 租车（已订）</td><td>一嗨租车 大众高尔夫 3天（9/25 09:30-9/27 14:00）</td><td class="price">¥651</td><td class="note">✅ 已预订</td></tr>
+    <tr class="fixed-row"><td class="item">⛽ 油费/路费</td><td>全程约200km自驾</td><td class="price">¥200-300</td><td class="note">油费+过路费</td></tr>
+    <tr class="fixed-row"><td class="item">🏡 住宿（已订）</td><td>云和AirArk¥1310 + 松阳叶子¥647</td><td class="price">¥1,957</td><td class="note">✅已预订含早</td></tr>
+    <tr><td class="item">🍽️ 餐饮</td><td>3天含早午晚餐（民宿含早则减）</td><td class="price">¥500-800</td><td class="note">约¥80-130/人/天</td></tr>
+    <tr><td class="item">🎫 门票</td><td>古堰画乡¥50×2 + 云和梯田¥80×2</td><td class="price">¥260</td><td class="note">云梯田两日有效</td></tr>
+    <tr><td class="item">🛒 其他</td><td>特产（煨盐鸡、端午茶）、零食等</td><td class="price">¥200</td><td class="note">预留弹性</td></tr>
+    <tr class="total-row"><td>💰 合计</td><td>¥4,770-5,170</td><td>人均 ¥2,385-2,585</td><td></td></tr>
   </table>
 </div>
 
@@ -916,7 +910,7 @@ a{color:var(--primary);text-decoration:none;}
       <li><b>返程G7336 丽水站15:09发车</b>：买苍南→上海南全程票（¥262.5/人），在<strong>丽水站直接刷身份证上车</strong>。Day3中午12:00前从松阳出发，13:00前到一嗨还车，时间从容。</li>
       <li><b>一嗨还车14:00截止</b>：高尔夫已订到9/27 14:00。还车前<strong>确认油量</strong>（问清满油还还是按量结算），绕车拍视频留证。</li>
       <li><b>云和梯田门票两日有效</b>：¥80通票含九曲云环/白银谷/坑根石寨，Day1下午买，Day2清晨日出继续用，不用重复买。</li>
-      <li><b>云和日出约6:00</b>：9月日出时间约6点，建议5:30起床到观景台。住Airbnb步行可达，日出+云海+金色稻浪是本次旅行最期待的一刻。</li>
+      <li><b>云和日出约6:00</b>：9月日出时间约6点，建议5:30起床到观景台。住AirArk步行可达，日出+云海+金色稻浪是本次旅行最期待的一刻。</li>
       <li><b>山路驾驶注意</b>：松阳到云和路段弯道多，控制车速、会车留宽。高尔夫自动挡即可，山路轻松。</li>
       <li><b>带薄外套</b>：梯田海拔高，早晚温差大，日出时可能只有15℃左右。</li>
       <li><b>住宿已订但确认细节</b>：入住前给两家民宿打电话确认：导航地址、停车位、早餐时段、观景台距离，避免绕路。</li>
@@ -934,6 +928,11 @@ a{color:var(--primary);text-decoration:none;}
 function switchTab(idx){
   document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
   document.querySelectorAll('.tab-content').forEach((c,i)=>c.classList.toggle('active',i===idx));
+}
+function toggleDetail(btn){
+  var content=btn.nextElementSibling;
+  if(content.classList.contains('show')){content.classList.remove('show');btn.textContent='📋 查看详情';}
+  else{content.classList.add('show');btn.textContent='📋 收起详情';}
 }
 </script>
 </body>
